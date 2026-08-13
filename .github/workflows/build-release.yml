@@ -10,7 +10,7 @@ permissions:
   contents: write
 
 env:
-  THETIS_VERSION: "2.10.3.15"
+  THETIS_VERSION: "2.10.3.16"
 
 jobs:
   build:
@@ -60,6 +60,10 @@ jobs:
         shell: pwsh
         run: msbuild "Project Files\Source\Console\Thetis.csproj" /p:Configuration=Release /p:Platform=${{ matrix.thetis_platform }} /p:SolutionDir="${{ github.workspace }}\Project Files\Source\" /m /v:m /nologo
 
+      - name: Build MSI installer
+        shell: pwsh
+        run: msbuild "Project Files\Source\Thetis-Installer\Thetis-Installer.wixproj" /p:Configuration=Release /p:Platform=${{ matrix.thetis_platform }} /p:SolutionDir="${{ github.workspace }}\Project Files\Source\" /m /v:m /nologo
+
       - name: Package portable zip
         shell: pwsh
         run: |
@@ -72,7 +76,9 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: thetis-zhcn-${{ matrix.arch }}
-          path: Thetis_v${{ env.THETIS_VERSION }}-zhcn_${{ matrix.arch }}.zip
+          path: |
+            Thetis_v${{ env.THETIS_VERSION }}-zhcn_${{ matrix.arch }}.zip
+            Project Files\bin\Installers\*.msi
           if-no-files-found: error
 
   release:
@@ -93,5 +99,5 @@ jobs:
           name: "Thetis ${{ env.THETIS_VERSION }} 中文版 (zh-CN)"
           draft: false
           prerelease: false
-          files: artifacts/*.zip
+          files: artifacts/*
           generate_release_notes: true
