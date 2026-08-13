@@ -1,4 +1,4 @@
-﻿/*  ucQuickRecall.cs
+/*  ucQuickRecall.cs
 
 This file is part of a program that implements a Software-Defined Radio.
 
@@ -80,7 +80,6 @@ namespace Thetis
         public ucQuickRecall()
         {
             InitializeComponent();
-            Translator.ApplyToForm(this);
             Disposed += OnDispose;
 
             m_frmPopupList = new frmQuickRecallPopupList();

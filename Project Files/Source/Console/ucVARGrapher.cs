@@ -1,4 +1,4 @@
-﻿/*  ucVARGrapher.cs
+/*  ucVARGrapher.cs
 
 This file is part of a program that implements a Software-Defined Radio.
 
@@ -63,7 +63,6 @@ namespace Thetis
             m_dData = new List<double>();
 
             InitializeComponent();
-            Translator.ApplyToForm(this);
             Common.DoubleBufferAll(this, true);
 
             MaxPoints = 100;

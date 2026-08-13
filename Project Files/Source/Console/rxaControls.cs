@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -20,7 +20,6 @@ namespace Thetis
         public rxaControls(int id)
         {
             InitializeComponent();
-            Translator.ApplyToForm(this);
             CloseButton = false;
             CloseButtonVisible = false;
 

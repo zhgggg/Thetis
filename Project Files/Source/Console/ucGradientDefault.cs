@@ -1,4 +1,4 @@
-﻿/*  ucGradientDefault.cs
+/*  ucGradientDefault.cs
 
 This file is part of a program that implements a Software-Defined Radio.
 
@@ -87,7 +87,6 @@ namespace Thetis
         public ucGradientDefault()
         {
             InitializeComponent();
-            Translator.ApplyToForm(this);
             populateGradientList();
         }
 

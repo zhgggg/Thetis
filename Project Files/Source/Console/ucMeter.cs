@@ -1,4 +1,4 @@
-﻿/*  ucMeter.cs
+/*  ucMeter.cs
 
 This file is part of a program that implements a Software-Defined Radio.
 
@@ -108,7 +108,6 @@ namespace Thetis
         public ucMeter()
         {
             InitializeComponent();
-            Translator.ApplyToForm(this);
 
             Common.DoubleBufferAll(this, true);
 

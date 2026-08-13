@@ -1,4 +1,4 @@
-﻿/*  ucTunestepOptionsGrid.cs
+/*  ucTunestepOptionsGrid.cs
 
 This file is part of a program that implements a Software-Defined Radio.
 
@@ -55,7 +55,6 @@ namespace Thetis
         {
             _init = false;
             InitializeComponent();
-            Translator.ApplyToForm(this);
             initialize_checkboxes();
             hook_up_checkbox_events();
         }

@@ -1,4 +1,4 @@
-﻿/*  ucInfoBar.cs
+/*  ucInfoBar.cs
 
 This file is part of a program that implements a Software-Defined Radio.
 
@@ -207,7 +207,6 @@ namespace Thetis
         public ucInfoBar()
         {
             InitializeComponent();
-            Translator.ApplyToForm(this);
 
             _oldCursor = Cursor.Current;
 

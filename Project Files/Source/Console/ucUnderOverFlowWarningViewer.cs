@@ -1,4 +1,4 @@
-﻿/*  ucUnderOverFlowWarningViewer.cs
+/*  ucUnderOverFlowWarningViewer.cs
 
 This file is part of a program that implements a Software-Defined Radio.
 
@@ -65,7 +65,6 @@ namespace Thetis
         public ucUnderOverFlowWarningViewer()
         {
             InitializeComponent();
-            Translator.ApplyToForm(this);
 
             _hasHadIssues = new bool[4];
         }

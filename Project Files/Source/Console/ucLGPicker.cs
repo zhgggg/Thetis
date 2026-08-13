@@ -1,4 +1,4 @@
-﻿/*  ucLGPicker.cs
+/*  ucLGPicker.cs
 
 This file is part of a program that implements a Software-Defined Radio.
 
@@ -98,7 +98,6 @@ namespace Thetis
         public ucLGPicker()
         {
             InitializeComponent();
-            Translator.ApplyToForm(this);
 
             m_dictColours = new Dictionary<int, GradColours>();
 

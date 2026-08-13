@@ -1,4 +1,4 @@
-﻿/*  ucOCLedStrip.cs
+/*  ucOCLedStrip.cs
 
 This file is part of a program that implements a Software-Defined Radio.
 
@@ -55,7 +55,6 @@ namespace Thetis
         public ucOCLedStrip()
         {
             InitializeComponent();
-            Translator.ApplyToForm(this);
         }
 
         private bool m_bTX = false;

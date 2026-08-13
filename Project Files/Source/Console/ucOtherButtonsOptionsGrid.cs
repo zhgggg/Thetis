@@ -1,4 +1,4 @@
-﻿/*  ucOtherButtonsOptionsGrid.cs
+/*  ucOtherButtonsOptionsGrid.cs
 
 This file is part of a program that implements a Software-Defined Radio.
 
@@ -888,7 +888,6 @@ namespace Thetis
 
             _init = false;
             InitializeComponent();
-            Translator.ApplyToForm(this);
 
             this.Size = new Size(173, 182);
             this.scrollableControl1.Location = new Point(0, 0);
