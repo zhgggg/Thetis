@@ -35,6 +35,7 @@ namespace Thetis
 			// Required for Windows Form Designer support
 			//
 			InitializeComponent();
+			Translator.ApplyToForm(this);
 			console = c;
 			parser = new CATParser(console);
 			ds = new DataSet();
@@ -65,8 +66,8 @@ namespace Thetis
             }
             catch
             {
-                MessageBox.Show("Issue loding CATStructs.xml",
-                    "CATStructs",
+                MessageBox.Show(Translator.Tr("Issue loding CATStructs.xml"),
+                    Translator.Tr("CATStructs"),
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Error, MessageBoxDefaultButton.Button1, Common.MB_TOPMOST);
             }
@@ -98,7 +99,7 @@ namespace Thetis
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(119, 33);
             this.btnExit.TabIndex = 2;
-            this.btnExit.Text = "Exit";
+            this.btnExit.Text = Translator.Tr("Exit");
             this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
             // txtInput
@@ -123,7 +124,7 @@ namespace Thetis
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(88, 23);
             this.label1.TabIndex = 4;
-            this.label1.Text = "CAT Command";
+            this.label1.Text = Translator.Tr("CAT Command");
             this.label1.TextAlign = System.Drawing.ContentAlignment.BottomRight;
             // 
             // label2
@@ -133,7 +134,7 @@ namespace Thetis
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(88, 23);
             this.label2.TabIndex = 5;
-            this.label2.Text = "CAT Response";
+            this.label2.Text = Translator.Tr("CAT Response");
             this.label2.TextAlign = System.Drawing.ContentAlignment.BottomRight;
             // 
             // dataGrid1
@@ -149,7 +150,7 @@ namespace Thetis
             this.btnExecute.Name = "btnExecute";
             this.btnExecute.Size = new System.Drawing.Size(75, 23);
             this.btnExecute.TabIndex = 7;
-            this.btnExecute.Text = "Execute";
+            this.btnExecute.Text = Translator.Tr("Execute");
             this.btnExecute.Click += new System.EventHandler(this.btnExecute_Click);
             // 
             // CATTester
@@ -167,7 +168,7 @@ namespace Thetis
             this.MaximumSize = new System.Drawing.Size(740, 420);
             this.MinimumSize = new System.Drawing.Size(740, 420);
             this.Name = "CATTester";
-            this.Text = "CAT Command Tester";
+            this.Text = Translator.Tr("CAT Command Tester");
             ((System.ComponentModel.ISupportInitialize)(this.dataGrid1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

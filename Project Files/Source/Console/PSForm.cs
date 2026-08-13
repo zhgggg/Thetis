@@ -65,6 +65,7 @@ namespace Thetis
             Debug.Print(DateTime.UtcNow.Ticks.ToString() + " PSForm: Constructor Start");
 
             InitializeComponent();
+            Translator.ApplyToForm(this);
             Common.DoubleBufferAll(this, true);
 
             txtPSpeak.Text = "";
@@ -819,8 +820,8 @@ namespace Thetis
         {
             if(checkLoopback.Checked && (console.SampleRateRX1 != 192000 || console.SampleRateRX2 != 192000))
             {
-                DialogResult dr = MessageBox.Show("This feature can only be used with sample rates set to 192KHz.",
-                    "Sample Rate Issue",
+                DialogResult dr = MessageBox.Show(Translator.Tr("This feature can only be used with sample rates set to 192KHz."),
+                    Translator.Tr("Sample Rate Issue"),
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Stop, MessageBoxDefaultButton.Button1, Common.MB_TOPMOST);
 

@@ -94,7 +94,7 @@ namespace Thetis
                 lock (_sync) { _entries.Clear(); }
                 _form.close_panel.Visible = false;
                 _total_start_utc = DateTime.UtcNow;
-                _form.time_label.Text = "Completed in 0.0s";
+                _form.time_label.Text = Translator.Tr("Completed in 0.0s");
                 Point loc;
                 if (tryReadLocation(out loc))
                 {
@@ -473,7 +473,7 @@ namespace Thetis
                 list = new NoSelectListView();
                 list.View = View.Details;
                 list.HeaderStyle = ColumnHeaderStyle.None;
-                list.Columns.Add("", -2, HorizontalAlignment.Left);
+                list.Columns.Add(Translator.Tr(""), -2, HorizontalAlignment.Left);
                 list.Dock = DockStyle.Fill;
                 list.FullRowSelect = true;
                 list.BackColor = Color.Black;
@@ -493,7 +493,7 @@ namespace Thetis
 
                 time_label = new Label();
                 time_label.AutoSize = true;
-                time_label.Text = "Completed in 0.0s";
+                time_label.Text = Translator.Tr("Completed in 0.0s");
                 time_label.ForeColor = Color.Lime;
                 time_label.BackColor = Color.Black;
                 time_label.Font = new Font("Courier New", 10f, FontStyle.Regular);
@@ -501,7 +501,7 @@ namespace Thetis
                 time_label.Top = 6;
 
                 close_button = new Button();
-                close_button.Text = "Close";
+                close_button.Text = Translator.Tr("Close");
                 close_button.AutoSize = true;
                 close_button.Anchor = AnchorStyles.None;
                 close_button.FlatStyle = FlatStyle.System;

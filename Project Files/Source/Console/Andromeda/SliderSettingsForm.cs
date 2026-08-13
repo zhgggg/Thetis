@@ -1,4 +1,4 @@
-﻿//=================================================================
+﻿﻿//=================================================================
 // SliderSettingsForm.cs
 //=================================================================
 // Thetis is a C# implementation of a Software Defined Radio.
@@ -100,6 +100,7 @@ namespace Thetis
             // Required for Windows Form Designer support
             //
             InitializeComponent();
+            Translator.ApplyToForm(this);
             console = c;
             // create timer for autohide and attach callback
             AutoHideTimer = new System.Timers.Timer(); 
@@ -213,7 +214,7 @@ namespace Thetis
             this.labelTS16.Name = "labelTS16";
             this.labelTS16.Size = new System.Drawing.Size(49, 13);
             this.labelTS16.TabIndex = 13;
-            this.labelTS16.Text = "Mic Gain";
+            this.labelTS16.Text = Translator.Tr("Mic Gain");
             // 
             // tbMicGain
             // 
@@ -233,7 +234,7 @@ namespace Thetis
             this.btnClose.Selectable = true;
             this.btnClose.Size = new System.Drawing.Size(96, 40);
             this.btnClose.TabIndex = 11;
-            this.btnClose.Text = "Close";
+            this.btnClose.Text = Translator.Tr("Close");
             this.btnClose.UseVisualStyleBackColor = true;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
@@ -246,7 +247,7 @@ namespace Thetis
             this.lblMasterAF.Name = "lblMasterAF";
             this.lblMasterAF.Size = new System.Drawing.Size(80, 13);
             this.lblMasterAF.TabIndex = 10;
-            this.lblMasterAF.Text = "Master AF Gain";
+            this.lblMasterAF.Text = Translator.Tr("Master AF Gain");
             // 
             // lblDrive
             // 
@@ -257,7 +258,7 @@ namespace Thetis
             this.lblDrive.Name = "lblDrive";
             this.lblDrive.Size = new System.Drawing.Size(49, 13);
             this.lblDrive.TabIndex = 9;
-            this.lblDrive.Text = "TX Drive";
+            this.lblDrive.Text = Translator.Tr("TX Drive");
             // 
             // grpSubRX
             // 
@@ -272,7 +273,7 @@ namespace Thetis
             this.grpSubRX.Size = new System.Drawing.Size(155, 243);
             this.grpSubRX.TabIndex = 8;
             this.grpSubRX.TabStop = false;
-            this.grpSubRX.Text = "Sub RX";
+            this.grpSubRX.Text = Translator.Tr("Sub RX");
             // 
             // chkSubRX
             // 
@@ -283,7 +284,7 @@ namespace Thetis
             this.chkSubRX.Name = "chkSubRX";
             this.chkSubRX.Size = new System.Drawing.Size(110, 28);
             this.chkSubRX.TabIndex = 11;
-            this.chkSubRX.Text = "Enable Sub RX";
+            this.chkSubRX.Text = Translator.Tr("Enable Sub RX");
             this.chkSubRX.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.chkSubRX.UseVisualStyleBackColor = true;
             this.chkSubRX.CheckedChanged += new System.EventHandler(this.chkSubRX_CheckedChanged);
@@ -296,7 +297,7 @@ namespace Thetis
             this.labelTS5.Name = "labelTS5";
             this.labelTS5.Size = new System.Drawing.Size(48, 13);
             this.labelTS5.TabIndex = 10;
-            this.labelTS5.Text = "L/R Pan";
+            this.labelTS5.Text = Translator.Tr("L/R Pan");
             // 
             // labelTS4
             // 
@@ -306,7 +307,7 @@ namespace Thetis
             this.labelTS4.Name = "labelTS4";
             this.labelTS4.Size = new System.Drawing.Size(20, 13);
             this.labelTS4.TabIndex = 10;
-            this.labelTS4.Text = "AF";
+            this.labelTS4.Text = Translator.Tr("AF");
             // 
             // tbSubRXPan
             // 
@@ -361,7 +362,7 @@ namespace Thetis
             this.grpRX2.Size = new System.Drawing.Size(268, 243);
             this.grpRX2.TabIndex = 7;
             this.grpRX2.TabStop = false;
-            this.grpRX2.Text = "RX2";
+            this.grpRX2.Text = Translator.Tr("RX2");
             // 
             // labelTS15
             // 
@@ -371,7 +372,7 @@ namespace Thetis
             this.labelTS15.Name = "labelTS15";
             this.labelTS15.Size = new System.Drawing.Size(21, 13);
             this.labelTS15.TabIndex = 20;
-            this.labelTS15.Text = "TX";
+            this.labelTS15.Text = Translator.Tr("TX");
             // 
             // labelTS14
             // 
@@ -381,7 +382,7 @@ namespace Thetis
             this.labelTS14.Name = "labelTS14";
             this.labelTS14.Size = new System.Drawing.Size(22, 13);
             this.labelTS14.TabIndex = 19;
-            this.labelTS14.Text = "RX";
+            this.labelTS14.Text = Translator.Tr("RX");
             // 
             // chkRX2VAC
             // 
@@ -392,7 +393,7 @@ namespace Thetis
             this.chkRX2VAC.Name = "chkRX2VAC";
             this.chkRX2VAC.Size = new System.Drawing.Size(49, 28);
             this.chkRX2VAC.TabIndex = 18;
-            this.chkRX2VAC.Text = "VAC2";
+            this.chkRX2VAC.Text = Translator.Tr("VAC2");
             this.chkRX2VAC.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.chkRX2VAC.UseVisualStyleBackColor = true;
             this.chkRX2VAC.CheckedChanged += new System.EventHandler(this.ChkRX2VAC_CheckedChanged);
@@ -429,7 +430,7 @@ namespace Thetis
             this.lblPan.Name = "lblPan";
             this.lblPan.Size = new System.Drawing.Size(48, 13);
             this.lblPan.TabIndex = 6;
-            this.lblPan.Text = "L/R Pan";
+            this.lblPan.Text = Translator.Tr("L/R Pan");
             // 
             // labelTS11
             // 
@@ -439,7 +440,7 @@ namespace Thetis
             this.labelTS11.Name = "labelTS11";
             this.labelTS11.Size = new System.Drawing.Size(32, 13);
             this.labelTS11.TabIndex = 15;
-            this.labelTS11.Text = "Atten";
+            this.labelTS11.Text = Translator.Tr("Atten");
             // 
             // tbRX2Atten
             // 
@@ -461,7 +462,7 @@ namespace Thetis
             this.chkRX2Mute.Name = "chkRX2Mute";
             this.chkRX2Mute.Size = new System.Drawing.Size(40, 28);
             this.chkRX2Mute.TabIndex = 9;
-            this.chkRX2Mute.Text = "Mute";
+            this.chkRX2Mute.Text = Translator.Tr("Mute");
             this.chkRX2Mute.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.chkRX2Mute.UseVisualStyleBackColor = true;
             this.chkRX2Mute.CheckedChanged += new System.EventHandler(this.chkRX2Mute_CheckedChanged);
@@ -474,7 +475,7 @@ namespace Thetis
             this.labelTS3.Name = "labelTS3";
             this.labelTS3.Size = new System.Drawing.Size(28, 13);
             this.labelTS3.TabIndex = 8;
-            this.labelTS3.Text = "SQL";
+            this.labelTS3.Text = Translator.Tr("SQL");
             // 
             // labelTS2
             // 
@@ -484,7 +485,7 @@ namespace Thetis
             this.labelTS2.Name = "labelTS2";
             this.labelTS2.Size = new System.Drawing.Size(29, 13);
             this.labelTS2.TabIndex = 7;
-            this.labelTS2.Text = "AGC";
+            this.labelTS2.Text = Translator.Tr("AGC");
             // 
             // labelTS1
             // 
@@ -494,7 +495,7 @@ namespace Thetis
             this.labelTS1.Name = "labelTS1";
             this.labelTS1.Size = new System.Drawing.Size(20, 13);
             this.labelTS1.TabIndex = 5;
-            this.labelTS1.Text = "AF";
+            this.labelTS1.Text = Translator.Tr("AF");
             // 
             // chkRX2Sql
             // 
@@ -505,7 +506,7 @@ namespace Thetis
             this.chkRX2Sql.Name = "chkRX2Sql";
             this.chkRX2Sql.Size = new System.Drawing.Size(49, 28);
             this.chkRX2Sql.TabIndex = 6;
-            this.chkRX2Sql.Text = "SQL";
+            this.chkRX2Sql.Text = Translator.Tr("SQL");
             this.chkRX2Sql.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.chkRX2Sql.ThreeState = true;
             this.chkRX2Sql.UseVisualStyleBackColor = true;
@@ -589,7 +590,7 @@ namespace Thetis
             this.grpRX1.Size = new System.Drawing.Size(268, 243);
             this.grpRX1.TabIndex = 3;
             this.grpRX1.TabStop = false;
-            this.grpRX1.Text = "RX1";
+            this.grpRX1.Text = Translator.Tr("RX1");
             // 
             // chkRX1VAC
             // 
@@ -600,7 +601,7 @@ namespace Thetis
             this.chkRX1VAC.Name = "chkRX1VAC";
             this.chkRX1VAC.Size = new System.Drawing.Size(49, 28);
             this.chkRX1VAC.TabIndex = 19;
-            this.chkRX1VAC.Text = "VAC1";
+            this.chkRX1VAC.Text = Translator.Tr("VAC1");
             this.chkRX1VAC.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.chkRX1VAC.UseVisualStyleBackColor = true;
             this.chkRX1VAC.CheckedChanged += new System.EventHandler(this.ChkRX1VAC_CheckedChanged);
@@ -613,7 +614,7 @@ namespace Thetis
             this.labelTS13.Name = "labelTS13";
             this.labelTS13.Size = new System.Drawing.Size(21, 13);
             this.labelTS13.TabIndex = 18;
-            this.labelTS13.Text = "TX";
+            this.labelTS13.Text = Translator.Tr("TX");
             // 
             // tbRX1VACTX
             // 
@@ -635,7 +636,7 @@ namespace Thetis
             this.labelTS12.Name = "labelTS12";
             this.labelTS12.Size = new System.Drawing.Size(22, 13);
             this.labelTS12.TabIndex = 16;
-            this.labelTS12.Text = "RX";
+            this.labelTS12.Text = Translator.Tr("RX");
             // 
             // tbRX1VACRX
             // 
@@ -656,7 +657,7 @@ namespace Thetis
             this.labelTS10.Name = "labelTS10";
             this.labelTS10.Size = new System.Drawing.Size(32, 13);
             this.labelTS10.TabIndex = 14;
-            this.labelTS10.Text = "Atten";
+            this.labelTS10.Text = Translator.Tr("Atten");
             // 
             // tbRX1Atten
             // 
@@ -677,7 +678,7 @@ namespace Thetis
             this.labelTS7.Name = "labelTS7";
             this.labelTS7.Size = new System.Drawing.Size(28, 13);
             this.labelTS7.TabIndex = 12;
-            this.labelTS7.Text = "SQL";
+            this.labelTS7.Text = Translator.Tr("SQL");
             // 
             // chkRX1Mute
             // 
@@ -688,7 +689,7 @@ namespace Thetis
             this.chkRX1Mute.Name = "chkRX1Mute";
             this.chkRX1Mute.Size = new System.Drawing.Size(40, 28);
             this.chkRX1Mute.TabIndex = 10;
-            this.chkRX1Mute.Text = "Mute";
+            this.chkRX1Mute.Text = Translator.Tr("Mute");
             this.chkRX1Mute.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.chkRX1Mute.UseVisualStyleBackColor = true;
             this.chkRX1Mute.CheckedChanged += new System.EventHandler(this.chkRX1Mute_CheckedChanged);
@@ -701,7 +702,7 @@ namespace Thetis
             this.labelTS8.Name = "labelTS8";
             this.labelTS8.Size = new System.Drawing.Size(29, 13);
             this.labelTS8.TabIndex = 11;
-            this.labelTS8.Text = "AGC";
+            this.labelTS8.Text = Translator.Tr("AGC");
             // 
             // labelTS9
             // 
@@ -711,7 +712,7 @@ namespace Thetis
             this.labelTS9.Name = "labelTS9";
             this.labelTS9.Size = new System.Drawing.Size(20, 13);
             this.labelTS9.TabIndex = 10;
-            this.labelTS9.Text = "AF";
+            this.labelTS9.Text = Translator.Tr("AF");
             // 
             // labelTS6
             // 
@@ -721,7 +722,7 @@ namespace Thetis
             this.labelTS6.Name = "labelTS6";
             this.labelTS6.Size = new System.Drawing.Size(48, 13);
             this.labelTS6.TabIndex = 10;
-            this.labelTS6.Text = "L/R Pan";
+            this.labelTS6.Text = Translator.Tr("L/R Pan");
             // 
             // chkRX1Sql
             // 
@@ -732,7 +733,7 @@ namespace Thetis
             this.chkRX1Sql.Name = "chkRX1Sql";
             this.chkRX1Sql.Size = new System.Drawing.Size(49, 28);
             this.chkRX1Sql.TabIndex = 5;
-            this.chkRX1Sql.Text = "SQL";
+            this.chkRX1Sql.Text = Translator.Tr("SQL");
             this.chkRX1Sql.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.chkRX1Sql.ThreeState = true;
             this.chkRX1Sql.UseVisualStyleBackColor = true;
@@ -803,7 +804,7 @@ namespace Thetis
             this.MinimizeBox = false;
             this.Name = "SliderSettingsForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Analogue Gain Control Settings";
+            this.Text = Translator.Tr("Analogue Gain Control Settings");
             this.TopMost = true;
             this.Activated += new System.EventHandler(this.SliderSettingsForm_Activated);
             this.Closing += new System.ComponentModel.CancelEventHandler(this.SliderSettingsForm_Closing);
@@ -1527,16 +1528,16 @@ namespace Thetis
             if (rx == 1)
             {
                 if (chkRX1Sql.CheckState == CheckState.Indeterminate)
-                    chkRX1Sql.Text = "VSQL";
+                    chkRX1Sql.Text = Translator.Tr("VSQL");
                 else
-                    chkRX1Sql.Text = "SQL";
+                    chkRX1Sql.Text = Translator.Tr("SQL");
             }
             else if (rx == 2)
             {
                 if (chkRX2Sql.CheckState == CheckState.Indeterminate)
-                    chkRX2Sql.Text = "VSQL";
+                    chkRX2Sql.Text = Translator.Tr("VSQL");
                 else
-                    chkRX2Sql.Text = "SQL";
+                    chkRX2Sql.Text = Translator.Tr("SQL");
             }
         }
         private void getSQLinfoOnFormActivate()

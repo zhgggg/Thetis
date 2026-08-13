@@ -105,6 +105,7 @@ namespace Thetis
         {
             _textoverlay_led_picker = false;
             InitializeComponent();
+            Translator.ApplyToForm(this);
 
             lstVariables.DrawMode = DrawMode.OwnerDrawFixed;
             Size text_size = TextRenderer.MeasureText("Ag", lstVariables.Font);
@@ -192,7 +193,7 @@ namespace Thetis
             }
             else
             {
-                index = lstVariables.Items.Add(new clsVariableListItems(Guid.Empty, "--DEFAULT--", clsVariableListItems.VariableListItemType.TEXT_ONLY));
+                index = lstVariables.Items.Add(new clsVariableListItems(Guid.Empty, Translator.Tr("--DEFAULT--"), clsVariableListItems.VariableListItemType.TEXT_ONLY));
                 if (g == Guid.Empty/* && current == "--DEFAULT--"*/) selected = index;
             }
             foreach (KeyValuePair<Guid, MultiMeterIO.clsMMIO> kvp in MultiMeterIO.Data)

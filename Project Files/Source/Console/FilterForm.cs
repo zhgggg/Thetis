@@ -98,6 +98,7 @@ namespace Thetis
 			console = c;
 			preset = fp;
 			InitializeComponent();
+			Translator.ApplyToForm(this);
 			comboDSPMode.SelectedIndex = 0;	
 			radFilter1.Checked = true;
 			rx2 = _rx2;
@@ -172,15 +173,15 @@ namespace Thetis
             // 
             this.comboDSPMode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboDSPMode.Items.AddRange(new object[] {
-            "LSB",
-            "USB",
-            "DSB",
-            "CWL",
-            "CWU",
-            "AM",
-            "SAM",
-            "DIGL",
-            "DIGU"});
+            Translator.Tr("LSB"),
+            Translator.Tr("USB"),
+            Translator.Tr("DSB"),
+            Translator.Tr("CWL"),
+            Translator.Tr("CWU"),
+            Translator.Tr("AM"),
+            Translator.Tr("SAM"),
+            Translator.Tr("DIGL"),
+            Translator.Tr("DIGU")});
             this.comboDSPMode.Location = new System.Drawing.Point(64, 16);
             this.comboDSPMode.Name = "comboDSPMode";
             this.comboDSPMode.Size = new System.Drawing.Size(64, 21);
@@ -196,7 +197,7 @@ namespace Thetis
             this.radFilter1.Name = "radFilter1";
             this.radFilter1.Size = new System.Drawing.Size(48, 18);
             this.radFilter1.TabIndex = 37;
-            this.radFilter1.Text = "6.0k";
+            this.radFilter1.Text = Translator.Tr("6.0k");
             this.radFilter1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.radFilter1.CheckedChanged += new System.EventHandler(this.radFilter_CheckedChanged);
             // 
@@ -209,7 +210,7 @@ namespace Thetis
             this.radFilter2.Name = "radFilter2";
             this.radFilter2.Size = new System.Drawing.Size(48, 18);
             this.radFilter2.TabIndex = 39;
-            this.radFilter2.Text = "4.0k";
+            this.radFilter2.Text = Translator.Tr("4.0k");
             this.radFilter2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.radFilter2.CheckedChanged += new System.EventHandler(this.radFilter_CheckedChanged);
             // 
@@ -222,7 +223,7 @@ namespace Thetis
             this.radFilter3.Name = "radFilter3";
             this.radFilter3.Size = new System.Drawing.Size(48, 18);
             this.radFilter3.TabIndex = 38;
-            this.radFilter3.Text = "2.6k";
+            this.radFilter3.Text = Translator.Tr("2.6k");
             this.radFilter3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.radFilter3.CheckedChanged += new System.EventHandler(this.radFilter_CheckedChanged);
             // 
@@ -235,7 +236,7 @@ namespace Thetis
             this.radFilter4.Name = "radFilter4";
             this.radFilter4.Size = new System.Drawing.Size(48, 18);
             this.radFilter4.TabIndex = 40;
-            this.radFilter4.Text = "2.1k";
+            this.radFilter4.Text = Translator.Tr("2.1k");
             this.radFilter4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.radFilter4.CheckedChanged += new System.EventHandler(this.radFilter_CheckedChanged);
             // 
@@ -248,7 +249,7 @@ namespace Thetis
             this.radFilter5.Name = "radFilter5";
             this.radFilter5.Size = new System.Drawing.Size(48, 18);
             this.radFilter5.TabIndex = 41;
-            this.radFilter5.Text = "1.0k";
+            this.radFilter5.Text = Translator.Tr("1.0k");
             this.radFilter5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.radFilter5.CheckedChanged += new System.EventHandler(this.radFilter_CheckedChanged);
             // 
@@ -261,7 +262,7 @@ namespace Thetis
             this.radFilter6.Name = "radFilter6";
             this.radFilter6.Size = new System.Drawing.Size(48, 18);
             this.radFilter6.TabIndex = 42;
-            this.radFilter6.Text = "500";
+            this.radFilter6.Text = Translator.Tr("500");
             this.radFilter6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.radFilter6.CheckedChanged += new System.EventHandler(this.radFilter_CheckedChanged);
             // 
@@ -274,7 +275,7 @@ namespace Thetis
             this.radFilter7.Name = "radFilter7";
             this.radFilter7.Size = new System.Drawing.Size(48, 18);
             this.radFilter7.TabIndex = 43;
-            this.radFilter7.Text = "250";
+            this.radFilter7.Text = Translator.Tr("250");
             this.radFilter7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.radFilter7.CheckedChanged += new System.EventHandler(this.radFilter_CheckedChanged);
             // 
@@ -287,7 +288,7 @@ namespace Thetis
             this.radFilter8.Name = "radFilter8";
             this.radFilter8.Size = new System.Drawing.Size(48, 18);
             this.radFilter8.TabIndex = 44;
-            this.radFilter8.Text = "100";
+            this.radFilter8.Text = Translator.Tr("100");
             this.radFilter8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.radFilter8.CheckedChanged += new System.EventHandler(this.radFilter_CheckedChanged);
             // 
@@ -300,7 +301,7 @@ namespace Thetis
             this.radFilter9.Name = "radFilter9";
             this.radFilter9.Size = new System.Drawing.Size(48, 18);
             this.radFilter9.TabIndex = 45;
-            this.radFilter9.Text = "50";
+            this.radFilter9.Text = Translator.Tr("50");
             this.radFilter9.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.radFilter9.CheckedChanged += new System.EventHandler(this.radFilter_CheckedChanged);
             // 
@@ -313,7 +314,7 @@ namespace Thetis
             this.radFilter10.Name = "radFilter10";
             this.radFilter10.Size = new System.Drawing.Size(48, 18);
             this.radFilter10.TabIndex = 46;
-            this.radFilter10.Text = "25";
+            this.radFilter10.Text = Translator.Tr("25");
             this.radFilter10.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.radFilter10.CheckedChanged += new System.EventHandler(this.radFilter_CheckedChanged);
             // 
@@ -326,7 +327,7 @@ namespace Thetis
             this.radFilterVar1.Name = "radFilterVar1";
             this.radFilterVar1.Size = new System.Drawing.Size(48, 18);
             this.radFilterVar1.TabIndex = 47;
-            this.radFilterVar1.Text = "Var 1";
+            this.radFilterVar1.Text = Translator.Tr("Var 1");
             this.radFilterVar1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.radFilterVar1.CheckedChanged += new System.EventHandler(this.radFilter_CheckedChanged);
             // 
@@ -339,7 +340,7 @@ namespace Thetis
             this.radFilterVar2.Name = "radFilterVar2";
             this.radFilterVar2.Size = new System.Drawing.Size(48, 18);
             this.radFilterVar2.TabIndex = 48;
-            this.radFilterVar2.Text = "Var 2";
+            this.radFilterVar2.Text = Translator.Tr("Var 2");
             this.radFilterVar2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.radFilterVar2.CheckedChanged += new System.EventHandler(this.radFilter_CheckedChanged);
             // 
@@ -349,7 +350,7 @@ namespace Thetis
             this.lblMode.Name = "lblMode";
             this.lblMode.Size = new System.Drawing.Size(40, 23);
             this.lblMode.TabIndex = 49;
-            this.lblMode.Text = "Mode:";
+            this.lblMode.Text = Translator.Tr("Mode:");
             // 
             // txtName
             // 
@@ -366,7 +367,7 @@ namespace Thetis
             this.lblName.Name = "lblName";
             this.lblName.Size = new System.Drawing.Size(48, 23);
             this.lblName.TabIndex = 51;
-            this.lblName.Text = "Name:";
+            this.lblName.Text = Translator.Tr("Name:");
             // 
             // udLow
             // 
@@ -412,7 +413,7 @@ namespace Thetis
             this.lblLow.Name = "lblLow";
             this.lblLow.Size = new System.Drawing.Size(48, 23);
             this.lblLow.TabIndex = 54;
-            this.lblLow.Text = "Low:";
+            this.lblLow.Text = Translator.Tr("Low:");
             // 
             // label1
             // 
@@ -420,7 +421,7 @@ namespace Thetis
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(48, 23);
             this.label1.TabIndex = 55;
-            this.label1.Text = "High:";
+            this.label1.Text = Translator.Tr("High:");
             // 
             // groupBox1
             // 
@@ -489,7 +490,7 @@ namespace Thetis
             this.lblWidth.Name = "lblWidth";
             this.lblWidth.Size = new System.Drawing.Size(64, 23);
             this.lblWidth.TabIndex = 57;
-            this.lblWidth.Text = "Width:";
+            this.lblWidth.Text = Translator.Tr("Width:");
             // 
             // picDisplay
             // 
@@ -513,7 +514,7 @@ namespace Thetis
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "FilterForm";
-            this.Text = "Filter Setup";
+            this.Text = Translator.Tr("Filter Setup");
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FilterForm_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.udLow)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.udHigh)).EndInit();

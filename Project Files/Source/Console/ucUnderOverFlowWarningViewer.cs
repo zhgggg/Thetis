@@ -65,6 +65,7 @@ namespace Thetis
         public ucUnderOverFlowWarningViewer()
         {
             InitializeComponent();
+            Translator.ApplyToForm(this);
 
             _hasHadIssues = new bool[4];
         }

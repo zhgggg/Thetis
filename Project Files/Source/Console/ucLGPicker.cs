@@ -98,6 +98,7 @@ namespace Thetis
         public ucLGPicker()
         {
             InitializeComponent();
+            Translator.ApplyToForm(this);
 
             m_dictColours = new Dictionary<int, GradColours>();
 

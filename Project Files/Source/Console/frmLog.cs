@@ -55,6 +55,7 @@ namespace Thetis
         public frmLog()
         {
             InitializeComponent();
+            Translator.ApplyToForm(this);
         }
 
         private void btnClear_Click(object sender, EventArgs e)

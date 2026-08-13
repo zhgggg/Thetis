@@ -1086,6 +1086,7 @@ namespace Thetis
             this.Disposed += PI_Disposed;
 
             InitializeComponent();
+            Translator.ApplyToForm(this);
             g = canvas.CreateGraphics();    // create a graphics object called canvas
             redPen.Width = 3;               // use a bold red pen for signal path segments
             bluePen.Width = 3;
@@ -1334,7 +1335,7 @@ namespace Thetis
         {
             hide_controls();
             cb_DUAL_MERCURY_ALEX.Visible = true;
-            cb_DUAL_MERCURY_ALEX.Text = "DUAL MERCURY/ALEX";
+            cb_DUAL_MERCURY_ALEX.Text = Translator.Tr("DUAL MERCURY/ALEX");
 
             Update_control_settings();
 
@@ -1344,42 +1345,42 @@ namespace Thetis
             bool_EXT2 = bool_temp;
 
             hide_all_labels();
-            label_hardware_selected.Text = "Routing for HPSDR";
+            label_hardware_selected.Text = Translator.Tr("Routing for HPSDR");
             label_PC.Visible = true;
             label_RX1_DISPLAY.Visible = true;
             //label_RX2_DISPLAY.Visible = true;
             if (bool_XVTR) label_XVTR_VHF.Visible = true;
 
             // label ALEX rectangles            
-            label_C2.Text = "XV RX IN";
+            label_C2.Text = Translator.Tr("XV RX IN");
             label_C2.Visible = true;
             label_C2.Location = C2_label_HPSDR;
 
-            label_C3.Text = "RX 2 IN";
+            label_C3.Text = Translator.Tr("RX 2 IN");
             label_C3.Visible = true;
             label_C3.Location = C3_label_HPSDR;
 
-            label_C4.Text = "RX 1 IN";
+            label_C4.Text = Translator.Tr("RX 1 IN");
             label_C4.Visible = true;
             label_C4.Location = C4_label_HPSDR;
 
-            label_C5.Text = "RX 1 OUT";
+            label_C5.Text = Translator.Tr("RX 1 OUT");
             label_C5.Visible = true;
             label_C5.Location = C5_label_HPSDR;
 
-            label_C7.Text = "ANT 1";
+            label_C7.Text = Translator.Tr("ANT 1");
             label_C7.Visible = true;
             label_C7.Location = C7_label_HPSDR;
 
-            label_C8.Text = "ANT 2";
+            label_C8.Text = Translator.Tr("ANT 2");
             label_C8.Visible = true;
             label_C8.Location = C8_label_HPSDR;
 
-            label_C9.Text = "ANT 3";
+            label_C9.Text = Translator.Tr("ANT 3");
             label_C9.Visible = true;
             label_C9.Location = C9_label_HPSDR;
 
-            label_C10.Text = "From TX*";
+            label_C10.Text = Translator.Tr("From TX*");
             label_C10.Visible = true;
             label_C10.Location = C10_label_ALEX_TX_IN;
 
@@ -1405,35 +1406,35 @@ namespace Thetis
             if (cb_DUAL_MERCURY_ALEX.Checked)
             {
                 // label ALEX 2 rectangle
-                label_C16.Text = "XV RX IN";
+                label_C16.Text = Translator.Tr("XV RX IN");
                 label_C16.Visible = true;
                 label_C16.Location = C16_ALEX_2_label;
 
-                label_C17.Text = "RX 2 IN";
+                label_C17.Text = Translator.Tr("RX 2 IN");
                 label_C17.Visible = true;
                 label_C17.Location = C17_ALEX_2_label;
 
-                label_C18.Text = "RX 1 IN";
+                label_C18.Text = Translator.Tr("RX 1 IN");
                 label_C18.Visible = true;
                 label_C18.Location = C18_ALEX_2_label;
 
-                label_C19.Text = "RX 1 OUT";
+                label_C19.Text = Translator.Tr("RX 1 OUT");
                 label_C19.Visible = true;
                 label_C19.Location = C19_ALEX_2_label;
 
-                label_C20.Text = "ANT 1";
+                label_C20.Text = Translator.Tr("ANT 1");
                 label_C20.Visible = true;
                 label_C20.Location = C20_ALEX_2_label;
 
-                label_C24.Text = "ANT 2";
+                label_C24.Text = Translator.Tr("ANT 2");
                 label_C24.Visible = true;
                 label_C24.Location = C24_ALEX_2_label;
 
-                label_C25.Text = "ANT 3";
+                label_C25.Text = Translator.Tr("ANT 3");
                 label_C25.Visible = true;
                 label_C25.Location = C25_ALEX_2_label;
 
-                label_C26.Text = "From Tx";
+                label_C26.Text = Translator.Tr("From Tx");
                 label_C26.Visible = true;
                 label_C26.Location = C26_ALEX_2_label;
 
@@ -1446,7 +1447,7 @@ namespace Thetis
                 label_ALEX_2_To_RX.Visible = true;
                 label_ALEX_2_To_RX.Location = ALEX_2_To_RX_label;
 
-                cb_DUAL_MERCURY_ALEX.Text = "DUAL MERCURY/ALEX *";
+                cb_DUAL_MERCURY_ALEX.Text = Translator.Tr("DUAL MERCURY/ALEX *");
                 label_DUAL_MERCURY.Visible = true;
             }
 
@@ -1923,7 +1924,7 @@ namespace Thetis
             bool_EXT2 = bool_temp;
 
             hide_all_labels();
-            label_hardware_selected.Text = "Routing for HERMES";
+            label_hardware_selected.Text = Translator.Tr("Routing for HERMES");
             label_PC.Visible = true;
             label_RX1_DISPLAY.Visible = true;
             //label_RX2_DISPLAY.Visible = true;
@@ -1935,35 +1936,35 @@ namespace Thetis
             label_C24.Visible = true;
 
             // label ALEX rectangles            
-            label_C2.Text = "XV RX IN";
+            label_C2.Text = Translator.Tr("XV RX IN");
             label_C2.Visible = true;
             label_C2.Location = C2_label_HPSDR;
 
-            label_C3.Text = "RX 2 IN";
+            label_C3.Text = Translator.Tr("RX 2 IN");
             label_C3.Visible = true;
             label_C3.Location = C3_label_HPSDR;
 
-            label_C4.Text = "RX 1 IN";
+            label_C4.Text = Translator.Tr("RX 1 IN");
             label_C4.Visible = true;
             label_C4.Location = C4_label_HPSDR;
 
-            label_C5.Text = "RX 1 OUT";
+            label_C5.Text = Translator.Tr("RX 1 OUT");
             label_C5.Visible = true;
             label_C5.Location = C5_label_HPSDR;
 
-            label_C7.Text = "ANT 1";
+            label_C7.Text = Translator.Tr("ANT 1");
             label_C7.Visible = true;
             label_C7.Location = C7_label_HPSDR;
 
-            label_C8.Text = "ANT 2";
+            label_C8.Text = Translator.Tr("ANT 2");
             label_C8.Visible = true;
             label_C8.Location = C8_label_HPSDR;
 
-            label_C9.Text = "ANT 3";
+            label_C9.Text = Translator.Tr("ANT 3");
             label_C9.Visible = true;
             label_C9.Location = C9_label_HPSDR;
 
-            label_C10.Text = "From TX*";
+            label_C10.Text = Translator.Tr("From TX*");
             label_C10.Visible = true;
             label_C10.Location = C10_label_ALEX_TX_IN;
 
@@ -2008,18 +2009,18 @@ namespace Thetis
 
             if (bool_diversity) bool_diversity = false;  // diversity unavailable in ANAN-10/10E (Hermes 1 ADC limitation)
 
-            label_C24.Text = "SPKR";
+            label_C24.Text = Translator.Tr("SPKR");
             C24_label.X = C24.X - 45;
             C24_label.Y = C24.Y - 6;
             label_C24.Location = C24_label;
 
 
-            label_C26.Text = "MIC";
+            label_C26.Text = Translator.Tr("MIC");
             C26_label.X = C26.X - 35;
             C26_label.Y = C26.Y - 6;
             label_C26.Location = C26_label;
 
-            label_C25.Text = "HDPHONES";
+            label_C25.Text = Translator.Tr("HDPHONES");
             C25_label.X = C25.X - 75;
             C25_label.Y = C25.Y - 6;
             label_C25.Location = C25_label;
@@ -2339,7 +2340,7 @@ namespace Thetis
         private void draw_ANAN_10E()
         {
             hide_all_labels();
-            label_hardware_selected.Text = "Routing for ANAN-10, ANAN-10E";
+            label_hardware_selected.Text = Translator.Tr("Routing for ANAN-10, ANAN-10E");
             if (bool_XVTR) label_XVTR_VHF.Visible = true;
             label_ADC0.Visible = true;
             label_ADC0_atten.Visible = true;
@@ -2605,7 +2606,7 @@ namespace Thetis
         private void draw_ANAN_100_PA_rev15()
         {
             hide_all_labels();
-            label_hardware_selected.Text = "Routing for ANAN-100 (PA rev_15/16)";
+            label_hardware_selected.Text = Translator.Tr("Routing for ANAN-100 (PA rev_15/16)");
             if (bool_XVTR) label_XVTR_VHF.Visible = true; 
             label_ADC0.Visible = true;
             label_ADC0_atten.Visible = true;
@@ -3112,7 +3113,7 @@ namespace Thetis
         private void draw_ANAN_100_PA_rev24()
         {
             hide_all_labels();
-            label_hardware_selected.Text = "Routing for ANAN-100, ANAN-100B (PA rev_24)";
+            label_hardware_selected.Text = Translator.Tr("Routing for ANAN-100, ANAN-100B (PA rev_24)");
             if (bool_XVTR) label_XVTR_VHF.Visible = true; 
             label_ADC0.Visible = true;
             label_ADC0_atten.Visible = true;
@@ -3566,7 +3567,7 @@ namespace Thetis
         private void draw_ANAN_100D_PA_rev15()
         {
             hide_all_labels();
-            label_hardware_selected.Text = "Routing for ANAN-100D, ANAN-200D (PA rev_15/16)";
+            label_hardware_selected.Text = Translator.Tr("Routing for ANAN-100D, ANAN-200D (PA rev_15/16)");
             label_SDR_Hardware.Visible = true;
             label_FPGA.Visible = true;
             label_PC.Visible = true;
@@ -4279,7 +4280,7 @@ namespace Thetis
         private void draw_ANAN_100D_PA_rev24()
         {
             hide_all_labels();
-            label_hardware_selected.Text = "Routing for ANAN-100D, ANAN-200D (PA rev_24)";
+            label_hardware_selected.Text = Translator.Tr("Routing for ANAN-100D, ANAN-200D (PA rev_24)");
             label_SDR_Hardware.Visible = true;
             label_FPGA.Visible = true;
             label_PC.Visible = true;
@@ -5624,54 +5625,54 @@ namespace Thetis
 
             //activate and re-label the relevant rear panel labels
             label_rear_panel.Location = new Point(8, 40);
-            label_C2.Text = "ANT1";
+            label_C2.Text = Translator.Tr("ANT1");
             C2_label.X = C2.X - 45;
             C2_label.Y = C2.Y - 6;
             label_C2.Location = C2_label;
             label_C2.Visible = true;
 
-            label_C3.Text = "ANT2";
+            label_C3.Text = Translator.Tr("ANT2");
             C3_label.X = C3.X - 45;
             C3_label.Y = C3.Y - 6;
             label_C3.Location = C3_label;
             label_C3.Visible = true;
 
-            label_C4.Text = "ANT3";
+            label_C4.Text = Translator.Tr("ANT3");
             C4_label.X = C4.X - 45;
             C4_label.Y = C4.Y - 6;
             label_C4.Location = C4_label;
             label_C4.Visible = true;
 
-            label_C5.Text = "RX (SMA)";
+            label_C5.Text = Translator.Tr("RX (SMA)");
             C5_label.X = C5.X - 65;
             C5_label.Y = C5.Y - 6;
             label_C5.Location = C5_label;
             label_C5.Visible = true;
 
-            label_C6.Text = "TX (SMA)";
+            label_C6.Text = Translator.Tr("TX (SMA)");
             C6_label.X = C6.X - 65;
             C6_label.Y = C6.Y - 6;
             label_C6.Location = C6_label;
             label_C6.Visible = true;
 
-            label_C7.Text = "XVRT (SMA)";
+            label_C7.Text = Translator.Tr("XVRT (SMA)");
             C7_label.X = C7.X - 80;
             C7_label.Y = C7.Y - 6;
             label_C7.Location = C7_label;
             label_C7.Visible = true;
 
-            label_C24.Text = "SPKR";
+            label_C24.Text = Translator.Tr("SPKR");
             C24_label.X = C24.X - 45;
             C24_label.Y = C24.Y - 6;
             label_C24.Location = C24_label;
 
 
-            label_C26.Text = "MIC";
+            label_C26.Text = Translator.Tr("MIC");
             C26_label.X = C26.X - 35;
             C26_label.Y = C26.Y - 6;
             label_C26.Location = C26_label;
 
-            label_C25.Text = "HDPHONES";
+            label_C25.Text = Translator.Tr("HDPHONES");
             C25_label.X = C25.X - 75;
             C25_label.Y = C25.Y - 6;
             label_C25.Location = C25_label;
@@ -5692,74 +5693,74 @@ namespace Thetis
             //activate and re-label the relevant rear panel labels
             label_rear_panel.Location = new Point(8, 40);
 
-            label_C2.Text = "RX 2";
+            label_C2.Text = Translator.Tr("RX 2");
             C2_label.X = C2.X - 35;
             C2_label.Y = C2.Y - 6;
             label_C2.Location = C2_label;
             label_C2.Visible = true;
 
-            label_C4.Text = "XVRT RX";
+            label_C4.Text = Translator.Tr("XVRT RX");
             C4_label.X = C4.X - 60;
             C4_label.Y = C4.Y - 5;
             label_C4.Location = C4_label;
             label_C4.Visible = true;
 
-            label_C5.Text = "EXT1";
+            label_C5.Text = Translator.Tr("EXT1");
             C5_label.X = C5.X - 40;
             C5_label.Y = C5.Y - 5;
             label_C5.Location = C5_label;
             label_C5.Visible = true;
 
-            label_C6.Text = "EXT2";
+            label_C6.Text = Translator.Tr("EXT2");
             C6_label.X = C6.X - 40;
             C6_label.Y = C6.Y - 5;
             label_C6.Location = C6_label;
             label_C6.Visible = true;
 
-            label_C7.Text = "BYPASS";
+            label_C7.Text = Translator.Tr("BYPASS");
             C7_label.X = C7.X - 57;
             C7_label.Y = C7.Y - 5;
             label_C7.Location = C7_label;
             label_C7.Visible = true;
 
-            label_C9.Text = "ANT1";
+            label_C9.Text = Translator.Tr("ANT1");
             C9_label.X = C9.X - 40;
             C9_label.Y = C9.Y - 5;
             label_C9.Location = C9_label;
             label_C9.Visible = true;
 
-            label_C10.Text = "ANT2";
+            label_C10.Text = Translator.Tr("ANT2");
             C10_label.X = C10.X - 41;
             C10_label.Y = C10.Y - 5;
             label_C10.Location = C10_label;
             label_C10.Visible = true;
 
-            label_C11.Text = "ANT3";
+            label_C11.Text = Translator.Tr("ANT3");
             C11_label.X = C11.X - 42;
             C11_label.Y = C11.Y - 5;
             label_C11.Location = C11_label;
             label_C11.Visible = true;
 
-            label_C13.Text = "XVRT TX";
+            label_C13.Text = Translator.Tr("XVRT TX");
             C13_label.X = C13.X - 60;
             C13_label.Y = C13.Y - 5;
             label_C13.Location = C13_label;
             label_C13.Visible = true;
 
-            label_C24.Text = "SPKR";
+            label_C24.Text = Translator.Tr("SPKR");
             C24_label.X = C24.X - 45;
             C24_label.Y = C24.Y - 6;
             label_C24.Location = C24_label;
             label_C24.Visible = true;
 
-            label_C25.Text = "HDPHONES";
+            label_C25.Text = Translator.Tr("HDPHONES");
             C25_label.X = C25.X - 75;
             C25_label.Y = C25.Y - 6;
             label_C25.Location = C25_label;
             label_C25.Visible = true;
 
 
-            label_C26.Text = "MIC";
+            label_C26.Text = Translator.Tr("MIC");
             C26_label.X = C26.X - 35;
             C26_label.Y = C26.Y - 6;
             label_C26.Location = C26_label;

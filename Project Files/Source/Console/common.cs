@@ -585,10 +585,10 @@ namespace Thetis
 
             try
             {
-                using (StreamWriter w = File.AppendText(m_sLogPath + "\\ErrorLog.txt"))
+                using (StreamWriter w = File.AppendText(m_sLogPath + Translator.Tr("\\ErrorLog.txt")))
                 {
                     //using block will auto close stream
-                    w.Write("\r\nEntry : ");
+                    w.Write(Translator.Tr("\r\nEntry : "));
                     w.WriteLine($"{DateTime.Now.ToLongTimeString()} {DateTime.Now.ToLongDateString()}");
                     w.WriteLine(entry);
                     w.WriteLine("-------------------------------");
@@ -607,10 +607,10 @@ namespace Thetis
 
             try
             {
-                using (StreamWriter w = File.AppendText(m_sLogPath + "\\ErrorLog.txt"))
+                using (StreamWriter w = File.AppendText(m_sLogPath + Translator.Tr("\\ErrorLog.txt")))
                 {
                     //using block will auto close stream
-                    w.Write("\r\nEntry : ");
+                    w.Write(Translator.Tr("\r\nEntry : "));
                     w.WriteLine($"{DateTime.Now.ToLongTimeString()} {DateTime.Now.ToLongDateString()}");
                     w.WriteLine(e.Message);
                     if (e.StackTrace != "")

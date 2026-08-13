@@ -229,7 +229,7 @@ namespace PowerSDR
 						}
 						catch(Exception) 
 						{
-							MessageBox.Show("Primary Keyer Port ["+primary_conn_port+"] could not be opened.");	
+							MessageBox.Show(Translator.Tr("Primary Keyer Port [")+primary_conn_port+Translator.Tr("] could not be opened."));	
 							primary_conn_port = "Radio";
 						}
 						break;
@@ -251,7 +251,7 @@ namespace PowerSDR
 						break;
 					case "CAT":
 						if(!cat_enabled)
-							MessageBox.Show("CAT was selected for the Keyer Secondary Port, but CAT is not enabled.");
+							MessageBox.Show(Translator.Tr("CAT was selected for the Keyer Secondary Port, but CAT is not enabled."));
 
 						break;
 #if false
@@ -262,7 +262,7 @@ namespace PowerSDR
 						{ 
 							if ( ! c.PTTBitBangEnabled || c.serialPTT == null ) 
 							{ 
-								MessageBox.Show("Bit Bang PTT was selected for the Keyer Secondary Port, but Bit Bang PTT is not enabled.");
+								MessageBox.Show(Translator.Tr("Bit Bang PTT was selected for the Keyer Secondary Port, but Bit Bang PTT is not enabled."));
 							}						}
 						break; 
 #endif 
@@ -278,7 +278,7 @@ namespace PowerSDR
 						}
 						catch(Exception) 
 						{
-							MessageBox.Show("Comport for keyer program could not be opened\n");
+							MessageBox.Show(Translator.Tr("Comport for keyer program could not be opened\n"));
 							secondary_conn_port = "None";
 						}
 						break;

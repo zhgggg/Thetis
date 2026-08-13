@@ -60,6 +60,7 @@ namespace Thetis
         public frmSerialPortPicker()
         {
             InitializeComponent();
+            Translator.ApplyToForm(this);
         }
         public string ComPort
         {
@@ -118,30 +119,30 @@ namespace Thetis
         {
             bool ok;
             ok = IsComPortAvailable(_com_port_setting);
-            if (!ok) MessageBox.Show(_com_port_setting + " can not be opened, it is probably already in use.");
+            if (!ok) MessageBox.Show(_com_port_setting + Translator.Tr(" can not be opened, it is probably already in use."));
 
             if (ok)
             {
                 ok = IsBaudRateSupported(_com_port_setting, _baud_rate_setting);
-                if (!ok) MessageBox.Show(_com_port_setting + " can not be opened with that baud rate.");
+                if (!ok) MessageBox.Show(_com_port_setting + Translator.Tr(" can not be opened with that baud rate."));
             }
 
             if (ok)
             {
                 ok = IsDataBitsSupported(_com_port_setting, _baud_rate_setting, _data_bits_setting);
-                if (!ok) MessageBox.Show(_com_port_setting + " can not be opened with those data bits.");
+                if (!ok) MessageBox.Show(_com_port_setting + Translator.Tr(" can not be opened with those data bits."));
             }
 
             if (ok)
             {
                 ok = IsStopBitsSupported(_com_port_setting, _baud_rate_setting, _data_bits_setting, _stop_bits_setting);
-                if (!ok) MessageBox.Show(_com_port_setting + " can not be opened with those stop bits.");
+                if (!ok) MessageBox.Show(_com_port_setting + Translator.Tr(" can not be opened with those stop bits."));
             }
 
             if (ok)
             {
                 ok = IsParitySupported(_com_port_setting, _baud_rate_setting, _data_bits_setting, _stop_bits_setting, _parity_setting);
-                if (!ok) MessageBox.Show(_com_port_setting + " can not be opened with that parity.");
+                if (!ok) MessageBox.Show(_com_port_setting + Translator.Tr(" can not be opened with that parity."));
             }
 
             if (ok)

@@ -590,9 +590,9 @@ namespace Thetis
         // ======================================================
         public Console(string[] args)
         {
-            //DialogResult drr = MessageBox.Show("This version will break stuff.\n" +
-            //    "There are lots of things that need testing/fixing. Ok to continue?",
-            //    "Eeeeeeek",
+            //DialogResult drr = MessageBox.Show(Translator.Tr("This version will break stuff.\n") +
+            //    Translator.Tr("There are lots of things that need testing/fixing. Ok to continue?"),
+            //    Translator.Tr("Eeeeeeek"),
             //    MessageBoxButtons.YesNo,
             //    MessageBoxIcon.Stop, MessageBoxDefaultButton.Button2, Common.MB_TOPMOST);
 
@@ -638,9 +638,9 @@ namespace Thetis
             if (!checkVersions())
             {
                 // version incorrect
-                DialogResult dr = MessageBox.Show("An incorrect version of a required dll has been found.\n" +
-                    "Please resolve the issue otherwise unexpected behaviour may occur.",
-                    "Version error",
+                DialogResult dr = MessageBox.Show(Translator.Tr("An incorrect version of a required dll has been found.\n") +
+                    Translator.Tr("Please resolve the issue otherwise unexpected behaviour may occur."),
+                    Translator.Tr("Version error"),
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Stop, MessageBoxDefaultButton.Button1, Common.MB_TOPMOST);
 
@@ -667,10 +667,10 @@ namespace Thetis
                         app_data_path = path;
                     else
                     {
-                        DialogResult dr = MessageBox.Show("-datapath: command line option found, but the folder specified was not found.\n" +
-                            "Would you like to create this folder?  If not, the default folder will be used.\n\n" +
-                            "(" + path + ")",
-                            "Command Line Option: Create Folder?",
+                        DialogResult dr = MessageBox.Show(Translator.Tr("-datapath: command line option found, but the folder specified was not found.\n") +
+                            Translator.Tr("Would you like to create this folder?  If not, the default folder will be used.\n\n") +
+                            Translator.Tr("(") + path + Translator.Tr(")"),
+                            Translator.Tr("Command Line Option: Create Folder?"),
                             MessageBoxButtons.YesNo,
                             MessageBoxIcon.Question, MessageBoxDefaultButton.Button1, Common.MB_TOPMOST);
 
@@ -730,7 +730,7 @@ namespace Thetis
 
             // PA init thread - from G7KLJ changes - done as early as possible
             LogTool.AddLogEntry("Initialising port audio...", "PA");
-            Splash.SetStatus("Initializing PortAudio");			// Set progress point as early as possible
+            Splash.SetStatus(Translator.Tr("Initializing PortAudio"));			// Set progress point as early as possible
             _portAudioInitalising = true;
             _portAudioIssue = false;
             Thread portAudioThread = new Thread(new ThreadStart(initialisePortAudio))
@@ -743,11 +743,16 @@ namespace Thetis
             portAudioThread.Start();
             //
 
-            Splash.SetStatus("Initializing Components");        // Set progress point
+            Splash.SetStatus(Translator.Tr("Initializing Components"));        // Set progress point
             LogTool.AddLogEntry("Initialising components...", "COMP");
 
             InitializeComponent();								// Windows Forms Generated Code
             Common.DoubleBufferAll(this, true);
+
+            Translator.Initialize();
+            SetupLanguageMenu();
+            Translator.LanguageChanged += Translator_LanguageChanged;
+            Translator.ApplyToForm(this);
 
             InitialiseAndromedaMenus();
 
@@ -802,7 +807,7 @@ namespace Thetis
             LogTool.Completed("COMP");
 
             LogTool.AddLogEntry("Initialising database...", "DB");
-            Splash.SetStatus("Initializing Database");          // Set progress point
+            Splash.SetStatus(Translator.Tr("Initializing Database"));          // Set progress point
 
             //Uncomment for HL2 build
             //bool dbid_exists = args.Any(arg => arg.IndexOf("-dbid", StringComparison.OrdinalIgnoreCase) >= 0);
@@ -815,9 +820,9 @@ namespace Thetis
             if (!ok)
             {
                 if (string.IsNullOrEmpty(broken_folder))
-                    MessageBox.Show($"There was an issue loading the database.", "Database Issue", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1, Common.MB_TOPMOST);
+                    MessageBox.Show($Translator.Tr("There was an issue loading the database."), Translator.Tr("Database Issue"), MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1, Common.MB_TOPMOST);
                 else
-                    MessageBox.Show($"There was an issue loading the database. The database has been moved to [{AppDataPath}DB\\broken\\{broken_folder}].", "Database Issue", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1, Common.MB_TOPMOST);
+                    MessageBox.Show($Translator.Tr("There was an issue loading the database. The database has been moved to [{AppDataPath}DB\\broken\\{broken_folder}]."), Translator.Tr("Database Issue"), MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1, Common.MB_TOPMOST);
 
                 _exitConsoleInDispose = false;
                 Environment.Exit(1);
@@ -827,7 +832,7 @@ namespace Thetis
             LogTool.Completed("DB");
 
             LogTool.AddLogEntry("Initialising hardware...", "HARD");
-            Splash.SetStatus("Initializing Hardware");			// Set progress point
+            Splash.SetStatus(Translator.Tr("Initializing Hardware"));			// Set progress point
             InitCTCSS();
 
             //TODO !!!!!!!!!!!!!!
@@ -846,7 +851,7 @@ namespace Thetis
             LogTool.Completed("HARD");
 
             LogTool.AddLogEntry("Initialising radio...", "RADIO");
-            Splash.SetStatus("Initializing Radio");				// Set progress point
+            Splash.SetStatus(Translator.Tr("Initializing Radio"));				// Set progress point
             radio = new Radio(AppDataPath);					    // Initialize the Radio processor   INIT_SLOW
 
             specRX = new SpecRX();
@@ -878,7 +883,7 @@ namespace Thetis
             LogTool.Completed("RADIO");
 
             LogTool.AddLogEntry("Loading settings...", "SET");
-            Splash.SetStatus("Loading Settings");				// Set progress point
+            Splash.SetStatus(Translator.Tr("Loading Settings"));				// Set progress point
 
             TimeOutTimerManager.Initialise(this);
 
@@ -895,7 +900,7 @@ namespace Thetis
                         "Try holding either CTRL key BEFORE Thetis is re-launched,\n" +
                         "and KEEP IT HELD until you see a message at which point you may release it.";
 
-                    MessageBox.Show(msg, "Database Error",
+                    MessageBox.Show(msg, Translator.Tr("Database Error"),
                         MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1, Common.MB_TOPMOST);
 
                     _exitConsoleInDispose = false;
@@ -921,14 +926,14 @@ namespace Thetis
             //MW0LGE [2.9.0.8]
             //start multimer renderers
             LogTool.AddLogEntry("Setting up meters...", "MET");
-            Splash.SetStatus("Setting up meters");
+            Splash.SetStatus(Translator.Tr("Setting up meters"));
             initGeneralSettings(0);
             MeterManager.RunAllRendererDisplays();
 
             LogTool.Completed("MET");
 
             LogTool.AddLogEntry("Setting up DSP...", "DSP");
-            Splash.SetStatus("Setting up DSP");                       // Set progress point
+            Splash.SetStatus(Translator.Tr("Setting up DSP"));                       // Set progress point
 
             selectFilters();
             selectModes();
@@ -944,12 +949,12 @@ namespace Thetis
             // still waiting PA
             if (_portAudioInitalising && portAudioThread != null && portAudioThread.IsAlive)
             {
-                Splash.SetStatus("Waiting for PortAudio");
+                Splash.SetStatus(Translator.Tr("Waiting for PortAudio"));
                 bool bOk = portAudioThread.Join(5000);
-                if (!bOk) MessageBox.Show("There was an issue initialising PortAudio", "PortAudio", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1, Common.MB_TOPMOST);
+                if (!bOk) MessageBox.Show(Translator.Tr("There was an issue initialising PortAudio"), Translator.Tr("PortAudio"), MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1, Common.MB_TOPMOST);
             }
             if (_portAudioIssue)
-                MessageBox.Show("There was an issue initialising PortAudio", "PortAudio", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1, Common.MB_TOPMOST);
+                MessageBox.Show(Translator.Tr("There was an issue initialising PortAudio"), Translator.Tr("PortAudio"), MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1, Common.MB_TOPMOST);
 
             //            
             if (!IsSetupFormNull) SetupForm.SetupCMAsio(_portAudioIssue, Common.HasArg(args, "-cmasioconfig"));
@@ -957,7 +962,7 @@ namespace Thetis
             CpuUsage(); //[2.10.1.0] MW0LGE initial call to setup check marks in status bar as a minimum
 
             LogTool.AddLogEntry("Processing finder info...", "FIND");
-            Splash.SetStatus("Processing Finder Info");
+            Splash.SetStatus(Translator.Tr("Processing Finder Info"));
             // obtain finder info before splash closes
             //-- setup finder search data
             _frmFinder.ReadXmlFinderFile(AppDataPath); // note: needs to be before frm gather
@@ -971,7 +976,7 @@ namespace Thetis
 
             LogTool.Completed("FIND");
 
-            Splash.SetStatus("Finished");
+            Splash.SetStatus(Translator.Tr("Finished"));
 
             Splash.SplashForm.Owner = this;						// So that main form will show/focus when splash disappears //MW0LGE_21d done in show above
             Splash.CloseForm();									// End splash screen            
@@ -1272,10 +1277,10 @@ namespace Thetis
                 if (new_szie != _error_log_initial_size)
                 {
                     //log file has changed
-                    MessageBox.Show("The ErrorLog.txt has been updated during this sesson.\n\n" +
-                    "Please email it to MW0LGE at : [mw0lge@grange-lane.co.uk].\n\n" +
-                    "It is located in this folder : [" + AppDataPath + "].",
-                    "Error Log Change",
+                    MessageBox.Show(Translator.Tr("The ErrorLog.txt has been updated during this sesson.\n\n") +
+                    Translator.Tr("Please email it to MW0LGE at : [mw0lge@grange-lane.co.uk].\n\n") +
+                    Translator.Tr("It is located in this folder : [") + AppDataPath + Translator.Tr("]."),
+                    Translator.Tr("Error Log Change"),
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1, Common.MB_TOPMOST);
                 }
@@ -1449,10 +1454,10 @@ namespace Thetis
                             app_data_path = path;
                         else
                         {
-                            DialogResult dr = MessageBox.Show("-datapath: command line option found, but the folder specified was not found.\n" +
-                                "Would you like to create this folder?  If not, the default folder will be used.\n\n" +
-                                "(" + path + ")",
-                                "Command Line Option: Create Folder?",
+                            DialogResult dr = MessageBox.Show(Translator.Tr("-datapath: command line option found, but the folder specified was not found.\n") +
+                                Translator.Tr("Would you like to create this folder?  If not, the default folder will be used.\n\n") +
+                                Translator.Tr("(") + path + Translator.Tr(")"),
+                                Translator.Tr("Command Line Option: Create Folder?"),
                                 MessageBoxButtons.YesNo,
                                 MessageBoxIcon.Question, MessageBoxDefaultButton.Button1, Common.MB_TOPMOST);
 
@@ -1524,13 +1529,13 @@ namespace Thetis
                         "Try holding either CTRL key BEFORE Thetis is re-launched,\n" +
                         "and KEEP IT HELD until you see a message at which point you may release it.";
 
-                    MessageBox.Show(msg, "Database Error",
+                    MessageBox.Show(msg, Translator.Tr("Database Error"),
                         MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1, Common.MB_TOPMOST);
                 }
                 else
                 {
                     string msg = build_exception_text(ex);
-                    MessageBox.Show(msg, "Fatal Error",
+                    MessageBox.Show(msg, Translator.Tr("Fatal Error"),
                         MessageBoxButtons.OK, MessageBoxIcon.Error,
                         MessageBoxDefaultButton.Button1, Common.MB_TOPMOST);
                 }
@@ -2040,7 +2045,7 @@ namespace Thetis
             UpdateTXProfile(SetupForm.TXProfile); // now update the combos
 
             LogTool.AddLogEntry("    Finalising settings...", "FINSET");
-            Splash.SetStatus("Finalizing settings");
+            Splash.SetStatus(Translator.Tr("Finalizing settings"));
 
             //MW0LGE_21d BandStack2
             BandStackManager.Extended = Extended;
@@ -2357,7 +2362,7 @@ namespace Thetis
                     {
                         if (!IsSetupFormNull) SetupForm.DisableTCPIPCatServerDueToError();
                         removeTCPIPcatDelegates();
-                        MessageBox.Show("Unable to start the server." + Environment.NewLine + Environment.NewLine + "[ " + m_tcpCATServer.LastError + " ]", "TCPIP CAT Server",
+                        MessageBox.Show(Translator.Tr("Unable to start the server.") + Environment.NewLine + Environment.NewLine + Translator.Tr("[ ") + m_tcpCATServer.LastError + Translator.Tr(" ]"), Translator.Tr("TCPIP CAT Server"),
                             MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1, Common.MB_TOPMOST);
                     }
                 }
@@ -2477,7 +2482,7 @@ namespace Thetis
                     {
                         if (!IsSetupFormNull) SetupForm.DisableTCIServerDueToError();
                         removeTCIDelegates();
-                        MessageBox.Show("Unable to start the server." + Environment.NewLine + Environment.NewLine + "[ " + m_tcpTCIServer.LastError + " ]", "TCI Server",
+                        MessageBox.Show(Translator.Tr("Unable to start the server.") + Environment.NewLine + Environment.NewLine + Translator.Tr("[ ") + m_tcpTCIServer.LastError + Translator.Tr(" ]"), Translator.Tr("TCI Server"),
                             MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1, Common.MB_TOPMOST);
                     }
                 }
@@ -3935,8 +3940,8 @@ namespace Thetis
                         }
                         else
                         {
-                            DialogResult dr = MessageBox.Show($"The version of hardware stored in the database is not known by this version of Thetis [{hw.ToString()}]. Are you using the correct version ?",
-                            "Hardware version issue",
+                            DialogResult dr = MessageBox.Show($Translator.Tr("The version of hardware stored in the database is not known by this version of Thetis [{hw.ToString()}]. Are you using the correct version ?"),
+                            Translator.Tr("Hardware version issue"),
                             MessageBoxButtons.OK,
                             MessageBoxIcon.Information, MessageBoxDefaultButton.Button1, Common.MB_TOPMOST);
 
@@ -5543,34 +5548,34 @@ namespace Thetis
 
         private void InitMultiMeterModes()
         {
-            comboMeterRXMode.Items.Add("Signal");
-            comboMeterRXMode.Items.Add("Sig Avg");
-            comboMeterRXMode.Items.Add("ADC L");
-            comboMeterRXMode.Items.Add("ADC R");
-            comboMeterRXMode.Items.Add("ADC2 L");
-            comboMeterRXMode.Items.Add("ADC2 R");
-            comboMeterRXMode.Items.Add("Off");
+            comboMeterRXMode.Items.Add(Translator.Tr("Signal"));
+            comboMeterRXMode.Items.Add(Translator.Tr("Sig Avg"));
+            comboMeterRXMode.Items.Add(Translator.Tr("ADC L"));
+            comboMeterRXMode.Items.Add(Translator.Tr("ADC R"));
+            comboMeterRXMode.Items.Add(Translator.Tr("ADC2 L"));
+            comboMeterRXMode.Items.Add(Translator.Tr("ADC2 R"));
+            comboMeterRXMode.Items.Add(Translator.Tr("Off"));
 
-            comboRX2MeterMode.Items.Add("Signal");
-            comboRX2MeterMode.Items.Add("Sig Avg");
-            comboRX2MeterMode.Items.Add("ADC L");
-            comboRX2MeterMode.Items.Add("ADC R");
-            comboRX2MeterMode.Items.Add("ADC2 L");
-            comboRX2MeterMode.Items.Add("ADC2 R");
-            comboRX2MeterMode.Items.Add("Off");
+            comboRX2MeterMode.Items.Add(Translator.Tr("Signal"));
+            comboRX2MeterMode.Items.Add(Translator.Tr("Sig Avg"));
+            comboRX2MeterMode.Items.Add(Translator.Tr("ADC L"));
+            comboRX2MeterMode.Items.Add(Translator.Tr("ADC R"));
+            comboRX2MeterMode.Items.Add(Translator.Tr("ADC2 L"));
+            comboRX2MeterMode.Items.Add(Translator.Tr("ADC2 R"));
+            comboRX2MeterMode.Items.Add(Translator.Tr("Off"));
 
-            comboMeterTXMode.Items.Add("Fwd Pwr");
-            comboMeterTXMode.Items.Add("Mic");
-            comboMeterTXMode.Items.Add("EQ");
-            comboMeterTXMode.Items.Add("Leveler");
-            comboMeterTXMode.Items.Add("Lev Gain");
-            comboMeterTXMode.Items.Add("CFC");
-            comboMeterTXMode.Items.Add("CFC Comp");
-            comboMeterTXMode.Items.Add("COMP");
-            comboMeterTXMode.Items.Add("ALC");
-            comboMeterTXMode.Items.Add("ALC Comp");
-            comboMeterTXMode.Items.Add("ALC Group"); //MW0LGE
-            comboMeterTXMode.Items.Add("Off");
+            comboMeterTXMode.Items.Add(Translator.Tr("Fwd Pwr"));
+            comboMeterTXMode.Items.Add(Translator.Tr("Mic"));
+            comboMeterTXMode.Items.Add(Translator.Tr("EQ"));
+            comboMeterTXMode.Items.Add(Translator.Tr("Leveler"));
+            comboMeterTXMode.Items.Add(Translator.Tr("Lev Gain"));
+            comboMeterTXMode.Items.Add(Translator.Tr("CFC"));
+            comboMeterTXMode.Items.Add(Translator.Tr("CFC Comp"));
+            comboMeterTXMode.Items.Add(Translator.Tr("COMP"));
+            comboMeterTXMode.Items.Add(Translator.Tr("ALC"));
+            comboMeterTXMode.Items.Add(Translator.Tr("ALC Comp"));
+            comboMeterTXMode.Items.Add(Translator.Tr("ALC Group")); //MW0LGE
+            comboMeterTXMode.Items.Add(Translator.Tr("Off"));
         }
 
         private void DisableAllFilters()
@@ -9710,7 +9715,7 @@ namespace Thetis
         {
             if (!chkPower.Checked)
             {
-                MessageBox.Show("Power must be on in order to calibrate Frequency.", "Power Is Off",
+                MessageBox.Show(Translator.Tr("Power must be on in order to calibrate Frequency."), Translator.Tr("Power Is Off"),
                     MessageBoxButtons.OK, MessageBoxIcon.Stop, MessageBoxDefaultButton.Button1, Common.MB_TOPMOST);
                 return false;
             }
@@ -9792,7 +9797,7 @@ namespace Thetis
             {
                 if (!suppress_errors)
                 {
-                    MessageBox.Show("Power must be on in order to calibrate RX Level.", "Power Is Off",
+                    MessageBox.Show(Translator.Tr("Power must be on in order to calibrate RX Level."), Translator.Tr("Power Is Off"),
                         MessageBoxButtons.OK, MessageBoxIcon.Stop, MessageBoxDefaultButton.Button1, Common.MB_TOPMOST);
                 }
                 calibration_running = false;
@@ -9902,9 +9907,9 @@ namespace Thetis
 
             if ((maxsumsq - avgmag) < 30.0) // compare the max bin with the average bin value
             {
-                MessageBox.Show("Peak is less than 30dB from the noise floor.  " +
-                    "Please use a larger signal for frequency calibration.",
-                    "Calibration Error - Weak Signal",
+                MessageBox.Show(Translator.Tr("Peak is less than 30dB from the noise floor.  ") +
+                    Translator.Tr("Please use a larger signal for frequency calibration."),
+                    Translator.Tr("Calibration Error - Weak Signal"),
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Error, MessageBoxDefaultButton.Button1, Common.MB_TOPMOST);
                 ret_val = false;
@@ -10122,7 +10127,7 @@ namespace Thetis
             ret_val = true;
 
         end:
-            if (!progress.Visible) progress.Text = "";
+            if (!progress.Visible) progress.Text = Translator.Tr("");
             progress.Hide();
 
             comboPreamp.Enabled = true;
@@ -10174,7 +10179,7 @@ namespace Thetis
 
             if (!chkPower.Checked)
             {
-                MessageBox.Show("START must be active in order to calibrate PA Gain.", "START is not presently active",
+                MessageBox.Show(Translator.Tr("START must be active in order to calibrate PA Gain."), Translator.Tr("START is not presently active"),
                     MessageBoxButtons.OK, MessageBoxIcon.Stop, MessageBoxDefaultButton.Button1, Common.MB_TOPMOST);
                 return false;
             }
@@ -10293,7 +10298,7 @@ namespace Thetis
             ret_val = true;
 
         end:
-            if (!progress.Visible) progress.Text = "";
+            if (!progress.Visible) progress.Text = Translator.Tr("");
             progress.Hide();
 
             EnableAllFilters();
@@ -10322,8 +10327,8 @@ namespace Thetis
             return ret_val;
 
         error:
-            MessageBox.Show("Calculated gain is invalid.  Please double check connections and try again.\n",
-                "Invalid Gain Found",
+            MessageBox.Show(Translator.Tr("Calculated gain is invalid.  Please double check connections and try again.\n"),
+                Translator.Tr("Invalid Gain Found"),
                 MessageBoxButtons.OK,
                 MessageBoxIcon.Error, MessageBoxDefaultButton.Button1, Common.MB_TOPMOST);
             goto end;
@@ -10340,7 +10345,7 @@ namespace Thetis
 
             if (!chkPower.Checked)
             {
-                MessageBox.Show("Power must be on in order to run PA Sweep.", "Power Is Off",
+                MessageBox.Show(Translator.Tr("Power must be on in order to run PA Sweep."), Translator.Tr("Power Is Off"),
                     MessageBoxButtons.OK, MessageBoxIcon.Stop, MessageBoxDefaultButton.Button1, Common.MB_TOPMOST);
                 return false;
             }
@@ -12198,13 +12203,13 @@ namespace Thetis
                 if (value == false)
                 {
                     //waveToolStripMenuItem.ForeColor = SystemColors.ControlLightLight;
-                    //waveToolStripMenuItem.Text = "Wave";
+                    //waveToolStripMenuItem.Text = Translator.Tr("Wave");
 
                 }
                 else
                 {
                     //waveToolStripMenuItem.ForeColor = Color.Red;
-                    //waveToolStripMenuItem.Text = "Record";
+                    //waveToolStripMenuItem.Text = Translator.Tr("Record");
 
 
                 }
@@ -12221,13 +12226,13 @@ namespace Thetis
                 {
 
                     memoryToolStripMenuItem.ForeColor = SystemColors.ControlLightLight;
-                    memoryToolStripMenuItem.Text = "Memory";
+                    memoryToolStripMenuItem.Text = Translator.Tr("Memory");
                 }
                 else
                 {
 
                     memoryToolStripMenuItem.ForeColor = Color.Red;
-                    memoryToolStripMenuItem.Text = "Mem Sched";
+                    memoryToolStripMenuItem.Text = Translator.Tr("Mem Sched");
                 }
             }
 
@@ -14692,18 +14697,18 @@ namespace Thetis
                     case BreakIn.QSK:
                         QSKEnabled = true;
                         NetworkIO.SetCWBreakIn(1);
-                        chkQSK.Text = "QSK";
+                        chkQSK.Text = Translator.Tr("QSK");
                         break;
                     case BreakIn.Manual: // manual PTT
                         QSKEnabled = false;
                         NetworkIO.SetCWBreakIn(0);
-                        chkQSK.Text = "OFF";
+                        chkQSK.Text = Translator.Tr("OFF");
 
                         break;
                     case BreakIn.Semi:
                         QSKEnabled = false;
                         NetworkIO.SetCWBreakIn(1);
-                        chkQSK.Text = "SEMI";
+                        chkQSK.Text = Translator.Tr("SEMI");
                         break;
                 }
                 TXAF = txaf;
@@ -14906,13 +14911,13 @@ namespace Thetis
                     return;
                 }
                 Alex.TRxAnt = true;
-                chkRxAnt.Text = "Tx Ant";
+                chkRxAnt.Text = Translator.Tr("Tx Ant");
                 chkRxAnt.ForeColor = Color.Yellow;
             }
             else
             {
                 Alex.TRxAnt = false;
-                chkRxAnt.Text = "Rx Ant";
+                chkRxAnt.Text = Translator.Tr("Rx Ant");
                 if (Alex.trx_ant_different) chkRxAnt.ForeColor = Color.SpringGreen;
                 else chkRxAnt.ForeColor = SystemColors.ControlLightLight;
             }
@@ -16842,9 +16847,9 @@ namespace Thetis
                 }
                 catch (Exception)
                 {
-                    MessageBox.Show("Error enabling CAT on COM" + cat_port + ".\n" +
-                        "Please check CAT settings and try again.",
-                        "CAT Error",
+                    MessageBox.Show(Translator.Tr("Error enabling CAT on COM") + cat_port + Translator.Tr(".\n") +
+                        Translator.Tr("Please check CAT settings and try again."),
+                        Translator.Tr("CAT Error"),
                         MessageBoxButtons.OK,
                         MessageBoxIcon.Error, MessageBoxDefaultButton.Button1, Common.MB_TOPMOST);
                     if (!IsSetupFormNull) SetupForm.CATEnabled = false;
@@ -16883,9 +16888,9 @@ namespace Thetis
                 }
                 catch (Exception)
                 {
-                    MessageBox.Show("Error enabling Andromeda on COM" + cat_port + ".\n" +
-                        "Please check settings and try again.",
-                        "Andromeda CAT Error",
+                    MessageBox.Show(Translator.Tr("Error enabling Andromeda on COM") + cat_port + Translator.Tr(".\n") +
+                        Translator.Tr("Please check settings and try again."),
+                        Translator.Tr("Andromeda CAT Error"),
                         MessageBoxButtons.OK,
                         MessageBoxIcon.Error, MessageBoxDefaultButton.Button1, Common.MB_TOPMOST);
                     if (!IsSetupFormNull)
@@ -16923,9 +16928,9 @@ namespace Thetis
                 }
                 catch (Exception)
                 {
-                    MessageBox.Show("Error enabling Aries on COM" + cat_port + ".\n" +
-                        "Please check settings and try again.",
-                        "Aries CAT Error",
+                    MessageBox.Show(Translator.Tr("Error enabling Aries on COM") + cat_port + Translator.Tr(".\n") +
+                        Translator.Tr("Please check settings and try again."),
+                        Translator.Tr("Aries CAT Error"),
                         MessageBoxButtons.OK,
                         MessageBoxIcon.Error, MessageBoxDefaultButton.Button1, Common.MB_TOPMOST);
                     if (!IsSetupFormNull) SetupForm.AriesCATEnabled = false;
@@ -16958,9 +16963,9 @@ namespace Thetis
                 }
                 catch (Exception)
                 {
-                    MessageBox.Show("Error enabling Ganymede on COM" + cat_port + ".\n" +
-                        "Please check settings and try again.",
-                        "Ganymede CAT Error",
+                    MessageBox.Show(Translator.Tr("Error enabling Ganymede on COM") + cat_port + Translator.Tr(".\n") +
+                        Translator.Tr("Please check settings and try again."),
+                        Translator.Tr("Ganymede CAT Error"),
                         MessageBoxButtons.OK,
                         MessageBoxIcon.Error, MessageBoxDefaultButton.Button1, Common.MB_TOPMOST);
                     if (!IsSetupFormNull) SetupForm.GanymedeCATEnabled = false;
@@ -16991,9 +16996,9 @@ namespace Thetis
                 }
                 catch (Exception)
                 {
-                    MessageBox.Show("Error enabling CAT2 on COM" + cat_port + ".\n" +
-                        "Please check CAT2 settings and try again.",
-                        "CAT2 Error",
+                    MessageBox.Show(Translator.Tr("Error enabling CAT2 on COM") + cat_port + Translator.Tr(".\n") +
+                        Translator.Tr("Please check CAT2 settings and try again."),
+                        Translator.Tr("CAT2 Error"),
                         MessageBoxButtons.OK,
                         MessageBoxIcon.Error, MessageBoxDefaultButton.Button1, Common.MB_TOPMOST);
                     if (!IsSetupFormNull) SetupForm.CAT2Enabled = false;
@@ -17024,9 +17029,9 @@ namespace Thetis
                 }
                 catch (Exception)
                 {
-                    MessageBox.Show("Error enabling CAT3 on COM" + cat_port + ".\n" +
-                        "Please check CAT3 settings and try again.",
-                        "CAT3 Error",
+                    MessageBox.Show(Translator.Tr("Error enabling CAT3 on COM") + cat_port + Translator.Tr(".\n") +
+                        Translator.Tr("Please check CAT3 settings and try again."),
+                        Translator.Tr("CAT3 Error"),
                         MessageBoxButtons.OK,
                         MessageBoxIcon.Error, MessageBoxDefaultButton.Button1, Common.MB_TOPMOST);
                     if (!IsSetupFormNull) SetupForm.CAT3Enabled = false;
@@ -17057,9 +17062,9 @@ namespace Thetis
                 }
                 catch (Exception)
                 {
-                    MessageBox.Show("Error enabling CAT4 on COM" + cat_port + ".\n" +
-                        "Please check CAT4 settings and try again.",
-                        "CAT4 Error",
+                    MessageBox.Show(Translator.Tr("Error enabling CAT4 on COM") + cat_port + Translator.Tr(".\n") +
+                        Translator.Tr("Please check CAT4 settings and try again."),
+                        Translator.Tr("CAT4 Error"),
                         MessageBoxButtons.OK,
                         MessageBoxIcon.Error, MessageBoxDefaultButton.Button1, Common.MB_TOPMOST);
                     if (!IsSetupFormNull) SetupForm.CAT4Enabled = false;
@@ -17166,8 +17171,8 @@ namespace Thetis
                         {
                             SetupForm.copyCATPropsToDialogVars(); // need to make sure the props on the setup page get reset 
                         }
-                        MessageBox.Show("Could not initialize PTT Bit Bang control.  Exception was:\n\n " + ex.Message +
-                            "\n\nPTT Bit Bang control has been disabled.", "Error Initializing PTT control",
+                        MessageBox.Show(Translator.Tr("Could not initialize PTT Bit Bang control.  Exception was:\n\n ") + ex.Message +
+                            Translator.Tr("\n\nPTT Bit Bang control has been disabled."), Translator.Tr("Error Initializing PTT control"),
                             MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1, Common.MB_TOPMOST);
 
                     }
@@ -18518,16 +18523,16 @@ namespace Thetis
                 switch (_apf_type)
                 {
                     case 0:
-                        btnAPF_type.Text = "DP";
+                        btnAPF_type.Text = Translator.Tr("DP");
                         break;
                     case 1:
-                        btnAPF_type.Text = "MA";
+                        btnAPF_type.Text = Translator.Tr("MA");
                         break;
                     case 2:
-                        btnAPF_type.Text = "GA";
+                        btnAPF_type.Text = Translator.Tr("GA");
                         break;
                     case 3:
-                        btnAPF_type.Text = "BI";
+                        btnAPF_type.Text = Translator.Tr("BI");
                         break;
                 }
             }
@@ -21301,8 +21306,8 @@ namespace Thetis
 
             if (_check_for_bad_adc && adc_oload_num == -1)
             {
-                MessageBox.Show("There has been an issue obtaining the ADC overload state. This will not be performed until the power is turned off/on inside Thetis.",
-                    "ADC Overload Issue",
+                MessageBox.Show(Translator.Tr("There has been an issue obtaining the ADC overload state. This will not be performed until the power is turned off/on inside Thetis."),
+                    Translator.Tr("ADC Overload Issue"),
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Error, MessageBoxDefaultButton.Button1, Common.MB_TOPMOST);
 
@@ -24777,7 +24782,7 @@ namespace Thetis
                         {
                             using (StreamWriter writer = File.AppendText(sVALog))
                             {
-                                writer.WriteLine($"{now:yyyy-MM-dd HH:mm:ss}\tadc0(v)={adc0}\tadc1(a)={adc1}\tvolts={convertToVolts(adc0).ToString("f2")}\tamps={convertToAmps(adc1).ToString("f2")}");
+                                writer.WriteLine($Translator.Tr("{now:yyyy-MM-dd HH:mm:ss}\tadc0(v)={adc0}\tadc1(a)={adc1}\tvolts={convertToVolts(adc0).ToString(")f2Translator.Tr(")}\tamps={convertToAmps(adc1).ToString(")f2Translator.Tr(")}"));
                             }
                         }
                         catch
@@ -24832,7 +24837,7 @@ namespace Thetis
 
                         using (StreamWriter writer = File.AppendText(sVALog))
                         {
-                            writer.WriteLine(ProductVersion + "\n" + BasicTitleBar);
+                            writer.WriteLine(ProductVersion + Translator.Tr("\n") + BasicTitleBar);
                             writer.WriteLine($"Volts/Amps Log \t_amp_voff={_amp_voff}\t_amp_sens={_amp_sens}");
                         }
                         _firstSaveTime = DateTime.UtcNow;
@@ -26106,8 +26111,8 @@ namespace Thetis
         }
         private void checkAntennaWarning()
         {
-            MessageBox.Show("Please check your antenna connection.",
-            "High SWR condition detected",
+            MessageBox.Show(Translator.Tr("Please check your antenna connection."),
+            Translator.Tr("High SWR condition detected"),
             MessageBoxButtons.OK,
             MessageBoxIcon.Warning,
             MessageBoxDefaultButton.Button1,
@@ -27965,8 +27970,8 @@ namespace Thetis
 
                     SetupForm.tbDSPAGCHangThreshold.Enabled = true;
                     SetupForm.AGCRX1HangThreshold = SetupForm.tbDSPAGCHangThreshold.Value;
-                    toolTip1.SetToolTip(comboAGC, "Automatic Gain Control Mode Setting:\n" +
-                        "Long (Attack 2ms, Hang 2000ms, Decay 2000ms)");
+                    toolTip1.SetToolTip(comboAGC, Translator.Tr("Automatic Gain Control Mode Setting:\n") +
+                        Translator.Tr("Long (Attack 2ms, Hang 2000ms, Decay 2000ms)"));
                     break;
                 case AGCMode.SLOW:
                     SetupForm.CustomRXAGCEnabled = false;
@@ -27978,8 +27983,8 @@ namespace Thetis
 
                     SetupForm.tbDSPAGCHangThreshold.Enabled = true;
                     SetupForm.AGCRX1HangThreshold = SetupForm.tbDSPAGCHangThreshold.Value;
-                    toolTip1.SetToolTip(comboAGC, "Automatic Gain Control Mode Setting:\n" +
-                        "Slow (Attack 2ms, Hang 1000ms, Decay 500ms)");
+                    toolTip1.SetToolTip(comboAGC, Translator.Tr("Automatic Gain Control Mode Setting:\n") +
+                        Translator.Tr("Slow (Attack 2ms, Hang 1000ms, Decay 500ms)"));
                     break;
                 case AGCMode.MED:
                     SetupForm.CustomRXAGCEnabled = false;
@@ -27992,8 +27997,8 @@ namespace Thetis
                     WDSP.SetRXAAGCHangThreshold(WDSP.id(0, 0), 100);
 
                     SetupForm.tbDSPAGCHangThreshold.Enabled = false;
-                    toolTip1.SetToolTip(comboAGC, "Automatic Gain Control Mode Setting:\n" +
-                        "Medium (Attack 2ms, Hang OFF, Decay 250ms)");
+                    toolTip1.SetToolTip(comboAGC, Translator.Tr("Automatic Gain Control Mode Setting:\n") +
+                        Translator.Tr("Medium (Attack 2ms, Hang OFF, Decay 250ms)"));
                     break;
                 case AGCMode.FAST:
                     SetupForm.CustomRXAGCEnabled = false;
@@ -28005,21 +28010,21 @@ namespace Thetis
 
                     WDSP.SetRXAAGCHangThreshold(WDSP.id(0, 0), 100);
                     SetupForm.tbDSPAGCHangThreshold.Enabled = false;
-                    toolTip1.SetToolTip(comboAGC, "Automatic Gain Control Mode Setting:\n" +
-                        "Fast (Attack 2ms, Hang OFF, Decay 50ms)");
+                    toolTip1.SetToolTip(comboAGC, Translator.Tr("Automatic Gain Control Mode Setting:\n") +
+                        Translator.Tr("Fast (Attack 2ms, Hang OFF, Decay 50ms)"));
                     break;
                 case AGCMode.CUSTOM:
                     SetupForm.CustomRXAGCEnabled = true;
 
                     SetupForm.tbDSPAGCHangThreshold.Enabled = true;
                     SetupForm.AGCRX1HangThreshold = SetupForm.tbDSPAGCHangThreshold.Value;
-                    toolTip1.SetToolTip(comboAGC, "Automatic Gain Control Mode Setting:\n" +
-                        "Custom - Set specifics in Setup Form -> DSP -> AGC/ALC");
+                    toolTip1.SetToolTip(comboAGC, Translator.Tr("Automatic Gain Control Mode Setting:\n") +
+                        Translator.Tr("Custom - Set specifics in Setup Form -> DSP -> AGC/ALC"));
                     break;
                 case AGCMode.FIXD:
                     SetupForm.CustomRXAGCEnabled = false;
-                    toolTip1.SetToolTip(comboAGC, "Automatic Gain Control Mode Setting:\n" +
-                        "Fixed - Set gain with AGC-T control above");
+                    toolTip1.SetToolTip(comboAGC, Translator.Tr("Automatic Gain Control Mode Setting:\n") +
+                        Translator.Tr("Fixed - Set gain with AGC-T control above"));
                     break;
             }
 
@@ -28065,8 +28070,8 @@ namespace Thetis
         {
             if (Display.RunningFPSProfile)
             {
-                MessageBox.Show("Stop the FPS profile test first !",
-                "FPS Profile Test",
+                MessageBox.Show(Translator.Tr("Stop the FPS profile test first !"),
+                Translator.Tr("FPS Profile Test"),
                 MessageBoxButtons.OK,
                 MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1, Common.MB_TOPMOST);
 
@@ -28229,8 +28234,8 @@ namespace Thetis
                 if (SetupForm.StillWaitingForSaveLoad)
                 {
                     // save didnt complete
-                    MessageBox.Show("Saving to the database did not complete in the alloted time. Your settings will not be saved.",
-                    "DB Save TimeOut",
+                    MessageBox.Show(Translator.Tr("Saving to the database did not complete in the alloted time. Your settings will not be saved."),
+                    Translator.Tr("DB Save TimeOut"),
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Error, MessageBoxDefaultButton.Button1, Common.MB_TOPMOST);
                 }
@@ -28311,7 +28316,7 @@ namespace Thetis
 
             try
             {
-                using (StreamWriter w = File.AppendText(AppDataPath + "\\shutdown_log.txt"))
+                using (StreamWriter w = File.AppendText(AppDataPath + Translator.Tr("\\shutdown_log.txt")))
                 {
                     //using block will auto close stream
                     w.WriteLine(entry);
@@ -28486,7 +28491,7 @@ namespace Thetis
                 }
 
                 chkMUT.BackColor = button_selected_color;
-                lblRX1MuteVFOA.Text = "MUTE";
+                lblRX1MuteVFOA.Text = Translator.Tr("MUTE");
                 lblRX1MuteVFOA.Show(); //[2.10.1.0] from WD5Y
             }
             else
@@ -28498,7 +28503,7 @@ namespace Thetis
 
                 ptbAF_Scroll(this, EventArgs.Empty);
                 chkMUT.BackColor = SystemColors.Control;
-                lblRX1MuteVFOA.Text = "";
+                lblRX1MuteVFOA.Text = Translator.Tr("");
                 lblRX1MuteVFOA.Hide(); //[2.10.1.0] from WD5Y
             }
             if (sliderForm != null) sliderForm.RX1MuteOnOff = chkMUT.Checked;
@@ -28769,7 +28774,7 @@ namespace Thetis
                 }
                 else
                 {
-                    toolTip1.SetToolTip(ptbMic, "");
+                    toolTip1.SetToolTip(ptbMic, Translator.Tr(""));
                 }
 
                 //[2.10.3.9]MW0LGE fix for when mic is disabled
@@ -28868,15 +28873,15 @@ namespace Thetis
             if (!IsSetupFormNull)
                 if (!(chkRX2.Checked && chkVAC2.Checked && chkVFOBTX.Checked))
                 {
-                    lblVACRXIndicator.Text = "VAC1";
-                    lblVACTXIndicator.Text = "VAC1";
+                    lblVACRXIndicator.Text = Translator.Tr("VAC1");
+                    lblVACTXIndicator.Text = Translator.Tr("VAC1");
                     SetupForm.VACRXGain = ptbVACRXGain.Value;
                     vac_rx_gain = ptbVACRXGain.Value;
                 }
                 else
                 {
-                    lblVACRXIndicator.Text = "VAC2";
-                    lblVACTXIndicator.Text = "VAC2";
+                    lblVACRXIndicator.Text = Translator.Tr("VAC2");
+                    lblVACTXIndicator.Text = Translator.Tr("VAC2");
                     SetupForm.VAC2RXGain = ptbVACRXGain.Value;
                     vac2_rx_gain = ptbVACRXGain.Value;
                 }
@@ -28896,15 +28901,15 @@ namespace Thetis
             {
                 if (!(chkRX2.Checked && chkVAC2.Checked && chkVFOBTX.Checked))
                 {
-                    lblVACRXIndicator.Text = "VAC1";
-                    lblVACTXIndicator.Text = "VAC1";
+                    lblVACRXIndicator.Text = Translator.Tr("VAC1");
+                    lblVACTXIndicator.Text = Translator.Tr("VAC1");
                     SetupForm.VACTXGain = ptbVACTXGain.Value;
                     vac_tx_gain = ptbVACTXGain.Value;
                 }
                 else
                 {
-                    lblVACRXIndicator.Text = "VAC2";
-                    lblVACTXIndicator.Text = "VAC2";
+                    lblVACRXIndicator.Text = Translator.Tr("VAC2");
+                    lblVACTXIndicator.Text = Translator.Tr("VAC2");
                     SetupForm.VAC2TXGain = ptbVACTXGain.Value;
                     vac2_tx_gain = ptbVACTXGain.Value;
                 }
@@ -29387,8 +29392,8 @@ namespace Thetis
                         chkMOX.Checked = false;
 
                         // note RX2 enabled with a TXvfoB will always TX
-                        MessageBox.Show("Your TX band is different to your RX band and you have selected the option to prevent this.",
-                        "Transmit Error: TX/RX bands different",
+                        MessageBox.Show(Translator.Tr("Your TX band is different to your RX band and you have selected the option to prevent this."),
+                        Translator.Tr("Transmit Error: TX/RX bands different"),
                         MessageBoxButtons.OK,
                         MessageBoxIcon.Error, MessageBoxDefaultButton.Button1, Common.MB_TOPMOST);
                         return;
@@ -29404,8 +29409,8 @@ namespace Thetis
                             case DSPMode.DIGU:
                                 break;
                             default:
-                                MessageBox.Show(_rx1_dsp_mode.ToString() + " mode is not allowed on 60M band.",
-                                    "Transmit Error: Mode/Band",
+                                MessageBox.Show(_rx1_dsp_mode.ToString() + Translator.Tr(" mode is not allowed on 60M band."),
+                                    Translator.Tr("Transmit Error: Mode/Band"),
                                     MessageBoxButtons.OK,
                                     MessageBoxIcon.Error, MessageBoxDefaultButton.Button1, Common.MB_TOPMOST);
                                 chkMOX.Checked = false;
@@ -29418,9 +29423,9 @@ namespace Thetis
                         if (_tx_band == Band.B60M && current_region == FRSRegion.US &&
                             checkValidTXFreq_local(current_region, freq) && !extended)
                         {
-                            MessageBox.Show("The transmit filter you have selected exceeds the bandwidth\n" +
-                                "constraints (2.8kHz) for the 60m band in this region.",
-                                "60m Bandwidth",
+                            MessageBox.Show(Translator.Tr("The transmit filter you have selected exceeds the bandwidth\n") +
+                                Translator.Tr("constraints (2.8kHz) for the 60m band in this region."),
+                                Translator.Tr("60m Bandwidth"),
                                 MessageBoxButtons.OK,
                                 MessageBoxIcon.Error, MessageBoxDefaultButton.Button1, Common.MB_TOPMOST);
                         }
@@ -29430,27 +29435,27 @@ namespace Thetis
                             {
                                 case DSPMode.CWL:
                                 case DSPMode.CWU:
-                                    MessageBox.Show("The frequency " + freq.ToString("f6") + "MHz is not within the\n" +
-                                        "Band specifications for your region (" + current_region.ToString() + ").",
-                                        "Transmit Error: Out Of Band",
+                                    MessageBox.Show(Translator.Tr("The frequency ") + freq.ToString(Translator.Tr("f6")) + Translator.Tr("MHz is not within the\n") +
+                                        Translator.Tr("Band specifications for your region (") + current_region.ToString() + Translator.Tr(")."),
+                                        Translator.Tr("Transmit Error: Out Of Band"),
                                         MessageBoxButtons.OK,
                                         MessageBoxIcon.Error, MessageBoxDefaultButton.Button1, Common.MB_TOPMOST);
                                     break;
                                 default:
                                     if (!chkTUN.Checked)
                                     {
-                                        MessageBox.Show("The frequency " + freq.ToString("f6") + "MHz in combination with your TX filter\n" +
-                                            "settings [" + Display.TXFilterLow.ToString() + ", " + Display.TXFilterHigh.ToString() + "] are not within the " +
-                                            "Band specifications for your region (" + current_region.ToString() + ").",
-                                            "Transmit Error: Out Of Band",
+                                        MessageBox.Show(Translator.Tr("The frequency ") + freq.ToString(Translator.Tr("f6")) + Translator.Tr("MHz in combination with your TX filter\n") +
+                                            Translator.Tr("settings [") + Display.TXFilterLow.ToString() + Translator.Tr(", ") + Display.TXFilterHigh.ToString() + Translator.Tr("] are not within the ") +
+                                            Translator.Tr("Band specifications for your region (") + current_region.ToString() + Translator.Tr(")."),
+                                            Translator.Tr("Transmit Error: Out Of Band"),
                                             MessageBoxButtons.OK,
                                             MessageBoxIcon.Error, MessageBoxDefaultButton.Button1, Common.MB_TOPMOST);
                                     }
                                     else
                                     {
-                                        MessageBox.Show("The frequency " + freq.ToString("f6") + "MHz is not within the\n" +
-                                               "Band specifications for your region (" + current_region.ToString() + ").",
-                                               "Transmit Error: Out Of Band",
+                                        MessageBox.Show(Translator.Tr("The frequency ") + freq.ToString(Translator.Tr("f6")) + Translator.Tr("MHz is not within the\n") +
+                                               Translator.Tr("Band specifications for your region (") + current_region.ToString() + Translator.Tr(")."),
+                                               Translator.Tr("Transmit Error: Out Of Band"),
                                                MessageBoxButtons.OK,
                                                MessageBoxIcon.Error, MessageBoxDefaultButton.Button1, Common.MB_TOPMOST);
                                     }
@@ -29964,8 +29969,8 @@ namespace Thetis
             {
                 if (!PowerOn)
                 {
-                    MessageBox.Show("Power must be on to turn on the Tune function.",
-                        "Power is off",
+                    MessageBox.Show(Translator.Tr("Power must be on to turn on the Tune function."),
+                        Translator.Tr("Power is off"),
                         MessageBoxButtons.OK,
                         MessageBoxIcon.Hand, MessageBoxDefaultButton.Button1, Common.MB_TOPMOST);
                     chkTUN.Checked = false;
@@ -31723,27 +31728,27 @@ namespace Thetis
                     {
                         case DSPMode.CWL:
                         case DSPMode.CWU:
-                            MessageBox.Show("The frequency " + tx_freq.ToString("f6") + "MHz is not within the\n" +
-                                "Band specifications for your region (" + current_region.ToString() + ").",
-                                "Transmit Error: Out Of Band",
+                            MessageBox.Show(Translator.Tr("The frequency ") + tx_freq.ToString(Translator.Tr("f6")) + Translator.Tr("MHz is not within the\n") +
+                                Translator.Tr("Band specifications for your region (") + current_region.ToString() + Translator.Tr(")."),
+                                Translator.Tr("Transmit Error: Out Of Band"),
                                 MessageBoxButtons.OK,
                                 MessageBoxIcon.Error, MessageBoxDefaultButton.Button1, Common.MB_TOPMOST);
                             break;
                         default:
                             if (!chkTUN.Checked)
                             {
-                                MessageBox.Show("The frequency " + tx_freq.ToString("f6") + "MHz in combination with your TX filter\n" +
-                                    "settings [" + Display.TXFilterLow.ToString() + ", " + Display.TXFilterHigh.ToString() + "] are not within the " +
-                                    "Band specifications for your region (" + current_region.ToString() + ").",
-                                    "Transmit Error: Out Of Band",
+                                MessageBox.Show(Translator.Tr("The frequency ") + tx_freq.ToString(Translator.Tr("f6")) + Translator.Tr("MHz in combination with your TX filter\n") +
+                                    Translator.Tr("settings [") + Display.TXFilterLow.ToString() + Translator.Tr(", ") + Display.TXFilterHigh.ToString() + Translator.Tr("] are not within the ") +
+                                    Translator.Tr("Band specifications for your region (") + current_region.ToString() + Translator.Tr(")."),
+                                    Translator.Tr("Transmit Error: Out Of Band"),
                                     MessageBoxButtons.OK,
                                     MessageBoxIcon.Error, MessageBoxDefaultButton.Button1, Common.MB_TOPMOST);
                             }
                             else
                             {
-                                MessageBox.Show("The frequency " + tx_freq.ToString("f6") + "MHz is not within the\n" +
-                                       "Band specifications for your region (" + current_region.ToString() + ").",
-                                       "Transmit Error: Out Of Band",
+                                MessageBox.Show(Translator.Tr("The frequency ") + tx_freq.ToString(Translator.Tr("f6")) + Translator.Tr("MHz is not within the\n") +
+                                       Translator.Tr("Band specifications for your region (") + current_region.ToString() + Translator.Tr(")."),
+                                       Translator.Tr("Transmit Error: Out Of Band"),
                                        MessageBoxButtons.OK,
                                        MessageBoxIcon.Error, MessageBoxDefaultButton.Button1, Common.MB_TOPMOST);
                             }
@@ -32761,27 +32766,27 @@ namespace Thetis
                     {
                         case DSPMode.CWL:
                         case DSPMode.CWU:
-                            MessageBox.Show("The frequency " + tx_freq.ToString("f6") + "MHz is not within the\n" +
-                                "Band specifications for your region (" + current_region.ToString() + ").",
-                                "Transmit Error: Out Of Band",
+                            MessageBox.Show(Translator.Tr("The frequency ") + tx_freq.ToString(Translator.Tr("f6")) + Translator.Tr("MHz is not within the\n") +
+                                Translator.Tr("Band specifications for your region (") + current_region.ToString() + Translator.Tr(")."),
+                                Translator.Tr("Transmit Error: Out Of Band"),
                                 MessageBoxButtons.OK,
                                 MessageBoxIcon.Error, MessageBoxDefaultButton.Button1, Common.MB_TOPMOST);
                             break;
                         default:
                             if (!chkTUN.Checked)
                             {
-                                MessageBox.Show("The frequency " + tx_freq.ToString("f6") + "MHz in combination with your TX filter\n" +
-                                    "settings [" + Display.TXFilterLow.ToString() + ", " + Display.TXFilterHigh.ToString() + "] are not within the " +
-                                    "Band specifications for your region (" + current_region.ToString() + ").",
-                                    "Transmit Error: Out Of Band",
+                                MessageBox.Show(Translator.Tr("The frequency ") + tx_freq.ToString(Translator.Tr("f6")) + Translator.Tr("MHz in combination with your TX filter\n") +
+                                    Translator.Tr("settings [") + Display.TXFilterLow.ToString() + Translator.Tr(", ") + Display.TXFilterHigh.ToString() + Translator.Tr("] are not within the ") +
+                                    Translator.Tr("Band specifications for your region (") + current_region.ToString() + Translator.Tr(")."),
+                                    Translator.Tr("Transmit Error: Out Of Band"),
                                     MessageBoxButtons.OK,
                                     MessageBoxIcon.Error, MessageBoxDefaultButton.Button1, Common.MB_TOPMOST);
                             }
                             else
                             {
-                                MessageBox.Show("The frequency " + tx_freq.ToString("f6") + "MHz is not within the\n" +
-                                       "Band specifications for your region (" + current_region.ToString() + ").",
-                                       "Transmit Error: Out Of Band",
+                                MessageBox.Show(Translator.Tr("The frequency ") + tx_freq.ToString(Translator.Tr("f6")) + Translator.Tr("MHz is not within the\n") +
+                                       Translator.Tr("Band specifications for your region (") + current_region.ToString() + Translator.Tr(")."),
+                                       Translator.Tr("Transmit Error: Out Of Band"),
                                        MessageBoxButtons.OK,
                                        MessageBoxIcon.Error, MessageBoxDefaultButton.Button1, Common.MB_TOPMOST);
                             }
@@ -35822,13 +35827,13 @@ namespace Thetis
                     bRestore = true;
                 }
                 _quickSplitState = true;
-                chkVFOSplit.Text = "QPLT";
+                chkVFOSplit.Text = Translator.Tr("QPLT");
             }
             else
             {
                 _quickSplitState = false;
                 bRestore = true;
-                chkVFOSplit.Text = "SPLT";
+                chkVFOSplit.Text = Translator.Tr("SPLT");
             }
 
             if (bRestore)
@@ -36293,13 +36298,13 @@ namespace Thetis
             if (chkANF.Checked)
             {
                 chkANF.BackColor = button_selected_color;
-                lblANFLabel.Text = "ANF";
+                lblANFLabel.Text = Translator.Tr("ANF");
             }
 
             else
             {
                 chkANF.BackColor = SystemColors.Control;
-                lblANFLabel.Text = "---";
+                lblANFLabel.Text = Translator.Tr("---");
             }
             radio.GetDSPRX(0, 0).AutoNotchFilter = chkANF.Checked;
             radio.GetDSPRX(0, 1).AutoNotchFilter = chkANF.Checked;
@@ -36320,12 +36325,12 @@ namespace Thetis
             if (chkDSPNB2.Checked)
             {
                 chkDSPNB2.BackColor = button_selected_color;
-                lblSNBLabel.Text = "SNB";
+                lblSNBLabel.Text = Translator.Tr("SNB");
             }
             else
             {
                 chkDSPNB2.BackColor = SystemColors.Control;
-                lblSNBLabel.Text = "---";
+                lblSNBLabel.Text = Translator.Tr("---");
             }
 
             WDSP.SetRXASNBARun(WDSP.id(0, 0), chkDSPNB2.Checked);
@@ -36347,13 +36352,13 @@ namespace Thetis
             if (chkRX2NB2.Checked)
             {
                 chkRX2NB2.BackColor = button_selected_color;
-                lblRX2SNBLabel.Text = "SNB";
+                lblRX2SNBLabel.Text = Translator.Tr("SNB");
             }
 
             else
             {
                 chkRX2NB2.BackColor = SystemColors.Control;
-                lblRX2SNBLabel.Text = "---";
+                lblRX2SNBLabel.Text = Translator.Tr("---");
             }
             WDSP.SetRXASNBARun(WDSP.id(2, 0), chkRX2NB2.Checked);
             cat_rx2snb_status = Convert.ToInt32(chkRX2NB2.Checked);
@@ -36617,7 +36622,7 @@ namespace Thetis
         private int _old_rx2_gain = -1;
         private void ptbRX0Gain_Scroll(object sender, System.EventArgs e)
         {
-            lblRX1Vol.Text = "Vol";
+            lblRX1Vol.Text = Translator.Tr("Vol");
 
             //MWLGE_21k9 re-worked //[2.10.1.0] MW0LGE added eventargs empty
             if (!initializing && e != EventArgs.Empty && m_bRXAFSlidersWillUnmute && chkMUT.Checked) chkMUT.Checked = false;
@@ -38411,13 +38416,13 @@ namespace Thetis
             if (chkRX2ANF.Checked)
             {
                 chkRX2ANF.BackColor = button_selected_color;
-                lblRX2ANFLabel.Text = "ANF";
+                lblRX2ANFLabel.Text = Translator.Tr("ANF");
             }
 
             else
             {
                 chkRX2ANF.BackColor = SystemColors.Control;
-                lblRX2ANFLabel.Text = "---";
+                lblRX2ANFLabel.Text = Translator.Tr("---");
             }
             radio.GetDSPRX(1, 0).AutoNotchFilter = chkRX2ANF.Checked;
             radio.GetDSPRX(1, 1).AutoNotchFilter = chkRX2ANF.Checked;
@@ -38555,13 +38560,13 @@ namespace Thetis
             if (chkRX1Preamp.Checked)
             {
                 chkRX1Preamp.BackColor = button_selected_color;
-                chkRX1Preamp.Text = "On";
+                chkRX1Preamp.Text = Translator.Tr("On");
                 RX1PreampMode = PreampMode.HPSDR_ON;
             }
             else
             {
                 chkRX1Preamp.BackColor = SystemColors.Control;
-                chkRX1Preamp.Text = "Off";
+                chkRX1Preamp.Text = Translator.Tr("Off");
                 RX1PreampMode = PreampMode.HPSDR_OFF;
             }
         }
@@ -38637,7 +38642,7 @@ namespace Thetis
                     radio.GetDSPRX(1, 0).RXOutputGain = 0.0; //MW0LGE_21j
                 }
 
-                lblRX2MuteVFOB.Text = "MUTE";
+                lblRX2MuteVFOB.Text = Translator.Tr("MUTE");
                 lblRX2MuteVFOB.Show(); //[2.10.1.0] from WD5Y
             }
             else
@@ -38647,7 +38652,7 @@ namespace Thetis
                 radio.GetDSPRX(1, 0).RXOutputGain = (double)ptbRX2Gain.Value / ptbRX2Gain.Maximum; //MW0LGE_21j
 
                 ptbRX2Gain_Scroll(this, EventArgs.Empty);
-                lblRX2MuteVFOB.Text = "";
+                lblRX2MuteVFOB.Text = Translator.Tr("");
                 lblRX2MuteVFOB.Hide(); //[2.10.1.0] from WD5Y
             }
             if (sliderForm != null) sliderForm.RX2MuteOnOff = chkRX2Mute.Checked;
@@ -39454,8 +39459,8 @@ namespace Thetis
                     radio.GetDSPRX(1, 0).RXAGCHang = 2000;
                     radio.GetDSPRX(1, 0).RXAGCDecay = 2000;
                     SetupForm.AGCRX2HangThreshold = SetupForm.tbDSPAGCRX2HangThreshold.Value;
-                    toolTip1.SetToolTip(comboRX2AGC, "Automatic Gain Control Mode Setting:\n" +
-                        "Long (Attack 2ms, Hang 2000ms, Decay 2000ms)");
+                    toolTip1.SetToolTip(comboRX2AGC, Translator.Tr("Automatic Gain Control Mode Setting:\n") +
+                        Translator.Tr("Long (Attack 2ms, Hang 2000ms, Decay 2000ms)"));
 
                     break;
                 case AGCMode.SLOW:
@@ -39465,8 +39470,8 @@ namespace Thetis
                     radio.GetDSPRX(1, 0).RXAGCHang = 1000;
                     radio.GetDSPRX(1, 0).RXAGCDecay = 500;
                     SetupForm.AGCRX2HangThreshold = SetupForm.tbDSPAGCRX2HangThreshold.Value;
-                    toolTip1.SetToolTip(comboRX2AGC, "Automatic Gain Control Mode Setting:\n" +
-                        "Slow (Attack 2ms, Hang 1000ms, Decay 500ms)");
+                    toolTip1.SetToolTip(comboRX2AGC, Translator.Tr("Automatic Gain Control Mode Setting:\n") +
+                        Translator.Tr("Slow (Attack 2ms, Hang 1000ms, Decay 500ms)"));
 
                     break;
                 case AGCMode.MED:
@@ -39475,8 +39480,8 @@ namespace Thetis
 
                     radio.GetDSPRX(1, 0).RXAGCHang = 0;
                     radio.GetDSPRX(1, 0).RXAGCDecay = 250;
-                    toolTip1.SetToolTip(comboRX2AGC, "Automatic Gain Control Mode Setting:\n" +
-                        "Medium (Attack 2ms, Hang OFF, Decay 250ms)");
+                    toolTip1.SetToolTip(comboRX2AGC, Translator.Tr("Automatic Gain Control Mode Setting:\n") +
+                        Translator.Tr("Medium (Attack 2ms, Hang OFF, Decay 250ms)"));
 
                     break;
                 case AGCMode.FAST:
@@ -39485,8 +39490,8 @@ namespace Thetis
 
                     radio.GetDSPRX(1, 0).RXAGCHang = 0;
                     radio.GetDSPRX(1, 0).RXAGCDecay = 50;
-                    toolTip1.SetToolTip(comboRX2AGC, "Automatic Gain Control Mode Setting:\n" +
-                       "Fast (Attack 2ms, Hang OFF, Decay 50ms)");
+                    toolTip1.SetToolTip(comboRX2AGC, Translator.Tr("Automatic Gain Control Mode Setting:\n") +
+                       Translator.Tr("Fast (Attack 2ms, Hang OFF, Decay 50ms)"));
 
                     break;
                 case AGCMode.CUSTOM:
@@ -39495,14 +39500,14 @@ namespace Thetis
                     SetupForm.tbDSPAGCRX2HangThreshold.Enabled = true;
                     SetupForm.AGCRX2HangThreshold = SetupForm.tbDSPAGCRX2HangThreshold.Value;
 
-                    toolTip1.SetToolTip(comboRX2AGC, "Automatic Gain Control Mode Setting:\n" +
-                        "Custom - Set specifics in Setup Form -> DSP -> AGC/ALC");
+                    toolTip1.SetToolTip(comboRX2AGC, Translator.Tr("Automatic Gain Control Mode Setting:\n") +
+                        Translator.Tr("Custom - Set specifics in Setup Form -> DSP -> AGC/ALC"));
 
                     break;
                 case AGCMode.FIXD:
                     SetupForm.CustomRX2AGCEnabled = false;
-                    toolTip1.SetToolTip(comboAGC, "Automatic Gain Control Mode Setting:\n" +
-                        "Fixed - Set gain with AGC-T control above");
+                    toolTip1.SetToolTip(comboAGC, Translator.Tr("Automatic Gain Control Mode Setting:\n") +
+                        Translator.Tr("Fixed - Set gain with AGC-T control above"));
 
                     break;
             }
@@ -39788,8 +39793,8 @@ namespace Thetis
             if (_rx1_dsp_mode == DSPMode.DRM || _rx1_dsp_mode == DSPMode.SPEC) return;
 
             DialogResult dr = MessageBox.Show(
-                "Are you sure you want to reset all RX1 custom filter settings to the default?",
-                "Reset Filters?",
+                Translator.Tr("Are you sure you want to reset all RX1 custom filter settings to the default?"),
+                Translator.Tr("Reset Filters?"),
                 MessageBoxButtons.YesNo,
                 MessageBoxIcon.Question, MessageBoxDefaultButton.Button1, Common.MB_TOPMOST);
 
@@ -39866,8 +39871,8 @@ namespace Thetis
         private void toolStripMenuItemRX2FilterReset_Click(object sender, EventArgs e)
         {
             DialogResult dr = MessageBox.Show(
-                "Are you sure you want to reset all RX2 custom filter settings to the default?",
-                "Reset Filters?",
+                Translator.Tr("Are you sure you want to reset all RX2 custom filter settings to the default?"),
+                Translator.Tr("Reset Filters?"),
                 MessageBoxButtons.YesNo,
                 MessageBoxIcon.Question, MessageBoxDefaultButton.Button1, Common.MB_TOPMOST);
 
@@ -40277,7 +40282,7 @@ namespace Thetis
                 }
                 else
                 {
-                    toolTip1.SetToolTip(ptbFMMic, "");
+                    toolTip1.SetToolTip(ptbFMMic, Translator.Tr(""));
                 }
 
                 //[2.10.3.9]MW0LGE fix for when mic is disabled
@@ -40305,7 +40310,7 @@ namespace Thetis
         {
             comboFMCTCSS.Items.Clear();
             foreach (double d in CTCSS_array)
-                comboFMCTCSS.Items.Add(d.ToString("f1"));
+                comboFMCTCSS.Items.Add(d.ToString(Translator.Tr("f1")));
         }
 
         private void InitMemoryFrontPanel()
@@ -40714,9 +40719,9 @@ namespace Thetis
                 if (_rx1_dsp_mode != DSPMode.CWL &&
                     _rx1_dsp_mode != DSPMode.CWU)
                 {
-                    MessageBox.Show("The radio must be in CWL or CWU mode in order to open the " +
-                        "CWX Control Form.",
-                        "CWX Error: Wrong Mode",
+                    MessageBox.Show(Translator.Tr("The radio must be in CWL or CWU mode in order to open the ") +
+                        Translator.Tr("CWX Control Form."),
+                        Translator.Tr("CWX Error: Wrong Mode"),
                         MessageBoxButtons.OK,
                         MessageBoxIcon.Error, MessageBoxDefaultButton.Button1, Common.MB_TOPMOST);
                     return;
@@ -40727,8 +40732,8 @@ namespace Thetis
                 if (_rx1_dsp_mode != DSPMode.CWL &&
                     _rx1_dsp_mode != DSPMode.CWU)
                 {
-                    MessageBox.Show("Ideally the radio should be in CWL or CWU mode.",
-                    "CWX : Mode warning",
+                    MessageBox.Show(Translator.Tr("Ideally the radio should be in CWL or CWU mode."),
+                    Translator.Tr("CWX : Mode warning"),
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1, Common.MB_TOPMOST);
                 }
@@ -40992,7 +40997,7 @@ namespace Thetis
 
             if (bSuspendDraw) SuspendDrawing(this);
 
-            this.collapseToolStripMenuItem.Text = "Collapse";
+            this.collapseToolStripMenuItem.Text = Translator.Tr("Collapse");
 
             this.collapsedDisplay = false;
             rX2ToolStripMenuItem.Visible = false;
@@ -41462,7 +41467,7 @@ namespace Thetis
             if (!IsCollapsedView)
                 this.expandedSize = this.Size;
 
-            this.collapseToolStripMenuItem.Text = "Expand";
+            this.collapseToolStripMenuItem.Text = Translator.Tr("Expand");
             this.collapsedDisplay = true;
             this.rX2ToolStripMenuItem.Visible = true;
             this.dSPToolStripMenuItem.Visible = true;
@@ -43322,8 +43327,8 @@ namespace Thetis
                             NR2ToolStripMenuItem1.Checked = false;
                             NR3ToolStripMenuItem.Checked = false;
                             NR4ToolStripMenuItem.Checked = false;
-                            chkNR.Text = "NR";
-                            lblNRLabel.Text = "---";
+                            chkNR.Text = Translator.Tr("NR");
+                            lblNRLabel.Text = Translator.Tr("---");
                             chkNR.Checked = false;
                             break;
                         case 2:
@@ -43333,8 +43338,8 @@ namespace Thetis
                             NR2StripMenuItem2.Checked = false;
                             NR3ToolStripMenuItem_rx2.Checked = false;
                             NR4ToolStripMenuItem_rx2.Checked = false;
-                            chkRX2NR.Text = "NR";
-                            lblRX2NRLabel.Text = "---";
+                            chkRX2NR.Text = Translator.Tr("NR");
+                            lblRX2NRLabel.Text = Translator.Tr("---");
                             chkRX2NR.Checked = false;
                             break;
                     }
@@ -43354,8 +43359,8 @@ namespace Thetis
                             NR2ToolStripMenuItem1.Checked = false;
                             NR3ToolStripMenuItem.Checked = false;
                             NR4ToolStripMenuItem.Checked = false;
-                            chkNR.Text = "NR";
-                            lblNRLabel.Text = "NR";
+                            chkNR.Text = Translator.Tr("NR");
+                            lblNRLabel.Text = Translator.Tr("NR");
                             chkNR.Checked = true;
                             break;
                         case 2:
@@ -43365,8 +43370,8 @@ namespace Thetis
                             NR2StripMenuItem2.Checked = false;
                             NR3ToolStripMenuItem_rx2.Checked = false;
                             NR4ToolStripMenuItem_rx2.Checked = false;
-                            chkRX2NR.Text = "NR";
-                            lblRX2NRLabel.Text = "NR";
+                            chkRX2NR.Text = Translator.Tr("NR");
+                            lblRX2NRLabel.Text = Translator.Tr("NR");
                             chkRX2NR.Checked = true;
                             break;
                     }
@@ -43386,8 +43391,8 @@ namespace Thetis
                             NR2ToolStripMenuItem1.Checked = true;
                             NR3ToolStripMenuItem.Checked = false;
                             NR4ToolStripMenuItem.Checked = false;
-                            chkNR.Text = "NR2";
-                            lblNRLabel.Text = "NR2";
+                            chkNR.Text = Translator.Tr("NR2");
+                            lblNRLabel.Text = Translator.Tr("NR2");
                             chkNR.Checked = true;
                             break;
                         case 2:
@@ -43397,8 +43402,8 @@ namespace Thetis
                             NR2StripMenuItem2.Checked = true;
                             NR3ToolStripMenuItem_rx2.Checked = false;
                             NR4ToolStripMenuItem_rx2.Checked = false;
-                            chkRX2NR.Text = "NR2";
-                            lblRX2NRLabel.Text = "NR2";
+                            chkRX2NR.Text = Translator.Tr("NR2");
+                            lblRX2NRLabel.Text = Translator.Tr("NR2");
                             chkRX2NR.Checked = true;
                             break;
                     }
@@ -43418,8 +43423,8 @@ namespace Thetis
                             NR2ToolStripMenuItem1.Checked = false;
                             NR3ToolStripMenuItem.Checked = true;
                             NR4ToolStripMenuItem.Checked = false;
-                            chkNR.Text = "NR3";
-                            lblNRLabel.Text = "NR3";
+                            chkNR.Text = Translator.Tr("NR3");
+                            lblNRLabel.Text = Translator.Tr("NR3");
                             chkNR.Checked = true;
                             break;
                         case 2:
@@ -43429,8 +43434,8 @@ namespace Thetis
                             NR2StripMenuItem2.Checked = false;
                             NR3ToolStripMenuItem_rx2.Checked = true;
                             NR4ToolStripMenuItem_rx2.Checked = false;
-                            chkRX2NR.Text = "NR3";
-                            lblRX2NRLabel.Text = "NR3";
+                            chkRX2NR.Text = Translator.Tr("NR3");
+                            lblRX2NRLabel.Text = Translator.Tr("NR3");
                             chkRX2NR.Checked = true;
                             break;
                     }
@@ -43450,8 +43455,8 @@ namespace Thetis
                             NR2ToolStripMenuItem1.Checked = false;
                             NR3ToolStripMenuItem.Checked = false;
                             NR4ToolStripMenuItem.Checked = true;
-                            chkNR.Text = "NR4";
-                            lblNRLabel.Text = "NR4";
+                            chkNR.Text = Translator.Tr("NR4");
+                            lblNRLabel.Text = Translator.Tr("NR4");
                             chkNR.Checked = true;
                             break;
                         case 2:
@@ -43461,8 +43466,8 @@ namespace Thetis
                             NR2StripMenuItem2.Checked = false;
                             NR3ToolStripMenuItem_rx2.Checked = false;
                             NR4ToolStripMenuItem_rx2.Checked = true;
-                            chkRX2NR.Text = "NR4";
-                            lblRX2NRLabel.Text = "NR4";
+                            chkRX2NR.Text = Translator.Tr("NR4");
+                            lblRX2NRLabel.Text = Translator.Tr("NR4");
                             chkRX2NR.Checked = true;
                             break;
                     }
@@ -43525,8 +43530,8 @@ namespace Thetis
                     NBToolStripMenuItem.Checked = true;
                     cat_nb1_status = 1;
                     cat_nb2_status = 0;
-                    chkNB.Text = "NB";
-                    lblNBLabel.Text = "NB";
+                    chkNB.Text = Translator.Tr("NB");
+                    lblNBLabel.Text = Translator.Tr("NB");
                     break;
                 case CheckState.Indeterminate: // NB2
                     specRX.GetSpecRX(0).NBOn = false;
@@ -43535,8 +43540,8 @@ namespace Thetis
                     NB2ToolStripMenuItem.Checked = true;
                     cat_nb1_status = 0;
                     cat_nb2_status = 1;
-                    chkNB.Text = "NB2";
-                    lblNBLabel.Text = "NB2";
+                    chkNB.Text = Translator.Tr("NB2");
+                    lblNBLabel.Text = Translator.Tr("NB2");
                     break;
                 case CheckState.Unchecked: // all off                    
                     specRX.GetSpecRX(0).NBOn = false;
@@ -43545,8 +43550,8 @@ namespace Thetis
                     NBToolStripMenuItem.Checked = false;
                     cat_nb1_status = 0;
                     cat_nb2_status = 0;
-                    chkNB.Text = "NB";
-                    lblNBLabel.Text = "--";
+                    chkNB.Text = Translator.Tr("NB");
+                    lblNBLabel.Text = Translator.Tr("--");
                     break;
             }
             cmaster.CMSetFRXNBRun(0);
@@ -43573,8 +43578,8 @@ namespace Thetis
                     nBRX2ToolStripMenuItem.Checked = false;
                     cat_rx2nb1_status = 1;
                     cat_rx2nb2_status = 0;
-                    chkRX2NB.Text = "NB";
-                    lblRX2NBLabel.Text = "NB";
+                    chkRX2NB.Text = Translator.Tr("NB");
+                    lblRX2NBLabel.Text = Translator.Tr("NB");
                     break;
                 case CheckState.Indeterminate: // NB2
                     specRX.GetSpecRX(1).NBOn = false;
@@ -43583,8 +43588,8 @@ namespace Thetis
                     nB2ToolStripMenuItem1.Checked = false;
                     cat_rx2nb1_status = 0;
                     cat_rx2nb2_status = 1;
-                    chkRX2NB.Text = "NB2";
-                    lblRX2NBLabel.Text = "NB2";
+                    chkRX2NB.Text = Translator.Tr("NB2");
+                    lblRX2NBLabel.Text = Translator.Tr("NB2");
                     break;
                 case CheckState.Unchecked: // all off                    
                     specRX.GetSpecRX(1).NBOn = false;
@@ -43593,8 +43598,8 @@ namespace Thetis
                     nBRX2ToolStripMenuItem.Checked = false;
                     cat_rx2nb1_status = 0;
                     cat_rx2nb2_status = 0;
-                    chkRX2NB.Text = "NB";
-                    lblRX2NBLabel.Text = "--";
+                    chkRX2NB.Text = Translator.Tr("NB");
+                    lblRX2NBLabel.Text = Translator.Tr("--");
                     break;
             }
             cmaster.CMSetFRXNBRun(1);
@@ -43616,13 +43621,13 @@ namespace Thetis
             if (chkRX2NB2.Checked)
             {
                 chkRX2NB2.BackColor = button_selected_color;
-                lblRX2SNBLabel.Text = "SNB";
+                lblRX2SNBLabel.Text = Translator.Tr("SNB");
             }
 
             else
             {
                 chkRX2NB2.BackColor = SystemColors.Control;
-                lblRX2SNBLabel.Text = "---";
+                lblRX2SNBLabel.Text = Translator.Tr("---");
             }
             WDSP.SetRXASNBARun(WDSP.id(2, 0), chkRX2NB2.Checked);
             cat_rx2snb_status = Convert.ToInt32(chkRX2NB2.Checked);
@@ -44562,16 +44567,16 @@ namespace Thetis
                 nCMasterVersion = cmaster.GetCMVersion();
                 if (nCMasterVersion != Versions._CMASTER_VERSION)
                 {
-                    DialogResult dr = MessageBox.Show("Incorrect version of channelmaster.dll installed.",
-                    "Version error",
+                    DialogResult dr = MessageBox.Show(Translator.Tr("Incorrect version of channelmaster.dll installed."),
+                    Translator.Tr("Version error"),
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1, Common.MB_TOPMOST);
                 }
             }
             catch
             {
-                DialogResult dr = MessageBox.Show("Could not find GetCMVersion() in channelmaster.dll .\nEnsure correct version installed.",
-                    "Version function error",
+                DialogResult dr = MessageBox.Show(Translator.Tr("Could not find GetCMVersion() in channelmaster.dll .\nEnsure correct version installed."),
+                    Translator.Tr("Version function error"),
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1, Common.MB_TOPMOST);
             }
@@ -44582,16 +44587,16 @@ namespace Thetis
                 nCMasterAsioVersion = cmaster.GetCMasioVersion();
                 if (nCMasterAsioVersion != Versions._CMASTER_ASIO_VERSION)
                 {
-                    DialogResult dr = MessageBox.Show("Incorrect version of cmASIO.dll installed.",
-                    "Version error",
+                    DialogResult dr = MessageBox.Show(Translator.Tr("Incorrect version of cmASIO.dll installed."),
+                    Translator.Tr("Version error"),
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1, Common.MB_TOPMOST);
                 }
             }
             catch
             {
-                DialogResult dr = MessageBox.Show("Could not find GetCMasioVersion() in cmASIO.dll .\nEnsure correct version installed.",
-                    "Version function error",
+                DialogResult dr = MessageBox.Show(Translator.Tr("Could not find GetCMasioVersion() in cmASIO.dll .\nEnsure correct version installed."),
+                    Translator.Tr("Version function error"),
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1, Common.MB_TOPMOST);
             }
@@ -44603,16 +44608,16 @@ namespace Thetis
                 nWDSPVersion = WDSP.GetWDSPVersion() * 10; // see comment above
                 if (nWDSPVersion != Versions._WDSP_VERSION)
                 {
-                    DialogResult dr = MessageBox.Show("Incorrect version of wdsp.dll installed.",
-                    "Version error",
+                    DialogResult dr = MessageBox.Show(Translator.Tr("Incorrect version of wdsp.dll installed."),
+                    Translator.Tr("Version error"),
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Warning);
                 }
             }
             catch
             {
-                DialogResult dr = MessageBox.Show("Could not find GetWDSPVersion() in wdsp.dll .\nEnsure correct version installed.",
-                    "Version function error",
+                DialogResult dr = MessageBox.Show(Translator.Tr("Could not find GetWDSPVersion() in wdsp.dll .\nEnsure correct version installed."),
+                    Translator.Tr("Version function error"),
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Warning);
             }
@@ -44627,16 +44632,16 @@ namespace Thetis
                 nPAVersion = major * 100 + minor * 10 + subminor;
                 if (nPAVersion != Versions._PORTAUDIO_VERSION)
                 {
-                    DialogResult dr = MessageBox.Show("Incorrect version of portaudio.dll installed.",
-                    "Version error",
+                    DialogResult dr = MessageBox.Show(Translator.Tr("Incorrect version of portaudio.dll installed."),
+                    Translator.Tr("Version error"),
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Warning);
                 }
             }
             catch
             {
-                DialogResult dr = MessageBox.Show("Could not find PA_GetVersion() in portaudio.dll .\nEnsure correct version installed.",
-                    "Version function error",
+                DialogResult dr = MessageBox.Show(Translator.Tr("Could not find PA_GetVersion() in portaudio.dll .\nEnsure correct version installed."),
+                    Translator.Tr("Version function error"),
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Warning);
             }
@@ -45823,8 +45828,8 @@ namespace Thetis
                 {
                     if (bsf.IndexOfCurrent == -1)
                     {
-                        if (bsf.ReturnMode == BandStackFilter.FilterReturnMode.LastVisited) regBandStackCurrentEntry.Text = "L";
-                        else regBandStackCurrentEntry.Text = "-";
+                        if (bsf.ReturnMode == BandStackFilter.FilterReturnMode.LastVisited) regBandStackCurrentEntry.Text = Translator.Tr("L");
+                        else regBandStackCurrentEntry.Text = Translator.Tr("-");
                     }
                     else
                     {
@@ -45834,7 +45839,7 @@ namespace Thetis
                 }
                 else
                 {
-                    regBandStackCurrentEntry.Text = regBandStackTotalEntries.Text = "-";
+                    regBandStackCurrentEntry.Text = regBandStackTotalEntries.Text = Translator.Tr("-");
                 }
             }
         }
@@ -46318,9 +46323,9 @@ namespace Thetis
         private void setupZTBButton()
         {
             if (m_bZTBisRecallStore)
-                toolTip1.SetToolTip(btnDisplayZTB, "Recall/Store mode. Left click to recall, right to store Zoom/Pan/Center per band, per RX. Shift for RX2.");
+                toolTip1.SetToolTip(btnDisplayZTB, Translator.Tr("Recall/Store mode. Left click to recall, right to store Zoom/Pan/Center per band, per RX. Shift for RX2."));
             else
-                toolTip1.SetToolTip(btnDisplayZTB, "Zoom to the band using Region band edges. Shift for RX2.");
+                toolTip1.SetToolTip(btnDisplayZTB, Translator.Tr("Zoom to the band using Region band edges. Shift for RX2."));
         }
 
         private void btnDisplayZTB_MouseUp(object sender, MouseEventArgs e)
@@ -47834,7 +47839,7 @@ namespace Thetis
                 default:
                     // otherwise error
                     toolStripStatusLabel_CMstatus.Image = Properties.Resources.cm_red;
-                    toolStripStatusLabel_CMstatus.ToolTipText = "Issue starting CM ASIO. Check driver name in registry.\nAlso check in/out channels.";
+                    toolStripStatusLabel_CMstatus.ToolTipText = Translator.Tr("Issue starting CM ASIO. Check driver name in registry.\nAlso check in/out channels.");
                     toolStripStatusLabel_CMstatus.Visible = true;
                     break;
             }
@@ -48443,6 +48448,65 @@ namespace Thetis
                 SetupForm.Focus();
                 SetFocusMaster(false);
             }
+        }
+
+        // ==================================================================
+        // Language (i18n) menu
+        // ==================================================================
+
+        private ToolStripMenuItem m_miLangTop;
+        private ToolStripMenuItem m_miLangZh;
+        private ToolStripMenuItem m_miLangEn;
+
+        private void SetupLanguageMenu()
+        {
+            if (m_miLangTop != null) return;
+
+            m_miLangTop = new ToolStripMenuItem();
+            m_miLangTop.Name = "miLanguage";
+            m_miLangTop.Text = Translator.Tr("LANG_MENU");
+
+            m_miLangZh = new ToolStripMenuItem();
+            m_miLangZh.Name = "miLangZh";
+            m_miLangZh.Text = Translator.Tr("LANG_ZH_NAME");
+            m_miLangZh.Click += new EventHandler(miLangZh_Click);
+
+            m_miLangEn = new ToolStripMenuItem();
+            m_miLangEn.Name = "miLangEn";
+            m_miLangEn.Text = Translator.Tr("LANG_EN_NAME");
+            m_miLangEn.Click += new EventHandler(miLangEn_Click);
+
+            m_miLangTop.DropDownItems.AddRange(new ToolStripItem[] { m_miLangZh, m_miLangEn });
+            menuStrip1.Items.Add(m_miLangTop);
+
+            m_miLangZh.Checked = Translator.IsChinese;
+            m_miLangEn.Checked = !Translator.IsChinese;
+        }
+
+        private void miLangZh_Click(object sender, EventArgs e)
+        {
+            Translator.SetLanguage(Translator.LANG_ZH);
+        }
+
+        private void miLangEn_Click(object sender, EventArgs e)
+        {
+            Translator.SetLanguage(Translator.LANG_EN);
+        }
+
+        private void Translator_LanguageChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                Translator.ApplyToAllOpenForms();
+                if (!IsSetupFormNull) Translator.ApplyToForm(SetupForm);
+
+                if (m_miLangTop != null) m_miLangTop.Text = Translator.Tr("LANG_MENU");
+                if (m_miLangZh != null) m_miLangZh.Text = Translator.Tr("LANG_ZH_NAME");
+                if (m_miLangEn != null) m_miLangEn.Text = Translator.Tr("LANG_EN_NAME");
+                if (m_miLangZh != null) m_miLangZh.Checked = Translator.IsChinese;
+                if (m_miLangEn != null) m_miLangEn.Checked = !Translator.IsChinese;
+            }
+            catch { }
         }
 
         public void ToggleRxTxAnt()
@@ -51196,12 +51260,12 @@ namespace Thetis
 
                 if (Common.AltlKeyDown && Common.ShiftKeyDown && Common.CtrlKeyDown)
                 {
-                    DialogResult dr = MessageBox.Show("CTRL+ALT+SHIFT key combo has been detected.\n\n" +
-                    "The location of the main Thetis console window and Setup will be moved to the primary monitor.\n\n" +
-                    "If other forms are 'missing' you can use Setup->Tools->[Reposition Forms] to recover them.\n\n\n" +
-                    "Do you want to do this?\n\n\n" +
-                    "NOTE: release the keys",
-                    "Resposition detected",
+                    DialogResult dr = MessageBox.Show(Translator.Tr("CTRL+ALT+SHIFT key combo has been detected.\n\n") +
+                    Translator.Tr("The location of the main Thetis console window and Setup will be moved to the primary monitor.\n\n") +
+                    Translator.Tr("If other forms are 'missing' you can use Setup->Tools->[Reposition Forms] to recover them.\n\n\n") +
+                    Translator.Tr("Do you want to do this?\n\n\n") +
+                    Translator.Tr("NOTE: release the keys"),
+                    Translator.Tr("Resposition detected"),
                     MessageBoxButtons.YesNo,
                     MessageBoxIcon.Question, MessageBoxDefaultButton.Button2, Common.MB_TOPMOST);
 

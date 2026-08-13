@@ -26,6 +26,7 @@ namespace Thetis
         public rxa(int i)
         {
             InitializeComponent();
+            Translator.ApplyToForm(this);
             fwid = i;                                                       // firmware id
             stid = i - 2;                                                   // ChannelMaster stream id
             chid = 2 * stid;                                                // WDSP channel id

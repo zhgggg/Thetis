@@ -48,6 +48,7 @@ namespace Thetis.Midi2Cat
         {
             this.DbFile = DbFile;
             InitializeComponent();
+            Thetis.Translator.ApplyToForm(this);
         }
 
         private void Midi2CatSetupForm_Load(object sender, EventArgs e)

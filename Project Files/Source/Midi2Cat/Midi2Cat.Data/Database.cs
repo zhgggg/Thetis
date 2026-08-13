@@ -109,15 +109,15 @@ namespace Midi2Cat.Data
                 DS.Tables.Add(MidiDeviceName);
                 DataColumn[] keys = new DataColumn[1];
                 t = DS.Tables[MidiDeviceName];
-                t.Columns.Add("MidiControlId", typeof(int));
-                t.Columns.Add("MidiControlName", typeof(string));
-                t.Columns.Add("MidiControlType", typeof(int));
-                t.Columns.Add("MinValue", typeof(int));
-                t.Columns.Add("MaxValue", typeof(int));
-                t.Columns.Add("CatCmdId", typeof(int));
-                t.Columns.Add("MidiOutCmdDown", typeof(string));
-                t.Columns.Add("MidiOutCmdUp", typeof(string));
-                t.Columns.Add("MidiOutCmdSetValue", typeof(string));
+                t.Columns.Add(Thetis.Translator.Tr("MidiControlId"), typeof(int));
+                t.Columns.Add(Thetis.Translator.Tr("MidiControlName"), typeof(string));
+                t.Columns.Add(Thetis.Translator.Tr("MidiControlType"), typeof(int));
+                t.Columns.Add(Thetis.Translator.Tr("MinValue"), typeof(int));
+                t.Columns.Add(Thetis.Translator.Tr("MaxValue"), typeof(int));
+                t.Columns.Add(Thetis.Translator.Tr("CatCmdId"), typeof(int));
+                t.Columns.Add(Thetis.Translator.Tr("MidiOutCmdDown"), typeof(string));
+                t.Columns.Add(Thetis.Translator.Tr("MidiOutCmdUp"), typeof(string));
+                t.Columns.Add(Thetis.Translator.Tr("MidiOutCmdSetValue"), typeof(string));
                 keys[0] = t.Columns[0];
                 t.PrimaryKey = keys;
             }
@@ -129,17 +129,17 @@ namespace Midi2Cat.Data
                 if (t.Columns["MidiOutCmdDown"] == null)
                 {
                     columnAdded = true;
-                    t.Columns.Add("MidiOutCmdDown", typeof(string));
+                    t.Columns.Add(Thetis.Translator.Tr("MidiOutCmdDown"), typeof(string));
                 }
                 if (t.Columns["MidiOutCmdUp"] == null)
                 {
                     columnAdded = true;
-                    t.Columns.Add("MidiOutCmdUp", typeof(string));
+                    t.Columns.Add(Thetis.Translator.Tr("MidiOutCmdUp"), typeof(string));
                 }
                 if (t.Columns["MidiOutCmdSetValue"] == null)
                 {
                     columnAdded = true;
-                    t.Columns.Add("MidiOutCmdSetValue", typeof(string));
+                    t.Columns.Add(Thetis.Translator.Tr("MidiOutCmdSetValue"), typeof(string));
                 }
                 if (columnAdded)
                 {
@@ -556,9 +556,9 @@ namespace Midi2Cat.Data
                 DS.Tables.Add(SettingsTable);
                 DataColumn[] keys = new DataColumn[1];
                 t = DS.Tables[SettingsTable];
-                t.Columns.Add("Name", typeof(string));
-                t.Columns.Add("Value", typeof(string));
-                t.Columns.Add("ValueType", typeof(string));
+                t.Columns.Add(Thetis.Translator.Tr("Name"), typeof(string));
+                t.Columns.Add(Thetis.Translator.Tr("Value"), typeof(string));
+                t.Columns.Add(Thetis.Translator.Tr("ValueType"), typeof(string));
                 keys[0] = t.Columns[0];
                 t.PrimaryKey = keys;
             }

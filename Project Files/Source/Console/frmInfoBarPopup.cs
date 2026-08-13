@@ -66,6 +66,7 @@ namespace Thetis
         public frmInfoBarPopup()
         {
             InitializeComponent();
+            Translator.ApplyToForm(this);
         }
         public bool HasButtons
         {

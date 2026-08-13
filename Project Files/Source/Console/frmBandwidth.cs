@@ -48,6 +48,7 @@ namespace Thetis
         public frmBandwidth()
         {
             InitializeComponent();
+            Translator.ApplyToForm(this);
             timerReadBandwidth.Interval = 500;
             timerReadBandwidth.Enabled = false;
             ucBandwidthView.SmoothingFactor = 0.7;

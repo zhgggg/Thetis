@@ -67,6 +67,7 @@ namespace Thetis
             // Required for Windows Form Designer support
             //
             InitializeComponent();
+            Translator.ApplyToForm(this);
             console = c;
         }
 
@@ -148,7 +149,7 @@ namespace Thetis
             this.radBtn15.Size = new System.Drawing.Size(100, 40);
             this.radBtn15.TabIndex = 14;
             this.radBtn15.TabStop = true;
-            this.radBtn15.Text = "F15";
+            this.radBtn15.Text = Translator.Tr("F15");
             this.radBtn15.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.radBtn15.UseVisualStyleBackColor = true;
             this.radBtn15.Click += new System.EventHandler(this.radBtn15_Click);
@@ -164,7 +165,7 @@ namespace Thetis
             this.radBtn14.Size = new System.Drawing.Size(100, 40);
             this.radBtn14.TabIndex = 13;
             this.radBtn14.TabStop = true;
-            this.radBtn14.Text = "F14";
+            this.radBtn14.Text = Translator.Tr("F14");
             this.radBtn14.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.radBtn14.UseVisualStyleBackColor = true;
             this.radBtn14.Click += new System.EventHandler(this.radBtn14_Click);
@@ -180,7 +181,7 @@ namespace Thetis
             this.radBtn13.Size = new System.Drawing.Size(100, 40);
             this.radBtn13.TabIndex = 12;
             this.radBtn13.TabStop = true;
-            this.radBtn13.Text = "F13";
+            this.radBtn13.Text = Translator.Tr("F13");
             this.radBtn13.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.radBtn13.UseVisualStyleBackColor = true;
             this.radBtn13.Click += new System.EventHandler(this.radBtn13_Click);
@@ -196,7 +197,7 @@ namespace Thetis
             this.radBtn12.Size = new System.Drawing.Size(100, 40);
             this.radBtn12.TabIndex = 11;
             this.radBtn12.TabStop = true;
-            this.radBtn12.Text = "F12";
+            this.radBtn12.Text = Translator.Tr("F12");
             this.radBtn12.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.radBtn12.UseVisualStyleBackColor = true;
             this.radBtn12.Click += new System.EventHandler(this.radBtn12_Click);
@@ -212,7 +213,7 @@ namespace Thetis
             this.radBtn11.Size = new System.Drawing.Size(100, 40);
             this.radBtn11.TabIndex = 10;
             this.radBtn11.TabStop = true;
-            this.radBtn11.Text = "F11";
+            this.radBtn11.Text = Translator.Tr("F11");
             this.radBtn11.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.radBtn11.UseVisualStyleBackColor = true;
             this.radBtn11.Click += new System.EventHandler(this.radBtn11_Click);
@@ -228,7 +229,7 @@ namespace Thetis
             this.radBtn10.Size = new System.Drawing.Size(100, 40);
             this.radBtn10.TabIndex = 9;
             this.radBtn10.TabStop = true;
-            this.radBtn10.Text = "F10";
+            this.radBtn10.Text = Translator.Tr("F10");
             this.radBtn10.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.radBtn10.UseVisualStyleBackColor = true;
             this.radBtn10.Click += new System.EventHandler(this.radBtn10_Click);
@@ -244,7 +245,7 @@ namespace Thetis
             this.radBtn9.Size = new System.Drawing.Size(100, 40);
             this.radBtn9.TabIndex = 8;
             this.radBtn9.TabStop = true;
-            this.radBtn9.Text = "F9";
+            this.radBtn9.Text = Translator.Tr("F9");
             this.radBtn9.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.radBtn9.UseVisualStyleBackColor = true;
             this.radBtn9.Click += new System.EventHandler(this.radBtn9_Click);
@@ -260,7 +261,7 @@ namespace Thetis
             this.radBtn8.Size = new System.Drawing.Size(100, 40);
             this.radBtn8.TabIndex = 7;
             this.radBtn8.TabStop = true;
-            this.radBtn8.Text = "F8";
+            this.radBtn8.Text = Translator.Tr("F8");
             this.radBtn8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.radBtn8.UseVisualStyleBackColor = true;
             this.radBtn8.Click += new System.EventHandler(this.radBtn8_Click);
@@ -276,7 +277,7 @@ namespace Thetis
             this.radBtn7.Size = new System.Drawing.Size(100, 40);
             this.radBtn7.TabIndex = 6;
             this.radBtn7.TabStop = true;
-            this.radBtn7.Text = "F7";
+            this.radBtn7.Text = Translator.Tr("F7");
             this.radBtn7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.radBtn7.UseVisualStyleBackColor = true;
             this.radBtn7.Click += new System.EventHandler(this.radBtn7_Click);
@@ -292,7 +293,7 @@ namespace Thetis
             this.radBtn6.Size = new System.Drawing.Size(100, 40);
             this.radBtn6.TabIndex = 5;
             this.radBtn6.TabStop = true;
-            this.radBtn6.Text = "F6";
+            this.radBtn6.Text = Translator.Tr("F6");
             this.radBtn6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.radBtn6.UseVisualStyleBackColor = true;
             this.radBtn6.Click += new System.EventHandler(this.radBtn6_Click);
@@ -308,7 +309,7 @@ namespace Thetis
             this.radBtn5.Size = new System.Drawing.Size(100, 40);
             this.radBtn5.TabIndex = 4;
             this.radBtn5.TabStop = true;
-            this.radBtn5.Text = "F5";
+            this.radBtn5.Text = Translator.Tr("F5");
             this.radBtn5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.radBtn5.UseVisualStyleBackColor = true;
             this.radBtn5.Click += new System.EventHandler(this.radBtn5_Click);
@@ -324,7 +325,7 @@ namespace Thetis
             this.radBtn4.Size = new System.Drawing.Size(100, 40);
             this.radBtn4.TabIndex = 3;
             this.radBtn4.TabStop = true;
-            this.radBtn4.Text = "F4";
+            this.radBtn4.Text = Translator.Tr("F4");
             this.radBtn4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.radBtn4.UseVisualStyleBackColor = true;
             this.radBtn4.Click += new System.EventHandler(this.radBtn4_Click);
@@ -340,7 +341,7 @@ namespace Thetis
             this.radBtn3.Size = new System.Drawing.Size(100, 40);
             this.radBtn3.TabIndex = 2;
             this.radBtn3.TabStop = true;
-            this.radBtn3.Text = "F3";
+            this.radBtn3.Text = Translator.Tr("F3");
             this.radBtn3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.radBtn3.UseVisualStyleBackColor = true;
             this.radBtn3.Click += new System.EventHandler(this.radBtn3_Click);
@@ -356,7 +357,7 @@ namespace Thetis
             this.radBtn2.Size = new System.Drawing.Size(100, 40);
             this.radBtn2.TabIndex = 1;
             this.radBtn2.TabStop = true;
-            this.radBtn2.Text = "F2";
+            this.radBtn2.Text = Translator.Tr("F2");
             this.radBtn2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.radBtn2.UseVisualStyleBackColor = true;
             this.radBtn2.Click += new System.EventHandler(this.radBtn2_Click);
@@ -374,7 +375,7 @@ namespace Thetis
             this.radBtn1.Size = new System.Drawing.Size(100, 40);
             this.radBtn1.TabIndex = 0;
             this.radBtn1.TabStop = true;
-            this.radBtn1.Text = "F1";
+            this.radBtn1.Text = Translator.Tr("F1");
             this.radBtn1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.radBtn1.UseVisualStyleBackColor = true;
             this.radBtn1.Click += new System.EventHandler(this.radBtn1_Click);
@@ -387,7 +388,7 @@ namespace Thetis
             this.btnClose.Selectable = true;
             this.btnClose.Size = new System.Drawing.Size(100, 40);
             this.btnClose.TabIndex = 0;
-            this.btnClose.Text = "Close";
+            this.btnClose.Text = Translator.Tr("Close");
             this.btnClose.UseVisualStyleBackColor = true;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
@@ -401,7 +402,7 @@ namespace Thetis
             this.Controls.Add(this.btnClose);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "BandButtonsPopup";
-            this.Text = "Select Operating Band";
+            this.Text = Translator.Tr("Select Operating Band");
             this.TopMost = true;
             this.Activated += new System.EventHandler(this.BandButtonsPopup_Activated);
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.BandButtonsPopup_FormClosing);
@@ -427,26 +428,26 @@ namespace Thetis
 
             if (console.ShowRX1)
             {
-                this.Text = "set RX1 Band";
+                this.Text = Translator.Tr("set RX1 Band");
                 currentBand = console.RX1Band;
                 switch(currentBandGroup)
                 {
                     case 0:                             // HF
-                        radBtn1.Text = "160";
-                        radBtn2.Text = "80";
-                        radBtn3.Text = "60";
-                        radBtn4.Text = "40";
-                        radBtn5.Text = "30";
-                        radBtn6.Text = "20";
-                        radBtn7.Text = "17";
-                        radBtn8.Text = "15";
-                        radBtn9.Text = "12";
-                        radBtn10.Text = "10";
-                        radBtn11.Text = "6";
-                        radBtn12.Text = "LF MF";
-                        radBtn13.Text = "VHF+";
-                        radBtn14.Text = "WWV";
-                        radBtn15.Text = "SWL";
+                        radBtn1.Text = Translator.Tr("160");
+                        radBtn2.Text = Translator.Tr("80");
+                        radBtn3.Text = Translator.Tr("60");
+                        radBtn4.Text = Translator.Tr("40");
+                        radBtn5.Text = Translator.Tr("30");
+                        radBtn6.Text = Translator.Tr("20");
+                        radBtn7.Text = Translator.Tr("17");
+                        radBtn8.Text = Translator.Tr("15");
+                        radBtn9.Text = Translator.Tr("12");
+                        radBtn10.Text = Translator.Tr("10");
+                        radBtn11.Text = Translator.Tr("6");
+                        radBtn12.Text = Translator.Tr("LF MF");
+                        radBtn13.Text = Translator.Tr("VHF+");
+                        radBtn14.Text = Translator.Tr("WWV");
+                        radBtn15.Text = Translator.Tr("SWL");
                         radBtn12.Enabled = false;
                         radBtn13.Enabled = true;
                         break;
@@ -463,28 +464,28 @@ namespace Thetis
                         radBtn10.Text = console.GetVHFText(9);
                         radBtn11.Text = console.GetVHFText(10);
                         radBtn12.Text = console.GetVHFText(11);
-                        radBtn13.Text = "HF";
+                        radBtn13.Text = Translator.Tr("HF");
                         radBtn14.Text = console.GetVHFText(12);
                         radBtn15.Text = console.GetVHFText(13);
                         radBtn12.Enabled = true;
                         radBtn13.Enabled = true;
                         break;
                     case 2:                             // General coverage SWL
-                        radBtn1.Text = "L/MW";
-                        radBtn2.Text = "120m";
-                        radBtn3.Text = "90m";
-                        radBtn4.Text = "61m";
-                        radBtn5.Text = "49m";
-                        radBtn6.Text = "41m";
-                        radBtn7.Text = "31m";
-                        radBtn8.Text = "25m";
-                        radBtn9.Text = "22m";
-                        radBtn10.Text = "19m";
-                        radBtn11.Text = "16m";
-                        radBtn12.Text = "14m";
-                        radBtn13.Text = "HF";
-                        radBtn14.Text = "13m";
-                        radBtn15.Text = "11m";
+                        radBtn1.Text = Translator.Tr("L/MW");
+                        radBtn2.Text = Translator.Tr("120m");
+                        radBtn3.Text = Translator.Tr("90m");
+                        radBtn4.Text = Translator.Tr("61m");
+                        radBtn5.Text = Translator.Tr("49m");
+                        radBtn6.Text = Translator.Tr("41m");
+                        radBtn7.Text = Translator.Tr("31m");
+                        radBtn8.Text = Translator.Tr("25m");
+                        radBtn9.Text = Translator.Tr("22m");
+                        radBtn10.Text = Translator.Tr("19m");
+                        radBtn11.Text = Translator.Tr("16m");
+                        radBtn12.Text = Translator.Tr("14m");
+                        radBtn13.Text = Translator.Tr("HF");
+                        radBtn14.Text = Translator.Tr("13m");
+                        radBtn15.Text = Translator.Tr("11m");
                         radBtn12.Enabled = true;
                         radBtn13.Enabled = true;
                         break;
@@ -566,23 +567,23 @@ namespace Thetis
             }
             else                                    // RX2 - HF only
             {
-                this.Text = "set RX2 Band";
+                this.Text = Translator.Tr("set RX2 Band");
                 currentBand = console.RX2Band;
-                radBtn1.Text = "160";
-                radBtn2.Text = "80";
-                radBtn3.Text = "60";
-                radBtn4.Text = "40";
-                radBtn5.Text = "30";
-                radBtn6.Text = "20";
-                radBtn7.Text = "17";
-                radBtn8.Text = "15";
-                radBtn9.Text = "12";
-                radBtn10.Text = "10";
-                radBtn11.Text = "6";
-                radBtn12.Text = "--";
-                radBtn13.Text = "--";
-                radBtn14.Text = "WWV";
-                radBtn15.Text = "GEN";
+                radBtn1.Text = Translator.Tr("160");
+                radBtn2.Text = Translator.Tr("80");
+                radBtn3.Text = Translator.Tr("60");
+                radBtn4.Text = Translator.Tr("40");
+                radBtn5.Text = Translator.Tr("30");
+                radBtn6.Text = Translator.Tr("20");
+                radBtn7.Text = Translator.Tr("17");
+                radBtn8.Text = Translator.Tr("15");
+                radBtn9.Text = Translator.Tr("12");
+                radBtn10.Text = Translator.Tr("10");
+                radBtn11.Text = Translator.Tr("6");
+                radBtn12.Text = Translator.Tr("--");
+                radBtn13.Text = Translator.Tr("--");
+                radBtn14.Text = Translator.Tr("WWV");
+                radBtn15.Text = Translator.Tr("GEN");
                 radBtn12.Enabled = false;
                 radBtn13.Enabled = false;
                 switch (currentBand)

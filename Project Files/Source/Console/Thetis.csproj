@@ -1229,6 +1229,9 @@
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <Content Include="CAT\CATStructs.xml" />
+    <Content Include="Languages\zh-CN.lang">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <EmbeddedResource Include="images\flex-3000.jpg" />
     <Content Include="hpsdr5-64.ico" />
     <Content Include="images\hpsdr.jpg" />
@@ -1308,11 +1311,8 @@
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PreBuildEvent>@echo off
-for /f "delims=" %25%25x in ('wmic os get localdatetime ^| find "."') do set datetime=%25%25x
-set year=%25datetime:~2,2%25
-set month=%25datetime:~4,2%25
-set day=%25datetime:~6,2%25
-set formatted_date=%25month%25/%25day%25/%25year%25
+for /f "usebackq tokens=*" %25%25d in (`powershell -NoProfile -Command "Get-Date -Format 'MM/dd/yy'"`) do set formatted_date=%25%25d
+if "%25formatted_date%25"=="" set formatted_date=01/01/00
 
 echo // &gt;  "$(ProjectDir)VersionInfo.cs"
 echo //Auto Generated Pre-Build event MW0LGE &gt;&gt; "$(ProjectDir)VersionInfo.cs"

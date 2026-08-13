@@ -57,8 +57,8 @@ namespace Thetis
                     {
                         console.SetupForm.copyCATPropsToDialogVars(); // need to make sure the props on the setup page get reset 
                     }
-                    MessageBox.Show("Could not initialize CAT control.  Exception was:\n\n " + ex.Message +
-                        "\n\nCAT control has been disabled.", "Error Initializing CAT control",
+                    MessageBox.Show(Translator.Tr("Could not initialize CAT control.  Exception was:\n\n ") + ex.Message +
+                        Translator.Tr("\n\nCAT control has been disabled."), Translator.Tr("Error Initializing CAT control"),
                         MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
@@ -350,8 +350,8 @@ namespace Thetis
                     {
                         console.SetupForm.copyCAT2PropsToDialogVars(); // need to make sure the props on the setup page get reset 
                     }
-                    MessageBox.Show("Could not initialize CAT control.  Exception was:\n\n " + ex.Message +
-                        "\n\nCAT control has been disabled.", "Error Initializing CAT control",
+                    MessageBox.Show(Translator.Tr("Could not initialize CAT control.  Exception was:\n\n ") + ex.Message +
+                        Translator.Tr("\n\nCAT control has been disabled."), Translator.Tr("Error Initializing CAT control"),
                         MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
@@ -582,8 +582,8 @@ namespace Thetis
                     {
                         console.SetupForm.copyCAT3PropsToDialogVars(); // need to make sure the props on the setup page get reset 
                     }
-                    MessageBox.Show("Could not initialize CAT control.  Exception was:\n\n " + ex.Message +
-                        "\n\nCAT control has been disabled.", "Error Initializing CAT control",
+                    MessageBox.Show(Translator.Tr("Could not initialize CAT control.  Exception was:\n\n ") + ex.Message +
+                        Translator.Tr("\n\nCAT control has been disabled."), Translator.Tr("Error Initializing CAT control"),
                         MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
@@ -810,8 +810,8 @@ namespace Thetis
                        {
                            console.SetupForm.copyCAT4PropsToDialogVars(); // need to make sure the props on the setup page get reset 
                        }
-                       MessageBox.Show("Could not initialize CAT control.  Exception was:\n\n " + ex.Message +
-                           "\n\nCAT control has been disabled.", "Error Initializing CAT control",
+                       MessageBox.Show(Translator.Tr("Could not initialize CAT control.  Exception was:\n\n ") + ex.Message +
+                           Translator.Tr("\n\nCAT control has been disabled."), Translator.Tr("Error Initializing CAT control"),
                            MessageBoxButtons.OK, MessageBoxIcon.Error);
                    }
                } 
@@ -1039,8 +1039,8 @@ namespace Thetis
                     {
                         console.SetupForm.copyAndromedaCATPropsToDialogVars(); // need to make sure the props on the setup page get reset 
                     }
-                    MessageBox.Show("Could not initialize Andromeda CAT control.  Exception was:\n\n " + ex.Message +
-                        "\n\nCAT control has been disabled.", "Error Initializing CAT control",
+                    MessageBox.Show(Translator.Tr("Could not initialize Andromeda CAT control.  Exception was:\n\n ") + ex.Message +
+                        Translator.Tr("\n\nCAT control has been disabled."), Translator.Tr("Error Initializing CAT control"),
                         MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
@@ -1213,8 +1213,8 @@ namespace Thetis
                     {
                         console.SetupForm.copyAriesCATPropsToDialogVars(); // need to make sure the props on the setup page get reset 
                     }
-                    MessageBox.Show("Could not initialize Aries CAT control.  Exception was:\n\n " + ex.Message +
-                        "\n\nCAT control has been disabled.", "Error Initializing CAT control",
+                    MessageBox.Show(Translator.Tr("Could not initialize Aries CAT control.  Exception was:\n\n ") + ex.Message +
+                        Translator.Tr("\n\nCAT control has been disabled."), Translator.Tr("Error Initializing CAT control"),
                         MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
@@ -1387,8 +1387,8 @@ namespace Thetis
                     {
                         console.SetupForm.copyGanymedeCATPropsToDialogVars(); // need to make sure the props on the setup page get reset 
                     }
-                    MessageBox.Show("Could not initialize Ganymede CAT control.  Exception was:\n\n " + ex.Message +
-                        "\n\nCAT control has been disabled.", "Error Initializing CAT control",
+                    MessageBox.Show(Translator.Tr("Could not initialize Ganymede CAT control.  Exception was:\n\n ") + ex.Message +
+                        Translator.Tr("\n\nCAT control has been disabled."), Translator.Tr("Error Initializing CAT control"),
                         MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }

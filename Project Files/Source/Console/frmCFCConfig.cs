@@ -82,6 +82,7 @@ namespace Thetis
             _active = false;
 
             InitializeComponent();
+            Translator.ApplyToForm(this);
 
             Common.RestoreForm(this, "CFCConfig", false);
             Common.ForceFormOnScreen(this);

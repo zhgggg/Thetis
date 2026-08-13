@@ -52,6 +52,7 @@ namespace Thetis
         public frmQuickRecallPopupList()
         {
             InitializeComponent();
+            Translator.ApplyToForm(this);
         }
 
         public ListBox FreqList {

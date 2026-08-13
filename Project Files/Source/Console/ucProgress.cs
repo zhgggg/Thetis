@@ -92,6 +92,7 @@ namespace Thetis
         public ucProgress()
         {
             InitializeComponent();
+            Translator.ApplyToForm(this);
             DoubleBuffered = true;
         }
 

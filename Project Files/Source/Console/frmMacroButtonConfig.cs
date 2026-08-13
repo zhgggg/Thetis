@@ -69,6 +69,7 @@ namespace Thetis
         public frmMacroButtonConfig(CATScriptInterpreter si)
         {
             InitializeComponent();
+            Translator.ApplyToForm(this);
 
             _console = null;
             _cat_tester = null;

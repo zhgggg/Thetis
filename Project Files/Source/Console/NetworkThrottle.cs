@@ -60,8 +60,8 @@ namespace Thetis
             {
                 if (showErrors)
                 {
-                    MessageBox.Show("Unable to open LocalMachine registry base key.",
-                        "Error",
+                    MessageBox.Show(Translator.Tr("Unable to open LocalMachine registry base key."),
+                        Translator.Tr("Error"),
                         MessageBoxButtons.OK,
                         MessageBoxIcon.Error, MessageBoxDefaultButton.Button1, Common.MB_TOPMOST);
                 }
@@ -77,8 +77,8 @@ namespace Thetis
                 {
                     if (showErrors)
                     {
-                        MessageBox.Show("Unable to open SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Multimedia\\SystemProfile registry key.",
-                            "Error",
+                        MessageBox.Show(Translator.Tr("Unable to open SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Multimedia\\SystemProfile registry key."),
+                            Translator.Tr("Error"),
                             MessageBoxButtons.OK,
                             MessageBoxIcon.Error, MessageBoxDefaultButton.Button1, Common.MB_TOPMOST);
                     }
@@ -100,8 +100,8 @@ namespace Thetis
                             {
                                 if (showErrors)
                                 {
-                                    MessageBox.Show("Unsuitable value in NetworkThrottlingIndex key.",
-                                        "Error",
+                                    MessageBox.Show(Translator.Tr("Unsuitable value in NetworkThrottlingIndex key."),
+                                        Translator.Tr("Error"),
                                         MessageBoxButtons.OK,
                                         MessageBoxIcon.Error, MessageBoxDefaultButton.Button1, Common.MB_TOPMOST);
                                 }
@@ -112,8 +112,8 @@ namespace Thetis
                     {
                         if (showErrors)
                         {
-                            MessageBox.Show("Unable to GetValue on NetworkThrottlingIndex registry entry.",
-                                "Error",
+                            MessageBox.Show(Translator.Tr("Unable to GetValue on NetworkThrottlingIndex registry entry."),
+                                Translator.Tr("Error"),
                                 MessageBoxButtons.OK,
                                 MessageBoxIcon.Error, MessageBoxDefaultButton.Button1, Common.MB_TOPMOST);
                         }
@@ -137,8 +137,8 @@ namespace Thetis
                 }
                 catch
                 {
-                    MessageBox.Show("Unable to open LocalMachine registry base key.",
-                        "Error",
+                    MessageBox.Show(Translator.Tr("Unable to open LocalMachine registry base key."),
+                        Translator.Tr("Error"),
                         MessageBoxButtons.OK,
                         MessageBoxIcon.Error, MessageBoxDefaultButton.Button1, Common.MB_TOPMOST);
                 }
@@ -152,8 +152,8 @@ namespace Thetis
                     }
                     catch
                     {
-                        MessageBox.Show("Unable to open SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Multimedia\\SystemProfile registry key.",
-                            "Error",
+                        MessageBox.Show(Translator.Tr("Unable to open SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Multimedia\\SystemProfile registry key."),
+                            Translator.Tr("Error"),
                             MessageBoxButtons.OK,
                             MessageBoxIcon.Error, MessageBoxDefaultButton.Button1, Common.MB_TOPMOST);
                     }
@@ -168,8 +168,8 @@ namespace Thetis
                         }
                         catch
                         {
-                            MessageBox.Show("Unable to SetValue on NetworkThrottlingIndex registry entry.",
-                            "Error",
+                            MessageBox.Show(Translator.Tr("Unable to SetValue on NetworkThrottlingIndex registry entry."),
+                            Translator.Tr("Error"),
                             MessageBoxButtons.OK,
                             MessageBoxIcon.Error, MessageBoxDefaultButton.Button1, Common.MB_TOPMOST);
                         }
@@ -181,8 +181,8 @@ namespace Thetis
             else
             {
                 //msgbox need to be admin !
-                MessageBox.Show("You need to be an Administrator. Please run Thetis 'As Administrator'.",
-                    "No Administrator Rights",
+                MessageBox.Show(Translator.Tr("You need to be an Administrator. Please run Thetis 'As Administrator'."),
+                    Translator.Tr("No Administrator Rights"),
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Error, MessageBoxDefaultButton.Button1, Common.MB_TOPMOST);
             }

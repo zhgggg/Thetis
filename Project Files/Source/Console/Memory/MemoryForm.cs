@@ -83,6 +83,7 @@ namespace Thetis
         public MemoryForm(Console c)
         {
             InitializeComponent();
+            Translator.ApplyToForm(this);
             console = c;
             Common.RestoreForm(this, "MemoryForm", true); // ke9ns bring up memory window in place you left it last time
 
@@ -105,49 +106,49 @@ namespace Thetis
             DataGridViewComboBoxColumn comboboxColumnDSPMode = new DataGridViewComboBoxColumn();            
             comboboxColumnDSPMode.DataPropertyName = "DSPMode";
             comboboxColumnDSPMode.Name = "DSPMode";
-            comboboxColumnDSPMode.HeaderText = "DSP Mode";
+            comboboxColumnDSPMode.HeaderText = Translator.Tr("DSP Mode");
             comboboxColumnDSPMode.ValueType = typeof(DSPMode);
 
             // Tune Step
             DataGridViewComboBoxColumn comboboxColumnTuneStep = new DataGridViewComboBoxColumn();
             comboboxColumnTuneStep.DataPropertyName = "TuneStep";
             comboboxColumnTuneStep.Name = "TuneStep";
-            comboboxColumnTuneStep.HeaderText = "Tune Step";
+            comboboxColumnTuneStep.HeaderText = Translator.Tr("Tune Step");
             comboboxColumnTuneStep.ValueType = typeof(string);
             
             // RPT repeater mode
             DataGridViewComboBoxColumn comboboxColumnRPTR = new DataGridViewComboBoxColumn();
             comboboxColumnRPTR.DataPropertyName = "RPTR";
             comboboxColumnRPTR.Name = "RPTR";
-            comboboxColumnRPTR.HeaderText = "RPTR";
+            comboboxColumnRPTR.HeaderText = Translator.Tr("RPTR");
             comboboxColumnRPTR.ValueType = typeof(FMTXMode);
 
             // FM CTCSS
             DataGridViewComboBoxColumn comboboxColumnCTCSS = new DataGridViewComboBoxColumn();
             comboboxColumnCTCSS.DataPropertyName = "CTCSSFreq";
             comboboxColumnCTCSS.Name = "CTCSSFreq";
-            comboboxColumnCTCSS.HeaderText = "CTCSS Freq";
+            comboboxColumnCTCSS.HeaderText = Translator.Tr("CTCSS Freq");
             comboboxColumnCTCSS.ValueType = typeof(double);            
 
             // Dev
             DataGridViewComboBoxColumn comboboxColumnDeviation = new DataGridViewComboBoxColumn();
             comboboxColumnDeviation.DataPropertyName = "Deviation";
             comboboxColumnDeviation.Name = "Deviation";
-            comboboxColumnDeviation.HeaderText = "Deviation";
+            comboboxColumnDeviation.HeaderText = Translator.Tr("Deviation");
             comboboxColumnDeviation.ValueType = typeof(double);
 
             // Filter
             DataGridViewComboBoxColumn comboboxColumnFilter = new DataGridViewComboBoxColumn();
             comboboxColumnFilter.DataPropertyName = "RXFilter";
             comboboxColumnFilter.Name = "RXFilter";
-            comboboxColumnFilter.HeaderText = "RXFilter";
+            comboboxColumnFilter.HeaderText = Translator.Tr("RXFilter");
             comboboxColumnFilter.ValueType = typeof(Filter);
 
             // AGCMode
             DataGridViewComboBoxColumn comboboxColumnAGCMode = new DataGridViewComboBoxColumn();
             comboboxColumnAGCMode.DataPropertyName = "AGCMode";
             comboboxColumnAGCMode.Name = "AGCMode";
-            comboboxColumnAGCMode.HeaderText = "AGC Mode";
+            comboboxColumnAGCMode.HeaderText = Translator.Tr("AGC Mode");
             comboboxColumnAGCMode.ValueType = typeof(AGCMode);
             
 
@@ -220,18 +221,18 @@ namespace Thetis
 
 
             // clean up column names for auto-generated fields
-            dataGridView1.Columns["RXFreq"].HeaderText = "RX Freq";
-            dataGridView1.Columns["RPTROffset"].HeaderText = "RPTR Offset";
-            dataGridView1.Columns["CTCSSOn"].HeaderText = "CTCSS";
-            dataGridView1.Columns["TXFreq"].HeaderText = "TX Freq";
-            dataGridView1.Columns["RXFilterLow"].HeaderText = "RX Filter Low";
-            dataGridView1.Columns["RXFilterHigh"].HeaderText = "RX Filter High";
-            dataGridView1.Columns["AGCT"].HeaderText = "AGC-T";
+            dataGridView1.Columns["RXFreq"].HeaderText = Translator.Tr("RX Freq");
+            dataGridView1.Columns["RPTROffset"].HeaderText = Translator.Tr("RPTR Offset");
+            dataGridView1.Columns["CTCSSOn"].HeaderText = Translator.Tr("CTCSS");
+            dataGridView1.Columns["TXFreq"].HeaderText = Translator.Tr("TX Freq");
+            dataGridView1.Columns["RXFilterLow"].HeaderText = Translator.Tr("RX Filter Low");
+            dataGridView1.Columns["RXFilterHigh"].HeaderText = Translator.Tr("RX Filter High");
+            dataGridView1.Columns["AGCT"].HeaderText = Translator.Tr("AGC-T");
 
             //---------------------------------------------------------------------------------------------------
-            dataGridView1.Columns["StartDate"].HeaderText = "Schedule Start"; // ke9ns add
-            dataGridView1.Columns["Repeating"].HeaderText = "Weekly"; // ke9ns add
-            dataGridView1.Columns["Repeatingm"].HeaderText = "Monthly"; // ke9ns add
+            dataGridView1.Columns["StartDate"].HeaderText = Translator.Tr("Schedule Start"); // ke9ns add
+            dataGridView1.Columns["Repeating"].HeaderText = Translator.Tr("Weekly"); // ke9ns add
+            dataGridView1.Columns["Repeatingm"].HeaderText = Translator.Tr("Monthly"); // ke9ns add
 
 
 
@@ -571,8 +572,8 @@ namespace Thetis
                     return;
             }
 
-            DialogResult dr = MessageBox.Show("Are you sure you want to remove the selected row(s)?",
-                "Remove Row(s)?",
+            DialogResult dr = MessageBox.Show(Translator.Tr("Are you sure you want to remove the selected row(s)?"),
+                Translator.Tr("Remove Row(s)?"),
                 MessageBoxButtons.YesNo,
                 MessageBoxIcon.Question);
 
@@ -1314,7 +1315,7 @@ namespace Thetis
 
                                             if ((bool)dataGridView1["Recording", aa].Value == true)
                                             {
-                                                AutoClosingMessageBox.Show("A Scheduled Recording has been started.\nYou can end the recording early by Checking OFF both Weekly & Monthly boxes. ", "Scheduled Recording Started", 4000);
+                                                AutoClosingMessageBox.Show(Translator.Tr("A Scheduled Recording has been started.\nYou can end the recording early by Checking OFF both Weekly & Monthly boxes. "), Translator.Tr("Scheduled Recording Started"), 4000);
 
                                                 Debug.WriteLine("Start AUDIO RECORDING1 ");
 
@@ -1328,7 +1329,7 @@ namespace Thetis
                                             } // Recording ON
                                             else
                                             {
-                                                AutoClosingMessageBox.Show("Scheduled Frequency Change has occured\n", "Scheduled Frequency change", 4000);
+                                                AutoClosingMessageBox.Show(Translator.Tr("Scheduled Frequency Change has occured\n"), Translator.Tr("Scheduled Frequency change"), 4000);
                                                 
                                             }
 
@@ -1337,13 +1338,13 @@ namespace Thetis
                                         } // !MOX
                                         else // transmitting so pop up message box
                                         {
-                                            AutoClosingMessageBox.Show("Scheduled Frequency change and/or Recording could not take place while Transmitting", "Scheduled Memory Event", 4000);
+                                            AutoClosingMessageBox.Show(Translator.Tr("Scheduled Frequency change and/or Recording could not take place while Transmitting"), Translator.Tr("Scheduled Memory Event"), 4000);
 
 
                                             /*
-                                            MessageBox.Show("You were transmitting during a Scheduled Frequency change.\n" +
-                                               "You will need to manually go to the Frequency to keep your Schedule.",
-                                               "Frequency: " + dataGridView1["RXFreq", aa].Value + " Mhz.",
+                                            MessageBox.Show(Translator.Tr("You were transmitting during a Scheduled Frequency change.\n") +
+                                               Translator.Tr("You will need to manually go to the Frequency to keep your Schedule."),
+                                               Translator.Tr("Frequency: ") + dataGridView1[Translator.Tr("RXFreq"), aa].Value + Translator.Tr(" Mhz."),
                                                MessageBoxButtons.OK,
                                                MessageBoxIcon.Error);
                                                */

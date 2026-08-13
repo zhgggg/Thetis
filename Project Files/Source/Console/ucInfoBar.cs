@@ -207,6 +207,7 @@ namespace Thetis
         public ucInfoBar()
         {
             InitializeComponent();
+            Translator.ApplyToForm(this);
 
             _oldCursor = Cursor.Current;
 
@@ -506,9 +507,9 @@ namespace Thetis
             {
                 _feedbackColour = Color.SeaGreen;
                 if (_useSmallFonts)
-                    lblFB.Text = "FB";
+                    lblFB.Text = Translator.Tr("FB");
                 else
-                    lblFB.Text = "Feedback";
+                    lblFB.Text = Translator.Tr("Feedback");
 
                 _psTimer.Stop();
             }
@@ -844,10 +845,10 @@ namespace Thetis
                 lblPS.BackColor = Color.FromArgb(255, Color.DimGray);
                 _lastColor = Color.DimGray;
                 if (_useSmallFonts)
-                    lblFB.Text = "FB";
+                    lblFB.Text = Translator.Tr("FB");
                 else
-                    lblFB.Text = "Feedback";
-                lblPS.Text = "Pure Signal2";
+                    lblFB.Text = Translator.Tr("Feedback");
+                lblPS.Text = Translator.Tr("Pure Signal2");
             }
             else
             {
@@ -860,7 +861,7 @@ namespace Thetis
                     }
                     else
                     {
-                        lblPS.Text = "Pure Signal2";
+                        lblPS.Text = Translator.Tr("Pure Signal2");
                         lblPS.BackColor = Color.FromArgb(255, Color.SeaGreen);
                     }
 
@@ -870,9 +871,9 @@ namespace Thetis
                     if (_hideFeedback || !_bCalibrationAttemptsChanged)
                     {
                         if (_useSmallFonts)
-                            lblFB.Text = "FB";
+                            lblFB.Text = Translator.Tr("FB");
                         else
-                            lblFB.Text = "Feedback";
+                            lblFB.Text = Translator.Tr("Feedback");
                     }
                     else
                     {
@@ -886,14 +887,14 @@ namespace Thetis
                     _lastColor = Color.SeaGreen;
                     _feedbackColour = Color.SeaGreen;
 
-                    lblPS.Text = "Pure Signal2";
+                    lblPS.Text = Translator.Tr("Pure Signal2");
                     lblPS.BackColor = Color.FromArgb(255, Color.SeaGreen);
 
                     lblFB.BackColor = Color.SeaGreen;
                     if (_useSmallFonts)
-                        lblFB.Text = "FB";
+                        lblFB.Text = Translator.Tr("FB");
                     else
-                        lblFB.Text = "Feedback";
+                        lblFB.Text = Translator.Tr("Feedback");
                 }
             }
         }
@@ -1087,11 +1088,11 @@ namespace Thetis
 
             if (puresignal.InvertRedBlue)
             {
-                toolTip1.SetToolTip(lblFB, fb + "Blue 0-90, Yellow 91-128, Green 129-181, Red 182+");
+                toolTip1.SetToolTip(lblFB, fb + Translator.Tr("Blue 0-90, Yellow 91-128, Green 129-181, Red 182+"));
             }
             else
             {
-                toolTip1.SetToolTip(lblFB, fb + "Red 0-90, Yellow 91-128, Green 129-181, Blue 182+");
+                toolTip1.SetToolTip(lblFB, fb + Translator.Tr("Red 0-90, Yellow 91-128, Green 129-181, Blue 182+"));
             }
         }
 
@@ -1238,14 +1239,14 @@ namespace Thetis
             if (_useSmallFonts)
             {
                 if (lblPS.Font != _smallPSFont) lblPS.Font = _smallPSFont;
-                if (lblFB.Text == "Feedback") lblFB.Text = "FB";
-                if (lblPS.Text == "Correcting") lblPS.Text = "Correct";
+                if (lblFB.Text == Translator.Tr("Feedback")) lblFB.Text = "FB";
+                if (lblPS.Text == Translator.Tr("Correcting")) lblPS.Text = "Correct";
             }
             else
             {
                 if (lblPS.Font != _normalPSFont) lblPS.Font = _normalPSFont;
-                if (lblFB.Text == "FB") lblFB.Text = "Feedback";
-                if (lblPS.Text == "Correct") lblPS.Text = "Correcting";
+                if (lblFB.Text == "FB") lblFB.Text = Translator.Tr("Feedback");
+                if (lblPS.Text == "Correct") lblPS.Text = Translator.Tr("Correcting");
             }
 
             // check for overlapping anything on left

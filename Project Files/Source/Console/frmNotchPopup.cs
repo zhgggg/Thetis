@@ -1,4 +1,4 @@
-﻿/*  clsNotchPopup.cs
+﻿﻿/*  clsNotchPopup.cs
 
 This file is part of a program that implements a Software-Defined Radio.
 
@@ -64,6 +64,7 @@ namespace Thetis
             _notch_index = -1;
 
             InitializeComponent();
+            Translator.ApplyToForm(this);
 
             _deactivate_time = DateTime.UtcNow;
         }

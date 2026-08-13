@@ -16,6 +16,7 @@ namespace Thetis
         public wideband(int i)
         {
             InitializeComponent();
+            Translator.ApplyToForm(this);
 
             this.MaximumSize = new Size(4096, 4096);
 

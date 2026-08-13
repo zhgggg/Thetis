@@ -77,6 +77,7 @@ namespace Thetis
         public frmAbout(Console console, bool check_dev_version)
         {
             InitializeComponent();
+            Translator.ApplyToForm(this);
 
             this.TopMost = true;
 
@@ -122,18 +123,18 @@ namespace Thetis
             }
 
             lstVersions.Items.Clear();
-            lstVersions.Items.Add("Version: " + version);
-            lstVersions.Items.Add("Database Version: " + db_version);
-            lstVersions.Items.Add("Radio Model: " + radio_model);
+            lstVersions.Items.Add(Translator.Tr("Version: ") + version);
+            lstVersions.Items.Add(Translator.Tr("Database Version: ") + db_version);
+            lstVersions.Items.Add(Translator.Tr("Radio Model: ") + radio_model);
             if (!string.IsNullOrEmpty(andromeda_version)) lstVersions.Items.Add(andromeda_version); // includes the version: preamble in the string
-            lstVersions.Items.Add("Firmware Version: " + firmware_version);
+            lstVersions.Items.Add(Translator.Tr("Firmware Version: ") + firmware_version);
             string support = !string.IsNullOrEmpty(supported_protocol) ? $" (v{supported_protocol})" : "";
-            lstVersions.Items.Add("Protocol: " + protocol + support);
-            lstVersions.Items.Add("WDSP Version: " + wdsp_version);
-            lstVersions.Items.Add("ChannelMaster: " + channel_master_version);
-            lstVersions.Items.Add("cmASIO Version: " + cmASIO_version);
-            lstVersions.Items.Add("PortAudio Version: " + portAudio_version);
-            if(!string.IsNullOrEmpty(firmware_version)) lstVersions.Items.Add("DirectX Version: " + dx_version);
+            lstVersions.Items.Add(Translator.Tr("Protocol: ") + protocol + support);
+            lstVersions.Items.Add(Translator.Tr("WDSP Version: ") + wdsp_version);
+            lstVersions.Items.Add(Translator.Tr("ChannelMaster: ") + channel_master_version);
+            lstVersions.Items.Add(Translator.Tr("cmASIO Version: ") + cmASIO_version);
+            lstVersions.Items.Add(Translator.Tr("PortAudio Version: ") + portAudio_version);
+            if(!string.IsNullOrEmpty(firmware_version)) lstVersions.Items.Add(Translator.Tr("DirectX Version: ") + dx_version);
         }
         private bool UpdateAvaialble
         {

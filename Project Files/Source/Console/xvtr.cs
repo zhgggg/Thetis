@@ -297,11 +297,12 @@ namespace Thetis
 			// Required for Windows Form Designer support
 			//
 			InitializeComponent();
+			Translator.ApplyToForm(this);
 			console = c;
 			SetupControlArrays();
 			Common.RestoreForm(this, "XVTR", false);
             //if(console.fwc_init && console.CurrentModel == Model.FLEX5000)
-            //    lblXVTRRF.Text = "Split RF";
+            //    lblXVTRRF.Text = Translator.Tr("Split RF");
             //else if(console.fwc_init && console.CurrentModel == Model.FLEX3000)
             //{
             //    lblXVTRRF.Visible = false;
@@ -676,10 +677,10 @@ namespace Thetis
             this.comboAnt15.Enabled = false;
             this.comboAnt15.FormattingEnabled = true;
             this.comboAnt15.Items.AddRange(new object[] {
-            "def",
-            "1",
-            "2",
-            "3"});
+            Translator.Tr("def"),
+            Translator.Tr("1"),
+            Translator.Tr("2"),
+            Translator.Tr("3")});
             this.comboAnt15.Location = new System.Drawing.Point(842, 407);
             this.comboAnt15.Name = "comboAnt15";
             this.comboAnt15.Size = new System.Drawing.Size(52, 21);
@@ -692,10 +693,10 @@ namespace Thetis
             this.comboAnt14.Enabled = false;
             this.comboAnt14.FormattingEnabled = true;
             this.comboAnt14.Items.AddRange(new object[] {
-            "def",
-            "1",
-            "2",
-            "3"});
+            Translator.Tr("def"),
+            Translator.Tr("1"),
+            Translator.Tr("2"),
+            Translator.Tr("3")});
             this.comboAnt14.Location = new System.Drawing.Point(842, 382);
             this.comboAnt14.Name = "comboAnt14";
             this.comboAnt14.Size = new System.Drawing.Size(52, 21);
@@ -708,10 +709,10 @@ namespace Thetis
             this.comboAnt13.Enabled = false;
             this.comboAnt13.FormattingEnabled = true;
             this.comboAnt13.Items.AddRange(new object[] {
-            "def",
-            "1",
-            "2",
-            "3"});
+            Translator.Tr("def"),
+            Translator.Tr("1"),
+            Translator.Tr("2"),
+            Translator.Tr("3")});
             this.comboAnt13.Location = new System.Drawing.Point(842, 358);
             this.comboAnt13.Name = "comboAnt13";
             this.comboAnt13.Size = new System.Drawing.Size(52, 21);
@@ -724,10 +725,10 @@ namespace Thetis
             this.comboAnt12.Enabled = false;
             this.comboAnt12.FormattingEnabled = true;
             this.comboAnt12.Items.AddRange(new object[] {
-            "def",
-            "1",
-            "2",
-            "3"});
+            Translator.Tr("def"),
+            Translator.Tr("1"),
+            Translator.Tr("2"),
+            Translator.Tr("3")});
             this.comboAnt12.Location = new System.Drawing.Point(842, 332);
             this.comboAnt12.Name = "comboAnt12";
             this.comboAnt12.Size = new System.Drawing.Size(52, 21);
@@ -740,10 +741,10 @@ namespace Thetis
             this.comboAnt11.Enabled = false;
             this.comboAnt11.FormattingEnabled = true;
             this.comboAnt11.Items.AddRange(new object[] {
-            "def",
-            "1",
-            "2",
-            "3"});
+            Translator.Tr("def"),
+            Translator.Tr("1"),
+            Translator.Tr("2"),
+            Translator.Tr("3")});
             this.comboAnt11.Location = new System.Drawing.Point(842, 307);
             this.comboAnt11.Name = "comboAnt11";
             this.comboAnt11.Size = new System.Drawing.Size(52, 21);
@@ -756,10 +757,10 @@ namespace Thetis
             this.comboAnt10.Enabled = false;
             this.comboAnt10.FormattingEnabled = true;
             this.comboAnt10.Items.AddRange(new object[] {
-            "def",
-            "1",
-            "2",
-            "3"});
+            Translator.Tr("def"),
+            Translator.Tr("1"),
+            Translator.Tr("2"),
+            Translator.Tr("3")});
             this.comboAnt10.Location = new System.Drawing.Point(842, 283);
             this.comboAnt10.Name = "comboAnt10";
             this.comboAnt10.Size = new System.Drawing.Size(52, 21);
@@ -772,10 +773,10 @@ namespace Thetis
             this.comboAnt9.Enabled = false;
             this.comboAnt9.FormattingEnabled = true;
             this.comboAnt9.Items.AddRange(new object[] {
-            "def",
-            "1",
-            "2",
-            "3"});
+            Translator.Tr("def"),
+            Translator.Tr("1"),
+            Translator.Tr("2"),
+            Translator.Tr("3")});
             this.comboAnt9.Location = new System.Drawing.Point(842, 259);
             this.comboAnt9.Name = "comboAnt9";
             this.comboAnt9.Size = new System.Drawing.Size(52, 21);
@@ -788,10 +789,10 @@ namespace Thetis
             this.comboAnt8.Enabled = false;
             this.comboAnt8.FormattingEnabled = true;
             this.comboAnt8.Items.AddRange(new object[] {
-            "def",
-            "1",
-            "2",
-            "3"});
+            Translator.Tr("def"),
+            Translator.Tr("1"),
+            Translator.Tr("2"),
+            Translator.Tr("3")});
             this.comboAnt8.Location = new System.Drawing.Point(842, 235);
             this.comboAnt8.Name = "comboAnt8";
             this.comboAnt8.Size = new System.Drawing.Size(52, 21);
@@ -804,10 +805,10 @@ namespace Thetis
             this.comboAnt7.Enabled = false;
             this.comboAnt7.FormattingEnabled = true;
             this.comboAnt7.Items.AddRange(new object[] {
-            "def",
-            "1",
-            "2",
-            "3"});
+            Translator.Tr("def"),
+            Translator.Tr("1"),
+            Translator.Tr("2"),
+            Translator.Tr("3")});
             this.comboAnt7.Location = new System.Drawing.Point(842, 211);
             this.comboAnt7.Name = "comboAnt7";
             this.comboAnt7.Size = new System.Drawing.Size(52, 21);
@@ -820,10 +821,10 @@ namespace Thetis
             this.comboAnt6.Enabled = false;
             this.comboAnt6.FormattingEnabled = true;
             this.comboAnt6.Items.AddRange(new object[] {
-            "def",
-            "1",
-            "2",
-            "3"});
+            Translator.Tr("def"),
+            Translator.Tr("1"),
+            Translator.Tr("2"),
+            Translator.Tr("3")});
             this.comboAnt6.Location = new System.Drawing.Point(842, 187);
             this.comboAnt6.Name = "comboAnt6";
             this.comboAnt6.Size = new System.Drawing.Size(52, 21);
@@ -836,10 +837,10 @@ namespace Thetis
             this.comboAnt5.Enabled = false;
             this.comboAnt5.FormattingEnabled = true;
             this.comboAnt5.Items.AddRange(new object[] {
-            "def",
-            "1",
-            "2",
-            "3"});
+            Translator.Tr("def"),
+            Translator.Tr("1"),
+            Translator.Tr("2"),
+            Translator.Tr("3")});
             this.comboAnt5.Location = new System.Drawing.Point(842, 163);
             this.comboAnt5.Name = "comboAnt5";
             this.comboAnt5.Size = new System.Drawing.Size(52, 21);
@@ -852,10 +853,10 @@ namespace Thetis
             this.comboAnt4.Enabled = false;
             this.comboAnt4.FormattingEnabled = true;
             this.comboAnt4.Items.AddRange(new object[] {
-            "def",
-            "1",
-            "2",
-            "3"});
+            Translator.Tr("def"),
+            Translator.Tr("1"),
+            Translator.Tr("2"),
+            Translator.Tr("3")});
             this.comboAnt4.Location = new System.Drawing.Point(842, 139);
             this.comboAnt4.Name = "comboAnt4";
             this.comboAnt4.Size = new System.Drawing.Size(52, 21);
@@ -868,10 +869,10 @@ namespace Thetis
             this.comboAnt3.Enabled = false;
             this.comboAnt3.FormattingEnabled = true;
             this.comboAnt3.Items.AddRange(new object[] {
-            "def",
-            "1",
-            "2",
-            "3"});
+            Translator.Tr("def"),
+            Translator.Tr("1"),
+            Translator.Tr("2"),
+            Translator.Tr("3")});
             this.comboAnt3.Location = new System.Drawing.Point(842, 115);
             this.comboAnt3.Name = "comboAnt3";
             this.comboAnt3.Size = new System.Drawing.Size(52, 21);
@@ -884,10 +885,10 @@ namespace Thetis
             this.comboAnt2.Enabled = false;
             this.comboAnt2.FormattingEnabled = true;
             this.comboAnt2.Items.AddRange(new object[] {
-            "def",
-            "1",
-            "2",
-            "3"});
+            Translator.Tr("def"),
+            Translator.Tr("1"),
+            Translator.Tr("2"),
+            Translator.Tr("3")});
             this.comboAnt2.Location = new System.Drawing.Point(842, 91);
             this.comboAnt2.Name = "comboAnt2";
             this.comboAnt2.Size = new System.Drawing.Size(52, 21);
@@ -900,10 +901,10 @@ namespace Thetis
             this.comboAnt1.Enabled = false;
             this.comboAnt1.FormattingEnabled = true;
             this.comboAnt1.Items.AddRange(new object[] {
-            "def",
-            "1",
-            "2",
-            "3"});
+            Translator.Tr("def"),
+            Translator.Tr("1"),
+            Translator.Tr("2"),
+            Translator.Tr("3")});
             this.comboAnt1.Location = new System.Drawing.Point(842, 67);
             this.comboAnt1.Name = "comboAnt1";
             this.comboAnt1.Size = new System.Drawing.Size(52, 21);
@@ -916,10 +917,10 @@ namespace Thetis
             this.comboAnt0.Enabled = false;
             this.comboAnt0.FormattingEnabled = true;
             this.comboAnt0.Items.AddRange(new object[] {
-            "def",
-            "1",
-            "2",
-            "3"});
+            Translator.Tr("def"),
+            Translator.Tr("1"),
+            Translator.Tr("2"),
+            Translator.Tr("3")});
             this.comboAnt0.Location = new System.Drawing.Point(842, 43);
             this.comboAnt0.Name = "comboAnt0";
             this.comboAnt0.Size = new System.Drawing.Size(52, 21);
@@ -933,7 +934,7 @@ namespace Thetis
             this.labelTS1.Name = "labelTS1";
             this.labelTS1.Size = new System.Drawing.Size(42, 31);
             this.labelTS1.TabIndex = 224;
-            this.labelTS1.Text = "RX1 Ant";
+            this.labelTS1.Text = Translator.Tr("RX1 Ant");
             // 
             // chkDisablePA15
             // 
@@ -1118,7 +1119,7 @@ namespace Thetis
             this.lblDisablePA.Name = "lblDisablePA";
             this.lblDisablePA.Size = new System.Drawing.Size(42, 32);
             this.lblDisablePA.TabIndex = 221;
-            this.lblDisablePA.Text = "Disable PA";
+            this.lblDisablePA.Text = Translator.Tr("Disable PA");
             // 
             // chkAlexTRRelay
             // 
@@ -1128,7 +1129,7 @@ namespace Thetis
             this.chkAlexTRRelay.Name = "chkAlexTRRelay";
             this.chkAlexTRRelay.Size = new System.Drawing.Size(114, 17);
             this.chkAlexTRRelay.TabIndex = 206;
-            this.chkAlexTRRelay.Text = "Disable ANAN PA ";
+            this.chkAlexTRRelay.Text = Translator.Tr("Disable ANAN PA ");
             this.chkAlexTRRelay.UseVisualStyleBackColor = true;
             this.chkAlexTRRelay.Visible = false;
             this.chkAlexTRRelay.CheckedChanged += new System.EventHandler(this.chkAlexTRRelay_CheckedChanged);
@@ -1140,7 +1141,7 @@ namespace Thetis
             this.chkUseXVTRTUNPWR.Name = "chkUseXVTRTUNPWR";
             this.chkUseXVTRTUNPWR.Size = new System.Drawing.Size(152, 24);
             this.chkUseXVTRTUNPWR.TabIndex = 204;
-            this.chkUseXVTRTUNPWR.Text = "Use XVTR PWR for Tune";
+            this.chkUseXVTRTUNPWR.Text = Translator.Tr("Use XVTR PWR for Tune");
             this.chkUseXVTRTUNPWR.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.chkUseXVTRTUNPWR.CheckedChanged += new System.EventHandler(this.chkUseXVTRTUNPWR_CheckedChanged);
             // 
@@ -1647,7 +1648,7 @@ namespace Thetis
             this.lblRXGain.Name = "lblRXGain";
             this.lblRXGain.Size = new System.Drawing.Size(56, 32);
             this.lblRXGain.TabIndex = 187;
-            this.lblRXGain.Text = "RX Gain (dB)";
+            this.lblRXGain.Text = Translator.Tr("RX Gain (dB)");
             // 
             // chkXVTRRF15
             // 
@@ -1848,7 +1849,7 @@ namespace Thetis
             this.lblXVTRRF.Name = "lblXVTRRF";
             this.lblXVTRRF.Size = new System.Drawing.Size(40, 32);
             this.lblXVTRRF.TabIndex = 170;
-            this.lblXVTRRF.Text = "XVTR RF TX";
+            this.lblXVTRRF.Text = Translator.Tr("XVTR RF TX");
             // 
             // udPower15
             // 
@@ -2337,7 +2338,7 @@ namespace Thetis
             this.lblPower.Name = "lblPower";
             this.lblPower.Size = new System.Drawing.Size(40, 16);
             this.lblPower.TabIndex = 153;
-            this.lblPower.Text = "Power";
+            this.lblPower.Text = Translator.Tr("Power");
             // 
             // udLOError15
             // 
@@ -2826,7 +2827,7 @@ namespace Thetis
             this.lblLOError.Name = "lblLOError";
             this.lblLOError.Size = new System.Drawing.Size(56, 32);
             this.lblLOError.TabIndex = 136;
-            this.lblLOError.Text = "LO Error (kHz)";
+            this.lblLOError.Text = Translator.Tr("LO Error (kHz)");
             // 
             // chkRXOnly15
             // 
@@ -2979,7 +2980,7 @@ namespace Thetis
             this.lblRXOnly.Name = "lblRXOnly";
             this.lblRXOnly.Size = new System.Drawing.Size(48, 16);
             this.lblRXOnly.TabIndex = 119;
-            this.lblRXOnly.Text = "RX Only";
+            this.lblRXOnly.Text = Translator.Tr("RX Only");
             // 
             // udFreqEnd15
             // 
@@ -3468,7 +3469,7 @@ namespace Thetis
             this.lblFreqEnd.Name = "lblFreqEnd";
             this.lblFreqEnd.Size = new System.Drawing.Size(88, 16);
             this.lblFreqEnd.TabIndex = 102;
-            this.lblFreqEnd.Text = "End Freq (MHz)";
+            this.lblFreqEnd.Text = Translator.Tr("End Freq (MHz)");
             // 
             // udFreqBegin15
             // 
@@ -3957,7 +3958,7 @@ namespace Thetis
             this.lblFreqBegin.Name = "lblFreqBegin";
             this.lblFreqBegin.Size = new System.Drawing.Size(96, 16);
             this.lblFreqBegin.TabIndex = 85;
-            this.lblFreqBegin.Text = "Begin Freq (MHz)";
+            this.lblFreqBegin.Text = Translator.Tr("Begin Freq (MHz)");
             // 
             // udLOOffset15
             // 
@@ -4446,7 +4447,7 @@ namespace Thetis
             this.lblLOOffset.Name = "lblLOOffset";
             this.lblLOOffset.Size = new System.Drawing.Size(72, 32);
             this.lblLOOffset.TabIndex = 68;
-            this.lblLOOffset.Text = "LO Offset (MHz)";
+            this.lblLOOffset.Text = Translator.Tr("LO Offset (MHz)");
             // 
             // txtButtonText15
             // 
@@ -4807,7 +4808,7 @@ namespace Thetis
             this.lblEnabled.Name = "lblEnabled";
             this.lblEnabled.Size = new System.Drawing.Size(48, 16);
             this.lblEnabled.TabIndex = 51;
-            this.lblEnabled.Text = "Enabled";
+            this.lblEnabled.Text = Translator.Tr("Enabled");
             // 
             // chkEnable15
             // 
@@ -4960,7 +4961,7 @@ namespace Thetis
             this.lblButtonText.Name = "lblButtonText";
             this.lblButtonText.Size = new System.Drawing.Size(72, 16);
             this.lblButtonText.TabIndex = 2;
-            this.lblButtonText.Text = "Button Text";
+            this.lblButtonText.Text = Translator.Tr("Button Text");
             // 
             // lblBandButton
             // 
@@ -4969,7 +4970,7 @@ namespace Thetis
             this.lblBandButton.Name = "lblBandButton";
             this.lblBandButton.Size = new System.Drawing.Size(72, 16);
             this.lblBandButton.TabIndex = 0;
-            this.lblBandButton.Text = "Band Button";
+            this.lblBandButton.Text = Translator.Tr("Band Button");
             // 
             // XVTRForm
             // 
@@ -5199,7 +5200,7 @@ namespace Thetis
             this.Controls.Add(this.labelTS1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "XVTRForm";
-            this.Text = "XVTR Setup";
+            this.Text = Translator.Tr("XVTR Setup");
             this.Closing += new System.ComponentModel.CancelEventHandler(this.XVTRForm_Closing);
             ((System.ComponentModel.ISupportInitialize)(this.udRXGain15)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.udRXGain14)).EndInit();

@@ -55,6 +55,7 @@ namespace Thetis
         public frmIPv4Picker()
         {
             InitializeComponent();
+            Translator.ApplyToForm(this);
         }
 
         private void btnSelect_Click(object sender, EventArgs e)
@@ -156,7 +157,7 @@ namespace Thetis
                     }
                 }
 
-                if (addBroadcast) comboAddresses.Items.Add("255.255.255.255");
+                if (addBroadcast) comboAddresses.Items.Add(Translator.Tr("255.255.255.255"));
 
                 btnSelect.Enabled = bEntries;
             }

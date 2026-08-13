@@ -447,7 +447,7 @@ namespace Thetis
             t += "\n";
             t += "    << Sugar Land, Texas 2006-02-16 - Richard Allen, W5SXD >>\n";
 
-            MessageBox.Show(t, "  CWX Notes ...");
+            MessageBox.Show(t, Translator.Tr("  CWX Notes ..."));
         }
 
         private void notesButton_Click(object sender, System.EventArgs e)
@@ -528,7 +528,7 @@ namespace Thetis
             if (!File.Exists(console.AppDataPath + sfile))	// create default morsedef.txt
             {
 #if(CWX_DEBUG)
-				MessageBox.Show(sfile+" not found, creating ...");
+				MessageBox.Show(sfile+Translator.Tr(" not found, creating ..."));
 #endif
                 using (StreamWriter sw = new StreamWriter(console.AppDataPath + sfile))
                 {
@@ -598,7 +598,7 @@ namespace Thetis
                     sw.WriteLine("95|_|*        | reserved  ");
                 }
             }
-            //MessageBox.Show("reading ",sfile);
+            //MessageBox.Show(Translator.Tr("reading "),sfile);
             using (StreamReader sr = new StreamReader(console.AppDataPath + sfile))
             {
                 String line;
@@ -758,6 +758,7 @@ namespace Thetis
             // Required for Windows Form Designer support
             //
             InitializeComponent();
+            Translator.ApplyToForm(this);
 
             console = c;
 
@@ -942,7 +943,7 @@ namespace Thetis
             this.pttLed.Name = "pttLed";
             this.pttLed.Size = new System.Drawing.Size(24, 13);
             this.pttLed.TabIndex = 49;
-            this.toolTip1.SetToolTip(this.pttLed, " PTT status");
+            this.toolTip1.SetToolTip(this.pttLed, Translator.Tr(" PTT status"));
             // 
             // keyLed
             // 
@@ -951,7 +952,7 @@ namespace Thetis
             this.keyLed.Name = "keyLed";
             this.keyLed.Size = new System.Drawing.Size(24, 13);
             this.keyLed.TabIndex = 50;
-            this.toolTip1.SetToolTip(this.keyLed, "Key status");
+            this.toolTip1.SetToolTip(this.keyLed, Translator.Tr("Key status"));
             // 
             // keyboardLed
             // 
@@ -960,7 +961,7 @@ namespace Thetis
             this.keyboardLed.Name = "keyboardLed";
             this.keyboardLed.Size = new System.Drawing.Size(24, 13);
             this.keyboardLed.TabIndex = 52;
-            this.toolTip1.SetToolTip(this.keyboardLed, " Keyboard active indicator.");
+            this.toolTip1.SetToolTip(this.keyboardLed, Translator.Tr(" Keyboard active indicator."));
             // 
             // pttdelaylabel
             // 
@@ -969,8 +970,8 @@ namespace Thetis
             this.pttdelaylabel.Name = "pttdelaylabel";
             this.pttdelaylabel.Size = new System.Drawing.Size(64, 16);
             this.pttdelaylabel.TabIndex = 55;
-            this.pttdelaylabel.Text = "PTT Delay";
-            this.toolTip1.SetToolTip(this.pttdelaylabel, "Set delay from PTT to key down in milliseconds.");
+            this.pttdelaylabel.Text = Translator.Tr("PTT Delay");
+            this.toolTip1.SetToolTip(this.pttdelaylabel, Translator.Tr("Set delay from PTT to key down in milliseconds."));
             this.pttdelaylabel.Visible = false;
             // 
             // expandButton
@@ -983,7 +984,7 @@ namespace Thetis
             this.expandButton.Selectable = true;
             this.expandButton.Size = new System.Drawing.Size(8, 8);
             this.expandButton.TabIndex = 53;
-            this.toolTip1.SetToolTip(this.expandButton, "Contract Form");
+            this.toolTip1.SetToolTip(this.expandButton, Translator.Tr("Contract Form"));
             this.expandButton.UseVisualStyleBackColor = false;
             this.expandButton.Click += new System.EventHandler(this.expandButton_Click);
             // 
@@ -996,8 +997,8 @@ namespace Thetis
             this.keyboardButton.Selectable = true;
             this.keyboardButton.Size = new System.Drawing.Size(112, 23);
             this.keyboardButton.TabIndex = 45;
-            this.keyboardButton.Text = "Keyboard";
-            this.toolTip1.SetToolTip(this.keyboardButton, " Enable keyboard.  This must be selected for keyboard to work.");
+            this.keyboardButton.Text = Translator.Tr("Keyboard");
+            this.toolTip1.SetToolTip(this.keyboardButton, Translator.Tr(" Enable keyboard.  This must be selected for keyboard to work."));
             this.keyboardButton.Enter += new System.EventHandler(this.keyboardButton_Enter);
             this.keyboardButton.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.keyboardButton_KeyPress);
             this.keyboardButton.Leave += new System.EventHandler(this.keyboardButton_Leave);
@@ -1010,8 +1011,8 @@ namespace Thetis
             this.clearButton.Selectable = true;
             this.clearButton.Size = new System.Drawing.Size(75, 23);
             this.clearButton.TabIndex = 46;
-            this.clearButton.Text = "Clear (F12)";
-            this.toolTip1.SetToolTip(this.clearButton, " Clear the keyboard buffer.");
+            this.clearButton.Text = Translator.Tr("Clear (F12)");
+            this.toolTip1.SetToolTip(this.clearButton, Translator.Tr(" Clear the keyboard buffer."));
             this.clearButton.Click += new System.EventHandler(this.clearButton_Click);
             // 
             // chkPause
@@ -1021,8 +1022,8 @@ namespace Thetis
             this.chkPause.Name = "chkPause";
             this.chkPause.Size = new System.Drawing.Size(98, 20);
             this.chkPause.TabIndex = 43;
-            this.chkPause.Text = "Pause (F11)";
-            this.toolTip1.SetToolTip(this.chkPause, " Pause keyboard transmission.");
+            this.chkPause.Text = Translator.Tr("Pause (F11)");
+            this.toolTip1.SetToolTip(this.chkPause, Translator.Tr(" Pause keyboard transmission."));
             this.chkPause.CheckedChanged += new System.EventHandler(this.chkPause_CheckedChanged);
             // 
             // txt9
@@ -1031,7 +1032,7 @@ namespace Thetis
             this.txt9.Name = "txt9";
             this.txt9.Size = new System.Drawing.Size(176, 20);
             this.txt9.TabIndex = 34;
-            this.toolTip1.SetToolTip(this.txt9, "Message edit box.");
+            this.toolTip1.SetToolTip(this.txt9, Translator.Tr("Message edit box."));
             // 
             // txt8
             // 
@@ -1039,7 +1040,7 @@ namespace Thetis
             this.txt8.Name = "txt8";
             this.txt8.Size = new System.Drawing.Size(176, 20);
             this.txt8.TabIndex = 32;
-            this.toolTip1.SetToolTip(this.txt8, "Message edit box.");
+            this.toolTip1.SetToolTip(this.txt8, Translator.Tr("Message edit box."));
             // 
             // txt7
             // 
@@ -1047,7 +1048,7 @@ namespace Thetis
             this.txt7.Name = "txt7";
             this.txt7.Size = new System.Drawing.Size(176, 20);
             this.txt7.TabIndex = 29;
-            this.toolTip1.SetToolTip(this.txt7, "Message edit box.");
+            this.toolTip1.SetToolTip(this.txt7, Translator.Tr("Message edit box."));
             // 
             // txt6
             // 
@@ -1056,7 +1057,7 @@ namespace Thetis
             this.txt6.Name = "txt6";
             this.txt6.Size = new System.Drawing.Size(175, 20);
             this.txt6.TabIndex = 13;
-            this.toolTip1.SetToolTip(this.txt6, "Message edit box.");
+            this.toolTip1.SetToolTip(this.txt6, Translator.Tr("Message edit box."));
             // 
             // txt5
             // 
@@ -1065,7 +1066,7 @@ namespace Thetis
             this.txt5.Name = "txt5";
             this.txt5.Size = new System.Drawing.Size(176, 20);
             this.txt5.TabIndex = 11;
-            this.toolTip1.SetToolTip(this.txt5, "Message edit box.");
+            this.toolTip1.SetToolTip(this.txt5, Translator.Tr("Message edit box."));
             // 
             // txt4
             // 
@@ -1074,7 +1075,7 @@ namespace Thetis
             this.txt4.Name = "txt4";
             this.txt4.Size = new System.Drawing.Size(176, 20);
             this.txt4.TabIndex = 9;
-            this.toolTip1.SetToolTip(this.txt4, "Message edit box.");
+            this.toolTip1.SetToolTip(this.txt4, Translator.Tr("Message edit box."));
             // 
             // txt3
             // 
@@ -1083,7 +1084,7 @@ namespace Thetis
             this.txt3.Name = "txt3";
             this.txt3.Size = new System.Drawing.Size(172, 20);
             this.txt3.TabIndex = 7;
-            this.toolTip1.SetToolTip(this.txt3, "Message edit box.");
+            this.toolTip1.SetToolTip(this.txt3, Translator.Tr("Message edit box."));
             // 
             // txt2
             // 
@@ -1092,7 +1093,7 @@ namespace Thetis
             this.txt2.Name = "txt2";
             this.txt2.Size = new System.Drawing.Size(172, 20);
             this.txt2.TabIndex = 5;
-            this.toolTip1.SetToolTip(this.txt2, "Message edit box.");
+            this.toolTip1.SetToolTip(this.txt2, Translator.Tr("Message edit box."));
             // 
             // txt1
             // 
@@ -1102,7 +1103,7 @@ namespace Thetis
             this.txt1.Size = new System.Drawing.Size(172, 20);
             this.txt1.TabIndex = 3;
             this.txt1.Text = "cq cq test w5sxd test";
-            this.toolTip1.SetToolTip(this.txt1, "Message edit box.");
+            this.toolTip1.SetToolTip(this.txt1, Translator.Tr("Message edit box."));
             // 
             // keyButton
             // 
@@ -1112,8 +1113,8 @@ namespace Thetis
             this.keyButton.Selectable = true;
             this.keyButton.Size = new System.Drawing.Size(40, 24);
             this.keyButton.TabIndex = 37;
-            this.keyButton.Text = "Key";
-            this.toolTip1.SetToolTip(this.keyButton, "Turn on transmitter and key it. (60 second timeout)");
+            this.keyButton.Text = Translator.Tr("Key");
+            this.toolTip1.SetToolTip(this.keyButton, Translator.Tr("Turn on transmitter and key it. (60 second timeout)"));
             this.keyButton.Click += new System.EventHandler(this.keyButton_Click);
             // 
             // dropdelaylabel
@@ -1123,8 +1124,8 @@ namespace Thetis
             this.dropdelaylabel.Name = "dropdelaylabel";
             this.dropdelaylabel.Size = new System.Drawing.Size(64, 16);
             this.dropdelaylabel.TabIndex = 36;
-            this.dropdelaylabel.Text = "Drop Delay";
-            this.toolTip1.SetToolTip(this.dropdelaylabel, " Set break in drop out in milliseconds. Minimum allowed is PTT Delay * 1.5 .");
+            this.dropdelaylabel.Text = Translator.Tr("Drop Delay");
+            this.toolTip1.SetToolTip(this.dropdelaylabel, Translator.Tr(" Set break in drop out in milliseconds. Minimum allowed is PTT Delay * 1.5 ."));
             this.dropdelaylabel.Visible = false;
             // 
             // s9
@@ -1135,8 +1136,8 @@ namespace Thetis
             this.s9.Selectable = true;
             this.s9.Size = new System.Drawing.Size(33, 20);
             this.s9.TabIndex = 33;
-            this.s9.Text = "F9";
-            this.toolTip1.SetToolTip(this.s9, "Start message 9.");
+            this.s9.Text = Translator.Tr("F9");
+            this.toolTip1.SetToolTip(this.s9, Translator.Tr("Start message 9."));
             this.s9.Click += new System.EventHandler(this.s9_Click);
             this.s9.MouseDown += new System.Windows.Forms.MouseEventHandler(this.s9_MouseDown);
             // 
@@ -1148,8 +1149,8 @@ namespace Thetis
             this.s8.Selectable = true;
             this.s8.Size = new System.Drawing.Size(33, 20);
             this.s8.TabIndex = 31;
-            this.s8.Text = "F8";
-            this.toolTip1.SetToolTip(this.s8, "Start message 8.");
+            this.s8.Text = Translator.Tr("F8");
+            this.toolTip1.SetToolTip(this.s8, Translator.Tr("Start message 8."));
             this.s8.Click += new System.EventHandler(this.s8_Click);
             this.s8.MouseDown += new System.Windows.Forms.MouseEventHandler(this.s8_MouseDown);
             // 
@@ -1161,8 +1162,8 @@ namespace Thetis
             this.s7.Selectable = true;
             this.s7.Size = new System.Drawing.Size(33, 20);
             this.s7.TabIndex = 30;
-            this.s7.Text = "F7";
-            this.toolTip1.SetToolTip(this.s7, "Start message 7.");
+            this.s7.Text = Translator.Tr("F7");
+            this.toolTip1.SetToolTip(this.s7, Translator.Tr("Start message 7."));
             this.s7.Click += new System.EventHandler(this.s7_Click);
             this.s7.MouseDown += new System.Windows.Forms.MouseEventHandler(this.s7_MouseDown);
             // 
@@ -1174,8 +1175,8 @@ namespace Thetis
             this.stopButton.Selectable = true;
             this.stopButton.Size = new System.Drawing.Size(72, 24);
             this.stopButton.TabIndex = 26;
-            this.stopButton.Text = "Stop (Esc)";
-            this.toolTip1.SetToolTip(this.stopButton, "Stop all keying.");
+            this.stopButton.Text = Translator.Tr("Stop (Esc)");
+            this.toolTip1.SetToolTip(this.stopButton, Translator.Tr("Stop all keying."));
             this.stopButton.Click += new System.EventHandler(this.stopButton_Click);
             // 
             // repeatdelayLabel
@@ -1185,8 +1186,8 @@ namespace Thetis
             this.repeatdelayLabel.Name = "repeatdelayLabel";
             this.repeatdelayLabel.Size = new System.Drawing.Size(80, 16);
             this.repeatdelayLabel.TabIndex = 48;
-            this.repeatdelayLabel.Text = "Repeat Delay";
-            this.toolTip1.SetToolTip(this.repeatdelayLabel, " Set repeat message delay in seconds.");
+            this.repeatdelayLabel.Text = Translator.Tr("Repeat Delay");
+            this.toolTip1.SetToolTip(this.repeatdelayLabel, Translator.Tr(" Set repeat message delay in seconds."));
             // 
             // cbMorse
             // 
@@ -1198,7 +1199,7 @@ namespace Thetis
             this.cbMorse.Name = "cbMorse";
             this.cbMorse.Size = new System.Drawing.Size(208, 23);
             this.cbMorse.TabIndex = 19;
-            this.toolTip1.SetToolTip(this.cbMorse, "View and right click to edit Morse definition table.");
+            this.toolTip1.SetToolTip(this.cbMorse, Translator.Tr("View and right click to edit Morse definition table."));
             this.cbMorse.SelectedIndexChanged += new System.EventHandler(this.CbMorse_SelectedIndexChanged);
             this.cbMorse.MouseDown += new System.Windows.Forms.MouseEventHandler(this.cbMorse_MouseDown);
             // 
@@ -1210,8 +1211,8 @@ namespace Thetis
             this.notesButton.Selectable = true;
             this.notesButton.Size = new System.Drawing.Size(48, 24);
             this.notesButton.TabIndex = 17;
-            this.notesButton.Text = "Notes";
-            this.toolTip1.SetToolTip(this.notesButton, "Show program notes.");
+            this.notesButton.Text = Translator.Tr("Notes");
+            this.toolTip1.SetToolTip(this.notesButton, Translator.Tr("Show program notes."));
             this.notesButton.Click += new System.EventHandler(this.notesButton_Click);
             // 
             // speedLabel
@@ -1221,8 +1222,8 @@ namespace Thetis
             this.speedLabel.Name = "speedLabel";
             this.speedLabel.Size = new System.Drawing.Size(72, 16);
             this.speedLabel.TabIndex = 15;
-            this.speedLabel.Text = "Speed WPM";
-            this.toolTip1.SetToolTip(this.speedLabel, " Set memory keyer (not paddle) speed in words per minute. (PARIS method)");
+            this.speedLabel.Text = Translator.Tr("Speed WPM");
+            this.toolTip1.SetToolTip(this.speedLabel, Translator.Tr(" Set memory keyer (not paddle) speed in words per minute. (PARIS method)"));
             // 
             // s6
             // 
@@ -1232,8 +1233,8 @@ namespace Thetis
             this.s6.Selectable = true;
             this.s6.Size = new System.Drawing.Size(33, 20);
             this.s6.TabIndex = 14;
-            this.s6.Text = "F6";
-            this.toolTip1.SetToolTip(this.s6, "Start message 6.");
+            this.s6.Text = Translator.Tr("F6");
+            this.toolTip1.SetToolTip(this.s6, Translator.Tr("Start message 6."));
             this.s6.Click += new System.EventHandler(this.s6_Click);
             this.s6.MouseDown += new System.Windows.Forms.MouseEventHandler(this.s6_MouseDown);
             // 
@@ -1245,8 +1246,8 @@ namespace Thetis
             this.s5.Selectable = true;
             this.s5.Size = new System.Drawing.Size(33, 20);
             this.s5.TabIndex = 12;
-            this.s5.Text = "F5";
-            this.toolTip1.SetToolTip(this.s5, "Start message 5.");
+            this.s5.Text = Translator.Tr("F5");
+            this.toolTip1.SetToolTip(this.s5, Translator.Tr("Start message 5."));
             this.s5.Click += new System.EventHandler(this.s5_Click);
             this.s5.MouseDown += new System.Windows.Forms.MouseEventHandler(this.s5_MouseDown);
             // 
@@ -1258,8 +1259,8 @@ namespace Thetis
             this.s4.Selectable = true;
             this.s4.Size = new System.Drawing.Size(33, 20);
             this.s4.TabIndex = 10;
-            this.s4.Text = "F4";
-            this.toolTip1.SetToolTip(this.s4, "Start message 4.");
+            this.s4.Text = Translator.Tr("F4");
+            this.toolTip1.SetToolTip(this.s4, Translator.Tr("Start message 4."));
             this.s4.Click += new System.EventHandler(this.s4_Click);
             this.s4.MouseDown += new System.Windows.Forms.MouseEventHandler(this.s4_MouseDown);
             // 
@@ -1271,8 +1272,8 @@ namespace Thetis
             this.s3.Selectable = true;
             this.s3.Size = new System.Drawing.Size(33, 20);
             this.s3.TabIndex = 8;
-            this.s3.Text = "F3";
-            this.toolTip1.SetToolTip(this.s3, "Start message 3.");
+            this.s3.Text = Translator.Tr("F3");
+            this.toolTip1.SetToolTip(this.s3, Translator.Tr("Start message 3."));
             this.s3.Click += new System.EventHandler(this.s3_Click);
             this.s3.MouseDown += new System.Windows.Forms.MouseEventHandler(this.s3_MouseDown);
             // 
@@ -1284,8 +1285,8 @@ namespace Thetis
             this.s2.Selectable = true;
             this.s2.Size = new System.Drawing.Size(33, 20);
             this.s2.TabIndex = 6;
-            this.s2.Text = "F2";
-            this.toolTip1.SetToolTip(this.s2, "Start message 2.");
+            this.s2.Text = Translator.Tr("F2");
+            this.toolTip1.SetToolTip(this.s2, Translator.Tr("Start message 2."));
             this.s2.Click += new System.EventHandler(this.s2_Click);
             this.s2.MouseDown += new System.Windows.Forms.MouseEventHandler(this.s2_MouseDown);
             // 
@@ -1297,8 +1298,8 @@ namespace Thetis
             this.s1.Selectable = true;
             this.s1.Size = new System.Drawing.Size(34, 20);
             this.s1.TabIndex = 4;
-            this.s1.Text = "F1";
-            this.toolTip1.SetToolTip(this.s1, "Start message 1.");
+            this.s1.Text = Translator.Tr("F1");
+            this.toolTip1.SetToolTip(this.s1, Translator.Tr("Start message 1."));
             this.s1.Click += new System.EventHandler(this.s1_Click);
             this.s1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.s1_MouseDown);
             // 
@@ -1312,7 +1313,7 @@ namespace Thetis
             this.chkForceToCWmode.Name = "chkForceToCWmode";
             this.chkForceToCWmode.Size = new System.Drawing.Size(115, 17);
             this.chkForceToCWmode.TabIndex = 58;
-            this.chkForceToCWmode.Text = "Force to CW mode";
+            this.chkForceToCWmode.Text = Translator.Tr("Force to CW mode");
             this.chkForceToCWmode.UseVisualStyleBackColor = true;
             // 
             // chkAlwaysOnTop
@@ -1322,7 +1323,7 @@ namespace Thetis
             this.chkAlwaysOnTop.Name = "chkAlwaysOnTop";
             this.chkAlwaysOnTop.Size = new System.Drawing.Size(104, 24);
             this.chkAlwaysOnTop.TabIndex = 57;
-            this.chkAlwaysOnTop.Text = "Always On Top";
+            this.chkAlwaysOnTop.Text = Translator.Tr("Always On Top");
             this.chkAlwaysOnTop.CheckedChanged += new System.EventHandler(this.chkAlwaysOnTop_CheckedChanged);
             // 
             // udWPM
@@ -1403,7 +1404,7 @@ namespace Thetis
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(256, 32);
             this.label7.TabIndex = 47;
-            this.label7.Text = "label7";
+            this.label7.Text = Translator.Tr("label7");
             // 
             // udDrop
             // 
@@ -1443,7 +1444,7 @@ namespace Thetis
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(256, 32);
             this.label6.TabIndex = 28;
-            this.label6.Text = "label6";
+            this.label6.Text = Translator.Tr("label6");
             // 
             // label5
             // 
@@ -1452,7 +1453,7 @@ namespace Thetis
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(256, 32);
             this.label5.TabIndex = 27;
-            this.label5.Text = "label5";
+            this.label5.Text = Translator.Tr("label5");
             // 
             // label4
             // 
@@ -1461,7 +1462,7 @@ namespace Thetis
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(256, 32);
             this.label4.TabIndex = 25;
-            this.label4.Text = "label4";
+            this.label4.Text = Translator.Tr("label4");
             // 
             // udDelay
             // 
@@ -1503,8 +1504,8 @@ namespace Thetis
             this.chkFocusRequired.Name = "chkFocusRequired";
             this.chkFocusRequired.Size = new System.Drawing.Size(55, 17);
             this.chkFocusRequired.TabIndex = 59;
-            this.chkFocusRequired.Text = "Focus";
-            this.toolTip1.SetToolTip(this.chkFocusRequired, "Window focus is needed for Fn keys and Alt Digits");
+            this.chkFocusRequired.Text = Translator.Tr("Focus");
+            this.toolTip1.SetToolTip(this.chkFocusRequired, Translator.Tr("Window focus is needed for Fn keys and Alt Digits"));
             this.chkFocusRequired.UseVisualStyleBackColor = true;
             // CWX
             // 
@@ -1559,7 +1560,7 @@ namespace Thetis
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
             this.Name = "CWX";
-            this.Text = "   CW Memories and Keyboard ...";
+            this.Text = Translator.Tr("   CW Memories and Keyboard ...");
             this.Closing += new System.ComponentModel.CancelEventHandler(this.CWX_Closing);
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.CWX_FormClosing);
             this.Load += new System.EventHandler(this.CWX_Load);
@@ -1588,7 +1589,7 @@ namespace Thetis
                 this.Height = 190;
                 expandButton.Left = 432;
                 expandButton.Top = 132;
-                toolTip1.SetToolTip(expandButton, "Expand Form");
+                toolTip1.SetToolTip(expandButton, Translator.Tr("Expand Form"));
             }
             else
             {
@@ -1596,7 +1597,7 @@ namespace Thetis
                 this.Height = 320;
                 expandButton.Left = 688;
                 expandButton.Top = 266;
-                toolTip1.SetToolTip(expandButton, "Compress Form");
+                toolTip1.SetToolTip(expandButton, Translator.Tr("Compress Form"));
             }
         }
 
@@ -1604,7 +1605,7 @@ namespace Thetis
         {
 
             keyboardButton.ForeColor = System.Drawing.Color.Gray;
-            keyboardButton.Text = "Keys Off";
+            keyboardButton.Text = Translator.Tr("Keys Off");
             keyboardLed.BackColor = System.Drawing.Color.Black;
 
         }
@@ -1613,7 +1614,7 @@ namespace Thetis
         {
 
             keyboardButton.ForeColor = System.Drawing.Color.Black;
-            keyboardButton.Text = "KEYS ACTIVE";
+            keyboardButton.Text = Translator.Tr("KEYS ACTIVE");
             keyboardLed.BackColor = System.Drawing.Color.Cyan;
 
         }
@@ -1699,8 +1700,8 @@ namespace Thetis
             if (console.RX1DSPMode != DSPMode.CWL &&
                 console.RX1DSPMode != DSPMode.CWU)
             {
-                MessageBox.Show("Console is not in CW mode.  Please switch to either CWL or CWU and try again.",
-                    "CWX Error: Wrong Mode",
+                MessageBox.Show(Translator.Tr("Console is not in CW mode.  Please switch to either CWL or CWU and try again."),
+                    Translator.Tr("CWX Error: Wrong Mode"),
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
                 return;
@@ -1730,8 +1731,8 @@ namespace Thetis
             {
                 if (bShowWarning)
                 {
-                    MessageBox.Show("Console has PTT disabled.  Please enable it and try again.",
-                        "PTT disabled",
+                    MessageBox.Show(Translator.Tr("Console has PTT disabled.  Please enable it and try again."),
+                        Translator.Tr("PTT disabled"),
                         MessageBoxButtons.OK,
                         MessageBoxIcon.Error, MessageBoxDefaultButton.Button1, Common.MB_TOPMOST);
                 }
@@ -2108,11 +2109,11 @@ namespace Thetis
 #endif
             if (editline[5] == '*') //.Substring(5,1).Equals("*"))
             {
-                MessageBox.Show("Definitions that start with '*' cannot be edited");
+                MessageBox.Show(Translator.Tr("Definitions that start with '*' cannot be edited"));
             }
             else if (editline.Length != 26)
             {
-                MessageBox.Show("Selected line has invalid length");
+                MessageBox.Show(Translator.Tr("Selected line has invalid length"));
             }
             else
             {
@@ -2125,7 +2126,7 @@ namespace Thetis
                 if (editline.Length == 26) insert_and_reload(editline);
                 else if (editline.Length > 0)
                 {
-                    MessageBox.Show("Edited line has invalid length and is not saved.");
+                    MessageBox.Show(Translator.Tr("Edited line has invalid length and is not saved."));
                 }
             }
         }
@@ -2139,7 +2140,7 @@ namespace Thetis
             id -= 32;
             if (id < 0 || id > 63)
             {
-                MessageBox.Show("Edited line cannot be found in a2m2.");
+                MessageBox.Show(Translator.Tr("Edited line cannot be found in a2m2."));
                 return;
             }
             a2m2[id] = s;		// replace with the new lines
@@ -2158,7 +2159,7 @@ namespace Thetis
 					return;
 				}
 			}
-			MessageBox.Show("Edited line cannot be found in a2m2.");
+			MessageBox.Show(Translator.Tr("Edited line cannot be found in a2m2."));
 #endif
         }
         private void write_a2m2()
@@ -2356,8 +2357,8 @@ namespace Thetis
             if (console.RX1DSPMode != DSPMode.CWL &&
                 console.RX1DSPMode != DSPMode.CWU)
             {
-                MessageBox.Show("Console is not in CW mode.  Please switch to either CWL or CWU and try again.",
-                    "CWX Error: Wrong Mode",
+                MessageBox.Show(Translator.Tr("Console is not in CW mode.  Please switch to either CWL or CWU and try again."),
+                    Translator.Tr("CWX Error: Wrong Mode"),
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
                 return;

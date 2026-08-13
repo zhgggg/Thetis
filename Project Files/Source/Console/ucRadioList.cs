@@ -163,6 +163,7 @@ public byte RadioProtocol2Supported;
             _init_done = false;
 
             InitializeComponent();
+            Translator.ApplyToForm(this);
 
             Font = new Font("Consolas", 9f, FontStyle.Regular, GraphicsUnit.Point);
 

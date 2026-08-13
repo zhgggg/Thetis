@@ -187,6 +187,7 @@ namespace Thetis
         {
             _initalising = true;
             InitializeComponent();
+            Translator.ApplyToForm(this);
             console = c;
 
             _paraeq_show_rx = true;
@@ -410,9 +411,9 @@ namespace Thetis
             this.pbParaEQ_live_warning.Size = new System.Drawing.Size(20, 20);
             this.pbParaEQ_live_warning.TabIndex = 171;
             this.pbParaEQ_live_warning.TabStop = false;
-            this.toolTip1.SetToolTip(this.pbParaEQ_live_warning, "Live updates may take a while due to large DSP buffer sizes.\r\nUI interactions may" +
-        " be degraded. Switching live off will\r\ncause the changes to apply after you fini" +
-        "sh dragging/adjusting.");
+            this.toolTip1.SetToolTip(this.pbParaEQ_live_warning, Translator.Tr("Live updates may take a while due to large DSP buffer sizes.\r\nUI interactions may") +
+        Translator.Tr(" be degraded. Switching live off will\r\ncause the changes to apply after you fini") +
+        Translator.Tr("sh dragging/adjusting."));
             this.pbParaEQ_live_warning.Visible = false;
             // 
             // chkPanaEQ_live
@@ -423,9 +424,9 @@ namespace Thetis
             this.chkPanaEQ_live.Name = "chkPanaEQ_live";
             this.chkPanaEQ_live.Size = new System.Drawing.Size(84, 17);
             this.chkPanaEQ_live.TabIndex = 165;
-            this.chkPanaEQ_live.Text = "Live Update";
-            this.toolTip1.SetToolTip(this.chkPanaEQ_live, "Warning: Having live updates may cause slowdown whilst the EQ change is being pro" +
-        "cessed.");
+            this.chkPanaEQ_live.Text = Translator.Tr("Live Update");
+            this.toolTip1.SetToolTip(this.chkPanaEQ_live, Translator.Tr("Warning: Having live updates may cause slowdown whilst the EQ change is being pro") +
+        Translator.Tr("cessed."));
             this.chkPanaEQ_live.UseVisualStyleBackColor = true;
             this.chkPanaEQ_live.CheckedChanged += new System.EventHandler(this.chkPanaEQ_live_CheckedChanged);
             // 
@@ -436,9 +437,9 @@ namespace Thetis
             this.lblRXEQ9.Name = "lblRXEQ9";
             this.lblRXEQ9.Size = new System.Drawing.Size(40, 16);
             this.lblRXEQ9.TabIndex = 123;
-            this.lblRXEQ9.Text = "High";
+            this.lblRXEQ9.Text = Translator.Tr("High");
             this.lblRXEQ9.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.toolTip1.SetToolTip(this.lblRXEQ9, "1500-6000Hz");
+            this.toolTip1.SetToolTip(this.lblRXEQ9, Translator.Tr("1500-6000Hz"));
             // 
             // lblRXEQ5
             // 
@@ -447,9 +448,9 @@ namespace Thetis
             this.lblRXEQ5.Name = "lblRXEQ5";
             this.lblRXEQ5.Size = new System.Drawing.Size(40, 16);
             this.lblRXEQ5.TabIndex = 116;
-            this.lblRXEQ5.Text = "Mid";
+            this.lblRXEQ5.Text = Translator.Tr("Mid");
             this.lblRXEQ5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.toolTip1.SetToolTip(this.lblRXEQ5, "400-1500Hz");
+            this.toolTip1.SetToolTip(this.lblRXEQ5, Translator.Tr("400-1500Hz"));
             // 
             // lblRXEQ1
             // 
@@ -459,9 +460,9 @@ namespace Thetis
             this.lblRXEQ1.Name = "lblRXEQ1";
             this.lblRXEQ1.Size = new System.Drawing.Size(40, 16);
             this.lblRXEQ1.TabIndex = 43;
-            this.lblRXEQ1.Text = "Low";
+            this.lblRXEQ1.Text = Translator.Tr("Low");
             this.lblRXEQ1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.toolTip1.SetToolTip(this.lblRXEQ1, "0-400Hz");
+            this.toolTip1.SetToolTip(this.lblRXEQ1, Translator.Tr("0-400Hz"));
             // 
             // pnlParaEQ2
             // 
@@ -489,7 +490,7 @@ namespace Thetis
             this.chkLogScale.Name = "chkLogScale";
             this.chkLogScale.Size = new System.Drawing.Size(84, 17);
             this.chkLogScale.TabIndex = 172;
-            this.chkLogScale.Text = "Log scale";
+            this.chkLogScale.Text = Translator.Tr("Log scale");
             this.chkLogScale.UseVisualStyleBackColor = true;
             this.chkLogScale.CheckedChanged += new System.EventHandler(this.chkLogScale_CheckedChanged);
             // 
@@ -514,7 +515,7 @@ namespace Thetis
             this.radParaEQ_5.Name = "radParaEQ_5";
             this.radParaEQ_5.Size = new System.Drawing.Size(58, 17);
             this.radParaEQ_5.TabIndex = 13;
-            this.radParaEQ_5.Text = "5-band";
+            this.radParaEQ_5.Text = Translator.Tr("5-band");
             this.radParaEQ_5.CheckedChanged += new System.EventHandler(this.radParaEQ_CheckedChanged);
             // 
             // radParaEQ_10
@@ -527,7 +528,7 @@ namespace Thetis
             this.radParaEQ_10.Size = new System.Drawing.Size(64, 17);
             this.radParaEQ_10.TabIndex = 11;
             this.radParaEQ_10.TabStop = true;
-            this.radParaEQ_10.Text = "10-band";
+            this.radParaEQ_10.Text = Translator.Tr("10-band");
             this.radParaEQ_10.CheckedChanged += new System.EventHandler(this.radParaEQ_CheckedChanged);
             // 
             // radParaEQ_18
@@ -538,7 +539,7 @@ namespace Thetis
             this.radParaEQ_18.Name = "radParaEQ_18";
             this.radParaEQ_18.Size = new System.Drawing.Size(64, 17);
             this.radParaEQ_18.TabIndex = 12;
-            this.radParaEQ_18.Text = "18-band";
+            this.radParaEQ_18.Text = Translator.Tr("18-band");
             this.radParaEQ_18.CheckedChanged += new System.EventHandler(this.radParaEQ_CheckedChanged);
             // 
             // chkUseQFactors
@@ -551,7 +552,7 @@ namespace Thetis
             this.chkUseQFactors.Name = "chkUseQFactors";
             this.chkUseQFactors.Size = new System.Drawing.Size(94, 17);
             this.chkUseQFactors.TabIndex = 9;
-            this.chkUseQFactors.Text = "Use Q Factors";
+            this.chkUseQFactors.Text = Translator.Tr("Use Q Factors");
             this.chkUseQFactors.UseVisualStyleBackColor = true;
             this.chkUseQFactors.CheckedChanged += new System.EventHandler(this.chkUseQFactors_CheckedChanged);
             // 
@@ -624,7 +625,7 @@ namespace Thetis
             this.labelTS1.Name = "labelTS1";
             this.labelTS1.Size = new System.Drawing.Size(27, 13);
             this.labelTS1.TabIndex = 153;
-            this.labelTS1.Text = "Low";
+            this.labelTS1.Text = Translator.Tr("Low");
             // 
             // labelTS2
             // 
@@ -635,7 +636,7 @@ namespace Thetis
             this.labelTS2.Name = "labelTS2";
             this.labelTS2.Size = new System.Drawing.Size(29, 13);
             this.labelTS2.TabIndex = 154;
-            this.labelTS2.Text = "High";
+            this.labelTS2.Text = Translator.Tr("High");
             // 
             // pnlParaEQ
             // 
@@ -672,7 +673,7 @@ namespace Thetis
             this.labelTS10.Name = "labelTS10";
             this.labelTS10.Size = new System.Drawing.Size(20, 13);
             this.labelTS10.TabIndex = 168;
-            this.labelTS10.Text = "dB";
+            this.labelTS10.Text = Translator.Tr("dB");
             // 
             // labelTS9
             // 
@@ -682,7 +683,7 @@ namespace Thetis
             this.labelTS9.Name = "labelTS9";
             this.labelTS9.Size = new System.Drawing.Size(43, 13);
             this.labelTS9.TabIndex = 167;
-            this.labelTS9.Text = "Preamp";
+            this.labelTS9.Text = Translator.Tr("Preamp");
             // 
             // nudParaEQ_preamp
             // 
@@ -722,7 +723,7 @@ namespace Thetis
             this.labelTS8.Name = "labelTS8";
             this.labelTS8.Size = new System.Drawing.Size(20, 13);
             this.labelTS8.TabIndex = 164;
-            this.labelTS8.Text = "Hz";
+            this.labelTS8.Text = Translator.Tr("Hz");
             // 
             // labelTS5
             // 
@@ -732,7 +733,7 @@ namespace Thetis
             this.labelTS5.Name = "labelTS5";
             this.labelTS5.Size = new System.Drawing.Size(20, 13);
             this.labelTS5.TabIndex = 159;
-            this.labelTS5.Text = "dB";
+            this.labelTS5.Text = Translator.Tr("dB");
             // 
             // labelTS7
             // 
@@ -742,7 +743,7 @@ namespace Thetis
             this.labelTS7.Name = "labelTS7";
             this.labelTS7.Size = new System.Drawing.Size(10, 13);
             this.labelTS7.TabIndex = 163;
-            this.labelTS7.Text = "f";
+            this.labelTS7.Text = Translator.Tr("f");
             // 
             // btnParaEQReset
             // 
@@ -753,7 +754,7 @@ namespace Thetis
             this.btnParaEQReset.Selectable = true;
             this.btnParaEQReset.Size = new System.Drawing.Size(75, 23);
             this.btnParaEQReset.TabIndex = 10;
-            this.btnParaEQReset.Text = "Reset";
+            this.btnParaEQReset.Text = Translator.Tr("Reset");
             this.btnParaEQReset.UseVisualStyleBackColor = true;
             this.btnParaEQReset.Click += new System.EventHandler(this.btnParaEQReset_Click);
             // 
@@ -767,7 +768,7 @@ namespace Thetis
             this.radParaEQ_TX.Size = new System.Drawing.Size(57, 17);
             this.radParaEQ_TX.TabIndex = 8;
             this.radParaEQ_TX.TabStop = true;
-            this.radParaEQ_TX.Text = "TX EQ";
+            this.radParaEQ_TX.Text = Translator.Tr("TX EQ");
             this.radParaEQ_TX.CheckedChanged += new System.EventHandler(this.radParaEQ_RXTX_CheckedChanged);
             // 
             // chkParaEQ_enabled
@@ -778,7 +779,7 @@ namespace Thetis
             this.chkParaEQ_enabled.Name = "chkParaEQ_enabled";
             this.chkParaEQ_enabled.Size = new System.Drawing.Size(65, 17);
             this.chkParaEQ_enabled.TabIndex = 107;
-            this.chkParaEQ_enabled.Text = "Enabled";
+            this.chkParaEQ_enabled.Text = Translator.Tr("Enabled");
             this.chkParaEQ_enabled.CheckedChanged += new System.EventHandler(this.chkParaEQ_enabled_CheckedChanged);
             // 
             // radParaEQ_RX
@@ -789,7 +790,7 @@ namespace Thetis
             this.radParaEQ_RX.Name = "radParaEQ_RX";
             this.radParaEQ_RX.Size = new System.Drawing.Size(58, 17);
             this.radParaEQ_RX.TabIndex = 7;
-            this.radParaEQ_RX.Text = "RX EQ";
+            this.radParaEQ_RX.Text = Translator.Tr("RX EQ");
             this.radParaEQ_RX.CheckedChanged += new System.EventHandler(this.radParaEQ_RXTX_CheckedChanged);
             // 
             // nudParaEQ_f
@@ -829,7 +830,7 @@ namespace Thetis
             this.labelTS6.Name = "labelTS6";
             this.labelTS6.Size = new System.Drawing.Size(15, 13);
             this.labelTS6.TabIndex = 161;
-            this.labelTS6.Text = "Q";
+            this.labelTS6.Text = Translator.Tr("Q");
             // 
             // nudParaEQ_q
             // 
@@ -869,7 +870,7 @@ namespace Thetis
             this.labelTS4.Name = "labelTS4";
             this.labelTS4.Size = new System.Drawing.Size(29, 13);
             this.labelTS4.TabIndex = 158;
-            this.labelTS4.Text = "Gain";
+            this.labelTS4.Text = Translator.Tr("Gain");
             // 
             // nudParaEQ_gain
             // 
@@ -909,7 +910,7 @@ namespace Thetis
             this.labelTS3.Name = "labelTS3";
             this.labelTS3.Size = new System.Drawing.Size(14, 13);
             this.labelTS3.TabIndex = 156;
-            this.labelTS3.Text = "#";
+            this.labelTS3.Text = Translator.Tr("#");
             // 
             // nudParaEQ_selected_band
             // 
@@ -992,7 +993,7 @@ namespace Thetis
             this.chkLegacyEQ.Name = "chkLegacyEQ";
             this.chkLegacyEQ.Size = new System.Drawing.Size(79, 17);
             this.chkLegacyEQ.TabIndex = 5;
-            this.chkLegacyEQ.Text = "Legacy EQ";
+            this.chkLegacyEQ.Text = Translator.Tr("Legacy EQ");
             this.chkLegacyEQ.UseVisualStyleBackColor = true;
             this.chkLegacyEQ.CheckedChanged += new System.EventHandler(this.chkLegacyEQ_CheckedChanged);
             // 
@@ -1016,7 +1017,7 @@ namespace Thetis
             this.rad3Band.Name = "rad3Band";
             this.rad3Band.Size = new System.Drawing.Size(120, 24);
             this.rad3Band.TabIndex = 2;
-            this.rad3Band.Text = "3-Band Equalizer";
+            this.rad3Band.Text = Translator.Tr("3-Band Equalizer");
             this.rad3Band.CheckedChanged += new System.EventHandler(this.rad3Band_CheckedChanged);
             // 
             // rad10Band
@@ -1028,7 +1029,7 @@ namespace Thetis
             this.rad10Band.Size = new System.Drawing.Size(120, 24);
             this.rad10Band.TabIndex = 3;
             this.rad10Band.TabStop = true;
-            this.rad10Band.Text = "10-Band Equalizer";
+            this.rad10Band.Text = Translator.Tr("10-Band Equalizer");
             this.rad10Band.CheckedChanged += new System.EventHandler(this.rad10Band_CheckedChanged);
             // 
             // grpTXEQ
@@ -1068,7 +1069,7 @@ namespace Thetis
             this.grpTXEQ.Size = new System.Drawing.Size(528, 218);
             this.grpTXEQ.TabIndex = 1;
             this.grpTXEQ.TabStop = false;
-            this.grpTXEQ.Text = "Transmit Equalizer";
+            this.grpTXEQ.Text = Translator.Tr("Transmit Equalizer");
             // 
             // lblCFCFreq
             // 
@@ -1079,7 +1080,7 @@ namespace Thetis
             this.lblCFCFreq.Name = "lblCFCFreq";
             this.lblCFCFreq.Size = new System.Drawing.Size(35, 13);
             this.lblCFCFreq.TabIndex = 159;
-            this.lblCFCFreq.Text = "FREQ";
+            this.lblCFCFreq.Text = Translator.Tr("FREQ");
             // 
             // udTXEQ9
             // 
@@ -1378,7 +1379,7 @@ namespace Thetis
             this.lblTXEQ15db2.Name = "lblTXEQ15db2";
             this.lblTXEQ15db2.Size = new System.Drawing.Size(32, 16);
             this.lblTXEQ15db2.TabIndex = 129;
-            this.lblTXEQ15db2.Text = "15dB";
+            this.lblTXEQ15db2.Text = Translator.Tr("15dB");
             this.lblTXEQ15db2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // lblTXEQ0dB2
@@ -1388,7 +1389,7 @@ namespace Thetis
             this.lblTXEQ0dB2.Name = "lblTXEQ0dB2";
             this.lblTXEQ0dB2.Size = new System.Drawing.Size(32, 16);
             this.lblTXEQ0dB2.TabIndex = 128;
-            this.lblTXEQ0dB2.Text = "  0dB";
+            this.lblTXEQ0dB2.Text = Translator.Tr("  0dB");
             this.lblTXEQ0dB2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // lblTXEQminus12db2
@@ -1398,7 +1399,7 @@ namespace Thetis
             this.lblTXEQminus12db2.Name = "lblTXEQminus12db2";
             this.lblTXEQminus12db2.Size = new System.Drawing.Size(38, 16);
             this.lblTXEQminus12db2.TabIndex = 130;
-            this.lblTXEQminus12db2.Text = "-12dB";
+            this.lblTXEQminus12db2.Text = Translator.Tr("-12dB");
             this.lblTXEQminus12db2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // tbTXEQ9
@@ -1506,7 +1507,7 @@ namespace Thetis
             this.chkTXEQEnabled.Name = "chkTXEQEnabled";
             this.chkTXEQEnabled.Size = new System.Drawing.Size(72, 16);
             this.chkTXEQEnabled.TabIndex = 106;
-            this.chkTXEQEnabled.Text = "Enabled";
+            this.chkTXEQEnabled.Text = Translator.Tr("Enabled");
             this.chkTXEQEnabled.CheckedChanged += new System.EventHandler(this.chkTXEQEnabled_CheckedChanged);
             // 
             // tbTXEQ0
@@ -1559,7 +1560,7 @@ namespace Thetis
             this.lblTXEQPreamp.Name = "lblTXEQPreamp";
             this.lblTXEQPreamp.Size = new System.Drawing.Size(48, 16);
             this.lblTXEQPreamp.TabIndex = 105;
-            this.lblTXEQPreamp.Text = "Preamp";
+            this.lblTXEQPreamp.Text = Translator.Tr("Preamp");
             this.lblTXEQPreamp.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // tbTXEQPre
@@ -1583,7 +1584,7 @@ namespace Thetis
             this.lblTXEQ15db.Name = "lblTXEQ15db";
             this.lblTXEQ15db.Size = new System.Drawing.Size(32, 16);
             this.lblTXEQ15db.TabIndex = 43;
-            this.lblTXEQ15db.Text = "15dB";
+            this.lblTXEQ15db.Text = Translator.Tr("15dB");
             this.lblTXEQ15db.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // lblTXEQ0dB
@@ -1593,7 +1594,7 @@ namespace Thetis
             this.lblTXEQ0dB.Name = "lblTXEQ0dB";
             this.lblTXEQ0dB.Size = new System.Drawing.Size(32, 16);
             this.lblTXEQ0dB.TabIndex = 0;
-            this.lblTXEQ0dB.Text = "  0dB";
+            this.lblTXEQ0dB.Text = Translator.Tr("  0dB");
             this.lblTXEQ0dB.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // lblTXEQminus12db
@@ -1603,7 +1604,7 @@ namespace Thetis
             this.lblTXEQminus12db.Name = "lblTXEQminus12db";
             this.lblTXEQminus12db.Size = new System.Drawing.Size(38, 16);
             this.lblTXEQminus12db.TabIndex = 45;
-            this.lblTXEQminus12db.Text = "-12dB";
+            this.lblTXEQminus12db.Text = Translator.Tr("-12dB");
             this.lblTXEQminus12db.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // grpRXEQ
@@ -1644,7 +1645,7 @@ namespace Thetis
             this.grpRXEQ.Size = new System.Drawing.Size(528, 224);
             this.grpRXEQ.TabIndex = 1;
             this.grpRXEQ.TabStop = false;
-            this.grpRXEQ.Text = "Receive Equalizer";
+            this.grpRXEQ.Text = Translator.Tr("Receive Equalizer");
             // 
             // lblRXEQ15db2
             // 
@@ -1653,7 +1654,7 @@ namespace Thetis
             this.lblRXEQ15db2.Name = "lblRXEQ15db2";
             this.lblRXEQ15db2.Size = new System.Drawing.Size(32, 16);
             this.lblRXEQ15db2.TabIndex = 126;
-            this.lblRXEQ15db2.Text = "15dB";
+            this.lblRXEQ15db2.Text = Translator.Tr("15dB");
             this.lblRXEQ15db2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // lblRXEQ0dB2
@@ -1663,7 +1664,7 @@ namespace Thetis
             this.lblRXEQ0dB2.Name = "lblRXEQ0dB2";
             this.lblRXEQ0dB2.Size = new System.Drawing.Size(32, 16);
             this.lblRXEQ0dB2.TabIndex = 127;
-            this.lblRXEQ0dB2.Text = "  0dB";
+            this.lblRXEQ0dB2.Text = Translator.Tr("  0dB");
             this.lblRXEQ0dB2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // lblRXEQminus12db2
@@ -1673,7 +1674,7 @@ namespace Thetis
             this.lblRXEQminus12db2.Name = "lblRXEQminus12db2";
             this.lblRXEQminus12db2.Size = new System.Drawing.Size(38, 16);
             this.lblRXEQminus12db2.TabIndex = 128;
-            this.lblRXEQminus12db2.Text = "-12dB";
+            this.lblRXEQminus12db2.Text = Translator.Tr("-12dB");
             this.lblRXEQminus12db2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // lblRXEQ10
@@ -1683,7 +1684,7 @@ namespace Thetis
             this.lblRXEQ10.Name = "lblRXEQ10";
             this.lblRXEQ10.Size = new System.Drawing.Size(40, 16);
             this.lblRXEQ10.TabIndex = 125;
-            this.lblRXEQ10.Text = "16K";
+            this.lblRXEQ10.Text = Translator.Tr("16K");
             this.lblRXEQ10.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.lblRXEQ10.Visible = false;
             // 
@@ -1709,7 +1710,7 @@ namespace Thetis
             this.lblRXEQ7.Name = "lblRXEQ7";
             this.lblRXEQ7.Size = new System.Drawing.Size(40, 16);
             this.lblRXEQ7.TabIndex = 121;
-            this.lblRXEQ7.Text = "2K";
+            this.lblRXEQ7.Text = Translator.Tr("2K");
             this.lblRXEQ7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.lblRXEQ7.Visible = false;
             // 
@@ -1720,7 +1721,7 @@ namespace Thetis
             this.lblRXEQ8.Name = "lblRXEQ8";
             this.lblRXEQ8.Size = new System.Drawing.Size(40, 16);
             this.lblRXEQ8.TabIndex = 122;
-            this.lblRXEQ8.Text = "4K";
+            this.lblRXEQ8.Text = Translator.Tr("4K");
             this.lblRXEQ8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.lblRXEQ8.Visible = false;
             // 
@@ -1816,7 +1817,7 @@ namespace Thetis
             this.lblRXEQ4.Name = "lblRXEQ4";
             this.lblRXEQ4.Size = new System.Drawing.Size(40, 16);
             this.lblRXEQ4.TabIndex = 115;
-            this.lblRXEQ4.Text = "250";
+            this.lblRXEQ4.Text = Translator.Tr("250");
             this.lblRXEQ4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.lblRXEQ4.Visible = false;
             // 
@@ -1827,7 +1828,7 @@ namespace Thetis
             this.lblRXEQ6.Name = "lblRXEQ6";
             this.lblRXEQ6.Size = new System.Drawing.Size(40, 16);
             this.lblRXEQ6.TabIndex = 117;
-            this.lblRXEQ6.Text = "1K";
+            this.lblRXEQ6.Text = Translator.Tr("1K");
             this.lblRXEQ6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.lblRXEQ6.Visible = false;
             // 
@@ -1850,7 +1851,7 @@ namespace Thetis
             this.btnRXEQReset.Selectable = true;
             this.btnRXEQReset.Size = new System.Drawing.Size(42, 20);
             this.btnRXEQReset.TabIndex = 110;
-            this.btnRXEQReset.Text = "Reset";
+            this.btnRXEQReset.Text = Translator.Tr("Reset");
             this.btnRXEQReset.Click += new System.EventHandler(this.btnRXEQReset_Click);
             // 
             // chkRXEQEnabled
@@ -1860,7 +1861,7 @@ namespace Thetis
             this.chkRXEQEnabled.Name = "chkRXEQEnabled";
             this.chkRXEQEnabled.Size = new System.Drawing.Size(72, 16);
             this.chkRXEQEnabled.TabIndex = 109;
-            this.chkRXEQEnabled.Text = "Enabled";
+            this.chkRXEQEnabled.Text = Translator.Tr("Enabled");
             this.chkRXEQEnabled.CheckedChanged += new System.EventHandler(this.chkRXEQEnabled_CheckedChanged);
             // 
             // tbRXEQ1
@@ -1912,7 +1913,7 @@ namespace Thetis
             this.lblRXEQ2.Name = "lblRXEQ2";
             this.lblRXEQ2.Size = new System.Drawing.Size(40, 16);
             this.lblRXEQ2.TabIndex = 44;
-            this.lblRXEQ2.Text = "63";
+            this.lblRXEQ2.Text = Translator.Tr("63");
             this.lblRXEQ2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.lblRXEQ2.Visible = false;
             // 
@@ -1923,7 +1924,7 @@ namespace Thetis
             this.lblRXEQ3.Name = "lblRXEQ3";
             this.lblRXEQ3.Size = new System.Drawing.Size(40, 16);
             this.lblRXEQ3.TabIndex = 45;
-            this.lblRXEQ3.Text = "125";
+            this.lblRXEQ3.Text = Translator.Tr("125");
             this.lblRXEQ3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.lblRXEQ3.Visible = false;
             // 
@@ -1935,7 +1936,7 @@ namespace Thetis
             this.lblRXEQPreamp.Name = "lblRXEQPreamp";
             this.lblRXEQPreamp.Size = new System.Drawing.Size(48, 16);
             this.lblRXEQPreamp.TabIndex = 74;
-            this.lblRXEQPreamp.Text = "Preamp";
+            this.lblRXEQPreamp.Text = Translator.Tr("Preamp");
             this.lblRXEQPreamp.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // tbRXEQPreamp
@@ -1959,7 +1960,7 @@ namespace Thetis
             this.lblRXEQ15db.Name = "lblRXEQ15db";
             this.lblRXEQ15db.Size = new System.Drawing.Size(32, 16);
             this.lblRXEQ15db.TabIndex = 40;
-            this.lblRXEQ15db.Text = "15dB";
+            this.lblRXEQ15db.Text = Translator.Tr("15dB");
             this.lblRXEQ15db.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // lblRXEQ0dB
@@ -1969,7 +1970,7 @@ namespace Thetis
             this.lblRXEQ0dB.Name = "lblRXEQ0dB";
             this.lblRXEQ0dB.Size = new System.Drawing.Size(32, 16);
             this.lblRXEQ0dB.TabIndex = 41;
-            this.lblRXEQ0dB.Text = "  0dB";
+            this.lblRXEQ0dB.Text = Translator.Tr("  0dB");
             this.lblRXEQ0dB.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // lblRXEQminus12db
@@ -1979,7 +1980,7 @@ namespace Thetis
             this.lblRXEQminus12db.Name = "lblRXEQminus12db";
             this.lblRXEQminus12db.Size = new System.Drawing.Size(38, 16);
             this.lblRXEQminus12db.TabIndex = 42;
-            this.lblRXEQminus12db.Text = "-12dB";
+            this.lblRXEQminus12db.Text = Translator.Tr("-12dB");
             this.lblRXEQminus12db.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // EQForm
@@ -1992,7 +1993,7 @@ namespace Thetis
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(572, 572);
             this.Name = "EQForm";
-            this.Text = "Equalizer Settings";
+            this.Text = Translator.Tr("Equalizer Settings");
             this.Closing += new System.ComponentModel.CancelEventHandler(this.EQForm_Closing);
             this.VisibleChanged += new System.EventHandler(this.EQForm_VisibleChanged);
             ((System.ComponentModel.ISupportInitialize)(this.pbParaEQ_live_warning)).EndInit();
@@ -2157,7 +2158,7 @@ namespace Thetis
                 {
                     if (value.Length < 4)
                     {
-                        MessageBox.Show("Error setting RX EQ");
+                        MessageBox.Show(Translator.Tr("Error setting RX EQ"));
                         return;
                     }
                     tbRXEQPreamp.Value = Math.Max(tbRXEQPreamp.Minimum, Math.Min(tbRXEQPreamp.Maximum, value[0]));
@@ -2169,7 +2170,7 @@ namespace Thetis
                 {
                     if (value.Length < 11)
                     {
-                        MessageBox.Show("Error setting RX EQ");
+                        MessageBox.Show(Translator.Tr("Error setting RX EQ"));
                         return;
                     }
                     tbRXEQPreamp.Value = Math.Max(tbRXEQPreamp.Minimum, Math.Min(tbRXEQPreamp.Maximum, value[0]));
@@ -2251,7 +2252,7 @@ namespace Thetis
                 //{
                 //    if(value.Length < 4)
                 //    {
-                //        MessageBox.Show("Error setting TX EQ");
+                //        MessageBox.Show(Translator.Tr("Error setting TX EQ"));
                 //        return;
                 //    }
                 //    //tbTXEQPreamp.Value = Math.Max(tbTXEQPreamp.Minimum, Math.Min(tbTXEQPreamp.Maximum, value[0]));
@@ -2263,7 +2264,7 @@ namespace Thetis
                 //{
                 //    if(value.Length < 11)
                 //    {
-                //        MessageBox.Show("Error setting TX EQ");
+                //        MessageBox.Show(Translator.Tr("Error setting TX EQ"));
                 //        return;
                 //    }
                 tbTXEQPre.Value = Math.Max(tbTXEQPre.Minimum, Math.Min(tbTXEQPre.Maximum, value[0]));
@@ -2485,7 +2486,7 @@ namespace Thetis
                 default:
                     return;
             }
-            toolTip1.SetToolTip(tb, db.ToString() + " dB");
+            toolTip1.SetToolTip(tb, db.ToString() + Translator.Tr(" dB"));
         }
         //private void tbTXEQ_Scroll(object sender, System.EventArgs e)
         //{
@@ -2580,9 +2581,9 @@ namespace Thetis
         private void btnRXEQReset_Click(object sender, System.EventArgs e)
         {
             DialogResult dr = MessageBox.Show(
-                "Are you sure you want to reset the Receive Equalizer\n" +
-                "to flat (zero)?",
-                "Are you sure?",
+                Translator.Tr("Are you sure you want to reset the Receive Equalizer\n") +
+                Translator.Tr("to flat (zero)?"),
+                Translator.Tr("Are you sure?"),
                 MessageBoxButtons.YesNo,
                 MessageBoxIcon.Question);
 
@@ -2601,9 +2602,9 @@ namespace Thetis
         //private void btnTXEQReset_Click(object sender, System.EventArgs e)
         //{
         //    DialogResult dr = MessageBox.Show(
-        //        "Are you sure you want to reset the Transmit Equalizer\n"+
-        //        "to flat (zero)?",
-        //        "Are you sure?",
+        //        Translator.Tr("Are you sure you want to reset the Transmit Equalizer\n")+
+        //        Translator.Tr("to flat (zero)?"),
+        //        Translator.Tr("Are you sure?"),
         //        MessageBoxButtons.YesNo,
         //        MessageBoxIcon.Question);
 
@@ -2639,16 +2640,16 @@ namespace Thetis
                 tbRXEQ8.Visible = false;
                 tbRXEQ10.Visible = false;
 
-                lblRXEQ1.Text = "Low";
-                lblRXEQ5.Text = "Mid";
-                lblRXEQ9.Text = "High";
+                lblRXEQ1.Text = Translator.Tr("Low");
+                lblRXEQ5.Text = Translator.Tr("Mid");
+                lblRXEQ9.Text = Translator.Tr("High");
 
-                toolTip1.SetToolTip(lblRXEQ1, "0-400Hz");
-                toolTip1.SetToolTip(tbRXEQ1, "0-400Hz");
-                toolTip1.SetToolTip(lblRXEQ5, "400-1500Hz");
-                toolTip1.SetToolTip(tbRXEQ5, "400-1500Hz");
-                toolTip1.SetToolTip(lblRXEQ9, "1500-6000Hz");
-                toolTip1.SetToolTip(tbRXEQ9, "1500-6000Hz");
+                toolTip1.SetToolTip(lblRXEQ1, Translator.Tr("0-400Hz"));
+                toolTip1.SetToolTip(tbRXEQ1, Translator.Tr("0-400Hz"));
+                toolTip1.SetToolTip(lblRXEQ5, Translator.Tr("400-1500Hz"));
+                toolTip1.SetToolTip(tbRXEQ5, Translator.Tr("400-1500Hz"));
+                toolTip1.SetToolTip(lblRXEQ9, Translator.Tr("1500-6000Hz"));
+                toolTip1.SetToolTip(tbRXEQ9, Translator.Tr("1500-6000Hz"));
 
                 //lblTXEQ2.Visible = false;
                 //lblTXEQ3.Visible = false;
@@ -2666,16 +2667,16 @@ namespace Thetis
                 //tbTXEQ8.Visible = false;
                 //tbTXEQ10.Visible = false;
 
-                //lblTXEQ1.Text = "Low";
-                //lblTXEQ5.Text = "Mid";
-                //lblTXEQ9.Text = "High";
+                //lblTXEQ1.Text = Translator.Tr("Low");
+                //lblTXEQ5.Text = Translator.Tr("Mid");
+                //lblTXEQ9.Text = Translator.Tr("High");
 
-                //toolTip1.SetToolTip(lblTXEQ1, "0-400Hz");
-                //toolTip1.SetToolTip(tbTXEQ1, "0-400Hz");
-                //toolTip1.SetToolTip(lblTXEQ5, "400-1500Hz");
-                //toolTip1.SetToolTip(tbTXEQ5, "400-1500Hz");
-                //toolTip1.SetToolTip(lblTXEQ9, "1500-6000Hz");
-                //toolTip1.SetToolTip(tbTXEQ9, "1500-6000Hz");
+                //toolTip1.SetToolTip(lblTXEQ1, Translator.Tr("0-400Hz"));
+                //toolTip1.SetToolTip(tbTXEQ1, Translator.Tr("0-400Hz"));
+                //toolTip1.SetToolTip(lblTXEQ5, Translator.Tr("400-1500Hz"));
+                //toolTip1.SetToolTip(tbTXEQ5, Translator.Tr("400-1500Hz"));
+                //toolTip1.SetToolTip(lblTXEQ9, Translator.Tr("1500-6000Hz"));
+                //toolTip1.SetToolTip(tbTXEQ9, Translator.Tr("1500-6000Hz"));
 
                 RXEQ = console.radio.GetDSPRX(0, 0).RXEQ3;
                 //TXEQ = console.radio.GetDSPTX(0).TXEQ3;
@@ -2711,16 +2712,16 @@ namespace Thetis
                 tbRXEQ8.Visible = true;
                 tbRXEQ10.Visible = true;
 
-                lblRXEQ1.Text = "32";
-                lblRXEQ5.Text = "500";
-                lblRXEQ9.Text = "8K";
+                lblRXEQ1.Text = Translator.Tr("32");
+                lblRXEQ5.Text = Translator.Tr("500");
+                lblRXEQ9.Text = Translator.Tr("8K");
 
-                toolTip1.SetToolTip(lblRXEQ1, "");
-                toolTip1.SetToolTip(tbRXEQ1, "");
-                toolTip1.SetToolTip(lblRXEQ5, "");
-                toolTip1.SetToolTip(tbRXEQ5, "");
-                toolTip1.SetToolTip(lblRXEQ9, "");
-                toolTip1.SetToolTip(tbRXEQ9, "");
+                toolTip1.SetToolTip(lblRXEQ1, Translator.Tr(""));
+                toolTip1.SetToolTip(tbRXEQ1, Translator.Tr(""));
+                toolTip1.SetToolTip(lblRXEQ5, Translator.Tr(""));
+                toolTip1.SetToolTip(tbRXEQ5, Translator.Tr(""));
+                toolTip1.SetToolTip(lblRXEQ9, Translator.Tr(""));
+                toolTip1.SetToolTip(tbRXEQ9, Translator.Tr(""));
 
                 //lblTXEQ2.Visible = true;
                 //lblTXEQ3.Visible = true;
@@ -2738,16 +2739,16 @@ namespace Thetis
                 //tbTXEQ8.Visible = true;
                 //tbTXEQ10.Visible = true;
 
-                //lblTXEQ1.Text = "32";
-                //lblTXEQ5.Text = "500";
-                //lblTXEQ9.Text = "8K";
+                //lblTXEQ1.Text = Translator.Tr("32");
+                //lblTXEQ5.Text = Translator.Tr("500");
+                //lblTXEQ9.Text = Translator.Tr("8K");
 
-                //toolTip1.SetToolTip(lblTXEQ1, "");
-                //toolTip1.SetToolTip(tbTXEQ1, "");
-                //toolTip1.SetToolTip(lblTXEQ5, "");
-                //toolTip1.SetToolTip(tbTXEQ5, "");
-                //toolTip1.SetToolTip(lblTXEQ9, "");
-                //toolTip1.SetToolTip(tbTXEQ9, "");
+                //toolTip1.SetToolTip(lblTXEQ1, Translator.Tr(""));
+                //toolTip1.SetToolTip(tbTXEQ1, Translator.Tr(""));
+                //toolTip1.SetToolTip(lblTXEQ5, Translator.Tr(""));
+                //toolTip1.SetToolTip(tbTXEQ5, Translator.Tr(""));
+                //toolTip1.SetToolTip(lblTXEQ9, Translator.Tr(""));
+                //toolTip1.SetToolTip(tbTXEQ9, Translator.Tr(""));
 
                 RXEQ = console.radio.GetDSPRX(0, 0).RXEQ10;
                 //TXEQ = console.radio.GetDSPTX(0).TXEQ10;

@@ -68,6 +68,7 @@ namespace Thetis
 			// Required for Windows Form Designer support
 			//
 			InitializeComponent();
+			Translator.ApplyToForm(this);
 		}
 
 		/// <summary>
@@ -121,7 +122,7 @@ namespace Thetis
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(72, 23);
             this.btnOK.TabIndex = 2;
-            this.btnOK.Text = "OK";
+            this.btnOK.Text = Translator.Tr("OK");
             this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
             // 
             // btnCancel
@@ -130,7 +131,7 @@ namespace Thetis
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(72, 23);
             this.btnCancel.TabIndex = 3;
-            this.btnCancel.Text = "Cancel";
+            this.btnCancel.Text = Translator.Tr("Cancel");
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // InputBox

@@ -62,12 +62,13 @@ namespace Thetis
             // Required for Windows Form Designer support
             //
             InitializeComponent();
+            Translator.ApplyToForm(this);
             console = c;
             CRLF = new byte[] { 0x0D, 0x0A };
             RArecordCheckBox.BackColor = Color.DarkGreen;
             RArecordCheckBox.ForeColor = Color.White;
-            RArecordCheckBox.Text = "Start";
-            labelTS10.Text = "";
+            RArecordCheckBox.Text = Translator.Tr("Start");
+            labelTS10.Text = Translator.Tr("");
             max_count = 1;
             textBox_file_date_time.Visible = false;
             textBox_file_comment.Visible = false;
@@ -129,7 +130,7 @@ namespace Thetis
             {
                 RArecordCheckBox.BackColor = Color.LimeGreen;
                 RArecordCheckBox.ForeColor = Color.Black;
-                RArecordCheckBox.Text = "Stop";
+                RArecordCheckBox.Text = Translator.Tr("Stop");
 
                 //MW0LGE_21d5 change of path
                 // lifted from console, could do with common version
@@ -168,7 +169,7 @@ namespace Thetis
                 }
                 data_points = 1;
                 picRAGraph.Invalidate();            // draw data display
-                labelTS10.Text = "";                // data saved msg
+                labelTS10.Text = Translator.Tr("");                // data saved msg
                 button_readFile.Enabled = false;
                 RA_timer.Enabled = true;
             }
@@ -177,12 +178,12 @@ namespace Thetis
                 RA_timer.Enabled = false;
                 RArecordCheckBox.BackColor = Color.DarkGreen;
                 RArecordCheckBox.ForeColor = Color.White;
-                RArecordCheckBox.Text = "Start";
+                RArecordCheckBox.Text = Translator.Tr("Start");
                 writer.Flush();
                 writer.Close();
                 labelTS10.BackColor = System.Drawing.SystemColors.InactiveCaptionText;
                 labelTS10.ForeColor = System.Drawing.SystemColors.Highlight;
-                labelTS10.Text = "data written to: RA_data.csv";
+                labelTS10.Text = Translator.Tr("data written to: RA_data.csv");
                 button_readFile.Enabled = true;
             }              
         }
@@ -338,7 +339,7 @@ namespace Thetis
 
                 if (button_dBm.Checked)     // dBm display mode
                 {
-                    labelTS12.Text = "                  Signal (dBm)";
+                    labelTS12.Text = Translator.Tr("                  Signal (dBm)");
                     // rescale plot if necessary
                     if (auto_rescale.Checked)
                     {
@@ -649,8 +650,8 @@ namespace Thetis
         {
             if (button_dBm.Checked)     // log mode selected
             {
-                labelTS3.Text = "manual Ymax (dBm)";
-                labelTS2.Text = "manual Ymin (dBm)";
+                labelTS3.Text = Translator.Tr("manual Ymax (dBm)");
+                labelTS2.Text = Translator.Tr("manual Ymin (dBm)");
                 manual_ymax.BackColor = System.Drawing.SystemColors.Window;
                 manual_ymin.BackColor = System.Drawing.SystemColors.Window;
                 manual_ymax.Value = 0;
@@ -658,8 +659,8 @@ namespace Thetis
             }
             else   // linear mode selected
             {
-                labelTS3.Text = "manual Ymax";
-                labelTS2.Text = "manual Ymin";
+                labelTS3.Text = Translator.Tr("manual Ymax");
+                labelTS2.Text = Translator.Tr("manual Ymin");
                 manual_ymax.Value = 110;
                 manual_ymin.Value = 0;
             }
@@ -741,7 +742,7 @@ namespace Thetis
                 }
                 reader.Close();
                 data_points = i_max - 1;
-                         labelTS10.Text = "";
+                         labelTS10.Text = Translator.Tr("");
                          labelTS10.BackColor = System.Drawing.SystemColors.InactiveCaptionText;
                          labelTS10.ForeColor = System.Drawing.SystemColors.Highlight;
                          textBox_pts_collected.Text = data_points.ToString("f0");
@@ -750,7 +751,7 @@ namespace Thetis
                          {
                              labelTS10.ForeColor = Color.White;
                              labelTS10.BackColor = Color.Red;
-                             labelTS10.Text = "NO VALID DATA IN THE FILE";
+                             labelTS10.Text = Translator.Tr("NO VALID DATA IN THE FILE");
                          }
                          sig_max = -140;
                          for (int i = 2; i < data_points; i++) 

@@ -55,6 +55,7 @@ namespace Thetis
         {
             _init = false;
             InitializeComponent();
+            Translator.ApplyToForm(this);
             initialize_checkboxes();
             hook_up_checkbox_events();
         }

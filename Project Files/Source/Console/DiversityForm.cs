@@ -161,6 +161,7 @@ namespace Thetis
             // Required for Windows Form Designer support
             //
             InitializeComponent();
+            Translator.ApplyToForm(this);
             Common.DoubleBufferAll(this, true);
 
             setNewNaming(true);
@@ -481,8 +482,8 @@ namespace Thetis
             this.btnM8.Selectable = true;
             this.btnM8.Size = new System.Drawing.Size(36, 23);
             this.btnM8.TabIndex = 112;
-            this.btnM8.Text = "M8";
-            this.toolTip1.SetToolTip(this.btnM8, "Memory. Shift click to store. Ctrl click to remove.");
+            this.btnM8.Text = Translator.Tr("M8");
+            this.toolTip1.SetToolTip(this.btnM8, Translator.Tr("Memory. Shift click to store. Ctrl click to remove."));
             this.btnM8.UseVisualStyleBackColor = false;
             this.btnM8.Click += new System.EventHandler(this.btnMemory_Click);
             // 
@@ -495,8 +496,8 @@ namespace Thetis
             this.btnM7.Selectable = true;
             this.btnM7.Size = new System.Drawing.Size(36, 23);
             this.btnM7.TabIndex = 111;
-            this.btnM7.Text = "M7";
-            this.toolTip1.SetToolTip(this.btnM7, "Memory. Shift click to store. Ctrl click to remove.");
+            this.btnM7.Text = Translator.Tr("M7");
+            this.toolTip1.SetToolTip(this.btnM7, Translator.Tr("Memory. Shift click to store. Ctrl click to remove."));
             this.btnM7.UseVisualStyleBackColor = false;
             this.btnM7.Click += new System.EventHandler(this.btnMemory_Click);
             // 
@@ -509,8 +510,8 @@ namespace Thetis
             this.btnM6.Selectable = true;
             this.btnM6.Size = new System.Drawing.Size(36, 23);
             this.btnM6.TabIndex = 110;
-            this.btnM6.Text = "M6";
-            this.toolTip1.SetToolTip(this.btnM6, "Memory. Shift click to store. Ctrl click to remove.");
+            this.btnM6.Text = Translator.Tr("M6");
+            this.toolTip1.SetToolTip(this.btnM6, Translator.Tr("Memory. Shift click to store. Ctrl click to remove."));
             this.btnM6.UseVisualStyleBackColor = false;
             this.btnM6.Click += new System.EventHandler(this.btnMemory_Click);
             // 
@@ -523,8 +524,8 @@ namespace Thetis
             this.btnM5.Selectable = true;
             this.btnM5.Size = new System.Drawing.Size(36, 23);
             this.btnM5.TabIndex = 109;
-            this.btnM5.Text = "M5";
-            this.toolTip1.SetToolTip(this.btnM5, "Memory. Shift click to store. Ctrl click to remove.");
+            this.btnM5.Text = Translator.Tr("M5");
+            this.toolTip1.SetToolTip(this.btnM5, Translator.Tr("Memory. Shift click to store. Ctrl click to remove."));
             this.btnM5.UseVisualStyleBackColor = false;
             this.btnM5.Click += new System.EventHandler(this.btnMemory_Click);
             // 
@@ -537,8 +538,8 @@ namespace Thetis
             this.btnM4.Selectable = true;
             this.btnM4.Size = new System.Drawing.Size(36, 23);
             this.btnM4.TabIndex = 108;
-            this.btnM4.Text = "M4";
-            this.toolTip1.SetToolTip(this.btnM4, "Memory. Shift click to store. Ctrl click to remove.");
+            this.btnM4.Text = Translator.Tr("M4");
+            this.toolTip1.SetToolTip(this.btnM4, Translator.Tr("Memory. Shift click to store. Ctrl click to remove."));
             this.btnM4.UseVisualStyleBackColor = false;
             this.btnM4.Click += new System.EventHandler(this.btnMemory_Click);
             // 
@@ -551,8 +552,8 @@ namespace Thetis
             this.btnM3.Selectable = true;
             this.btnM3.Size = new System.Drawing.Size(36, 23);
             this.btnM3.TabIndex = 107;
-            this.btnM3.Text = "M3";
-            this.toolTip1.SetToolTip(this.btnM3, "Memory. Shift click to store. Ctrl click to remove.");
+            this.btnM3.Text = Translator.Tr("M3");
+            this.toolTip1.SetToolTip(this.btnM3, Translator.Tr("Memory. Shift click to store. Ctrl click to remove."));
             this.btnM3.UseVisualStyleBackColor = false;
             this.btnM3.Click += new System.EventHandler(this.btnMemory_Click);
             // 
@@ -565,8 +566,8 @@ namespace Thetis
             this.btnM2.Selectable = true;
             this.btnM2.Size = new System.Drawing.Size(36, 23);
             this.btnM2.TabIndex = 106;
-            this.btnM2.Text = "M2";
-            this.toolTip1.SetToolTip(this.btnM2, "Memory. Shift click to store. Ctrl click to remove.");
+            this.btnM2.Text = Translator.Tr("M2");
+            this.toolTip1.SetToolTip(this.btnM2, Translator.Tr("Memory. Shift click to store. Ctrl click to remove."));
             this.btnM2.UseVisualStyleBackColor = false;
             this.btnM2.Click += new System.EventHandler(this.btnMemory_Click);
             // 
@@ -579,8 +580,8 @@ namespace Thetis
             this.btnM1.Selectable = true;
             this.btnM1.Size = new System.Drawing.Size(36, 23);
             this.btnM1.TabIndex = 105;
-            this.btnM1.Text = "M1";
-            this.toolTip1.SetToolTip(this.btnM1, "Memory. Shift click to store. Ctrl click to remove.");
+            this.btnM1.Text = Translator.Tr("M1");
+            this.toolTip1.SetToolTip(this.btnM1, Translator.Tr("Memory. Shift click to store. Ctrl click to remove."));
             this.btnM1.UseVisualStyleBackColor = false;
             this.btnM1.Click += new System.EventHandler(this.btnMemory_Click);
             // 
@@ -593,9 +594,9 @@ namespace Thetis
             this.chkVFOSync.Name = "chkVFOSync";
             this.chkVFOSync.Size = new System.Drawing.Size(94, 23);
             this.chkVFOSync.TabIndex = 104;
-            this.chkVFOSync.Text = "VFO Sync";
+            this.chkVFOSync.Text = Translator.Tr("VFO Sync");
             this.chkVFOSync.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.toolTip1.SetToolTip(this.chkVFOSync, "Enable VFO sync");
+            this.toolTip1.SetToolTip(this.chkVFOSync, Translator.Tr("Enable VFO sync"));
             this.chkVFOSync.UseVisualStyleBackColor = false;
             this.chkVFOSync.CheckedChanged += new System.EventHandler(this.chkVFOSync_CheckedChanged);
             // 
@@ -607,9 +608,9 @@ namespace Thetis
             this.chkNoAttLink.Name = "chkNoAttLink";
             this.chkNoAttLink.Size = new System.Drawing.Size(83, 17);
             this.chkNoAttLink.TabIndex = 103;
-            this.chkNoAttLink.Text = "No ATT link";
-            this.toolTip1.SetToolTip(this.chkNoAttLink, "Normally if RX1+RX2 are in use the attenuators will be linked. Select this if you" +
-        " dont want that to happen.");
+            this.chkNoAttLink.Text = Translator.Tr("No ATT link");
+            this.toolTip1.SetToolTip(this.chkNoAttLink, Translator.Tr("Normally if RX1+RX2 are in use the attenuators will be linked. Select this if you") +
+        Translator.Tr(" dont want that to happen."));
             this.chkNoAttLink.UseVisualStyleBackColor = true;
             this.chkNoAttLink.CheckedChanged += new System.EventHandler(this.chkNoAttLink_CheckedChanged);
             // 
@@ -623,7 +624,7 @@ namespace Thetis
             this.chkAlwaysOnTop.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.chkAlwaysOnTop.Size = new System.Drawing.Size(62, 17);
             this.chkAlwaysOnTop.TabIndex = 102;
-            this.chkAlwaysOnTop.Text = "On Top";
+            this.chkAlwaysOnTop.Text = Translator.Tr("On Top");
             this.chkAlwaysOnTop.UseVisualStyleBackColor = true;
             this.chkAlwaysOnTop.CheckedChanged += new System.EventHandler(this.chkAlwaysOnTop_CheckedChanged);
             // 
@@ -647,7 +648,7 @@ namespace Thetis
             this.groupBoxTS2.Size = new System.Drawing.Size(315, 256);
             this.groupBoxTS2.TabIndex = 101;
             this.groupBoxTS2.TabStop = false;
-            this.groupBoxTS2.Text = "hidden";
+            this.groupBoxTS2.Text = Translator.Tr("hidden");
             this.groupBoxTS2.Visible = false;
             // 
             // txtMemoryDataHidden
@@ -665,7 +666,7 @@ namespace Thetis
             this.labelTS9.Name = "labelTS9";
             this.labelTS9.Size = new System.Drawing.Size(76, 13);
             this.labelTS9.TabIndex = 64;
-            this.labelTS9.Text = "Direction (deg)";
+            this.labelTS9.Text = Translator.Tr("Direction (deg)");
             // 
             // udAngle0
             // 
@@ -707,7 +708,7 @@ namespace Thetis
             this.chkAuto.Name = "chkAuto";
             this.chkAuto.Size = new System.Drawing.Size(48, 24);
             this.chkAuto.TabIndex = 1;
-            this.chkAuto.Text = "Auto";
+            this.chkAuto.Text = Translator.Tr("Auto");
             // 
             // chkCrossFire
             // 
@@ -717,7 +718,7 @@ namespace Thetis
             this.chkCrossFire.Name = "chkCrossFire";
             this.chkCrossFire.Size = new System.Drawing.Size(89, 17);
             this.chkCrossFire.TabIndex = 100;
-            this.chkCrossFire.Text = "Enable X-Fire";
+            this.chkCrossFire.Text = Translator.Tr("Enable X-Fire");
             this.chkCrossFire.UseVisualStyleBackColor = true;
             this.chkCrossFire.Visible = false;
             this.chkCrossFire.CheckedChanged += new System.EventHandler(this.chkCrossFire_CheckedChanged);
@@ -742,7 +743,7 @@ namespace Thetis
             this.labelDirection.Name = "labelDirection";
             this.labelDirection.Size = new System.Drawing.Size(63, 33);
             this.labelDirection.TabIndex = 65;
-            this.labelDirection.Text = "NW";
+            this.labelDirection.Text = Translator.Tr("NW");
             this.labelDirection.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // udCalib
@@ -814,7 +815,7 @@ namespace Thetis
             this.chkEnable.Name = "chkEnable";
             this.chkEnable.Size = new System.Drawing.Size(48, 24);
             this.chkEnable.TabIndex = 48;
-            this.chkEnable.Text = "Enable";
+            this.chkEnable.Text = Translator.Tr("Enable");
             this.chkEnable.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.chkEnable.CheckedChanged += new System.EventHandler(this.chkEnable_CheckedChanged);
             // 
@@ -830,7 +831,7 @@ namespace Thetis
             this.groupBoxTS1.Size = new System.Drawing.Size(142, 75);
             this.groupBoxTS1.TabIndex = 100;
             this.groupBoxTS1.TabStop = false;
-            this.groupBoxTS1.Text = "Antenna Spacing";
+            this.groupBoxTS1.Text = Translator.Tr("Antenna Spacing");
             // 
             // labelTS41
             // 
@@ -840,7 +841,7 @@ namespace Thetis
             this.labelTS41.Name = "labelTS41";
             this.labelTS41.Size = new System.Drawing.Size(55, 13);
             this.labelTS41.TabIndex = 98;
-            this.labelTS41.Text = "D (meters)";
+            this.labelTS41.Text = Translator.Tr("D (meters)");
             // 
             // labelTS30
             // 
@@ -851,7 +852,7 @@ namespace Thetis
             this.labelTS30.Name = "labelTS30";
             this.labelTS30.Size = new System.Drawing.Size(21, 13);
             this.labelTS30.TabIndex = 87;
-            this.labelTS30.Text = "l =";
+            this.labelTS30.Text = Translator.Tr("l =");
             // 
             // labelTS40
             // 
@@ -861,7 +862,7 @@ namespace Thetis
             this.labelTS40.Name = "labelTS40";
             this.labelTS40.Size = new System.Drawing.Size(23, 13);
             this.labelTS40.TabIndex = 95;
-            this.labelTS40.Text = " D/";
+            this.labelTS40.Text = Translator.Tr(" D/");
             // 
             // label_d
             // 
@@ -873,7 +874,7 @@ namespace Thetis
             this.label_d.Name = "label_d";
             this.label_d.Size = new System.Drawing.Size(15, 15);
             this.label_d.TabIndex = 96;
-            this.label_d.Text = "0";
+            this.label_d.Text = Translator.Tr("0");
             // 
             // udAntSpacing
             // 
@@ -916,7 +917,7 @@ namespace Thetis
             this.labelTS5.Name = "labelTS5";
             this.labelTS5.Size = new System.Drawing.Size(72, 13);
             this.labelTS5.TabIndex = 61;
-            this.labelTS5.Text = "calib direction";
+            this.labelTS5.Text = Translator.Tr("calib direction");
             // 
             // udR
             // 
@@ -989,7 +990,7 @@ namespace Thetis
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(84, 13);
             this.label2.TabIndex = 117;
-            this.label2.Text = "ctrl click to clear";
+            this.label2.Text = Translator.Tr("ctrl click to clear");
             // 
             // btnShiftDown10
             // 
@@ -1000,7 +1001,7 @@ namespace Thetis
             this.btnShiftDown10.Selectable = true;
             this.btnShiftDown10.Size = new System.Drawing.Size(40, 26);
             this.btnShiftDown10.TabIndex = 116;
-            this.btnShiftDown10.Text = "-10";
+            this.btnShiftDown10.Text = Translator.Tr("-10");
             this.btnShiftDown10.UseVisualStyleBackColor = false;
             this.btnShiftDown10.Click += new System.EventHandler(this.btnShiftDown10_Click);
             // 
@@ -1013,7 +1014,7 @@ namespace Thetis
             this.btnShift90.Selectable = true;
             this.btnShift90.Size = new System.Drawing.Size(40, 26);
             this.btnShift90.TabIndex = 114;
-            this.btnShift90.Text = "90";
+            this.btnShift90.Text = Translator.Tr("90");
             this.btnShift90.UseVisualStyleBackColor = false;
             this.btnShift90.Click += new System.EventHandler(this.btnShift90_Click);
             // 
@@ -1026,7 +1027,7 @@ namespace Thetis
             this.btnShiftUp10.Selectable = true;
             this.btnShiftUp10.Size = new System.Drawing.Size(40, 26);
             this.btnShiftUp10.TabIndex = 115;
-            this.btnShiftUp10.Text = "+10";
+            this.btnShiftUp10.Text = Translator.Tr("+10");
             this.btnShiftUp10.UseVisualStyleBackColor = false;
             this.btnShiftUp10.Click += new System.EventHandler(this.btnShiftUp10_Click);
             // 
@@ -1038,7 +1039,7 @@ namespace Thetis
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(89, 13);
             this.label1.TabIndex = 113;
-            this.label1.Text = "shift click to store";
+            this.label1.Text = Translator.Tr("shift click to store");
             // 
             // chkEnableDiversity
             // 
@@ -1049,7 +1050,7 @@ namespace Thetis
             this.chkEnableDiversity.Name = "chkEnableDiversity";
             this.chkEnableDiversity.Size = new System.Drawing.Size(94, 23);
             this.chkEnableDiversity.TabIndex = 101;
-            this.chkEnableDiversity.Text = "Enabled";
+            this.chkEnableDiversity.Text = Translator.Tr("Enabled");
             this.chkEnableDiversity.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.chkEnableDiversity.UseVisualStyleBackColor = false;
             this.chkEnableDiversity.CheckedChanged += new System.EventHandler(this.chkEnableDiversity_CheckedChanged);
@@ -1064,7 +1065,7 @@ namespace Thetis
             this.grpRxSource.Size = new System.Drawing.Size(105, 90);
             this.grpRxSource.TabIndex = 52;
             this.grpRxSource.TabStop = false;
-            this.grpRxSource.Text = "Receiver Source";
+            this.grpRxSource.Text = Translator.Tr("Receiver Source");
             // 
             // radRxSourceRx1Rx2
             // 
@@ -1076,7 +1077,7 @@ namespace Thetis
             this.radRxSourceRx1Rx2.Size = new System.Drawing.Size(67, 17);
             this.radRxSourceRx1Rx2.TabIndex = 2;
             this.radRxSourceRx1Rx2.TabStop = true;
-            this.radRxSourceRx1Rx2.Text = "Sync1+2";
+            this.radRxSourceRx1Rx2.Text = Translator.Tr("Sync1+2");
             this.radRxSourceRx1Rx2.UseVisualStyleBackColor = true;
             this.radRxSourceRx1Rx2.CheckedChanged += new System.EventHandler(this.radRxSourceRx1Rx2_CheckedChanged);
             // 
@@ -1088,7 +1089,7 @@ namespace Thetis
             this.radRxSource2.Name = "radRxSource2";
             this.radRxSource2.Size = new System.Drawing.Size(55, 17);
             this.radRxSource2.TabIndex = 1;
-            this.radRxSource2.Text = "Sync2";
+            this.radRxSource2.Text = Translator.Tr("Sync2");
             this.radRxSource2.UseVisualStyleBackColor = true;
             this.radRxSource2.CheckedChanged += new System.EventHandler(this.radRxSource2_CheckedChanged);
             // 
@@ -1100,7 +1101,7 @@ namespace Thetis
             this.radRxSource1.Name = "radRxSource1";
             this.radRxSource1.Size = new System.Drawing.Size(55, 17);
             this.radRxSource1.TabIndex = 0;
-            this.radRxSource1.Text = "Sync1";
+            this.radRxSource1.Text = Translator.Tr("Sync1");
             this.radRxSource1.UseVisualStyleBackColor = true;
             this.radRxSource1.CheckedChanged += new System.EventHandler(this.radRxSource1_CheckedChanged);
             // 
@@ -1113,7 +1114,7 @@ namespace Thetis
             this.btnShiftDwn45.Selectable = true;
             this.btnShiftDwn45.Size = new System.Drawing.Size(40, 26);
             this.btnShiftDwn45.TabIndex = 62;
-            this.btnShiftDwn45.Text = "-45";
+            this.btnShiftDwn45.Text = Translator.Tr("-45");
             this.btnShiftDwn45.UseVisualStyleBackColor = false;
             this.btnShiftDwn45.Click += new System.EventHandler(this.btnShiftDwn45_Click);
             // 
@@ -1126,7 +1127,7 @@ namespace Thetis
             this.btnShift180.Selectable = true;
             this.btnShift180.Size = new System.Drawing.Size(40, 26);
             this.btnShift180.TabIndex = 57;
-            this.btnShift180.Text = "180";
+            this.btnShift180.Text = Translator.Tr("180");
             this.btnShift180.UseVisualStyleBackColor = false;
             this.btnShift180.Click += new System.EventHandler(this.btnShift180_Click);
             // 
@@ -1138,7 +1139,7 @@ namespace Thetis
             this.labelTS6.Name = "labelTS6";
             this.labelTS6.Size = new System.Drawing.Size(26, 13);
             this.labelTS6.TabIndex = 54;
-            this.labelTS6.Text = "shift";
+            this.labelTS6.Text = Translator.Tr("shift");
             // 
             // groupBox_refMerc
             // 
@@ -1159,7 +1160,7 @@ namespace Thetis
             this.groupBox_refMerc.Size = new System.Drawing.Size(205, 140);
             this.groupBox_refMerc.TabIndex = 59;
             this.groupBox_refMerc.TabStop = false;
-            this.groupBox_refMerc.Text = "Reference Source";
+            this.groupBox_refMerc.Text = Translator.Tr("Reference Source");
             this.groupBox_refMerc.Enter += new System.EventHandler(this.groupBox_refMerc_Enter);
             // 
             // labelTS1
@@ -1170,7 +1171,7 @@ namespace Thetis
             this.labelTS1.Name = "labelTS1";
             this.labelTS1.Size = new System.Drawing.Size(56, 13);
             this.labelTS1.TabIndex = 106;
-            this.labelTS1.Text = "Gain multi:";
+            this.labelTS1.Text = Translator.Tr("Gain multi:");
             // 
             // udGainMulti
             // 
@@ -1213,7 +1214,7 @@ namespace Thetis
             this.chkLockAngle.Name = "chkLockAngle";
             this.chkLockAngle.Size = new System.Drawing.Size(83, 17);
             this.chkLockAngle.TabIndex = 104;
-            this.chkLockAngle.Text = "Lock Phase";
+            this.chkLockAngle.Text = Translator.Tr("Lock Phase");
             this.chkLockAngle.UseVisualStyleBackColor = true;
             this.chkLockAngle.CheckedChanged += new System.EventHandler(this.chkLockAngle_CheckedChanged);
             // 
@@ -1225,7 +1226,7 @@ namespace Thetis
             this.chkLockR.Name = "chkLockR";
             this.chkLockR.Size = new System.Drawing.Size(75, 17);
             this.chkLockR.TabIndex = 103;
-            this.chkLockR.Text = "Lock Gain";
+            this.chkLockR.Text = Translator.Tr("Lock Gain");
             this.chkLockR.UseVisualStyleBackColor = true;
             this.chkLockR.CheckedChanged += new System.EventHandler(this.chkLockR_CheckedChanged);
             // 
@@ -1237,7 +1238,7 @@ namespace Thetis
             this.labelTS4.Name = "labelTS4";
             this.labelTS4.Size = new System.Drawing.Size(37, 13);
             this.labelTS4.TabIndex = 102;
-            this.labelTS4.Text = "Phase";
+            this.labelTS4.Text = Translator.Tr("Phase");
             // 
             // labelTS33
             // 
@@ -1247,7 +1248,7 @@ namespace Thetis
             this.labelTS33.Name = "labelTS33";
             this.labelTS33.Size = new System.Drawing.Size(9, 13);
             this.labelTS33.TabIndex = 93;
-            this.labelTS33.Text = "i";
+            this.labelTS33.Text = Translator.Tr("i");
             // 
             // udFineNull
             // 
@@ -1290,7 +1291,7 @@ namespace Thetis
             this.labelTS3.Name = "labelTS3";
             this.labelTS3.Size = new System.Drawing.Size(29, 13);
             this.labelTS3.TabIndex = 51;
-            this.labelTS3.Text = "Gain";
+            this.labelTS3.Text = Translator.Tr("Gain");
             // 
             // udR2
             // 
@@ -1366,7 +1367,7 @@ namespace Thetis
             this.radioButtonMerc2.Name = "radioButtonMerc2";
             this.radioButtonMerc2.Size = new System.Drawing.Size(55, 17);
             this.radioButtonMerc2.TabIndex = 1;
-            this.radioButtonMerc2.Text = "Sync2";
+            this.radioButtonMerc2.Text = Translator.Tr("Sync2");
             this.radioButtonMerc2.UseVisualStyleBackColor = true;
             this.radioButtonMerc2.CheckedChanged += new System.EventHandler(this.radioButtonMerc2_CheckedChanged);
             // 
@@ -1380,7 +1381,7 @@ namespace Thetis
             this.radioButtonMerc1.Size = new System.Drawing.Size(55, 17);
             this.radioButtonMerc1.TabIndex = 0;
             this.radioButtonMerc1.TabStop = true;
-            this.radioButtonMerc1.Text = "Sync1";
+            this.radioButtonMerc1.Text = Translator.Tr("Sync1");
             this.radioButtonMerc1.UseVisualStyleBackColor = true;
             this.radioButtonMerc1.CheckedChanged += new System.EventHandler(this.radioButtonMerc1_CheckedChanged);
             // 
@@ -1393,7 +1394,7 @@ namespace Thetis
             this.btnShiftUp45.Selectable = true;
             this.btnShiftUp45.Size = new System.Drawing.Size(40, 26);
             this.btnShiftUp45.TabIndex = 58;
-            this.btnShiftUp45.Text = "+45";
+            this.btnShiftUp45.Text = Translator.Tr("+45");
             this.btnShiftUp45.UseVisualStyleBackColor = false;
             this.btnShiftUp45.Click += new System.EventHandler(this.btnShiftUp45_Click);
             // 
@@ -1410,7 +1411,7 @@ namespace Thetis
             this.MinimumSize = new System.Drawing.Size(329, 637);
             this.Name = "DiversityForm";
             this.Opacity = 0D;
-            this.Text = "Phasing Control";
+            this.Text = Translator.Tr("Phasing Control");
             this.Closing += new System.ComponentModel.CancelEventHandler(this.DiversityForm_Closing);
             this.Load += new System.EventHandler(this.DiversityForm_Load);
             this.Resize += new System.EventHandler(this.DiversityForm_Resize);
@@ -1500,9 +1501,9 @@ namespace Thetis
             g.TextRenderingHint = TextRenderingHint.AntiAlias;
             // draw the background of the radar
             g.FillEllipse(new LinearGradientBrush(new Point((int)(size / 2), 0), new Point((int)(size / 2), size - 1), topColor, bottomColor), 0, 0, size - 1, size - 1);
-            // draw the outer ring (0° elevation)
+            // draw the outer ring (0ï¿½ elevation)
             g.DrawEllipse(pen, 0, 0, size - 1, size - 1);
-            // draw the inner ring (60° elevation)
+            // draw the inner ring (60ï¿½ elevation)
             int interval = size / 2;
             // draw the middle ring 
             g.DrawEllipse(pen, (size - interval) / 2, (size - interval) / 2, interval, interval);
@@ -1547,12 +1548,12 @@ namespace Thetis
             //g.TextRenderingHint = TextRenderingHint.AntiAlias;
             //// draw the background of the radar
             //g.FillEllipse(new LinearGradientBrush(new Point((int)(size / 2), 0), new Point((int)(size / 2), size - 1), topColor, bottomColor), 0, 0, size - 1, size - 1);
-            //// draw the outer ring (0° elevation)
+            //// draw the outer ring (0ï¿½ elevation)
             //g.DrawEllipse(pen, 0, 0, size - 1, size - 1);
-            //// draw the inner ring (60° elevation)
+            //// draw the inner ring (60ï¿½ elevation)
             ////int interval = size / 3;
             ////g.DrawEllipse(pen, (size - interval) / 2, (size - interval) / 2, interval, interval);
-            //// draw the middle ring (30° elevation)
+            //// draw the middle ring (30ï¿½ elevation)
             ////interval *= 2;
             ////g.DrawEllipse(pen, (size - interval) / 2, (size - interval) / 2, interval, interval);
             //int interval = size / 2;
@@ -1791,42 +1792,42 @@ namespace Thetis
             decimal direction = udAngle0.Value;
             if ((direction > 337 & direction <= 360) | (direction >= 0 & direction <= 22))
             {
-                labelDirection.Text = "N";
+                labelDirection.Text = Translator.Tr("N");
                 return;
             }
             if (direction > 22 & direction <= 67)
             {
-                labelDirection.Text = "NE";
+                labelDirection.Text = Translator.Tr("NE");
                 return;
             }
             if (direction > 67 & direction <= 112)
             {
-                labelDirection.Text = "E";
+                labelDirection.Text = Translator.Tr("E");
                 return;
             }
             if (direction > 112 & direction < 157)
             {
-                labelDirection.Text = "SE";
+                labelDirection.Text = Translator.Tr("SE");
                 return;
             }
             if (direction > 157 & direction <= 202)
             {
-                labelDirection.Text = "S";
+                labelDirection.Text = Translator.Tr("S");
                 return;
             }
             if (direction > 202 & direction <= 247)
             {
-                labelDirection.Text = "SW";
+                labelDirection.Text = Translator.Tr("SW");
                 return;
             }
             if (direction > 247 & direction <= 292)
             {
-                labelDirection.Text = "W";
+                labelDirection.Text = Translator.Tr("W");
                 return;
             }
             if (direction > 292 & direction <= 337)
             {
-                labelDirection.Text = "NW";
+                labelDirection.Text = Translator.Tr("NW");
                 return;
             }
         }
@@ -2580,12 +2581,12 @@ namespace Thetis
             if (chkEnableDiversity.Checked)
             {
                 chkEnableDiversity.BackColor = Color.LimeGreen;
-                chkEnableDiversity.Text = "Enabled";
+                chkEnableDiversity.Text = Translator.Tr("Enabled");
             }
             else
             {
                 chkEnableDiversity.BackColor = Color.Red;
-                chkEnableDiversity.Text = "Disabled";
+                chkEnableDiversity.Text = Translator.Tr("Disabled");
             }
         }
 
@@ -2829,25 +2830,25 @@ namespace Thetis
         {
             if(new_naming)
             {            
-                grpRxSource.Text = "RX1 Source";
+                grpRxSource.Text = Translator.Tr("RX1 Source");
 
-                radRxSourceRx1Rx2.Text = "Sync1+2";
-                radRxSource1.Text = "Sync1";
-                radRxSource2.Text = "Sync2";
+                radRxSourceRx1Rx2.Text = Translator.Tr("Sync1+2");
+                radRxSource1.Text = Translator.Tr("Sync1");
+                radRxSource2.Text = Translator.Tr("Sync2");
 
-                radioButtonMerc1.Text = "Sync1";
-                radioButtonMerc2.Text = "Sync2";
+                radioButtonMerc1.Text = Translator.Tr("Sync1");
+                radioButtonMerc2.Text = Translator.Tr("Sync2");
             }
             else
             {
-                grpRxSource.Text = "Receiver Source";
+                grpRxSource.Text = Translator.Tr("Receiver Source");
 
-                radRxSourceRx1Rx2.Text = "Rx1+Rx2";
-                radRxSource1.Text = "Rx1";
-                radRxSource2.Text = "Rx2";
+                radRxSourceRx1Rx2.Text = Translator.Tr("Rx1+Rx2");
+                radRxSource1.Text = Translator.Tr("Rx1");
+                radRxSource2.Text = Translator.Tr("Rx2");
 
-                radioButtonMerc1.Text = "Rx1";
-                radioButtonMerc2.Text = "Rx2";
+                radioButtonMerc1.Text = Translator.Tr("Rx1");
+                radioButtonMerc2.Text = Translator.Tr("Rx2");
             }
         }
 

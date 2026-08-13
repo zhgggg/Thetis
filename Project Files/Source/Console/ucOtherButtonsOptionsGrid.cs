@@ -888,6 +888,7 @@ namespace Thetis
 
             _init = false;
             InitializeComponent();
+            Translator.ApplyToForm(this);
 
             this.Size = new Size(173, 182);
             this.scrollableControl1.Location = new Point(0, 0);
@@ -1048,7 +1049,7 @@ namespace Thetis
                     but.TextAlign = ContentAlignment.MiddleCenter;
                     but.Margin = new Padding(pad_l, 0, pad_r, 0);
                     but.Anchor = AnchorStyles.Left;
-                    but.Text = "...";
+                    but.Text = Translator.Tr("...");
                     but.Tag = new ValueTuple<OtherButtonId, int, int>(data[i].id, data[i].bit_group, data[i].bit_number);
                     _tooltip.SetToolTip(but, data[i].tooltip);
                     but.Click += button_clicked;

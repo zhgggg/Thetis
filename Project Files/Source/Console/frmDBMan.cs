@@ -56,6 +56,7 @@ namespace Thetis
             _allow_check_change = true;
             _ignore_lstActiveDBs_selectectedindexchanged = false;
             InitializeComponent();
+            Translator.ApplyToForm(this);
 
             this.TopMost = true;
             Common.DoubleBufferAll(this, true);
@@ -193,15 +194,15 @@ namespace Thetis
         {
             if (byteSize >= 1024 * 1024)
             {
-                return string.Format("{0:0.00}MB", byteSize / (1024.0 * 1024.0));
+                return string.Format(Translator.Tr("{0:0.00}MB"), byteSize / (1024.0 * 1024.0));
             }
             else if (byteSize >= 1024)
             {
-                return string.Format("{0:0.00}KB", byteSize / 1024.0);
+                return string.Format(Translator.Tr("{0:0.00}KB"), byteSize / 1024.0);
             }
             else
             {
-                return string.Format("{0}B", byteSize);
+                return string.Format(Translator.Tr("{0}B"), byteSize);
             }
         }
 
@@ -302,7 +303,7 @@ namespace Thetis
             }
             else
             {
-                lblDabaseBackups_active_selected.Text = "Database Backups for currently ACTIVE database";
+                lblDabaseBackups_active_selected.Text = Translator.Tr("Database Backups for currently ACTIVE database");
             }
 
             DBMan.SelectedAvailable(selected);

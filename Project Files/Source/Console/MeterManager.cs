@@ -12618,7 +12618,7 @@ namespace Thetis
                 string displayName = Path.GetFileName(filePath);
                 if (string.IsNullOrWhiteSpace(displayName)) displayName = filePath;
 
-                DialogResult deleteResult = MessageBox.Show("Remove WaveList Player item \"" + displayName + "\" from the list?", "WaveList Player",
+                DialogResult deleteResult = MessageBox.Show(Translator.Tr("Remove WaveList Player item \"") + displayName + Translator.Tr("\" from the list?"), Translator.Tr("WaveList Player"),
                     MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2, Common.MB_TOPMOST);
                 if (deleteResult != DialogResult.Yes) return;
 
@@ -23920,7 +23920,7 @@ namespace Thetis
                 tx.TopLeft = new PointF(clb.TopLeft.X + 0.02f, clb.TopLeft.Y + 0.005f);
                 tx.Size = clb.Size;
                 tx.OnlyWhenTX = true;
-                tx.Text = "%group%";
+                tx.Text = Translator.Tr("%group%");
                 tx.ZOrder = 10;
                 tx.Style = FontStyle.Bold;
                 tx.Colour = System.Drawing.Color.DarkGray;
@@ -31803,7 +31803,7 @@ namespace Thetis
                 {
                     // issue setting up dx
                     ShutdownDX();
-                    MessageBox.Show("Problem initialising Meter DirectX !" + System.Environment.NewLine + System.Environment.NewLine + "[" + e.ToString() + "]", "DirectX", MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1, Common.MB_TOPMOST);
+                    MessageBox.Show(Translator.Tr("Problem initialising Meter DirectX !") + System.Environment.NewLine + System.Environment.NewLine + Translator.Tr("[") + e.ToString() + Translator.Tr("]"), Translator.Tr("DirectX"), MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1, Common.MB_TOPMOST);
                 }
             }
             private void setupFilterWaterfallBitmap()
@@ -31978,7 +31978,7 @@ namespace Thetis
                 }
                 catch (Exception e)
                 {
-                    MessageBox.Show("Problem Shutting Down Meter DirectX !" + System.Environment.NewLine + System.Environment.NewLine + "[" + e.ToString() + "]", "DirectX", MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1, Common.MB_TOPMOST);
+                    MessageBox.Show(Translator.Tr("Problem Shutting Down Meter DirectX !") + System.Environment.NewLine + System.Environment.NewLine + Translator.Tr("[") + e.ToString() + Translator.Tr("]"), Translator.Tr("DirectX"), MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1, Common.MB_TOPMOST);
                 }
             }
             internal void RemoveAllDXImages()
@@ -32068,7 +32068,7 @@ namespace Thetis
                                     if (!resizeDX(out string err))
                                     {
                                         ShutdownDX();
-                                        MessageBox.Show("Unable to resize DirectX render target (target size changed). DirectX has been shut down.\n\n" + err, "Thetis DirectX", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1, Common.MB_TOPMOST);
+                                        MessageBox.Show(Translator.Tr("Unable to resize DirectX render target (target size changed). DirectX has been shut down.\n\n") + err, Translator.Tr("Thetis DirectX"), MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1, Common.MB_TOPMOST);
                                         break;
                                     }
                                 }
@@ -32186,7 +32186,7 @@ namespace Thetis
                 catch (Exception e)
                 {
                     ShutdownDX(true);
-                    MessageBox.Show("Problem in DirectX Meter Renderer !" + System.Environment.NewLine + System.Environment.NewLine + "[ " + e.ToString() + " ]", "DirectX", MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1, Common.MB_TOPMOST);
+                    MessageBox.Show(Translator.Tr("Problem in DirectX Meter Renderer !") + System.Environment.NewLine + System.Environment.NewLine + Translator.Tr("[ ") + e.ToString() + Translator.Tr(" ]"), Translator.Tr("DirectX"), MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1, Common.MB_TOPMOST);
                 }
 #endif
             }
@@ -32417,7 +32417,7 @@ namespace Thetis
                         //    msg += "\n\nDeviceRemoved or DeviceReset reported by DirectX, this indicates a problem with the graphics device or its driver.\n\nRemoval Code : " + _device.DeviceRemovedReason.Code.ToString();
                         //}
                         //ShutdownDX();
-                        //MessageBox.Show(msg, "DirectX", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1, Common.MB_TOPMOST);
+                        //MessageBox.Show(msg, Translator.Tr("DirectX"), MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1, Common.MB_TOPMOST);
 
                         error = e.Message;
                         error += "\n\nDeviceRemovedReason : " + _device.DeviceRemovedReason.ToString();

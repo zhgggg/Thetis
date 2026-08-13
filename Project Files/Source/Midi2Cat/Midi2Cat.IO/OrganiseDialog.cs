@@ -44,6 +44,7 @@ namespace Midi2Cat.IO
             this.DB = DB;
             this.DeviceName = DeviceName;
             InitializeComponent();
+            Thetis.Translator.ApplyToForm(this);
         }
 
         public string[] ExistingMappings

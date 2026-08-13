@@ -70,6 +70,7 @@ namespace Thetis
 			// Required for Windows Form Designer support
 			//
 			InitializeComponent();
+			Translator.ApplyToForm(this);
 			console = c;
 			//
 			// TODO: Add any constructor code after InitializeComponent call
@@ -119,8 +120,8 @@ namespace Thetis
 			this.saveButton.Name = "saveButton";
 			this.saveButton.Size = new System.Drawing.Size(64, 24);
 			this.saveButton.TabIndex = 0;
-			this.saveButton.Text = "Save";
-			this.toolTip1.SetToolTip(this.saveButton, " Save new definition and exit.");
+			this.saveButton.Text = Translator.Tr("Save");
+			this.toolTip1.SetToolTip(this.saveButton, Translator.Tr(" Save new definition and exit."));
 			this.saveButton.Click += new System.EventHandler(this.saveButton_Click);
 			// 
 			// txtElements
@@ -132,7 +133,7 @@ namespace Thetis
 			this.txtElements.Size = new System.Drawing.Size(80, 21);
 			this.txtElements.TabIndex = 1;
 			this.txtElements.Text = "---...---";
-			this.toolTip1.SetToolTip(this.txtElements, " The Morse dots and dashes up to nine.");
+			this.toolTip1.SetToolTip(this.txtElements, Translator.Tr(" The Morse dots and dashes up to nine."));
 			this.txtElements.Leave += new System.EventHandler(this.txtElements_Leave);
 			// 
 			// txtComments
@@ -144,7 +145,7 @@ namespace Thetis
 			this.txtComments.Size = new System.Drawing.Size(80, 21);
 			this.txtComments.TabIndex = 2;
 			this.txtComments.Text = "0123456789";
-			this.toolTip1.SetToolTip(this.txtComments, " Any comments up to ten characters.");
+			this.toolTip1.SetToolTip(this.txtComments, Translator.Tr(" Any comments up to ten characters."));
 			this.txtComments.Leave += new System.EventHandler(this.txtComments_Leave);
 			// 
 			// label2
@@ -153,7 +154,7 @@ namespace Thetis
 			this.label2.Name = "label2";
 			this.label2.Size = new System.Drawing.Size(56, 16);
 			this.label2.TabIndex = 4;
-			this.label2.Text = "Elements";
+			this.label2.Text = Translator.Tr("Elements");
 			// 
 			// label3
 			// 
@@ -161,7 +162,7 @@ namespace Thetis
 			this.label3.Name = "label3";
 			this.label3.Size = new System.Drawing.Size(72, 16);
 			this.label3.TabIndex = 5;
-			this.label3.Text = "Comments";
+			this.label3.Text = Translator.Tr("Comments");
 			// 
 			// label4
 			// 
@@ -169,7 +170,7 @@ namespace Thetis
 			this.label4.Name = "label4";
 			this.label4.Size = new System.Drawing.Size(120, 16);
 			this.label4.TabIndex = 6;
-			this.label4.Text = "Original Definition";
+			this.label4.Text = Translator.Tr("Original Definition");
 			// 
 			// label5
 			// 
@@ -177,7 +178,7 @@ namespace Thetis
 			this.label5.Name = "label5";
 			this.label5.Size = new System.Drawing.Size(96, 16);
 			this.label5.TabIndex = 8;
-			this.label5.Text = "Current Definition";
+			this.label5.Text = Translator.Tr("Current Definition");
 			// 
 			// cancelButton
 			// 
@@ -185,8 +186,8 @@ namespace Thetis
 			this.cancelButton.Name = "cancelButton";
 			this.cancelButton.Size = new System.Drawing.Size(64, 24);
 			this.cancelButton.TabIndex = 9;
-			this.cancelButton.Text = "Cancel";
-			this.toolTip1.SetToolTip(this.cancelButton, "Cancel and quite without changes.");
+			this.cancelButton.Text = Translator.Tr("Cancel");
+			this.toolTip1.SetToolTip(this.cancelButton, Translator.Tr("Cancel and quite without changes."));
 			this.cancelButton.Click += new System.EventHandler(this.cancelButton_Click);
 			// 
 			// txtOriginal
@@ -198,7 +199,7 @@ namespace Thetis
 			this.txtOriginal.Size = new System.Drawing.Size(216, 21);
 			this.txtOriginal.TabIndex = 10;
 			this.txtOriginal.Text = "txtOriginal";
-			this.toolTip1.SetToolTip(this.txtOriginal, " The original definition line.");
+			this.toolTip1.SetToolTip(this.txtOriginal, Translator.Tr(" The original definition line."));
 			// 
 			// txtCurrent
 			// 
@@ -209,7 +210,7 @@ namespace Thetis
 			this.txtCurrent.Size = new System.Drawing.Size(216, 21);
 			this.txtCurrent.TabIndex = 11;
 			this.txtCurrent.Text = "txtCurrent";
-			this.toolTip1.SetToolTip(this.txtCurrent, " The current definition line.");
+			this.toolTip1.SetToolTip(this.txtCurrent, Translator.Tr(" The current definition line."));
 			// 
 			// cwedit
 			// 
@@ -228,7 +229,7 @@ namespace Thetis
 			this.Controls.Add(this.saveButton);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
 			this.Name = "cwedit";
-			this.Text = " CW definition editor ...";
+			this.Text = Translator.Tr(" CW definition editor ...");
 			this.Load += new System.EventHandler(this.cwedit_Load);
 			this.ResumeLayout(false);
 

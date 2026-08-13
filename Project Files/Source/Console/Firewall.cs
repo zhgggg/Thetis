@@ -85,21 +85,21 @@ namespace Thetis
         {
             if (!FirewallManager.IsServiceRunning)
             {
-                MessageBox.Show("Firewall service is not running.", "Firewall - No Service", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1, Common.MB_TOPMOST);
+                MessageBox.Show(Translator.Tr("Firewall service is not running."), Translator.Tr("Firewall - No Service"), MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1, Common.MB_TOPMOST);
                 return;
             }
 
             string sExe = System.Reflection.Assembly.GetEntryAssembly().Location;
             if (sExe == "")
             {
-                MessageBox.Show("Could not obtain EXE path.", "Firewall - Error", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1, Common.MB_TOPMOST);
+                MessageBox.Show(Translator.Tr("Could not obtain EXE path."), Translator.Tr("Firewall - Error"), MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1, Common.MB_TOPMOST);
                 return;
             }
 
             if (!Common.IsAdministrator())
             {
                 //msgbox need to be admin !
-                MessageBox.Show("To reset Thetis firewall entries please run Thetis 'As Administrator'.", "Firewall - No Administrator Rights", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1, Common.MB_TOPMOST);
+                MessageBox.Show(Translator.Tr("To reset Thetis firewall entries please run Thetis 'As Administrator'."), Translator.Tr("Firewall - No Administrator Rights"), MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1, Common.MB_TOPMOST);
                 return;
             }
 
@@ -114,7 +114,7 @@ namespace Thetis
             }
             catch 
             {
-                MessageBox.Show("There was a problem removing existing firewall entries. Please configure manually.\nThetis.exe needs UDP/TCP in/out, all ports", "Firewall - Problem", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1, Common.MB_TOPMOST);
+                MessageBox.Show(Translator.Tr("There was a problem removing existing firewall entries. Please configure manually.\nThetis.exe needs UDP/TCP in/out, all ports"), Translator.Tr("Firewall - Problem"), MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1, Common.MB_TOPMOST);
                 return;
             }
 
@@ -127,11 +127,11 @@ namespace Thetis
 
             if (b1 && b2 && b3 && b4)
             {
-                MessageBox.Show("Firewall is configured correctly.", "Firewall - Success", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1, Common.MB_TOPMOST);
+                MessageBox.Show(Translator.Tr("Firewall is configured correctly."), Translator.Tr("Firewall - Success"), MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1, Common.MB_TOPMOST);
             }
             else
             {
-                MessageBox.Show("There was a problem configuring the firewall. Please configure manually.\nThetis.exe needs UDP/TCP in/out, all ports", "Firewall - Problem", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1, Common.MB_TOPMOST);
+                MessageBox.Show(Translator.Tr("There was a problem configuring the firewall. Please configure manually.\nThetis.exe needs UDP/TCP in/out, all ports"), Translator.Tr("Firewall - Problem"), MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1, Common.MB_TOPMOST);
             }                    
         }
 

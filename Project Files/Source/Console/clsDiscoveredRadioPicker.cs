@@ -70,7 +70,7 @@ namespace Thetis
             using (Button btnCancel = new Button())
             using (Panel bottom = new Panel())
             {
-                f.Text = "Discovered radios";
+                f.Text = Translator.Tr("Discovered radios");
                 f.FormBorderStyle = FormBorderStyle.FixedDialog;
                 f.MaximizeBox = false;
                 f.MinimizeBox = false;
@@ -98,7 +98,7 @@ namespace Thetis
 
                 DataGridViewCheckBoxColumn colPick = new DataGridViewCheckBoxColumn();
                 colPick.Name = "Pick";
-                colPick.HeaderText = "";
+                colPick.HeaderText = Translator.Tr("");
                 colPick.Width = 42;
                 colPick.FillWeight = 10f;
                 colPick.FalseValue = false;
@@ -109,7 +109,7 @@ namespace Thetis
 
                 DataGridViewTextBoxColumn colHardware = new DataGridViewTextBoxColumn();
                 colHardware.Name = "Hardware";
-                colHardware.HeaderText = "Hardware";
+                colHardware.HeaderText = Translator.Tr("Hardware");
                 colHardware.ReadOnly = true;
                 colHardware.FillWeight = 15f;
                 colHardware.SortMode = DataGridViewColumnSortMode.NotSortable;
@@ -117,7 +117,7 @@ namespace Thetis
 
                 DataGridViewTextBoxColumn colIp = new DataGridViewTextBoxColumn();
                 colIp.Name = "IP";
-                colIp.HeaderText = "IP";
+                colIp.HeaderText = Translator.Tr("IP");
                 colIp.ReadOnly = true;
                 colIp.FillWeight = 15f;
                 colIp.SortMode = DataGridViewColumnSortMode.NotSortable;
@@ -125,7 +125,7 @@ namespace Thetis
 
                 DataGridViewTextBoxColumn colBasePort = new DataGridViewTextBoxColumn();
                 colBasePort.Name = "Port";
-                colBasePort.HeaderText = "Base Port";
+                colBasePort.HeaderText = Translator.Tr("Base Port");
                 colBasePort.ReadOnly = true;
                 colBasePort.FillWeight = 15f;
                 colBasePort.SortMode = DataGridViewColumnSortMode.NotSortable;
@@ -133,7 +133,7 @@ namespace Thetis
 
                 DataGridViewTextBoxColumn mac = new DataGridViewTextBoxColumn();
                 mac.Name = "Mac";
-                mac.HeaderText = "Mac Address";
+                mac.HeaderText = Translator.Tr("Mac Address");
                 mac.ReadOnly = true;
                 mac.FillWeight = 20f;
                 mac.SortMode = DataGridViewColumnSortMode.NotSortable;
@@ -141,7 +141,7 @@ namespace Thetis
 
                 DataGridViewTextBoxColumn colProto = new DataGridViewTextBoxColumn();
                 colProto.Name = "Protocol";
-                colProto.HeaderText = "Protocol";
+                colProto.HeaderText = Translator.Tr("Protocol");
                 colProto.ReadOnly = true;
                 colProto.FillWeight = 10f;
                 colProto.SortMode = DataGridViewColumnSortMode.NotSortable;
@@ -149,7 +149,7 @@ namespace Thetis
 
                 DataGridViewTextBoxColumn colVersion = new DataGridViewTextBoxColumn();
                 colVersion.Name = "Version";
-                colVersion.HeaderText = "Version";
+                colVersion.HeaderText = Translator.Tr("Version");
                 colVersion.ReadOnly = true;
                 colVersion.FillWeight = 15f;
                 colVersion.SortMode = DataGridViewColumnSortMode.NotSortable;
@@ -158,13 +158,13 @@ namespace Thetis
                 bottom.Dock = DockStyle.Bottom;
                 bottom.Height = 42;
 
-                btnAdd.Text = "Add";
+                btnAdd.Text = Translator.Tr("Add");
                 btnAdd.Width = 90;
                 btnAdd.Height = 26;
                 btnAdd.Anchor = AnchorStyles.Right | AnchorStyles.Top;
                 btnAdd.Enabled = false;
 
-                btnCancel.Text = "Cancel";
+                btnCancel.Text = Translator.Tr("Cancel");
                 btnCancel.Width = 90;
                 btnCancel.Height = 26;
                 btnCancel.Anchor = AnchorStyles.Right | AnchorStyles.Top;
@@ -337,7 +337,7 @@ namespace Thetis
 
                 if (grid.Rows.Count == 0)
                 {
-                    //MessageBox.Show(owner, "No radios found.", "Discovered radios", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    //MessageBox.Show(owner, Translator.Tr("No radios found."), Translator.Tr("Discovered radios"), MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return new List<NicRadioScanResult>();
                 }
 

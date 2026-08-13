@@ -1648,9 +1648,9 @@ namespace Thetis
                     }
                     catch (Exception)
                     {
-                        MessageBox.Show("The program is having trouble starting the VAC audio streams.\n" +
-                            "Please examine the VAC related settings on the Setup Form -> Audio Tab and try again.",
-                            "VAC Audio Stream Startup Error",
+                        MessageBox.Show(Translator.Tr("The program is having trouble starting the VAC audio streams.\n") +
+                            Translator.Tr("Please examine the VAC related settings on the Setup Form -> Audio Tab and try again."),
+                            Translator.Tr("VAC Audio Stream Startup Error"),
                             MessageBoxButtons.OK,
                             MessageBoxIcon.Error);
                     }
@@ -1729,9 +1729,9 @@ namespace Thetis
                     }
                     catch (Exception)
                     {
-                        MessageBox.Show("The program is having trouble starting the VAC audio streams.\n" +
-                            "Please examine the VAC related settings on the Setup Form -> Audio Tab and try again.",
-                            "VAC2 Audio Stream Startup Error",
+                        MessageBox.Show(Translator.Tr("The program is having trouble starting the VAC audio streams.\n") +
+                            Translator.Tr("Please examine the VAC related settings on the Setup Form -> Audio Tab and try again."),
+                            Translator.Tr("VAC2 Audio Stream Startup Error"),
                             MessageBoxButtons.OK,
                             MessageBoxIcon.Error);
                     }
@@ -1782,14 +1782,14 @@ namespace Thetis
                 if (rc == -101) // firmware version error; 
                 {
                     string fw_err = NetworkIO.GetFWVersionErrorMsg;
-                    MessageBox.Show(fw_err, "Firmware Error",
+                    MessageBox.Show(fw_err, Translator.Tr("Firmware Error"),
                                     MessageBoxButtons.OK,
                                     MessageBoxIcon.Error, MessageBoxDefaultButton.Button1, Common.MB_TOPMOST);
                     return false;
                 }
                 else
                 {
-                    MessageBox.Show("Error starting SDR hardware, is it connected and powered?", "Network Error",
+                    MessageBox.Show(Translator.Tr("Error starting SDR hardware, is it connected and powered?"), Translator.Tr("Network Error"),
                                     MessageBoxButtons.OK,
                                     MessageBoxIcon.Error, MessageBoxDefaultButton.Button1, Common.MB_TOPMOST);
                     return false;
@@ -1870,11 +1870,11 @@ namespace Thetis
         //                         "verify the settings there.";
         //                     if (vac_enabled) s += "  Since VAC is enabled, make sure\n" +
         //                          "you look at those settings as well.";
-        //                     MessageBox.Show(s, "Audio Subsystem Error: Invalid Device",
+        //                     MessageBox.Show(s, Translator.Tr("Audio Subsystem Error: Invalid Device"),
         //                         MessageBoxButtons.OK, MessageBoxIcon.Error);
         //                     break;
         //                 default:
-        //                     MessageBox.Show(PortAudio.Pa_GetErrorText(error), "PortAudio Error: " + error,
+        //                     MessageBox.Show(PortAudio.Pa_GetErrorText(error), Translator.Tr("PortAudio Error: ") + error,
         //                         MessageBoxButtons.OK, MessageBoxIcon.Error);
         //                     break;
         //             }

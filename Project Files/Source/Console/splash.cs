@@ -182,7 +182,7 @@ namespace Thetis
             this.lblVersion.Name = "lblVersion";
             this.lblVersion.Size = new System.Drawing.Size(205, 13);
             this.lblVersion.TabIndex = 3;
-            this.lblVersion.Text = "WWWWWWWWWWWWWWWWWW";
+            this.lblVersion.Text = Translator.Tr("WWWWWWWWWWWWWWWWWW");
             // 
             // lblTimeRemaining
             // 
@@ -193,7 +193,7 @@ namespace Thetis
             this.lblTimeRemaining.Name = "lblTimeRemaining";
             this.lblTimeRemaining.Size = new System.Drawing.Size(92, 16);
             this.lblTimeRemaining.TabIndex = 1;
-            this.lblTimeRemaining.Text = "Time";
+            this.lblTimeRemaining.Text = Translator.Tr("Time");
             this.lblTimeRemaining.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // lblStatus
@@ -205,7 +205,7 @@ namespace Thetis
             this.lblStatus.Name = "lblStatus";
             this.lblStatus.Size = new System.Drawing.Size(306, 16);
             this.lblStatus.TabIndex = 0;
-            this.lblStatus.Text = "Status";
+            this.lblStatus.Text = Translator.Tr("Status");
             this.lblStatus.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // Splash
@@ -221,7 +221,7 @@ namespace Thetis
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Splash";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Splash";
+            this.Text = Translator.Tr("Splash");
             this.Load += new System.EventHandler(this.Splash_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -436,7 +436,7 @@ namespace Thetis
 			else
 			{
 				m_bFirstLaunch = true;
-				lblTimeRemaining.Text = "";
+				lblTimeRemaining.Text = Translator.Tr("");
 			}      
 		}
 
@@ -564,9 +564,9 @@ namespace Thetis
 
         private void Splash_Load(object sender, EventArgs e)
         {
-			lblStatus.Text = "";
+			lblStatus.Text = Translator.Tr("");
 			lblVersion.Text = _start_params.vers;
-			lblTimeRemaining.Text = "";
+			lblTimeRemaining.Text = Translator.Tr("");
         }		
     }
 

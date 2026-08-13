@@ -810,14 +810,14 @@ namespace Midi2Cat.IO
             ParsedMidiMessage Rc = new ParsedMidiMessage();
             if (msg.Length != 6)
             {
-                Rc.ErrMsg = string.Format("Msg:{0} {1}", inMsg, "Must be 6 characters long.");
+                Rc.ErrMsg = string.Format(Thetis.Translator.Tr("Msg:{0} {1}"), inMsg, "Must be 6 characters long.");
                 return Rc;
             }
             if (msg.Contains("SS"))
             {
                 if (msg.Substring(0, 2) != "SS")
                 {
-                    Rc.ErrMsg = string.Format("Msg:{0} {1}", inMsg, "SS must be the 1st and 2nd characters.");
+                    Rc.ErrMsg = string.Format(Thetis.Translator.Tr("Msg:{0} {1}"), inMsg, "SS must be the 1st and 2nd characters.");
                     return Rc;
                 }
                  msg = msg.Replace("SS", inStatus.ToString("X2"));
@@ -826,7 +826,7 @@ namespace Midi2Cat.IO
             {
                 if (msg.Substring(2, 2) != "YY")
                 {
-                    Rc.ErrMsg = string.Format("Msg:{0} {1}", inMsg, "YY must be the 3rd & 4th characters.");
+                    Rc.ErrMsg = string.Format(Thetis.Translator.Tr("Msg:{0} {1}"), inMsg, "YY must be the 3rd & 4th characters.");
                     return Rc;
                 }
                 msg = msg.Replace("YY", inControl.ToString("X2"));
@@ -835,7 +835,7 @@ namespace Midi2Cat.IO
             {
                 if (msg.Substring(4, 2) != "VV")
                 {
-                    Rc.ErrMsg = string.Format("Msg:{0} {1}", inMsg, "VV must be the 5th & 6th characters.");
+                    Rc.ErrMsg = string.Format(Thetis.Translator.Tr("Msg:{0} {1}"), inMsg, "VV must be the 5th & 6th characters.");
                     return Rc;
                 }
                 msg = msg.Replace("VV", inValue.ToString("X2"));
@@ -855,7 +855,7 @@ namespace Midi2Cat.IO
             }
             catch 
             {
-                Rc.ErrMsg = string.Format("Msg:{0} {1}", inMsg, "contains invalid hexideciaml characters.");
+                Rc.ErrMsg = string.Format(Thetis.Translator.Tr("Msg:{0} {1}"), inMsg, "contains invalid hexideciaml characters.");
             }
             return Rc;
         }

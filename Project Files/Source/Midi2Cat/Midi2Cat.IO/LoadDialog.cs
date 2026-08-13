@@ -38,6 +38,7 @@ namespace Midi2Cat.IO
         public LoadDialog()
         {
             InitializeComponent();
+            Thetis.Translator.ApplyToForm(this);
         }
 
         public string MappingName

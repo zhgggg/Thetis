@@ -38,6 +38,7 @@ namespace Midi2Cat.IO
         public SaveAsDialog()
         {
             InitializeComponent();
+            Thetis.Translator.ApplyToForm(this);
         }
 
         public string MappingName
@@ -87,8 +88,8 @@ namespace Midi2Cat.IO
             {
                 if (value == ((string)mapping).ToLower())
                 {
-                    if (MessageBox.Show("You are about to overwrite an existing saved mapping.\nDo you want to continue?",
-                        "Overwrite an existing saved mapping?", MessageBoxButtons.YesNo, MessageBoxIcon.Question) != DialogResult.Yes)
+                    if (MessageBox.Show(Thetis.Translator.Tr("You are about to overwrite an existing saved mapping.\nDo you want to continue?"),
+                        Thetis.Translator.Tr("Overwrite an existing saved mapping?"), MessageBoxButtons.YesNo, MessageBoxIcon.Question) != DialogResult.Yes)
                     {
                         DoIt = false;
                     }

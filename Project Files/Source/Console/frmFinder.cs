@@ -89,6 +89,7 @@ namespace Thetis
             _stringFormat.FormatFlags = StringFormatFlags.MeasureTrailingSpaces | StringFormatFlags.NoWrap | StringFormatFlags.NoClip;
 
             InitializeComponent();
+            Translator.ApplyToForm(this);
 
             // match inital form state
             _highlightResults = chkHighlight.Checked;

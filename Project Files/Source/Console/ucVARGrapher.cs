@@ -63,6 +63,7 @@ namespace Thetis
             m_dData = new List<double>();
 
             InitializeComponent();
+            Translator.ApplyToForm(this);
             Common.DoubleBufferAll(this, true);
 
             MaxPoints = 100;

@@ -1,4 +1,4 @@
-﻿/*  BasicAudio.cs
+﻿﻿/*  BasicAudio.cs
 
 This file is part of a program that implements a Software-Defined Radio.
 
@@ -75,7 +75,7 @@ namespace Thetis
             catch (Exception e)
             {
                 m_objPlayer = null;
-                MessageBox.Show("Unable to create SoundPlayer object (BasicAudio)\n\n" + e.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1, Common.MB_TOPMOST);
+                MessageBox.Show(Translator.Tr("Unable to create SoundPlayer object (BasicAudio)\n\n") + e.Message, Translator.Tr("Error"), MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1, Common.MB_TOPMOST);
                 return;
             }
             m_objPlayer.LoadCompleted += new AsyncCompletedEventHandler(player_LoadCompleted);

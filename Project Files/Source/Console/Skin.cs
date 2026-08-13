@@ -179,8 +179,8 @@ namespace Thetis
                writer.WriteLine(DateTime.Now.ToShortDateString() + " " + DateTime.Now.ToShortTimeString() + " " +
                    "File not found ("+path + ".xml.\n");
                writer.Close();
-               MessageBox.Show("Error reading skin.  File not found.",
-                   "Skin file error",
+               MessageBox.Show(Translator.Tr("Error reading skin.  File not found."),
+                   Translator.Tr("Skin file error"),
                    MessageBoxButtons.OK,
                    MessageBoxIcon.Error);*/
                 return true;
@@ -197,8 +197,8 @@ namespace Thetis
                 writer.WriteLine(DateTime.Now.ToShortDateString() + " " + DateTime.Now.ToShortTimeString() + " " +
                     ex.Message + "\n\n" + ex.StackTrace + "\n");
                 writer.Close();
-                MessageBox.Show("Error reading Skin file.\n\n" + ex.Message + "\n\n" + ex.StackTrace,
-                    "Skin file error",
+                MessageBox.Show(Translator.Tr("Error reading Skin file.\n\n") + ex.Message + Translator.Tr("\n\n") + ex.StackTrace,
+                    Translator.Tr("Skin file error"),
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
                 return false;
@@ -756,7 +756,7 @@ namespace Thetis
                     }
                 }
 
-                if (b.ImageList.Images.Count > 0) b.Text = ""; // clear the text if using an image //MW0LGE_21f
+                if (b.ImageList.Images.Count > 0) b.Text = Translator.Tr(""); // clear the text if using an image //MW0LGE_21f
                 setupButtonHandlers(b);
                 Button_StateChanged(b, EventArgs.Empty);
             }

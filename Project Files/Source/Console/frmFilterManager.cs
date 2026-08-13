@@ -55,6 +55,7 @@ namespace Thetis
         public frmFilterManager()
         {
             InitializeComponent();
+            Translator.ApplyToForm(this);
             this.Width = 930;
         }
 
@@ -63,12 +64,12 @@ namespace Thetis
             if (this.Width < 1272)
             {
                 this.Width = 1272;
-                btnMore.Text = "Less <<";
+                btnMore.Text = Translator.Tr("Less <<");
             }
             else
             {
                 this.Width = 930;
-                btnMore.Text = "More >>";
+                btnMore.Text = Translator.Tr("More >>");
             }
                 
         }

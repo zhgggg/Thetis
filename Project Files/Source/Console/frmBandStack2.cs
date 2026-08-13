@@ -88,6 +88,7 @@ namespace Thetis
         public frmBandStack2()
         {
             InitializeComponent();
+            Translator.ApplyToForm(this);
             _console = null;
         }
 
@@ -104,7 +105,7 @@ namespace Thetis
             Common.RestoreForm(this, "BandStack2Form", true);
 
             this.Width = 256;
-            btnOptions.Text = "Options >>";
+            btnOptions.Text = Translator.Tr("Options >>");
 
             btnLockSelected.Enabled = false;
             btnDeleteSelected.Enabled = false;
@@ -269,12 +270,12 @@ namespace Thetis
             if (this.Width > 256)
             {
                 this.Width = 256;
-                btnOptions.Text = "Options >>";
+                btnOptions.Text = Translator.Tr("Options >>");
             }
             else
             {
                 this.Width = 512;
-                btnOptions.Text = "Options <<";
+                btnOptions.Text = Translator.Tr("Options <<");
             }
         }
 

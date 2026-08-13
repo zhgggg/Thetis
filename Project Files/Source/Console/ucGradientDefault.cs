@@ -87,6 +87,7 @@ namespace Thetis
         public ucGradientDefault()
         {
             InitializeComponent();
+            Translator.ApplyToForm(this);
             populateGradientList();
         }
 

@@ -108,6 +108,7 @@ namespace Thetis
         public ucMeter()
         {
             InitializeComponent();
+            Translator.ApplyToForm(this);
 
             Common.DoubleBufferAll(this, true);
 

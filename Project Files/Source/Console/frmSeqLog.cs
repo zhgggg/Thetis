@@ -1,4 +1,4 @@
-﻿/*  frmSeqLog.cs
+﻿﻿/*  frmSeqLog.cs
 
 This file is part of a program that implements a Software-Defined Radio.
 
@@ -61,10 +61,11 @@ namespace Thetis
         public frmSeqLog()
         {
             InitializeComponent();
+            Translator.ApplyToForm(this);
 
             m_nTabMainTop = tabMain.Top;
 
-            btnClear.Text = "Close";
+            btnClear.Text = Translator.Tr("Close");
             btnCopyImageToClipboard.Enabled = false;
             btnCopyToClipboard.Enabled = false;
 
@@ -85,7 +86,7 @@ namespace Thetis
 
         private void btnClear_Click(object sender, EventArgs e)
         {
-            btnClear.Text = "Close";
+            btnClear.Text = Translator.Tr("Close");
             btnCopyImageToClipboard.Enabled = false;
             btnCopyToClipboard.Enabled = false;
             txtLog.Text = "";
@@ -102,7 +103,7 @@ namespace Thetis
 
             txtLog.Text = log.ToString();
 
-            btnClear.Text = "Clear Log + Close";
+            btnClear.Text = Translator.Tr("Clear Log + Close");
             btnCopyImageToClipboard.Enabled = true;
             btnCopyToClipboard.Enabled = true;
         }
@@ -157,8 +158,8 @@ namespace Thetis
             bool bExists = DumpCap.DumpCapExists();
 
             groupDumpCap.Enabled = bExists;
-            if (bExists) groupDumpCap.Text = "DumpCap [FOUND]";
-                else groupDumpCap.Text = "DumpCap [NOT FOUND]";
+            if (bExists) groupDumpCap.Text = Translator.Tr("DumpCap [FOUND]");
+                else groupDumpCap.Text = Translator.Tr("DumpCap [NOT FOUND]");
 
             // default always off
             chkDumpCapEnabled.Checked = false;

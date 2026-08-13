@@ -57,8 +57,8 @@ namespace Midi2Cat.Data
             DataColumn[] keys = new DataColumn[2];
             t = ds.Tables["ControlTypes"];
 
-            t.Columns.Add("ControlId", typeof(int));
-            t.Columns.Add("ControlDescription", typeof(string));
+            t.Columns.Add(Thetis.Translator.Tr("ControlId"), typeof(int));
+            t.Columns.Add(Thetis.Translator.Tr("ControlDescription"), typeof(string));
             keys[0] = t.Columns[0];
             keys[1] = t.Columns[1];
             t.PrimaryKey = keys;
@@ -80,10 +80,10 @@ namespace Midi2Cat.Data
             DataTable t = null;
             DataColumn[] keys = new DataColumn[1];
             t = ds.Tables["CatCmds"];
-            t.Columns.Add("CmdId", typeof(int));
-            t.Columns.Add("CmdDescription", typeof(string));
-            t.Columns.Add("ControlType", typeof(int));
-            t.Columns.Add("InUse", typeof(bool));
+            t.Columns.Add(Thetis.Translator.Tr("CmdId"), typeof(int));
+            t.Columns.Add(Thetis.Translator.Tr("CmdDescription"), typeof(string));
+            t.Columns.Add(Thetis.Translator.Tr("ControlType"), typeof(int));
+            t.Columns.Add(Thetis.Translator.Tr("InUse"), typeof(bool));
             keys[0] = t.Columns[0];
             t.PrimaryKey = keys;
 

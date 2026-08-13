@@ -9548,9 +9548,9 @@ namespace Thetis
             }
             catch (Exception ex)
             {
-                MessageBox.Show("A database write to file operation failed.  " +
-                    "The exception error was:\n\n" + ex.Message,
-                    "ERROR: Database Write Error",
+                MessageBox.Show(Translator.Tr("A database write to file operation failed.  ") +
+                    Translator.Tr("The exception error was:\n\n") + ex.Message,
+                    Translator.Tr("ERROR: Database Write Error"),
                     MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1, Common.MB_TOPMOST);
                 return false;
             }
@@ -9585,7 +9585,7 @@ namespace Thetis
                 }
                 else //if(rows.Length > 1)	// this should never happen
                 {
-                    MessageBox.Show("Error reading BandInfo table.", "Database Error",
+                    MessageBox.Show(Translator.Tr("Error reading BandInfo table."), Translator.Tr("Database Error"),
                         MessageBoxButtons.OK, MessageBoxIcon.Error);
                     outStr = "Error";
                     return false;
@@ -9593,7 +9593,7 @@ namespace Thetis
             }
             catch (Exception e)
             {
-                MessageBox.Show(e.Message + "\n\n\n" + e.StackTrace, "Database Error",
+                MessageBox.Show(e.Message + Translator.Tr("\n\n\n") + e.StackTrace, Translator.Tr("Database Error"),
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 outStr = "Error";
                 return false;
@@ -9633,7 +9633,7 @@ namespace Thetis
 
         //    if (rows.Length == 0)
         //    {
-        //        MessageBox.Show("No Entries found for Band: " + band, "No Entry Found",
+        //        MessageBox.Show(Translator.Tr("No Entries found for Band: ") + band, Translator.Tr("No Entry Found"),
         //            MessageBoxButtons.OK, MessageBoxIcon.Warning);
         //        mode = "";
         //        filter = "";
@@ -9708,7 +9708,7 @@ namespace Thetis
 
         //    if (rows.Length == 0)
         //    {
-        //        MessageBox.Show("No Entries found for Band: " + band, "No Entry Found",
+        //        MessageBox.Show(Translator.Tr("No Entries found for Band: ") + band, Translator.Tr("No Entry Found"),
         //            MessageBoxButtons.OK, MessageBoxIcon.Warning);
 
         //    }
@@ -9737,7 +9737,7 @@ namespace Thetis
         //    }
         //    catch (Exception)
         //    {
-        //        MessageBox.Show("No Entries found to Delete for Band: " + band, "No Entry Found",
+        //        MessageBox.Show(Translator.Tr("No Entries found to Delete for Band: ") + band, Translator.Tr("No Entry Found"),
         //          MessageBoxButtons.OK, MessageBoxIcon.Warning);
         //    }
 
@@ -9770,7 +9770,7 @@ namespace Thetis
         //    }
         //    catch (Exception)
         //    {
-        //        MessageBox.Show("problem found sorting entry for Band: " + band, "No Entry Found",
+        //        MessageBox.Show(Translator.Tr("problem found sorting entry for Band: ") + band, Translator.Tr("No Entry Found"),
         //                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
         //    }
 
@@ -10082,7 +10082,7 @@ namespace Thetis
         //    }
         //    catch (Exception)  // Something is seriously wrong with the file.
         //    {
-        //        //MessageBox.Show("The file: " + filename + " could not be read successfully.","Error",
+        //        //MessageBox.Show(Translator.Tr("The file: ") + filename + Translator.Tr(" could not be read successfully."),Translator.Tr("Error"),
         //        //    MessageBoxButtons.OK, MessageBoxIcon.Warning);
         //        return false;
         //    }

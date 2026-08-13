@@ -50,6 +50,7 @@ namespace Thetis
         public VFOSettingsPopup(Console c)
         {
             InitializeComponent();
+            Translator.ApplyToForm(this);
             console = c;
         }
 
@@ -93,7 +94,7 @@ namespace Thetis
             this.buttonClose.Selectable = true;
             this.buttonClose.Size = new System.Drawing.Size(75, 32);
             this.buttonClose.TabIndex = 4;
-            this.buttonClose.Text = "Close";
+            this.buttonClose.Text = Translator.Tr("Close");
             this.buttonClose.UseVisualStyleBackColor = true;
             this.buttonClose.Click += new System.EventHandler(this.ButtonClose_Click);
             // 
@@ -106,7 +107,7 @@ namespace Thetis
             this.labelTS1.Name = "labelTS1";
             this.labelTS1.Size = new System.Drawing.Size(57, 13);
             this.labelTS1.TabIndex = 3;
-            this.labelTS1.Text = "Tune Step";
+            this.labelTS1.Text = Translator.Tr("Tune Step");
             // 
             // buttonPlus
             // 
@@ -117,7 +118,7 @@ namespace Thetis
             this.buttonPlus.Selectable = true;
             this.buttonPlus.Size = new System.Drawing.Size(52, 32);
             this.buttonPlus.TabIndex = 2;
-            this.buttonPlus.Text = "+";
+            this.buttonPlus.Text = Translator.Tr("+");
             this.buttonPlus.UseVisualStyleBackColor = true;
             this.buttonPlus.Click += new System.EventHandler(this.ButtonPlus_Click);
             // 
@@ -130,7 +131,7 @@ namespace Thetis
             this.buttonMinus.Selectable = true;
             this.buttonMinus.Size = new System.Drawing.Size(52, 32);
             this.buttonMinus.TabIndex = 1;
-            this.buttonMinus.Text = "-";
+            this.buttonMinus.Text = Translator.Tr("-");
             this.buttonMinus.UseVisualStyleBackColor = true;
             this.buttonMinus.Click += new System.EventHandler(this.ButtonMinus_Click);
             // 
@@ -156,7 +157,7 @@ namespace Thetis
             this.Controls.Add(this.txtBoxTuneStep);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "VFOSettingsPopup";
-            this.Text = "VFO Settings";
+            this.Text = Translator.Tr("VFO Settings");
             this.TopMost = true;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.VFOSettingsPopup_FormClosing);
             this.Load += new System.EventHandler(this.VFOSettingsPopup_Load);

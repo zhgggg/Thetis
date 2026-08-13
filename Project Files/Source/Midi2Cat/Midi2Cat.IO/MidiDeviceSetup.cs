@@ -48,6 +48,7 @@ namespace Midi2Cat.IO
         public MidiDeviceSetup(string DbFile, string deviceName, int deviceIndex)
         {
             InitializeComponent();
+            Thetis.Translator.ApplyToForm(this);
             this.DbFile = DbFile;
             this.DeviceName = deviceName;
             this.DeviceIndex = deviceIndex;
@@ -286,7 +287,7 @@ namespace Midi2Cat.IO
             string msg = null;
             if (!string.IsNullOrEmpty(msg1) || !string.IsNullOrEmpty(msg2))
             {
-                msg = string.Format("{0} {1}:{2} {3}\n", status.ToString(), direction.ToString(), msg1, msg2);
+                msg = string.Format(Thetis.Translator.Tr("{0} {1}:{2} {3}\n"), status.ToString(), direction.ToString(), msg1, msg2);
             }
 
             if (this.Visible)
@@ -303,7 +304,7 @@ namespace Midi2Cat.IO
                 if (msg != null)
                     errorListBox.Items.Insert(0, msg);
                 else if (errorListBox.Items.Count == 0)
-                    errorListBox.Items.Add("No errors detected.");
+                    errorListBox.Items.Add(Thetis.Translator.Tr("No errors detected."));
             }
             if (msg != null)
                 Debug.WriteLine(msg);
@@ -774,7 +775,7 @@ namespace Midi2Cat.IO
         {
             ShowAddPrompt();
             ValidateDialogInput();
-            eventMappingPrompt.Text = "";
+            eventMappingPrompt.Text = Thetis.Translator.Tr("");
             
             if (string.IsNullOrWhiteSpace(newValueReceivedEventTB.Text) == false)
             {
@@ -885,7 +886,7 @@ namespace Midi2Cat.IO
             string[] existingMappings=DB.GetSavedMappings();
             if (existingMappings.Length <= 0)
             {
-                MessageBox.Show("You can only export saved mappings,\nYou must save your current mapping before it can be exported", "Unable To Export", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show(Thetis.Translator.Tr("You can only export saved mappings,\nYou must save your current mapping before it can be exported"), Thetis.Translator.Tr("Unable To Export"), MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
             pickDlg.ExistingMappings = existingMappings;
@@ -911,7 +912,7 @@ namespace Midi2Cat.IO
             {
                 if (DB.ImportMappings(dlg.FileName) == false)
                 {
-                    MessageBox.Show("The import file is invalid or corrupt", "Import Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(Thetis.Translator.Tr("The import file is invalid or corrupt"), Thetis.Translator.Tr("Import Error"), MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
 

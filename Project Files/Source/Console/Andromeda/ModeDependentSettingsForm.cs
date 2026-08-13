@@ -53,6 +53,7 @@ namespace Thetis
             // Required for Windows Form Designer support
             //
             InitializeComponent();
+            Translator.ApplyToForm(this);
             console = c;
         }
 
@@ -92,7 +93,7 @@ namespace Thetis
             this.btnClose.Selectable = true;
             this.btnClose.Size = new System.Drawing.Size(75, 23);
             this.btnClose.TabIndex = 0;
-            this.btnClose.Text = "Close";
+            this.btnClose.Text = Translator.Tr("Close");
             this.btnClose.UseVisualStyleBackColor = true;
             this.btnClose.Click += new System.EventHandler(this.BtnClose_Click);
             // 
@@ -105,7 +106,7 @@ namespace Thetis
             this.Controls.Add(this.btnClose);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "ModeDependentSettingsForm";
-            this.Text = "ModeDependentSettingsForm (RX1)";
+            this.Text = Translator.Tr("ModeDependentSettingsForm (RX1)");
             this.TopMost = true;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ModeDependentSettingsForm_FormClosing);
             this.ResumeLayout(false);

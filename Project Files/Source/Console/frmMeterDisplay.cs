@@ -61,6 +61,7 @@ namespace Thetis
         public frmMeterDisplay(Console c, int rx)
         {
             InitializeComponent();
+            Translator.ApplyToForm(this);
 
             this.MinimumSize = new Size(ucMeter.MIN_CONTAINER_WIDTH, ucMeter.MIN_CONTAINER_HEIGHT);
 

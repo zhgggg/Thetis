@@ -59,6 +59,7 @@ namespace Thetis
         public frmReleaseNotes()
         {
             InitializeComponent();
+            Translator.ApplyToForm(this);
             webBrowser1.Navigating += WebBrowser1_Navigating;
         }
 
@@ -89,7 +90,7 @@ namespace Thetis
             }
             catch(Exception ex) 
             {
-                MessageBox.Show("Issue showing Release Notes",
+                MessageBox.Show(Translator.Tr("Issue showing Release Notes"),
                      ex.Message,
                      MessageBoxButtons.OK,
                      MessageBoxIcon.Error, MessageBoxDefaultButton.Button1, Common.MB_TOPMOST);

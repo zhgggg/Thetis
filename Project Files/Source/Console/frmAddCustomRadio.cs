@@ -56,6 +56,7 @@ namespace Thetis
         public frmAddCustomRadio()
         {
             InitializeComponent();
+            Translator.ApplyToForm(this);
             comboProtocol.SelectedIndex = 0;
         }
 

@@ -20,6 +20,7 @@ namespace Thetis
         public rxaControls(int id)
         {
             InitializeComponent();
+            Translator.ApplyToForm(this);
             CloseButton = false;
             CloseButtonVisible = false;
 

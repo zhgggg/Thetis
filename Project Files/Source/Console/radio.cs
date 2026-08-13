@@ -109,7 +109,7 @@ namespace Thetis
                 if (File.GetLastWriteTime(filePath) < DateTime.Now.AddMonths(-3))
                 {
                     // at least 3 months old
-                    DialogResult result = MessageBox.Show("The fft wisdom file is older than 3 months.\n\nIt can yeild performance improvements if rebuilt, especially if the Thetis version/install has changed.\n\nThis process can take upwards of 5 minutes or more depending upon your system.\n\nYou will be notified when complete. Do you want to rebuild it?\n\nnote: you will not be asked again for another 3 months", "Wisdom File", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2, Common.MB_TOPMOST);
+                    DialogResult result = MessageBox.Show(Translator.Tr("The fft wisdom file is older than 3 months.\n\nIt can yeild performance improvements if rebuilt, especially if the Thetis version/install has changed.\n\nThis process can take upwards of 5 minutes or more depending upon your system.\n\nYou will be notified when complete. Do you want to rebuild it?\n\nnote: you will not be asked again for another 3 months"), Translator.Tr("Wisdom File"), MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2, Common.MB_TOPMOST);
                     if (result == DialogResult.No)
                     {
                         // touch it
@@ -128,7 +128,7 @@ namespace Thetis
             }
             else
             {
-                MessageBox.Show("The fft wisdom file is missing and needs to be built.\n\nThis process can take upwards of 5 minutes or more depending upon your system.\n\nYou will be notified when complete.", "Wisdom File", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1, Common.MB_TOPMOST);
+                MessageBox.Show(Translator.Tr("The fft wisdom file is missing and needs to be built.\n\nThis process can take upwards of 5 minutes or more depending upon your system.\n\nYou will be notified when complete."), Translator.Tr("Wisdom File"), MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1, Common.MB_TOPMOST);
             }
 
             // restore or rebuild wisdom as needed
@@ -146,7 +146,7 @@ namespace Thetis
                 catch { }
 
                 // wisdom has been rebuilt, pop a message
-                MessageBox.Show("The fft wisdom file has been rebuilt.\n\nIt is now safe to close the output console window.", "Wisdom File", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1, Common.MB_TOPMOST);
+                MessageBox.Show(Translator.Tr("The fft wisdom file has been rebuilt.\n\nIt is now safe to close the output console window."), Translator.Tr("Wisdom File"), MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1, Common.MB_TOPMOST);
             }
 
             WDSP.init_impulse_cache(_cache_impulse ? 1 : 0);

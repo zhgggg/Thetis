@@ -67,6 +67,7 @@ namespace Thetis
         public ucSignalSelect()
         {
             InitializeComponent();
+            Translator.ApplyToForm(this);
         }
 
         private void radSig_CheckedChanged(object sender, EventArgs e)

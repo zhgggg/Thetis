@@ -61,6 +61,7 @@ namespace Thetis
             // Required for Windows Form Designer support
             //
             InitializeComponent();
+            Translator.ApplyToForm(this);
             console = c;
         }
 
@@ -113,7 +114,7 @@ namespace Thetis
             this.btnClose.Selectable = true;
             this.btnClose.Size = new System.Drawing.Size(100, 40);
             this.btnClose.TabIndex = 0;
-            this.btnClose.Text = "Close";
+            this.btnClose.Text = Translator.Tr("Close");
             this.btnClose.UseVisualStyleBackColor = true;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
@@ -148,7 +149,7 @@ namespace Thetis
             this.radBtn12.Size = new System.Drawing.Size(100, 40);
             this.radBtn12.TabIndex = 11;
             this.radBtn12.TabStop = true;
-            this.radBtn12.Text = "F12";
+            this.radBtn12.Text = Translator.Tr("F12");
             this.radBtn12.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.radBtn12.UseVisualStyleBackColor = true;
             this.radBtn12.Click += new System.EventHandler(this.radBtn12_Click);
@@ -164,7 +165,7 @@ namespace Thetis
             this.radBtn11.Size = new System.Drawing.Size(100, 40);
             this.radBtn11.TabIndex = 10;
             this.radBtn11.TabStop = true;
-            this.radBtn11.Text = "F11";
+            this.radBtn11.Text = Translator.Tr("F11");
             this.radBtn11.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.radBtn11.UseVisualStyleBackColor = true;
             this.radBtn11.Click += new System.EventHandler(this.radBtn11_Click);
@@ -180,7 +181,7 @@ namespace Thetis
             this.radBtn10.Size = new System.Drawing.Size(100, 40);
             this.radBtn10.TabIndex = 9;
             this.radBtn10.TabStop = true;
-            this.radBtn10.Text = "F10";
+            this.radBtn10.Text = Translator.Tr("F10");
             this.radBtn10.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.radBtn10.UseVisualStyleBackColor = true;
             this.radBtn10.Click += new System.EventHandler(this.radBtn10_Click);
@@ -196,7 +197,7 @@ namespace Thetis
             this.radBtn9.Size = new System.Drawing.Size(100, 40);
             this.radBtn9.TabIndex = 8;
             this.radBtn9.TabStop = true;
-            this.radBtn9.Text = "F9";
+            this.radBtn9.Text = Translator.Tr("F9");
             this.radBtn9.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.radBtn9.UseVisualStyleBackColor = true;
             this.radBtn9.Click += new System.EventHandler(this.radBtn9_Click);
@@ -212,7 +213,7 @@ namespace Thetis
             this.radBtn8.Size = new System.Drawing.Size(100, 40);
             this.radBtn8.TabIndex = 7;
             this.radBtn8.TabStop = true;
-            this.radBtn8.Text = "F8";
+            this.radBtn8.Text = Translator.Tr("F8");
             this.radBtn8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.radBtn8.UseVisualStyleBackColor = true;
             this.radBtn8.Click += new System.EventHandler(this.radBtn8_Click);
@@ -228,7 +229,7 @@ namespace Thetis
             this.radBtn7.Size = new System.Drawing.Size(100, 40);
             this.radBtn7.TabIndex = 6;
             this.radBtn7.TabStop = true;
-            this.radBtn7.Text = "F7";
+            this.radBtn7.Text = Translator.Tr("F7");
             this.radBtn7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.radBtn7.UseVisualStyleBackColor = true;
             this.radBtn7.Click += new System.EventHandler(this.radBtn7_Click);
@@ -244,7 +245,7 @@ namespace Thetis
             this.radBtn6.Size = new System.Drawing.Size(100, 40);
             this.radBtn6.TabIndex = 5;
             this.radBtn6.TabStop = true;
-            this.radBtn6.Text = "F6";
+            this.radBtn6.Text = Translator.Tr("F6");
             this.radBtn6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.radBtn6.UseVisualStyleBackColor = true;
             this.radBtn6.Click += new System.EventHandler(this.radBtn6_Click);
@@ -260,7 +261,7 @@ namespace Thetis
             this.radBtn5.Size = new System.Drawing.Size(100, 40);
             this.radBtn5.TabIndex = 4;
             this.radBtn5.TabStop = true;
-            this.radBtn5.Text = "F5";
+            this.radBtn5.Text = Translator.Tr("F5");
             this.radBtn5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.radBtn5.UseVisualStyleBackColor = true;
             this.radBtn5.Click += new System.EventHandler(this.radBtn5_Click);
@@ -276,7 +277,7 @@ namespace Thetis
             this.radBtn4.Size = new System.Drawing.Size(100, 40);
             this.radBtn4.TabIndex = 3;
             this.radBtn4.TabStop = true;
-            this.radBtn4.Text = "F4";
+            this.radBtn4.Text = Translator.Tr("F4");
             this.radBtn4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.radBtn4.UseVisualStyleBackColor = true;
             this.radBtn4.Click += new System.EventHandler(this.radBtn4_Click);
@@ -292,7 +293,7 @@ namespace Thetis
             this.radBtn3.Size = new System.Drawing.Size(100, 40);
             this.radBtn3.TabIndex = 2;
             this.radBtn3.TabStop = true;
-            this.radBtn3.Text = "F3";
+            this.radBtn3.Text = Translator.Tr("F3");
             this.radBtn3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.radBtn3.UseVisualStyleBackColor = true;
             this.radBtn3.Click += new System.EventHandler(this.radBtn3_Click);
@@ -308,7 +309,7 @@ namespace Thetis
             this.radBtn2.Size = new System.Drawing.Size(100, 40);
             this.radBtn2.TabIndex = 1;
             this.radBtn2.TabStop = true;
-            this.radBtn2.Text = "F2";
+            this.radBtn2.Text = Translator.Tr("F2");
             this.radBtn2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.radBtn2.UseVisualStyleBackColor = true;
             this.radBtn2.Click += new System.EventHandler(this.radBtn2_Click);
@@ -326,7 +327,7 @@ namespace Thetis
             this.radBtn1.Size = new System.Drawing.Size(100, 40);
             this.radBtn1.TabIndex = 0;
             this.radBtn1.TabStop = true;
-            this.radBtn1.Text = "F1";
+            this.radBtn1.Text = Translator.Tr("F1");
             this.radBtn1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.radBtn1.UseVisualStyleBackColor = true;
             this.radBtn1.Click += new System.EventHandler(this.radBtn1_Click);
@@ -341,7 +342,7 @@ namespace Thetis
             this.Controls.Add(this.btnClose);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FilterButtonsPopup";
-            this.Text = "Select IF Filter";
+            this.Text = Translator.Tr("Select IF Filter");
             this.TopMost = true;
             this.Activated += new System.EventHandler(this.FilterButtonsPopup_Activated);
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FilterButtonsPopup_FormClosing);
@@ -366,14 +367,14 @@ namespace Thetis
 
             if (console.ShowRX1)
             {
-                this.Text = "set RX1 Filter";
+                this.Text = Translator.Tr("set RX1 Filter");
                 currentMode = console.RX1DSPMode;
                 Filters = console.rx1_filters;
                 currentFilter = console.RX1Filter;
             }
             else
             {
-                this.Text = "set RX2 Filter";
+                this.Text = Translator.Tr("set RX2 Filter");
                 currentMode = console.RX2DSPMode;
                 Filters = console.rx2_filters;
                 currentFilter = console.RX2Filter;
@@ -402,9 +403,9 @@ namespace Thetis
             }
             else
             {
-                radBtn8.Text = "---";
-                radBtn9.Text = "---";
-                radBtn10.Text = "---";
+                radBtn8.Text = Translator.Tr("---");
+                radBtn9.Text = Translator.Tr("---");
+                radBtn10.Text = Translator.Tr("---");
                 radBtn8.Enabled = false;
                 radBtn9.Enabled = false;
                 radBtn10.Enabled = false;

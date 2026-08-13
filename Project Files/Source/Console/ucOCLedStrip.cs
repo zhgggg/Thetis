@@ -55,6 +55,7 @@ namespace Thetis
         public ucOCLedStrip()
         {
             InitializeComponent();
+            Translator.ApplyToForm(this);
         }
 
         private bool m_bTX = false;

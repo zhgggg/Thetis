@@ -1,4 +1,4 @@
-﻿//=================================================================
+﻿﻿//=================================================================
 // Andromeda.cs
 //=================================================================
 // Thetis is a C# implementation of a Software Defined Radio.
@@ -83,13 +83,13 @@ namespace Thetis
             {
                 lblATUTuneLabel.Visible = true;
                 lblATUTuneLabel.BackColor = System.Drawing.Color.Blue;
-                lblATUTuneLabel.Text = "ATU Tuned";
+                lblATUTuneLabel.Text = Translator.Tr("ATU Tuned");
             }
             else                                // ATU enabled but no tune solution
             {
                 lblATUTuneLabel.Visible = true;
                 lblATUTuneLabel.BackColor = System.Drawing.Color.Transparent;
-                lblATUTuneLabel.Text = "ATU -----";
+                lblATUTuneLabel.Text = Translator.Tr("ATU -----");
             }
 
         }
