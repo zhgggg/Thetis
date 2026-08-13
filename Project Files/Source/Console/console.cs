@@ -752,7 +752,6 @@ namespace Thetis
             Translator.Initialize();
             SetupLanguageMenu();
             Translator.LanguageChanged += Translator_LanguageChanged;
-            Translator.ApplyToForm(this);
 
             InitialiseAndromedaMenus();
 
@@ -2047,6 +2046,10 @@ namespace Thetis
             LogTool.AddLogEntry("    Recovering setup config...", "CONFIG");
             GetState(); // recall saved state
             LogTool.Completed("CONFIG");
+
+            //[zh-CN] apply UI translation only after GetState() has restored control values,
+            // otherwise combo items translated to Chinese break the English-value matching
+            Translator.ApplyToForm(this);
 
             // setup additional spectrum analysers, used by meter system
             if (_use_additional_sas)

@@ -106,7 +106,6 @@ namespace Thetis
         {
             LogTool.AddLogEntry("      Setup init components...", "INITCOMPSETUP");
             InitializeComponent();
-            Translator.ApplyToForm(this);
 
             _original_pnlP1_adcs_location = pnlP1_adcs.Location;
 
@@ -654,6 +653,10 @@ namespace Thetis
             updateNetworkThrottleCheckBox();
 
             updateShowStartupLogCheckBox();
+
+            //[zh-CN] apply UI translation only after DB state restore/ForceAllEvents has run,
+            // otherwise combo items translated to Chinese break the English-value matching
+            Translator.ApplyToForm(this);
 
             LogTool.Completed("SETUP_CONT");
         }
