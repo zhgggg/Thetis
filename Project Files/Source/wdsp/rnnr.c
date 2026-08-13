@@ -47,6 +47,7 @@ It uses a non modified version of rmnoise and implements a ringbuffer to handle 
 
 #define _CRT_SECURE_NO_WARNINGS
 #include "comm.h"
+#ifndef NR_SUPPORT_OFF
 #include "rnnoise.h"
 
 static inline float db_to_lin(float db) { return powf(10.0f, db / 20.0f); }
@@ -410,3 +411,23 @@ void SetRXARNNRUseDefaultGain(int channel, int use_default_gain)
 
     LeaveCriticalSection(&ch[channel].csDSP);
 }
+
+#else /* NR_SUPPORT_OFF - x86 build: rnnoise not available, provide stubs */
+
+void rnnr_agc_init(RNNR a) { (void)a; }
+void SetRXARNNRRun(int channel, int run) { (void)channel; (void)run; }
+void setSize_rnnr(RNNR a, int size) { (void)a; (void)size; }
+void setBuffers_rnnr(RNNR a, double* in, double* out) { (void)a; (void)in; (void)out; }
+void setSamplerate_rnnr(RNNR a, int rate) { (void)a; (void)rate; }
+RNNR create_rnnr(int run, int position, int size, double* in, double* out, int rate)
+{
+    (void)run; (void)position; (void)size; (void)in; (void)out; (void)rate;
+    return (RNNR)calloc(1, sizeof(rnnr));
+}
+void xrnnr(RNNR a, int pos) { (void)a; (void)pos; }
+void destroy_rnnr(RNNR a) { if (a != NULL) free(a); }
+void RNNRloadModel(const char* file_path) { (void)file_path; }
+void SetRXARNNRPosition(int channel, int position) { (void)channel; (void)position; }
+void SetRXARNNRUseDefaultGain(int channel, int use_default_gain) { (void)channel; (void)use_default_gain; }
+
+#endif /* NR_SUPPORT_OFF */

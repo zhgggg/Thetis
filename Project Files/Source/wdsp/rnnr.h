@@ -49,7 +49,9 @@ It uses a non modified version of rmnoise and implements a ringbuffer to handle 
 #ifndef _rnnr_h
 #define _rnnr_h
 
+#ifndef NR_SUPPORT_OFF
 #include "rnnoise.h"
+#endif
 
 #define FRAME_SIZE
 
@@ -67,7 +69,9 @@ typedef struct _rnnr
     int run_old; // used when loading a new model
     int position;
     int frame_size;
+    #ifndef NR_SUPPORT_OFF
     DenoiseState *st;
+    #endif
     double *in;
     double *out;
     float gain;

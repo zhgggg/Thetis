@@ -47,7 +47,9 @@ https://github.com/lucianodato/libspecbleach
 #ifndef _sbnr_h
 #define _sbnr_h
 
+#ifndef NR_SUPPORT_OFF
 #include <specbleach_adenoiser.h>
+#endif
 
 typedef struct _sbnr
 {
@@ -61,7 +63,9 @@ typedef struct _sbnr
         int noise_scaling_type;
         float noise_rescale;
         float post_filter_threshold;
+        #ifndef NR_SUPPORT_OFF
         SpectralBleachHandle st;
+        #endif
         int buffer_size;
         int rate;
 

@@ -45,6 +45,7 @@ https://github.com/lucianodato/libspecbleach
 
 #define _CRT_SECURE_NO_WARNINGS
 
+#ifndef NR_SUPPORT_OFF
 #include <specbleach_adenoiser.h>
 
 #include "comm.h"
@@ -248,3 +249,26 @@ void SetRXASBNRPosition(int channel, int position)
     rxa[channel].bp1.p->position = position;
     LeaveCriticalSection(&ch[channel].csDSP);
 }
+
+#else /* NR_SUPPORT_OFF - x86 build: libspecbleach not available, provide stubs */
+
+void setSize_sbnr(SBNR a, int size) { (void)a; (void)size; }
+void setBuffers_sbnr(SBNR a, double* in, double* out) { (void)a; (void)in; (void)out; }
+SBNR create_sbnr(int run, int position, int size, double* in, double* out, int rate)
+{
+    (void)run; (void)position; (void)size; (void)in; (void)out; (void)rate;
+    return (SBNR)calloc(1, sizeof(sbnr));
+}
+void setSamplerate_sbnr(SBNR a, int rate) { (void)a; (void)rate; }
+void xsbnr(SBNR a, int pos) { (void)a; (void)pos; }
+void destroy_sbnr(SBNR a) { if (a != NULL) free(a); }
+void SetRXASBNRRun(int channel, int run) { (void)channel; (void)run; }
+void SetRXASBNRreductionAmount(int channel, float amount) { (void)channel; (void)amount; }
+void SetRXASBNRsmoothingFactor(int channel, float factor) { (void)channel; (void)factor; }
+void SetRXASBNRwhiteningFactor(int channel, float factor) { (void)channel; (void)factor; }
+void SetRXASBNRnoiseRescale(int channel, float factor) { (void)channel; (void)factor; }
+void SetRXASBNRpostFilterThreshold(int channel, float threshold) { (void)channel; (void)threshold; }
+void SetRXASBNRnoiseScalingType(int channel, int noise_scaling_type) { (void)channel; (void)noise_scaling_type; }
+void SetRXASBNRPosition(int channel, int position) { (void)channel; (void)position; }
+
+#endif /* NR_SUPPORT_OFF */
