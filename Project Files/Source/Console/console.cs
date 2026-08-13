@@ -893,6 +893,14 @@ namespace Thetis
             }
             catch (Exception ex)
             {
+                //[zh-CN] persist the exception details so startup database issues can be diagnosed
+                try
+                {
+                    string dbf = (string.IsNullOrEmpty(AppDataPath) ? Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\OpenHPSDR\\Thetis-x64\\" : AppDataPath) + "DBStartupError.txt";
+                    File.WriteAllText(dbf, DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + "\n" + ex.ToString());
+                }
+                catch { }
+
                 if (ex.Message.Contains("does not belong to table", StringComparison.InvariantCultureIgnoreCase))
                 {
                     string msg = "The database is incorrectly configured for this version of Thetis.\n\n" +
@@ -1521,6 +1529,14 @@ namespace Thetis
             }
             catch (Exception ex)
             {
+                //[zh-CN] persist the exception details so startup database issues can be diagnosed
+                try
+                {
+                    string dbf = (string.IsNullOrEmpty(AppDataPath) ? Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\OpenHPSDR\\Thetis-x64\\" : AppDataPath) + "DBStartupError.txt";
+                    File.WriteAllText(dbf, DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + "\n" + ex.ToString());
+                }
+                catch { }
+
                 // could not find exception for column not found //MW0LGE_21k9rc6
                 if (ex.Message.Contains("does not belong to table", StringComparison.InvariantCultureIgnoreCase))
                 {

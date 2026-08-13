@@ -495,6 +495,22 @@ namespace Thetis
                     File.WriteAllText(_app_data_path + "ImportLog_dbupdate.txt", log);
                 }
                 catch { }
+
+                //[zh-CN] persist the merged database to disk immediately, otherwise a crash
+                // during the following startup would leave the on-disk database incomplete
+                if (ok)
+                {
+                    try
+                    {
+                        _ignore_written = true;
+                        DB.WriteDB();
+                    }
+                    catch { }
+                    finally
+                    {
+                        _ignore_written = false;
+                    }
+                }
             }
 
             if (ok)
