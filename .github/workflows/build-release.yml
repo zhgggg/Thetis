@@ -1,0 +1,98 @@
+name: Build Thetis (zh-CN)
+
+on:
+  push:
+    tags:
+      - 'v*-zh*'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+env:
+  THETIS_VERSION: "2.10.3.15"
+
+jobs:
+  build:
+    name: Build ${{ matrix.arch }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - arch: x64
+            thetis_platform: x64
+            native_platform: x64
+          - arch: x86
+            thetis_platform: x86
+            native_platform: Win32
+    runs-on: windows-2025
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup MSBuild
+        uses: microsoft/setup-msbuild@v2
+
+      - name: Restore NuGet packages
+        shell: cmd
+        run: |
+          nuget restore "Project Files\Source\Console\Thetis.csproj"
+          nuget restore "Project Files\Source\Midi2Cat\Midi2Cat.csproj"
+          nuget restore "Project Files\Source\RawInput\RawInput.csproj"
+
+      - name: Build wdsp (native)
+        shell: cmd
+        run: msbuild "Project Files\Source\wdsp\wdsp.vcxproj" /p:Configuration=Release /p:Platform=${{ matrix.native_platform }} /m /v:m /nologo
+
+      - name: Build ChannelMaster (native)
+        shell: cmd
+        run: msbuild "Project Files\Source\ChannelMaster\ChannelMaster.vcxproj" /p:Configuration=Release /p:Platform=${{ matrix.native_platform }} /m /v:m /nologo
+
+      - name: Build cmASIO (native)
+        shell: cmd
+        run: msbuild "Project Files\Source\cmASIO\cmASIO.vcxproj" /p:Configuration=Release /p:Platform=${{ matrix.native_platform }} /m /v:m /nologo
+
+      - name: Build portaudio (native)
+        shell: cmd
+        run: msbuild "Project Files\lib\portaudio-19.7.0\build\msvc\portaudio.vcxproj" /p:Configuration=Release /p:Platform=${{ matrix.native_platform }} /m /v:m /nologo
+
+      - name: Build Thetis
+        shell: cmd
+        run: msbuild "Project Files\Source\Console\Thetis.csproj" /p:Configuration=Release /p:Platform=${{ matrix.thetis_platform }} /m /v:m /nologo
+
+      - name: Package portable zip
+        shell: pwsh
+        run: |
+          $src = "Project Files\bin\${{ matrix.arch }}\Release"
+          $zip = "Thetis_v${{ env.THETIS_VERSION }}-zhcn_${{ matrix.arch }}.zip"
+          Compress-Archive -Path (Join-Path $src "*") -DestinationPath $zip -CompressionLevel Optimal
+          Write-Host "Created $zip"
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: thetis-zhcn-${{ matrix.arch }}
+          path: Thetis_v${{ env.THETIS_VERSION }}-zhcn_${{ matrix.arch }}.zip
+          if-no-files-found: error
+
+  release:
+    name: Create GitHub Release
+    needs: build
+    if: startsWith(github.ref, 'refs/tags/v')
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download artifacts
+        uses: actions/download-artifact@v4
+        with:
+          merge-multiple: true
+          path: artifacts
+
+      - name: Publish release
+        uses: softprops/action-gh-release@v2
+        with:
+          name: "Thetis ${{ env.THETIS_VERSION }} 中文版 (zh-CN)"
+          draft: false
+          prerelease: false
+          files: artifacts/*.zip
+          generate_release_notes: true
