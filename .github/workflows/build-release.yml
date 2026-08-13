@@ -43,23 +43,23 @@ jobs:
 
       - name: Build wdsp (native)
         shell: cmd
-        run: msbuild "Project Files\Source\wdsp\wdsp.vcxproj" /p:Configuration=Release /p:Platform=${{ matrix.native_platform }} /m /v:m /nologo
+        run: msbuild "Project Files\Source\wdsp\wdsp.vcxproj" /p:Configuration=Release /p:Platform=${{ matrix.native_platform }} /p:SolutionDir="Project Files\Source\" /m /v:m /nologo
 
       - name: Build ChannelMaster (native)
         shell: cmd
-        run: msbuild "Project Files\Source\ChannelMaster\ChannelMaster.vcxproj" /p:Configuration=Release /p:Platform=${{ matrix.native_platform }} /m /v:m /nologo
+        run: msbuild "Project Files\Source\ChannelMaster\ChannelMaster.vcxproj" /p:Configuration=Release /p:Platform=${{ matrix.native_platform }} /p:SolutionDir="Project Files\Source\" /m /v:m /nologo
 
       - name: Build cmASIO (native)
         shell: cmd
-        run: msbuild "Project Files\Source\cmASIO\cmASIO.vcxproj" /p:Configuration=Release /p:Platform=${{ matrix.native_platform }} /m /v:m /nologo
+        run: msbuild "Project Files\Source\cmASIO\cmASIO.vcxproj" /p:Configuration=Release /p:Platform=${{ matrix.native_platform }} /p:SolutionDir="Project Files\Source\" /m /v:m /nologo
 
       - name: Build portaudio (native)
         shell: cmd
-        run: msbuild "Project Files\lib\portaudio-19.7.0\build\msvc\portaudio.vcxproj" /p:Configuration=Release /p:Platform=${{ matrix.native_platform }} /m /v:m /nologo
+        run: msbuild "Project Files\lib\portaudio-19.7.0\build\msvc\portaudio.vcxproj" /p:Configuration=Release /p:Platform=${{ matrix.native_platform }} /p:SolutionDir="Project Files\Source\" /m /v:m /nologo
 
       - name: Build Thetis
         shell: cmd
-        run: msbuild "Project Files\Source\Console\Thetis.csproj" /p:Configuration=Release /p:Platform=${{ matrix.thetis_platform }} /m /v:m /nologo
+        run: msbuild "Project Files\Source\Console\Thetis.csproj" /p:Configuration=Release /p:Platform=${{ matrix.thetis_platform }} /p:SolutionDir="Project Files\Source\" /m /v:m /nologo
 
       - name: Package portable zip
         shell: pwsh
