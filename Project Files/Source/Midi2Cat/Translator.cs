@@ -364,11 +364,13 @@ namespace Thetis
         private static void ApplyToolTipsAndMenus(Control root)
         {
             // ToolTip / ContextMenuStrip components held in fields of the root type
+            // Skip framework control types for performance; custom control types
+            // (Thetis/Midi2Cat) are reflected and the fields are cached per type.
+            Assembly sysAsm = typeof(Control).Assembly;
             foreach (Control c in AllControls(root))
             {
                 Type t = c.GetType();
-                if (t.Assembly != Assembly.GetExecutingAssembly() &&
-                    t.Assembly != typeof(Translator).Assembly) continue;
+                if (t.Assembly == sysAsm) continue;
 
                 FieldInfo[] tooltips = GetCachedFields(t, ref s_tooltipFields, typeof(ToolTip));
                 foreach (FieldInfo fi in tooltips)
