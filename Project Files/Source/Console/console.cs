@@ -1532,7 +1532,7 @@ namespace Thetis
                 //[zh-CN] persist the exception details so startup database issues can be diagnosed
                 try
                 {
-                    string dbf = (string.IsNullOrEmpty(AppDataPath) ? Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\OpenHPSDR\\Thetis-x64\\" : AppDataPath) + "DBStartupError.txt";
+                    string dbf = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\OpenHPSDR\\Thetis-x64\\DBStartupError.txt";
                     File.WriteAllText(dbf, DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + "\n" + ex.ToString());
                 }
                 catch { }
