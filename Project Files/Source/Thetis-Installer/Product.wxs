@@ -276,6 +276,7 @@
               />
 		</Component>
 
+		<?if $(var.Win64) = "yes" ?>
 		<Component Guid="*">
 			<File Id="rnnoiseDLL"
 				  Source="$(var.FilesPath)rnnoise.dll"
@@ -299,6 +300,7 @@
 				  Checksum="yes"
               />
 		</Component>
+		<?endif ?>
 
       <Component Guid="*">
         <File Id="PA19DLL"
