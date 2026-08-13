@@ -71,7 +71,7 @@ jobs:
           if (-not $msi) { $msi = Get-ChildItem "Project Files\bin\Installers\*.msi" | Select-Object -First 1 }
           if ($msi) {
             $target = "Thetis_v${{ env.THETIS_VERSION }}-zhcn_${{ matrix.arch }}.msi"
-            Rename-Item $msi.FullName (Join-Path "Project Files\bin\Installers" $target)
+            Rename-Item $msi.FullName -NewName $target
             Write-Host "MSI -> $target"
           } else {
             Write-Error "No MSI produced"
