@@ -252,6 +252,8 @@ void SetRXASBNRPosition(int channel, int position)
 
 #else /* NR_SUPPORT_OFF - x86 build: libspecbleach not available, provide stubs */
 
+#include "comm.h"
+
 void setSize_sbnr(SBNR a, int size) { (void)a; (void)size; }
 void setBuffers_sbnr(SBNR a, double* in, double* out) { (void)a; (void)in; (void)out; }
 SBNR create_sbnr(int run, int position, int size, double* in, double* out, int rate)
