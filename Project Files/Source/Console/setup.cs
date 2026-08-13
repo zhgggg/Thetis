@@ -2181,732 +2181,745 @@ namespace Thetis
         {
             comboGeneralProcessPriority_SelectedIndexChanged(this, EventArgs.Empty);
         }
+        private string m_lastFE = "";
+        private void FE(string name, Action a)
+        {
+            m_lastFE = name;
+            try { a(); }
+            catch (Exception ex)
+            {
+                try { System.IO.File.WriteAllText(System.Environment.GetFolderPath(System.Environment.SpecialFolder.ApplicationData) + "\\OpenHPSDR\\Thetis-x64\\DBStartupError.txt", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + "
+ForceAllEvents crashed at handler: " + name + "
+" + ex.ToString()); } catch { }
+                throw;
+            }
+        }
         private void ForceAllEvents()
         {
             EventArgs e = EventArgs.Empty;
 
             // General Tab
-            comboRadioModel_SelectedIndexChanged(this, e);
+            FE("comboRadioModel_SelectedIndexChanged", () => comboRadioModel_SelectedIndexChanged(this, e));
 
-            chkAdvancedNetworkingSettings_CheckedChanged(this, e);
-            udGeneralLPTDelay_ValueChanged(this, e);
-            chkGeneralRXOnly_CheckedChanged(this, e);
-            comboGeneralXVTR_SelectedIndexChanged(this, e);
-            chkGeneralDisablePTT_CheckedChanged(this, e);
-            radOrionPTTOff_CheckedChanged(this, e);
-            radOrionMicTip_CheckedChanged(this, e);
-            radOrionBiasOn_CheckedChanged(this, e);
-            chkNetworkWDT_CheckedChanged(this, e);
+            FE("chkAdvancedNetworkingSettings_CheckedChanged", () => chkAdvancedNetworkingSettings_CheckedChanged(this, e));
+            FE("udGeneralLPTDelay_ValueChanged", () => udGeneralLPTDelay_ValueChanged(this, e));
+            FE("chkGeneralRXOnly_CheckedChanged", () => chkGeneralRXOnly_CheckedChanged(this, e));
+            FE("comboGeneralXVTR_SelectedIndexChanged", () => comboGeneralXVTR_SelectedIndexChanged(this, e));
+            FE("chkGeneralDisablePTT_CheckedChanged", () => chkGeneralDisablePTT_CheckedChanged(this, e));
+            FE("radOrionPTTOff_CheckedChanged", () => radOrionPTTOff_CheckedChanged(this, e));
+            FE("radOrionMicTip_CheckedChanged", () => radOrionMicTip_CheckedChanged(this, e));
+            FE("radOrionBiasOn_CheckedChanged", () => radOrionBiasOn_CheckedChanged(this, e));
+            FE("chkNetworkWDT_CheckedChanged", () => chkNetworkWDT_CheckedChanged(this, e));
 
             //radRadioProtocolSelect_CheckedChanged(this, e);
-            ucRadioList_Radios_SelectedRadioChanged(this, e);
-            radViaNics_CheckedChanged(this, e);
-            radAnyOrSpecificRadio_CheckedChanged(this, e);
-            radDefaultOrRandomListenPort_CheckedChanged(this, e);
+            FE("ucRadioList_Radios_SelectedRadioChanged", () => ucRadioList_Radios_SelectedRadioChanged(this, e));
+            FE("radViaNics_CheckedChanged", () => radViaNics_CheckedChanged(this, e));
+            FE("radAnyOrSpecificRadio_CheckedChanged", () => radAnyOrSpecificRadio_CheckedChanged(this, e));
+            FE("radDefaultOrRandomListenPort_CheckedChanged", () => radDefaultOrRandomListenPort_CheckedChanged(this, e));
 
-            chkTuneStepPerModeRX1_CheckedChanged(this, e);
-            chkCTUNignore0beat_CheckedChanged(this, e); //MW0LGE_21k9d
+            FE("chkTuneStepPerModeRX1_CheckedChanged", () => chkTuneStepPerModeRX1_CheckedChanged(this, e));
+            FE("chkCTUNignore0beat_CheckedChanged", () => chkCTUNignore0beat_CheckedChanged(this, e));
 
             //NAVigation-general
-            ChkAlsoUseSpecificMouseWheel_CheckedChanged(this, e);
-            chkClickTuneFilter_CheckedChanged(this, e);
-            chkShowCTHLine_CheckedChanged(this, e);
+            FE("ChkAlsoUseSpecificMouseWheel_CheckedChanged", () => ChkAlsoUseSpecificMouseWheel_CheckedChanged(this, e));
+            FE("chkClickTuneFilter_CheckedChanged", () => chkClickTuneFilter_CheckedChanged(this, e));
+            FE("chkShowCTHLine_CheckedChanged", () => chkShowCTHLine_CheckedChanged(this, e));
 
             // Audio Tab
-            comboAudioBuffer2_SelectedIndexChanged(this, e);
-            comboAudioBuffer3_SelectedIndexChanged(this, e);
+            FE("comboAudioBuffer2_SelectedIndexChanged", () => comboAudioBuffer2_SelectedIndexChanged(this, e));
+            FE("comboAudioBuffer3_SelectedIndexChanged", () => comboAudioBuffer3_SelectedIndexChanged(this, e));
 
-            comboAudioSampleRate2_SelectedIndexChanged(this, e);
-            comboAudioSampleRate3_SelectedIndexChanged(this, e);
+            FE("comboAudioSampleRate2_SelectedIndexChanged", () => comboAudioSampleRate2_SelectedIndexChanged(this, e));
+            FE("comboAudioSampleRate3_SelectedIndexChanged", () => comboAudioSampleRate3_SelectedIndexChanged(this, e));
 
-            udAudioLatency2_ValueChanged(this, e);
-            udAudioLatency2_Out_ValueChanged(this, e);
-            udAudioLatencyPAIn_ValueChanged(this, e);
-            udAudioLatencyPAOut_ValueChanged(this, e);
-            udVAC2Latency_ValueChanged(this, e);
-            udVAC2LatencyOut_ValueChanged(this, e);
-            udVAC2LatencyPAIn_ValueChanged(this, e);
-            udVAC2LatencyPAOut_ValueChanged(this, e);
-            udAudioVACGainRX_ValueChanged(this, e);
-            udVAC2GainRX_ValueChanged(this, e);
-            udAudioVACGainTX_ValueChanged(this, e);
-            udVAC2GainTX_ValueChanged(this, e);
-            chkVAC2UseRX2_CheckedChanged(this, e);
-            chkAudioRX2toVAC_CheckedChanged(this, e);
-            chkAudioLatencyManual2_CheckedChanged(this, e);
-            chkAudioLatencyManual2_Out_CheckedChanged(this, e);
-            chkAudioLatencyPAInManual_CheckedChanged(this, e);
-            chkAudioLatencyPAOutManual_CheckedChanged(this, e);
-            chkVAC2LatencyManual_CheckedChanged(this, e);
-            chkVAC2LatencyOutManual_CheckedChanged(this, e);
-            chkVAC2LatencyPAInManual_CheckedChanged(this, e);
-            chkVAC2LatencyPAOutManual_CheckedChanged(this, e);
-            chkBypassVACPlayingRecording_CheckedChanged(this, e);
+            FE("udAudioLatency2_ValueChanged", () => udAudioLatency2_ValueChanged(this, e));
+            FE("udAudioLatency2_Out_ValueChanged", () => udAudioLatency2_Out_ValueChanged(this, e));
+            FE("udAudioLatencyPAIn_ValueChanged", () => udAudioLatencyPAIn_ValueChanged(this, e));
+            FE("udAudioLatencyPAOut_ValueChanged", () => udAudioLatencyPAOut_ValueChanged(this, e));
+            FE("udVAC2Latency_ValueChanged", () => udVAC2Latency_ValueChanged(this, e));
+            FE("udVAC2LatencyOut_ValueChanged", () => udVAC2LatencyOut_ValueChanged(this, e));
+            FE("udVAC2LatencyPAIn_ValueChanged", () => udVAC2LatencyPAIn_ValueChanged(this, e));
+            FE("udVAC2LatencyPAOut_ValueChanged", () => udVAC2LatencyPAOut_ValueChanged(this, e));
+            FE("udAudioVACGainRX_ValueChanged", () => udAudioVACGainRX_ValueChanged(this, e));
+            FE("udVAC2GainRX_ValueChanged", () => udVAC2GainRX_ValueChanged(this, e));
+            FE("udAudioVACGainTX_ValueChanged", () => udAudioVACGainTX_ValueChanged(this, e));
+            FE("udVAC2GainTX_ValueChanged", () => udVAC2GainTX_ValueChanged(this, e));
+            FE("chkVAC2UseRX2_CheckedChanged", () => chkVAC2UseRX2_CheckedChanged(this, e));
+            FE("chkAudioRX2toVAC_CheckedChanged", () => chkAudioRX2toVAC_CheckedChanged(this, e));
+            FE("chkAudioLatencyManual2_CheckedChanged", () => chkAudioLatencyManual2_CheckedChanged(this, e));
+            FE("chkAudioLatencyManual2_Out_CheckedChanged", () => chkAudioLatencyManual2_Out_CheckedChanged(this, e));
+            FE("chkAudioLatencyPAInManual_CheckedChanged", () => chkAudioLatencyPAInManual_CheckedChanged(this, e));
+            FE("chkAudioLatencyPAOutManual_CheckedChanged", () => chkAudioLatencyPAOutManual_CheckedChanged(this, e));
+            FE("chkVAC2LatencyManual_CheckedChanged", () => chkVAC2LatencyManual_CheckedChanged(this, e));
+            FE("chkVAC2LatencyOutManual_CheckedChanged", () => chkVAC2LatencyOutManual_CheckedChanged(this, e));
+            FE("chkVAC2LatencyPAInManual_CheckedChanged", () => chkVAC2LatencyPAInManual_CheckedChanged(this, e));
+            FE("chkVAC2LatencyPAOutManual_CheckedChanged", () => chkVAC2LatencyPAOutManual_CheckedChanged(this, e));
+            FE("chkBypassVACPlayingRecording_CheckedChanged", () => chkBypassVACPlayingRecording_CheckedChanged(this, e));
             // MW0LGE_21h
-            udVAC1FeedbackGainIn_ValueChanged(this, e);
-            udVAC1FeedbackGainOut_ValueChanged(this, e);
-            udVAC1SlewTimeIn_ValueChanged(this, e);
-            udVAC1SlewTimeOut_ValueChanged(this, e);
-            udVAC2FeedbackGainIn_ValueChanged(this, e);
-            udVAC2FeedbackGainOut_ValueChanged(this, e);
-            udVAC2SlewTimeIn_ValueChanged(this, e);
-            udVAC2SlewTimeOut_ValueChanged(this, e);
+            FE("udVAC1FeedbackGainIn_ValueChanged", () => udVAC1FeedbackGainIn_ValueChanged(this, e));
+            FE("udVAC1FeedbackGainOut_ValueChanged", () => udVAC1FeedbackGainOut_ValueChanged(this, e));
+            FE("udVAC1SlewTimeIn_ValueChanged", () => udVAC1SlewTimeIn_ValueChanged(this, e));
+            FE("udVAC1SlewTimeOut_ValueChanged", () => udVAC1SlewTimeOut_ValueChanged(this, e));
+            FE("udVAC2FeedbackGainIn_ValueChanged", () => udVAC2FeedbackGainIn_ValueChanged(this, e));
+            FE("udVAC2FeedbackGainOut_ValueChanged", () => udVAC2FeedbackGainOut_ValueChanged(this, e));
+            FE("udVAC2SlewTimeIn_ValueChanged", () => udVAC2SlewTimeIn_ValueChanged(this, e));
+            FE("udVAC2SlewTimeOut_ValueChanged", () => udVAC2SlewTimeOut_ValueChanged(this, e));
             // MW0LGE_21j
-            udVAC1PropMinIn_ValueChanged(this, e);
-            udVAC1PropMaxIn_ValueChanged(this, e);
-            udVAC1FFMinIn_ValueChanged(this, e);
-            udVAC1FFMaxIn_ValueChanged(this, e);
-            udVAC1FFAlphaIn_ValueChanged(this, e);
-            chkVAC1OldVarIn_CheckedChanged(this, e);
-            udVAC1PropMinOut_ValueChanged(this, e);
-            udVAC1PropMaxOut_ValueChanged(this, e);
-            udVAC1FFMinOut_ValueChanged(this, e);
-            udVAC1FFMaxOut_ValueChanged(this, e);
-            udVAC1FFAlphaOut_ValueChanged(this, e);
-            chkVAC1OldVarOut_CheckedChanged(this, e);
+            FE("udVAC1PropMinIn_ValueChanged", () => udVAC1PropMinIn_ValueChanged(this, e));
+            FE("udVAC1PropMaxIn_ValueChanged", () => udVAC1PropMaxIn_ValueChanged(this, e));
+            FE("udVAC1FFMinIn_ValueChanged", () => udVAC1FFMinIn_ValueChanged(this, e));
+            FE("udVAC1FFMaxIn_ValueChanged", () => udVAC1FFMaxIn_ValueChanged(this, e));
+            FE("udVAC1FFAlphaIn_ValueChanged", () => udVAC1FFAlphaIn_ValueChanged(this, e));
+            FE("chkVAC1OldVarIn_CheckedChanged", () => chkVAC1OldVarIn_CheckedChanged(this, e));
+            FE("udVAC1PropMinOut_ValueChanged", () => udVAC1PropMinOut_ValueChanged(this, e));
+            FE("udVAC1PropMaxOut_ValueChanged", () => udVAC1PropMaxOut_ValueChanged(this, e));
+            FE("udVAC1FFMinOut_ValueChanged", () => udVAC1FFMinOut_ValueChanged(this, e));
+            FE("udVAC1FFMaxOut_ValueChanged", () => udVAC1FFMaxOut_ValueChanged(this, e));
+            FE("udVAC1FFAlphaOut_ValueChanged", () => udVAC1FFAlphaOut_ValueChanged(this, e));
+            FE("chkVAC1OldVarOut_CheckedChanged", () => chkVAC1OldVarOut_CheckedChanged(this, e));
 
-            udVAC2PropMinIn_ValueChanged(this, e);
-            udVAC2PropMaxIn_ValueChanged(this, e);
-            udVAC2FFMinIn_ValueChanged(this, e);
-            udVAC2FFMaxIn_ValueChanged(this, e);
-            udVAC2FFAlphaIn_ValueChanged(this, e);
-            chkVAC2OldVarIn_CheckedChanged(this, e);
-            udVAC2PropMinOut_ValueChanged(this, e);
-            udVAC2PropMaxOut_ValueChanged(this, e);
-            udVAC2FFMinOut_ValueChanged(this, e);
-            udVAC2FFMaxOut_ValueChanged(this, e);
-            udVAC2FFAlphaOut_ValueChanged(this, e);
-            chkVAC2OldVarOut_CheckedChanged(this, e);
+            FE("udVAC2PropMinIn_ValueChanged", () => udVAC2PropMinIn_ValueChanged(this, e));
+            FE("udVAC2PropMaxIn_ValueChanged", () => udVAC2PropMaxIn_ValueChanged(this, e));
+            FE("udVAC2FFMinIn_ValueChanged", () => udVAC2FFMinIn_ValueChanged(this, e));
+            FE("udVAC2FFMaxIn_ValueChanged", () => udVAC2FFMaxIn_ValueChanged(this, e));
+            FE("udVAC2FFAlphaIn_ValueChanged", () => udVAC2FFAlphaIn_ValueChanged(this, e));
+            FE("chkVAC2OldVarIn_CheckedChanged", () => chkVAC2OldVarIn_CheckedChanged(this, e));
+            FE("udVAC2PropMinOut_ValueChanged", () => udVAC2PropMinOut_ValueChanged(this, e));
+            FE("udVAC2PropMaxOut_ValueChanged", () => udVAC2PropMaxOut_ValueChanged(this, e));
+            FE("udVAC2FFMinOut_ValueChanged", () => udVAC2FFMinOut_ValueChanged(this, e));
+            FE("udVAC2FFMaxOut_ValueChanged", () => udVAC2FFMaxOut_ValueChanged(this, e));
+            FE("udVAC2FFAlphaOut_ValueChanged", () => udVAC2FFAlphaOut_ValueChanged(this, e));
+            FE("chkVAC2OldVarOut_CheckedChanged", () => chkVAC2OldVarOut_CheckedChanged(this, e));
 
-            txtVAC1OldVarIn_TextChanged(this, e);
-            txtVAC1OldVarOut_TextChanged(this, e);
-            txtVAC2OldVarIn_TextChanged(this, e);
-            txtVAC2OldVarOut_TextChanged(this, e);
+            FE("txtVAC1OldVarIn_TextChanged", () => txtVAC1OldVarIn_TextChanged(this, e));
+            FE("txtVAC1OldVarOut_TextChanged", () => txtVAC1OldVarOut_TextChanged(this, e));
+            FE("txtVAC2OldVarIn_TextChanged", () => txtVAC2OldVarIn_TextChanged(this, e));
+            FE("txtVAC2OldVarOut_TextChanged", () => txtVAC2OldVarOut_TextChanged(this, e));
 
-            chkVAC1WillMute_CheckedChanged(this, e);
-            chkVAC2WillMute_CheckedChanged(this, e);
+            FE("chkVAC1WillMute_CheckedChanged", () => chkVAC1WillMute_CheckedChanged(this, e));
+            FE("chkVAC2WillMute_CheckedChanged", () => chkVAC2WillMute_CheckedChanged(this, e));
 
-            chkLinkMaster_CheckedChanged(this, e);
-            chkLinkRX0AF_CheckedChanged(this, e);
-            chkLinkRX1AF_CheckedChanged(this, e);
-            chkLinkRX2AF_CheckedChanged(this, e);
+            FE("chkLinkMaster_CheckedChanged", () => chkLinkMaster_CheckedChanged(this, e));
+            FE("chkLinkRX0AF_CheckedChanged", () => chkLinkRX0AF_CheckedChanged(this, e));
+            FE("chkLinkRX1AF_CheckedChanged", () => chkLinkRX1AF_CheckedChanged(this, e));
+            FE("chkLinkRX2AF_CheckedChanged", () => chkLinkRX2AF_CheckedChanged(this, e));
 
-            chkAudioIQtoVAC_CheckedChanged(this, e);
-            chkVAC2DirectIQ_CheckedChanged(this, e);
-            chkSwapIQVac1_CheckedChanged(this, e);
-            chkSwapIQVac2_CheckedChanged(this, e);
+            FE("chkAudioIQtoVAC_CheckedChanged", () => chkAudioIQtoVAC_CheckedChanged(this, e));
+            FE("chkVAC2DirectIQ_CheckedChanged", () => chkVAC2DirectIQ_CheckedChanged(this, e));
+            FE("chkSwapIQVac1_CheckedChanged", () => chkSwapIQVac1_CheckedChanged(this, e));
+            FE("chkSwapIQVac2_CheckedChanged", () => chkSwapIQVac2_CheckedChanged(this, e));
 
-            chkVAC1ExclusiveIn_CheckedChanged(this, e);
-            chkVAC2ExclusiveIn_CheckedChanged(this, e);
-            chkVAC1ExclusiveOut_CheckedChanged(this, e);
-            chkVAC2ExclusiveOut_CheckedChanged(this, e);
+            FE("chkVAC1ExclusiveIn_CheckedChanged", () => chkVAC1ExclusiveIn_CheckedChanged(this, e));
+            FE("chkVAC2ExclusiveIn_CheckedChanged", () => chkVAC2ExclusiveIn_CheckedChanged(this, e));
+            FE("chkVAC1ExclusiveOut_CheckedChanged", () => chkVAC1ExclusiveOut_CheckedChanged(this, e));
+            FE("chkVAC2ExclusiveOut_CheckedChanged", () => chkVAC2ExclusiveOut_CheckedChanged(this, e));
             // 
-            chkRecording_disable_during_playback(this, e);
-            radRecording_storage_CheckedChanged(this, e);
+            FE("chkRecording_disable_during_playback", () => chkRecording_disable_during_playback(this, e));
+            FE("radRecording_storage_CheckedChanged", () => radRecording_storage_CheckedChanged(this, e));
 
             // Calibration Tab
-            udTXDisplayCalOffset_ValueChanged(this, e);
-            chkUsing10MHzRef_CheckedChanged(this, e); //MW0LGE_21k9rc6
-            chkLogVoltsAmps_CheckedChanged(this, e);
+            FE("udTXDisplayCalOffset_ValueChanged", () => udTXDisplayCalOffset_ValueChanged(this, e));
+            FE("chkUsing10MHzRef_CheckedChanged", () => chkUsing10MHzRef_CheckedChanged(this, e));
+            FE("chkLogVoltsAmps_CheckedChanged", () => chkLogVoltsAmps_CheckedChanged(this, e));
 
             // Filter tab
-            udOptMaxFilterWidth_ValueChanged(this, e); //[2.10.3.9]MW0LGE
-            udOptMaxFilterShift_ValueChanged(this, e); //[2.10.3.9]MW0LGE
-            udFilterDefaultLowCut_ValueChanged(this, e); //MW0LGE_21d5
-            udRX2FilterDefaultLowCut_ValueChanged(this, e);
+            FE("udOptMaxFilterWidth_ValueChanged", () => udOptMaxFilterWidth_ValueChanged(this, e));
+            FE("udOptMaxFilterShift_ValueChanged", () => udOptMaxFilterShift_ValueChanged(this, e));
+            FE("udFilterDefaultLowCut_ValueChanged", () => udFilterDefaultLowCut_ValueChanged(this, e));
+            FE("udRX2FilterDefaultLowCut_ValueChanged", () => udRX2FilterDefaultLowCut_ValueChanged(this, e));
 
             // Test Tab
-            udTXGenFreq_ValueChanged(this, e);
-            udTXGenScale_ValueChanged(this, e);
-            udTwoToneLevel_ValueChanged(this, e);
-            chkShowControlDebug_CheckedChanged(this, e);
-            udTestIMDPower_ValueChanged(this, e); //MW0LGE_22b
+            FE("udTXGenFreq_ValueChanged", () => udTXGenFreq_ValueChanged(this, e));
+            FE("udTXGenScale_ValueChanged", () => udTXGenScale_ValueChanged(this, e));
+            FE("udTwoToneLevel_ValueChanged", () => udTwoToneLevel_ValueChanged(this, e));
+            FE("chkShowControlDebug_CheckedChanged", () => chkShowControlDebug_CheckedChanged(this, e));
+            FE("udTestIMDPower_ValueChanged", () => udTestIMDPower_ValueChanged(this, e));
             setupTuneAnd2ToneRadios(); //MW0LGE_22b
 
             // Display Tab
-            udDisplayDecimation_ValueChanged(this, e);
-            udDisplayGridMax_ValueChanged(this, e);
-            udDisplayGridMin_ValueChanged(this, e);
-            udDisplayGridStep_ValueChanged(this, e);
-            udDisplayFPS_ValueChanged(this, e);
-            udTXGridMax_ValueChanged(this, e);
-            udTXGridMin_ValueChanged(this, e);
-            udTXGridStep_ValueChanged(this, e);
-            udDisplayMeterDelay_ValueChanged(this, e);
-            udDisplayPeakText_ValueChanged(this, e);
-            udDisplayCPUMeter_ValueChanged(this, e);
-            udDisplayPhasePts_ValueChanged(this, e);
-            udDisplayAVGTime_ValueChanged(this, e);
-            udRX2DisplayAVGTime_ValueChanged(this, e);
-            udDisplayWaterfallLowLevel_ValueChanged(this, e);
-            udDisplayWaterfallHighLevel_ValueChanged(this, e);
-            clrbtnWaterfallLow_Changed(this, e);
-            clrbtnWaterfallLow_tx_Changed(this, e);
-            udDisplayMultiPeakHoldTime_ValueChanged(this, e);
-            udDisplayMultiTextHoldTime_ValueChanged(this, e);
-            udRX2DisplayGridMax_ValueChanged(this, e);
-            udRX2DisplayGridMin_ValueChanged(this, e);
-            udRX2DisplayGridStep_ValueChanged(this, e);
-            udRX2DisplayWaterfallLowLevel_ValueChanged(this, e);
-            udRX2DisplayWaterfallHighLevel_ValueChanged(this, e);
-            clrbtnRX2WaterfallLow_Changed(this, e);
-            chkRX1WaterfallAGC_CheckedChanged(this, e);
-            chkRX2WaterfallAGC_CheckedChanged(this, e);
-            chkStopRX1WaterfallOnTx_CheckedChanged(this, e); //[2.10.3.5]MW0LGE
-            chkStopRX2WaterfallOnTx_CheckedChanged(this, e);
-            chkANAN8000DLEDisplayVoltsAmps_CheckedChanged(this, e);
-            udDisplayWaterfallUpdatePeriod_ValueChanged(this, e);
-            udRX2DisplayWaterfallUpdatePeriod_ValueChanged(this, e);
-            comboTXLabelAlign_SelectedIndexChanged(this, e);
-            udPeakBlobs_ValueChanged(this, e);
-            chkPeakBlobInsideFilterOnly_CheckedChanged(this, e);
-            chkPeakBlobsEnabled_CheckedChanged(this, e);
-            chkAccurateFrameTiming_CheckedChanged(this, e);
-            clrbtnSignalHistoryColour_Changed(this, e);
-            chkSignalHistory_CheckedChanged(this, e);
-            chkVSyncDX_CheckedChanged(this, e);
-            chkBlobPeakHold_CheckedChanged(this, e);
-            udSignalHistoryDuration_ValueChanged(this, e);
-            udBlobPeakHoldMS_ValueChanged(this, e);
-            chkPeakHoldDrop_CheckedChanged(this, e);
-            clrbtnSliderLimitBar_Changed(this, e); //MW0LGE_22b
+            FE("udDisplayDecimation_ValueChanged", () => udDisplayDecimation_ValueChanged(this, e));
+            FE("udDisplayGridMax_ValueChanged", () => udDisplayGridMax_ValueChanged(this, e));
+            FE("udDisplayGridMin_ValueChanged", () => udDisplayGridMin_ValueChanged(this, e));
+            FE("udDisplayGridStep_ValueChanged", () => udDisplayGridStep_ValueChanged(this, e));
+            FE("udDisplayFPS_ValueChanged", () => udDisplayFPS_ValueChanged(this, e));
+            FE("udTXGridMax_ValueChanged", () => udTXGridMax_ValueChanged(this, e));
+            FE("udTXGridMin_ValueChanged", () => udTXGridMin_ValueChanged(this, e));
+            FE("udTXGridStep_ValueChanged", () => udTXGridStep_ValueChanged(this, e));
+            FE("udDisplayMeterDelay_ValueChanged", () => udDisplayMeterDelay_ValueChanged(this, e));
+            FE("udDisplayPeakText_ValueChanged", () => udDisplayPeakText_ValueChanged(this, e));
+            FE("udDisplayCPUMeter_ValueChanged", () => udDisplayCPUMeter_ValueChanged(this, e));
+            FE("udDisplayPhasePts_ValueChanged", () => udDisplayPhasePts_ValueChanged(this, e));
+            FE("udDisplayAVGTime_ValueChanged", () => udDisplayAVGTime_ValueChanged(this, e));
+            FE("udRX2DisplayAVGTime_ValueChanged", () => udRX2DisplayAVGTime_ValueChanged(this, e));
+            FE("udDisplayWaterfallLowLevel_ValueChanged", () => udDisplayWaterfallLowLevel_ValueChanged(this, e));
+            FE("udDisplayWaterfallHighLevel_ValueChanged", () => udDisplayWaterfallHighLevel_ValueChanged(this, e));
+            FE("clrbtnWaterfallLow_Changed", () => clrbtnWaterfallLow_Changed(this, e));
+            FE("clrbtnWaterfallLow_tx_Changed", () => clrbtnWaterfallLow_tx_Changed(this, e));
+            FE("udDisplayMultiPeakHoldTime_ValueChanged", () => udDisplayMultiPeakHoldTime_ValueChanged(this, e));
+            FE("udDisplayMultiTextHoldTime_ValueChanged", () => udDisplayMultiTextHoldTime_ValueChanged(this, e));
+            FE("udRX2DisplayGridMax_ValueChanged", () => udRX2DisplayGridMax_ValueChanged(this, e));
+            FE("udRX2DisplayGridMin_ValueChanged", () => udRX2DisplayGridMin_ValueChanged(this, e));
+            FE("udRX2DisplayGridStep_ValueChanged", () => udRX2DisplayGridStep_ValueChanged(this, e));
+            FE("udRX2DisplayWaterfallLowLevel_ValueChanged", () => udRX2DisplayWaterfallLowLevel_ValueChanged(this, e));
+            FE("udRX2DisplayWaterfallHighLevel_ValueChanged", () => udRX2DisplayWaterfallHighLevel_ValueChanged(this, e));
+            FE("clrbtnRX2WaterfallLow_Changed", () => clrbtnRX2WaterfallLow_Changed(this, e));
+            FE("chkRX1WaterfallAGC_CheckedChanged", () => chkRX1WaterfallAGC_CheckedChanged(this, e));
+            FE("chkRX2WaterfallAGC_CheckedChanged", () => chkRX2WaterfallAGC_CheckedChanged(this, e));
+            FE("chkStopRX1WaterfallOnTx_CheckedChanged", () => chkStopRX1WaterfallOnTx_CheckedChanged(this, e));
+            FE("chkStopRX2WaterfallOnTx_CheckedChanged", () => chkStopRX2WaterfallOnTx_CheckedChanged(this, e));
+            FE("chkANAN8000DLEDisplayVoltsAmps_CheckedChanged", () => chkANAN8000DLEDisplayVoltsAmps_CheckedChanged(this, e));
+            FE("udDisplayWaterfallUpdatePeriod_ValueChanged", () => udDisplayWaterfallUpdatePeriod_ValueChanged(this, e));
+            FE("udRX2DisplayWaterfallUpdatePeriod_ValueChanged", () => udRX2DisplayWaterfallUpdatePeriod_ValueChanged(this, e));
+            FE("comboTXLabelAlign_SelectedIndexChanged", () => comboTXLabelAlign_SelectedIndexChanged(this, e));
+            FE("udPeakBlobs_ValueChanged", () => udPeakBlobs_ValueChanged(this, e));
+            FE("chkPeakBlobInsideFilterOnly_CheckedChanged", () => chkPeakBlobInsideFilterOnly_CheckedChanged(this, e));
+            FE("chkPeakBlobsEnabled_CheckedChanged", () => chkPeakBlobsEnabled_CheckedChanged(this, e));
+            FE("chkAccurateFrameTiming_CheckedChanged", () => chkAccurateFrameTiming_CheckedChanged(this, e));
+            FE("clrbtnSignalHistoryColour_Changed", () => clrbtnSignalHistoryColour_Changed(this, e));
+            FE("chkSignalHistory_CheckedChanged", () => chkSignalHistory_CheckedChanged(this, e));
+            FE("chkVSyncDX_CheckedChanged", () => chkVSyncDX_CheckedChanged(this, e));
+            FE("chkBlobPeakHold_CheckedChanged", () => chkBlobPeakHold_CheckedChanged(this, e));
+            FE("udSignalHistoryDuration_ValueChanged", () => udSignalHistoryDuration_ValueChanged(this, e));
+            FE("udBlobPeakHoldMS_ValueChanged", () => udBlobPeakHoldMS_ValueChanged(this, e));
+            FE("chkPeakHoldDrop_CheckedChanged", () => chkPeakHoldDrop_CheckedChanged(this, e));
+            FE("clrbtnSliderLimitBar_Changed", () => clrbtnSliderLimitBar_Changed(this, e));
 
-            chkQSOTimerEnabled_CheckedChanged(this, e);
-            chkQSOTimerOnlyDuringMOX_CheckedChanged(this, e);
-            chkQSOTimerResetOnMOX_CheckedChanged(this, e);
-            chkQSOTimerResetOnExpiry_CheckedChanged(this, e);
+            FE("chkQSOTimerEnabled_CheckedChanged", () => chkQSOTimerEnabled_CheckedChanged(this, e));
+            FE("chkQSOTimerOnlyDuringMOX_CheckedChanged", () => chkQSOTimerOnlyDuringMOX_CheckedChanged(this, e));
+            FE("chkQSOTimerResetOnMOX_CheckedChanged", () => chkQSOTimerResetOnMOX_CheckedChanged(this, e));
+            FE("chkQSOTimerResetOnExpiry_CheckedChanged", () => chkQSOTimerResetOnExpiry_CheckedChanged(this, e));
             //MW0LGE_21d
-            tbRX1WaterfallOpacity_Scroll(this, e);
-            tbRX2WaterfallOpacity_Scroll(this, e);
-            chkQSOTimerFlashTimerIfResetOnExpiry_CheckedChanged(this, e);
-            chkQSOTimerPlaySoundOnExpiry_CheckedChanged(this, e);
-            udQSOTimerMinutes_ValueChanged(this, e);
-            udQSOTimerSeconds_ValueChanged(this, e);
+            FE("tbRX1WaterfallOpacity_Scroll", () => tbRX1WaterfallOpacity_Scroll(this, e));
+            FE("tbRX2WaterfallOpacity_Scroll", () => tbRX2WaterfallOpacity_Scroll(this, e));
+            FE("chkQSOTimerFlashTimerIfResetOnExpiry_CheckedChanged", () => chkQSOTimerFlashTimerIfResetOnExpiry_CheckedChanged(this, e));
+            FE("chkQSOTimerPlaySoundOnExpiry_CheckedChanged", () => chkQSOTimerPlaySoundOnExpiry_CheckedChanged(this, e));
+            FE("udQSOTimerMinutes_ValueChanged", () => udQSOTimerMinutes_ValueChanged(this, e));
+            FE("udQSOTimerSeconds_ValueChanged", () => udQSOTimerSeconds_ValueChanged(this, e));
             //MW0LGE_21k
-            chkShowRX1NoiseFloor_CheckedChanged(this, e);
-            chkShowRX2NoiseFloor_CheckedChanged(this, e);
+            FE("chkShowRX1NoiseFloor_CheckedChanged", () => chkShowRX1NoiseFloor_CheckedChanged(this, e));
+            FE("chkShowRX2NoiseFloor_CheckedChanged", () => chkShowRX2NoiseFloor_CheckedChanged(this, e));
             //21k6
-            udWaterfallAGCOffsetRX1_ValueChanged(this, e);
-            udWaterfallAGCOffsetRX2_ValueChanged(this, e);
-            chkWaterfallUseNFForAGCRX1_CheckedChanged(this, e);
-            chkWaterfallUseNFForAGCRX2_CheckedChanged(this, e);
+            FE("udWaterfallAGCOffsetRX1_ValueChanged", () => udWaterfallAGCOffsetRX1_ValueChanged(this, e));
+            FE("udWaterfallAGCOffsetRX2_ValueChanged", () => udWaterfallAGCOffsetRX2_ValueChanged(this, e));
+            FE("chkWaterfallUseNFForAGCRX1_CheckedChanged", () => chkWaterfallUseNFForAGCRX1_CheckedChanged(this, e));
+            FE("chkWaterfallUseNFForAGCRX2_CheckedChanged", () => chkWaterfallUseNFForAGCRX2_CheckedChanged(this, e));
             //
             setQSOTimerDuration();
 
-            chkPanadpatorGradient_CheckedChanged(this, e);
-            chkPanadpatorGradient_tx_CheckedChanged(this, e);
-            chkSpecWarningLEDRenderDelay_CheckedChanged(this, e);
-            chkSpecWarningLEDGetPixels_CheckedChanged(this, e);
+            FE("chkPanadpatorGradient_CheckedChanged", () => chkPanadpatorGradient_CheckedChanged(this, e));
+            FE("chkPanadpatorGradient_tx_CheckedChanged", () => chkPanadpatorGradient_tx_CheckedChanged(this, e));
+            FE("chkSpecWarningLEDRenderDelay_CheckedChanged", () => chkSpecWarningLEDRenderDelay_CheckedChanged(this, e));
+            FE("chkSpecWarningLEDGetPixels_CheckedChanged", () => chkSpecWarningLEDGetPixels_CheckedChanged(this, e));
 
-            chkShowRXFilterOnWaterfall_CheckedChanged(this, e);
-            chkShowRXZeroLineOnWaterfall_CheckedChanged(this, e);
-            chkShowTXFilterOnRXWaterfall_CheckedChanged(this, e);
+            FE("chkShowRXFilterOnWaterfall_CheckedChanged", () => chkShowRXFilterOnWaterfall_CheckedChanged(this, e));
+            FE("chkShowRXZeroLineOnWaterfall_CheckedChanged", () => chkShowRXZeroLineOnWaterfall_CheckedChanged(this, e));
+            FE("chkShowTXFilterOnRXWaterfall_CheckedChanged", () => chkShowTXFilterOnRXWaterfall_CheckedChanged(this, e));
 
-            chkConsoleDarkModeTitleBar_CheckedChanged(this, e); //MW0LGE [2.9.0.8]
+            FE("chkConsoleDarkModeTitleBar_CheckedChanged", () => chkConsoleDarkModeTitleBar_CheckedChanged(this, e));
 
             //collapsed display related items [2.10.3.6]MW0LGE
-            chkShowTopControls_CheckedChanged(this, e);
-            chkShowBandControls_CheckedChanged(this, e);
-            chkModeControls_CheckedChanged(this, e);
-            chkShowAndromedaTop_CheckedChanged(this, e);
-            chkShowAndromedaBar_CheckedChanged(this, e);
+            FE("chkShowTopControls_CheckedChanged", () => chkShowTopControls_CheckedChanged(this, e));
+            FE("chkShowBandControls_CheckedChanged", () => chkShowBandControls_CheckedChanged(this, e));
+            FE("chkModeControls_CheckedChanged", () => chkModeControls_CheckedChanged(this, e));
+            FE("chkShowAndromedaTop_CheckedChanged", () => chkShowAndromedaTop_CheckedChanged(this, e));
+            FE("chkShowAndromedaBar_CheckedChanged", () => chkShowAndromedaBar_CheckedChanged(this, e));
 
             //[2.10.3.8]MW0LGE
-            chkAdjustGridMinToNFRX1_CheckedChanged(this, e);
-            chkAdjustGridMinToNFRX2_CheckedChanged(this, e);
+            FE("chkAdjustGridMinToNFRX1_CheckedChanged", () => chkAdjustGridMinToNFRX1_CheckedChanged(this, e));
+            FE("chkAdjustGridMinToNFRX2_CheckedChanged", () => chkAdjustGridMinToNFRX2_CheckedChanged(this, e));
 
             // DSP Tab
-            chkWDSP_cache_impulse_CheckedChanged(this, e);
-            chkWDSP_save_restore_cache_impulse_CheckedChanged(this, e);
+            FE("chkWDSP_cache_impulse_CheckedChanged", () => chkWDSP_cache_impulse_CheckedChanged(this, e));
+            FE("chkWDSP_save_restore_cache_impulse_CheckedChanged", () => chkWDSP_save_restore_cache_impulse_CheckedChanged(this, e));
 
-            udLMSANF_ValueChanged(this, e);
-            udLMSNR_ValueChanged(this, e);
-            udLMSANF2_ValueChanged(this, e);
-            udLMSNR2_ValueChanged(this, e);
-            udDSPCWPitch_ValueChanged(this, e);
-            udDSPNB_ValueChanged(this, e);
-            comboDSPNOBmode_SelectedIndexChanged(this, e);
-            comboDSPRxWindow_SelectedIndexChanged(this, e);
-            comboDSPTxWindow_SelectedIndexChanged(this, e);
-            chkCWBreakInEnabled_CheckStateChanged(this, e);
-            udHWKeyDownDelay_ValueChanged(this, e);
-            chkCWKeyerRevPdl_CheckedChanged(this, e);
-            chkCWKeyerIambic_CheckedChanged(this, e);
-            udCWKeyerWeight_ValueChanged(this, e);
-            chkStrictCharSpacing_CheckedChanged(this, e);
-            chkCWKeyerMode_CheckedChanged(this, e);
-            chkSideTones_CheckedChanged(this, e);
-            chkDSPCESSB_CheckedChanged(this, e);
-            udRXAMSQMaxTail_ValueChanged(this, e);
-            radANFPreAGC_CheckedChanged(this, e);
-            radANF2PreAGC_CheckedChanged(this, e);
-            chkNR3_RNNoiseFixedGain_CheckedChanged(this, e);
-            chkMNFAutoIncrease_CheckedChanged(this, e);
-            udCWEdgeLength_ValueChanged(this, e);
-            chkShowAGC_CheckedChanged(this, e);
-            chkAGCDisplayHangLine_CheckedChanged(this, e);
-            chkSpectrumLine_CheckedChanged(this, e);
-            chkAGCHangSpectrumLine_CheckedChanged(this, e);
-            chkDisplayRX2GainLine_CheckedChanged(this, e);
-            chkDisplayRX2HangLine_CheckedChanged(this, e);
-            chkRX2GainSpectrumLine_CheckedChanged(this, e);
-            chkRX2HangSpectrumLine_CheckedChanged(this, e);
+            FE("udLMSANF_ValueChanged", () => udLMSANF_ValueChanged(this, e));
+            FE("udLMSNR_ValueChanged", () => udLMSNR_ValueChanged(this, e));
+            FE("udLMSANF2_ValueChanged", () => udLMSANF2_ValueChanged(this, e));
+            FE("udLMSNR2_ValueChanged", () => udLMSNR2_ValueChanged(this, e));
+            FE("udDSPCWPitch_ValueChanged", () => udDSPCWPitch_ValueChanged(this, e));
+            FE("udDSPNB_ValueChanged", () => udDSPNB_ValueChanged(this, e));
+            FE("comboDSPNOBmode_SelectedIndexChanged", () => comboDSPNOBmode_SelectedIndexChanged(this, e));
+            FE("comboDSPRxWindow_SelectedIndexChanged", () => comboDSPRxWindow_SelectedIndexChanged(this, e));
+            FE("comboDSPTxWindow_SelectedIndexChanged", () => comboDSPTxWindow_SelectedIndexChanged(this, e));
+            FE("chkCWBreakInEnabled_CheckStateChanged", () => chkCWBreakInEnabled_CheckStateChanged(this, e));
+            FE("udHWKeyDownDelay_ValueChanged", () => udHWKeyDownDelay_ValueChanged(this, e));
+            FE("chkCWKeyerRevPdl_CheckedChanged", () => chkCWKeyerRevPdl_CheckedChanged(this, e));
+            FE("chkCWKeyerIambic_CheckedChanged", () => chkCWKeyerIambic_CheckedChanged(this, e));
+            FE("udCWKeyerWeight_ValueChanged", () => udCWKeyerWeight_ValueChanged(this, e));
+            FE("chkStrictCharSpacing_CheckedChanged", () => chkStrictCharSpacing_CheckedChanged(this, e));
+            FE("chkCWKeyerMode_CheckedChanged", () => chkCWKeyerMode_CheckedChanged(this, e));
+            FE("chkSideTones_CheckedChanged", () => chkSideTones_CheckedChanged(this, e));
+            FE("chkDSPCESSB_CheckedChanged", () => chkDSPCESSB_CheckedChanged(this, e));
+            FE("udRXAMSQMaxTail_ValueChanged", () => udRXAMSQMaxTail_ValueChanged(this, e));
+            FE("radANFPreAGC_CheckedChanged", () => radANFPreAGC_CheckedChanged(this, e));
+            FE("radANF2PreAGC_CheckedChanged", () => radANF2PreAGC_CheckedChanged(this, e));
+            FE("chkNR3_RNNoiseFixedGain_CheckedChanged", () => chkNR3_RNNoiseFixedGain_CheckedChanged(this, e));
+            FE("chkMNFAutoIncrease_CheckedChanged", () => chkMNFAutoIncrease_CheckedChanged(this, e));
+            FE("udCWEdgeLength_ValueChanged", () => udCWEdgeLength_ValueChanged(this, e));
+            FE("chkShowAGC_CheckedChanged", () => chkShowAGC_CheckedChanged(this, e));
+            FE("chkAGCDisplayHangLine_CheckedChanged", () => chkAGCDisplayHangLine_CheckedChanged(this, e));
+            FE("chkSpectrumLine_CheckedChanged", () => chkSpectrumLine_CheckedChanged(this, e));
+            FE("chkAGCHangSpectrumLine_CheckedChanged", () => chkAGCHangSpectrumLine_CheckedChanged(this, e));
+            FE("chkDisplayRX2GainLine_CheckedChanged", () => chkDisplayRX2GainLine_CheckedChanged(this, e));
+            FE("chkDisplayRX2HangLine_CheckedChanged", () => chkDisplayRX2HangLine_CheckedChanged(this, e));
+            FE("chkRX2GainSpectrumLine_CheckedChanged", () => chkRX2GainSpectrumLine_CheckedChanged(this, e));
+            FE("chkRX2HangSpectrumLine_CheckedChanged", () => chkRX2HangSpectrumLine_CheckedChanged(this, e));
 
-            chkCWAutoSwitchMode_CheckedChanged(this, e);
-            chkAutoModeSwitchCWReturn_CheckedChanged(this, e);
+            FE("chkCWAutoSwitchMode_CheckedChanged", () => chkCWAutoSwitchMode_CheckedChanged(this, e));
+            FE("chkAutoModeSwitchCWReturn_CheckedChanged", () => chkAutoModeSwitchCWReturn_CheckedChanged(this, e));
 
             //AGC
-            udDSPAGCFixedGaindB_ValueChanged(this, e);
-            udDSPAGCMaxGaindB_ValueChanged(this, e);
-            udDSPAGCSlope_ValueChanged(this, e);
-            udDSPAGCDecay_ValueChanged(this, e);
-            udDSPAGCHangTime_ValueChanged(this, e);
-            tbDSPAGCHangThreshold_Scroll(this, e);
+            FE("udDSPAGCFixedGaindB_ValueChanged", () => udDSPAGCFixedGaindB_ValueChanged(this, e));
+            FE("udDSPAGCMaxGaindB_ValueChanged", () => udDSPAGCMaxGaindB_ValueChanged(this, e));
+            FE("udDSPAGCSlope_ValueChanged", () => udDSPAGCSlope_ValueChanged(this, e));
+            FE("udDSPAGCDecay_ValueChanged", () => udDSPAGCDecay_ValueChanged(this, e));
+            FE("udDSPAGCHangTime_ValueChanged", () => udDSPAGCHangTime_ValueChanged(this, e));
+            FE("tbDSPAGCHangThreshold_Scroll", () => tbDSPAGCHangThreshold_Scroll(this, e));
 
-            udDSPAGCRX2FixedGaindB_ValueChanged(this, e);
-            udDSPAGCRX2MaxGaindB_ValueChanged(this, e);
-            udDSPAGCRX2Slope_ValueChanged(this, e);
-            udDSPAGCRX2Decay_ValueChanged(this, e);
-            udDSPAGCRX2HangTime_ValueChanged(this, e);
-            tbDSPAGCRX2HangThreshold_Scroll(this, e);
+            FE("udDSPAGCRX2FixedGaindB_ValueChanged", () => udDSPAGCRX2FixedGaindB_ValueChanged(this, e));
+            FE("udDSPAGCRX2MaxGaindB_ValueChanged", () => udDSPAGCRX2MaxGaindB_ValueChanged(this, e));
+            FE("udDSPAGCRX2Slope_ValueChanged", () => udDSPAGCRX2Slope_ValueChanged(this, e));
+            FE("udDSPAGCRX2Decay_ValueChanged", () => udDSPAGCRX2Decay_ValueChanged(this, e));
+            FE("udDSPAGCRX2HangTime_ValueChanged", () => udDSPAGCRX2HangTime_ValueChanged(this, e));
+            FE("tbDSPAGCRX2HangThreshold_Scroll", () => tbDSPAGCRX2HangThreshold_Scroll(this, e));
 
-            chkAutoAGCRX1_CheckedChanged(this, e);
-            chkAutoAGCRX2_CheckedChanged(this, e);
-            udRX1AutoAGCOffset_ValueChanged(this, e);
-            udRX2AutoAGCOffset_ValueChanged(this, e);
-            udNoiseFloorAttackRX1_ValueChanged(this, e);
-            udNoiseFloorAttackRX2_ValueChanged(this, e);
+            FE("chkAutoAGCRX1_CheckedChanged", () => chkAutoAGCRX1_CheckedChanged(this, e));
+            FE("chkAutoAGCRX2_CheckedChanged", () => chkAutoAGCRX2_CheckedChanged(this, e));
+            FE("udRX1AutoAGCOffset_ValueChanged", () => udRX1AutoAGCOffset_ValueChanged(this, e));
+            FE("udRX2AutoAGCOffset_ValueChanged", () => udRX2AutoAGCOffset_ValueChanged(this, e));
+            FE("udNoiseFloorAttackRX1_ValueChanged", () => udNoiseFloorAttackRX1_ValueChanged(this, e));
+            FE("udNoiseFloorAttackRX2_ValueChanged", () => udNoiseFloorAttackRX2_ValueChanged(this, e));
             //
 
             //Leveler
-            chkDSPLevelerEnabled_CheckedChanged(this, e);
-            udDSPLevelerThreshold_ValueChanged(this, e);
-            udDSPLevelerDecay_ValueChanged(this, e);
+            FE("chkDSPLevelerEnabled_CheckedChanged", () => chkDSPLevelerEnabled_CheckedChanged(this, e));
+            FE("udDSPLevelerThreshold_ValueChanged", () => udDSPLevelerThreshold_ValueChanged(this, e));
+            FE("udDSPLevelerDecay_ValueChanged", () => udDSPLevelerDecay_ValueChanged(this, e));
 
             //ALC
-            udDSPALCMaximumGain_ValueChanged(this, e);
-            udDSPALCDecay_ValueChanged(this, e);
+            FE("udDSPALCMaximumGain_ValueChanged", () => udDSPALCMaximumGain_ValueChanged(this, e));
+            FE("udDSPALCDecay_ValueChanged", () => udDSPALCDecay_ValueChanged(this, e));
 
             // AM/SAM Tab
-            chkLevelFades_CheckedChanged(this, e);
-            chkRX2LevelFades_CheckedChanged(this, e);
-            radLSBUSB_CheckedChanged(this, e);
-            radLSB_CheckedChanged(this, e);
-            radUSB_CheckedChanged(this, e);
-            radRX2LSBUSB_CheckedChanged(this, e);
-            radRX2LSB_CheckedChanged(this, e);
-            radRX2USB_CheckedChanged(this, e);
-            chkCBlock_CheckedChanged(this, e);
-            chkRX2CBlock_CheckedChanged(this, e);
-            radTXDSB_CheckedChanged(this, e);
+            FE("chkLevelFades_CheckedChanged", () => chkLevelFades_CheckedChanged(this, e));
+            FE("chkRX2LevelFades_CheckedChanged", () => chkRX2LevelFades_CheckedChanged(this, e));
+            FE("radLSBUSB_CheckedChanged", () => radLSBUSB_CheckedChanged(this, e));
+            FE("radLSB_CheckedChanged", () => radLSB_CheckedChanged(this, e));
+            FE("radUSB_CheckedChanged", () => radUSB_CheckedChanged(this, e));
+            FE("radRX2LSBUSB_CheckedChanged", () => radRX2LSBUSB_CheckedChanged(this, e));
+            FE("radRX2LSB_CheckedChanged", () => radRX2LSB_CheckedChanged(this, e));
+            FE("radRX2USB_CheckedChanged", () => radRX2USB_CheckedChanged(this, e));
+            FE("chkCBlock_CheckedChanged", () => chkCBlock_CheckedChanged(this, e));
+            FE("chkRX2CBlock_CheckedChanged", () => chkRX2CBlock_CheckedChanged(this, e));
+            FE("radTXDSB_CheckedChanged", () => radTXDSB_CheckedChanged(this, e));
 
             // FM Tab
-            chkEmphPos_CheckedChanged(this, e);
-            chkRemoveTone_CheckedChanged(this, e);
-            chkFMDetLimON_CheckedChanged(this, e);
-            tbDSPDetLimGain_Scroll(this, e);
-            udFMLowCutRX_ValueChanged(this, e);
-            udFMHighCutRX_ValueChanged(this, e);
-            udFMLowCutTX_ValueChanged(this, e);
-            udFMHighCutTX_ValueChanged(this, e);
+            FE("chkEmphPos_CheckedChanged", () => chkEmphPos_CheckedChanged(this, e));
+            FE("chkRemoveTone_CheckedChanged", () => chkRemoveTone_CheckedChanged(this, e));
+            FE("chkFMDetLimON_CheckedChanged", () => chkFMDetLimON_CheckedChanged(this, e));
+            FE("tbDSPDetLimGain_Scroll", () => tbDSPDetLimGain_Scroll(this, e));
+            FE("udFMLowCutRX_ValueChanged", () => udFMLowCutRX_ValueChanged(this, e));
+            FE("udFMHighCutRX_ValueChanged", () => udFMHighCutRX_ValueChanged(this, e));
+            FE("udFMLowCutTX_ValueChanged", () => udFMLowCutTX_ValueChanged(this, e));
+            FE("udFMHighCutTX_ValueChanged", () => udFMHighCutTX_ValueChanged(this, e));
 
             // EER Tab
-            chkDSPEERon_CheckedChanged(this, e);
-            udDSPEERmgain_ValueChanged(this, e);
-            udDSPEERpgain_ValueChanged(this, e);
-            chkDSPEERRunDelays_CheckedChanged(this, e);
-            udDSPEERmdelay_ValueChanged(this, e);
-            udDSPEERpdelay_ValueChanged(this, e);
-            chkDSPEERamIQ_CheckedChanged(this, e);
-            udDSPEERpwmMax_ValueChanged(this, e);
-            udDSPEERpwmMin_ValueChanged(this, e);
+            FE("chkDSPEERon_CheckedChanged", () => chkDSPEERon_CheckedChanged(this, e));
+            FE("udDSPEERmgain_ValueChanged", () => udDSPEERmgain_ValueChanged(this, e));
+            FE("udDSPEERpgain_ValueChanged", () => udDSPEERpgain_ValueChanged(this, e));
+            FE("chkDSPEERRunDelays_CheckedChanged", () => chkDSPEERRunDelays_CheckedChanged(this, e));
+            FE("udDSPEERmdelay_ValueChanged", () => udDSPEERmdelay_ValueChanged(this, e));
+            FE("udDSPEERpdelay_ValueChanged", () => udDSPEERpdelay_ValueChanged(this, e));
+            FE("chkDSPEERamIQ_CheckedChanged", () => chkDSPEERamIQ_CheckedChanged(this, e));
+            FE("udDSPEERpwmMax_ValueChanged", () => udDSPEERpwmMax_ValueChanged(this, e));
+            FE("udDSPEERpwmMin_ValueChanged", () => udDSPEERpwmMin_ValueChanged(this, e));
 
             // NR Tab
-            radDSPNR2Linear_CheckedChanged(this, e);
-            radDSPNR2Log_CheckedChanged(this, e);
-            radDSPNR2TRND_CheckedChanged(this, e);
+            FE("radDSPNR2Linear_CheckedChanged", () => radDSPNR2Linear_CheckedChanged(this, e));
+            FE("radDSPNR2Log_CheckedChanged", () => radDSPNR2Log_CheckedChanged(this, e));
+            FE("radDSPNR2TRND_CheckedChanged", () => radDSPNR2TRND_CheckedChanged(this, e));
 
-            udDSPNR2trainThresh_ValueChanged(this, e);
-            udDSPNR2trainThreshRX2_ValueChanged(this, e);
-            udDSPNR2trainT2_ValueChanged(this, e);
-            udDSPNR2trainT2RX2_ValueChanged(this, e);
+            FE("udDSPNR2trainThresh_ValueChanged", () => udDSPNR2trainThresh_ValueChanged(this, e));
+            FE("udDSPNR2trainThreshRX2_ValueChanged", () => udDSPNR2trainThreshRX2_ValueChanged(this, e));
+            FE("udDSPNR2trainT2_ValueChanged", () => udDSPNR2trainT2_ValueChanged(this, e));
+            FE("udDSPNR2trainT2RX2_ValueChanged", () => udDSPNR2trainT2RX2_ValueChanged(this, e));
 
-            radDSPNR2OSMS_CheckedChanged(this, e);
-            radDSPNR2MMSE_CheckedChanged(this, e);
-            radDSPNR2NSTAT_CheckedChanged(this, e);
-            radDSPNR2OSMSRX2_CheckedChanged(this, e);
-            radDSPNR2MMSERX2_CheckedChanged(this, e);
-            radDSPNR2NSTATRX2_CheckedChanged(this, e);
+            FE("radDSPNR2OSMS_CheckedChanged", () => radDSPNR2OSMS_CheckedChanged(this, e));
+            FE("radDSPNR2MMSE_CheckedChanged", () => radDSPNR2MMSE_CheckedChanged(this, e));
+            FE("radDSPNR2NSTAT_CheckedChanged", () => radDSPNR2NSTAT_CheckedChanged(this, e));
+            FE("radDSPNR2OSMSRX2_CheckedChanged", () => radDSPNR2OSMSRX2_CheckedChanged(this, e));
+            FE("radDSPNR2MMSERX2_CheckedChanged", () => radDSPNR2MMSERX2_CheckedChanged(this, e));
+            FE("radDSPNR2NSTATRX2_CheckedChanged", () => radDSPNR2NSTATRX2_CheckedChanged(this, e));
 
-            chkDSPNR2AE_CheckedChanged(this, e);
+            FE("chkDSPNR2AE_CheckedChanged", () => chkDSPNR2AE_CheckedChanged(this, e));
             setupNR2PostProcessing(1);
             setupNR2PostProcessing(2);
-            radDSPNR2LinearRX2_CheckedChanged(this, e);
-            radDSPNR2LogRX2_CheckedChanged(this, e);
-            radDSPNR2TRNDRX2_CheckedChanged(this, e);
-            chkDSPNR2AERX2_CheckedChanged(this, e);
+            FE("radDSPNR2LinearRX2_CheckedChanged", () => radDSPNR2LinearRX2_CheckedChanged(this, e));
+            FE("radDSPNR2LogRX2_CheckedChanged", () => radDSPNR2LogRX2_CheckedChanged(this, e));
+            FE("radDSPNR2TRNDRX2_CheckedChanged", () => radDSPNR2TRNDRX2_CheckedChanged(this, e));
+            FE("chkDSPNR2AERX2_CheckedChanged", () => chkDSPNR2AERX2_CheckedChanged(this, e));
 
             //nr4
-            nudNR4_red_rx1_ValueChanged(this, e);
-            nudNR4_smo_rx1_ValueChanged(this, e);
-            nudNR4_whi_rx1_ValueChanged(this, e);
-            nudNR4_res_rx1_ValueChanged(this, e);
-            nudNR4_snr_rx1_ValueChanged(this, e);
+            FE("nudNR4_red_rx1_ValueChanged", () => nudNR4_red_rx1_ValueChanged(this, e));
+            FE("nudNR4_smo_rx1_ValueChanged", () => nudNR4_smo_rx1_ValueChanged(this, e));
+            FE("nudNR4_whi_rx1_ValueChanged", () => nudNR4_whi_rx1_ValueChanged(this, e));
+            FE("nudNR4_res_rx1_ValueChanged", () => nudNR4_res_rx1_ValueChanged(this, e));
+            FE("nudNR4_snr_rx1_ValueChanged", () => nudNR4_snr_rx1_ValueChanged(this, e));
 
-            nudNR4_red_rx2_ValueChanged(this, e);
-            nudNR4_smo_rx2_ValueChanged(this, e);
-            nudNR4_whi_rx2_ValueChanged(this, e);
-            nudNR4_res_rx2_ValueChanged(this, e);
-            nudNR4_snr_rx2_ValueChanged(this, e);
+            FE("nudNR4_red_rx2_ValueChanged", () => nudNR4_red_rx2_ValueChanged(this, e));
+            FE("nudNR4_smo_rx2_ValueChanged", () => nudNR4_smo_rx2_ValueChanged(this, e));
+            FE("nudNR4_whi_rx2_ValueChanged", () => nudNR4_whi_rx2_ValueChanged(this, e));
+            FE("nudNR4_res_rx2_ValueChanged", () => nudNR4_res_rx2_ValueChanged(this, e));
+            FE("nudNR4_snr_rx2_ValueChanged", () => nudNR4_snr_rx2_ValueChanged(this, e));
 
             setupNR4algorithm();
             //
 
             // Transmit Tab
-            udTXFilterHigh_ValueChanged(this, e);
-            udTXFilterLow_ValueChanged(this, e);
-            udTransmitTunePower_ValueChanged(this, e);
-            radMicIn_CheckedChanged(this, e);
-            radLineIn_CheckedChanged(this, e);
-            udMicGainMax_ValueChanged(this, e);
-            udMicGainMin_ValueChanged(this, e);
-            udLineInBoost_ValueChanged(this, e);
-            udTXAMCarrierLevel_ValueChanged(this, e);
-            chkLimitExtAmpOnOverload_CheckedChanged(this, e);
-            chkSaveTXProfileOnExit_CheckedChanged(this, e);
-            chkRecoverPAProfileFromTXProfile_CheckedChanged(this, e);
+            FE("udTXFilterHigh_ValueChanged", () => udTXFilterHigh_ValueChanged(this, e));
+            FE("udTXFilterLow_ValueChanged", () => udTXFilterLow_ValueChanged(this, e));
+            FE("udTransmitTunePower_ValueChanged", () => udTransmitTunePower_ValueChanged(this, e));
+            FE("radMicIn_CheckedChanged", () => radMicIn_CheckedChanged(this, e));
+            FE("radLineIn_CheckedChanged", () => radLineIn_CheckedChanged(this, e));
+            FE("udMicGainMax_ValueChanged", () => udMicGainMax_ValueChanged(this, e));
+            FE("udMicGainMin_ValueChanged", () => udMicGainMin_ValueChanged(this, e));
+            FE("udLineInBoost_ValueChanged", () => udLineInBoost_ValueChanged(this, e));
+            FE("udTXAMCarrierLevel_ValueChanged", () => udTXAMCarrierLevel_ValueChanged(this, e));
+            FE("chkLimitExtAmpOnOverload_CheckedChanged", () => chkLimitExtAmpOnOverload_CheckedChanged(this, e));
+            FE("chkSaveTXProfileOnExit_CheckedChanged", () => chkSaveTXProfileOnExit_CheckedChanged(this, e));
+            FE("chkRecoverPAProfileFromTXProfile_CheckedChanged", () => chkRecoverPAProfileFromTXProfile_CheckedChanged(this, e));
             bool old_defer = console.DeferUpdateDSP;
             ForceTXProfileUpdate();
             console.DeferUpdateDSP = old_defer;  //set this again as it gets undone by ForceTXProfile
-            chkPulsedTune_CheckedChanged(this, e);
+            FE("chkPulsedTune_CheckedChanged", () => chkPulsedTune_CheckedChanged(this, e));
 
             // Keyboard Tab
-            comboKBTuneUp1_SelectedIndexChanged(this, e);
-            comboKBTuneUp2_SelectedIndexChanged(this, e);
-            comboKBTuneUp3_SelectedIndexChanged(this, e);
-            comboKBTuneUp4_SelectedIndexChanged(this, e);
-            comboKBTuneUp5_SelectedIndexChanged(this, e);
-            comboKBTuneUp6_SelectedIndexChanged(this, e);
-            comboKBTuneDown1_SelectedIndexChanged(this, e);
-            comboKBTuneDown2_SelectedIndexChanged(this, e);
-            comboKBTuneDown3_SelectedIndexChanged(this, e);
-            comboKBTuneDown4_SelectedIndexChanged(this, e);
-            comboKBTuneDown5_SelectedIndexChanged(this, e);
-            comboKBTuneDown6_SelectedIndexChanged(this, e);
-            comboKBBandUp_SelectedIndexChanged(this, e);
-            comboKBBandDown_SelectedIndexChanged(this, e);
-            comboKBFilterUp_SelectedIndexChanged(this, e);
-            comboKBFilterDown_SelectedIndexChanged(this, e);
-            comboKBModeUp_SelectedIndexChanged(this, e);
-            comboKBModeDown_SelectedIndexChanged(this, e);
-            comboKBCWDash_SelectedIndexChanged(this, e);
-            comboKBCWDot_SelectedIndexChanged(this, e);
-            comboKBPTTTx_SelectedIndexChanged(this, e);
-            comboKBPTTRx_SelectedIndexChanged(this, e);
-            radSpaceBarVFOBTX_CheckedChanged(this, e);
+            FE("comboKBTuneUp1_SelectedIndexChanged", () => comboKBTuneUp1_SelectedIndexChanged(this, e));
+            FE("comboKBTuneUp2_SelectedIndexChanged", () => comboKBTuneUp2_SelectedIndexChanged(this, e));
+            FE("comboKBTuneUp3_SelectedIndexChanged", () => comboKBTuneUp3_SelectedIndexChanged(this, e));
+            FE("comboKBTuneUp4_SelectedIndexChanged", () => comboKBTuneUp4_SelectedIndexChanged(this, e));
+            FE("comboKBTuneUp5_SelectedIndexChanged", () => comboKBTuneUp5_SelectedIndexChanged(this, e));
+            FE("comboKBTuneUp6_SelectedIndexChanged", () => comboKBTuneUp6_SelectedIndexChanged(this, e));
+            FE("comboKBTuneDown1_SelectedIndexChanged", () => comboKBTuneDown1_SelectedIndexChanged(this, e));
+            FE("comboKBTuneDown2_SelectedIndexChanged", () => comboKBTuneDown2_SelectedIndexChanged(this, e));
+            FE("comboKBTuneDown3_SelectedIndexChanged", () => comboKBTuneDown3_SelectedIndexChanged(this, e));
+            FE("comboKBTuneDown4_SelectedIndexChanged", () => comboKBTuneDown4_SelectedIndexChanged(this, e));
+            FE("comboKBTuneDown5_SelectedIndexChanged", () => comboKBTuneDown5_SelectedIndexChanged(this, e));
+            FE("comboKBTuneDown6_SelectedIndexChanged", () => comboKBTuneDown6_SelectedIndexChanged(this, e));
+            FE("comboKBBandUp_SelectedIndexChanged", () => comboKBBandUp_SelectedIndexChanged(this, e));
+            FE("comboKBBandDown_SelectedIndexChanged", () => comboKBBandDown_SelectedIndexChanged(this, e));
+            FE("comboKBFilterUp_SelectedIndexChanged", () => comboKBFilterUp_SelectedIndexChanged(this, e));
+            FE("comboKBFilterDown_SelectedIndexChanged", () => comboKBFilterDown_SelectedIndexChanged(this, e));
+            FE("comboKBModeUp_SelectedIndexChanged", () => comboKBModeUp_SelectedIndexChanged(this, e));
+            FE("comboKBModeDown_SelectedIndexChanged", () => comboKBModeDown_SelectedIndexChanged(this, e));
+            FE("comboKBCWDash_SelectedIndexChanged", () => comboKBCWDash_SelectedIndexChanged(this, e));
+            FE("comboKBCWDot_SelectedIndexChanged", () => comboKBCWDot_SelectedIndexChanged(this, e));
+            FE("comboKBPTTTx_SelectedIndexChanged", () => comboKBPTTTx_SelectedIndexChanged(this, e));
+            FE("comboKBPTTRx_SelectedIndexChanged", () => comboKBPTTRx_SelectedIndexChanged(this, e));
+            FE("radSpaceBarVFOBTX_CheckedChanged", () => radSpaceBarVFOBTX_CheckedChanged(this, e));
 
             // Appearance Tab
-            clrbtnBtnSel_Changed(this, e);
-            clrbtnVFODark_Changed(this, e);
-            clrbtnVFOLight_Changed(this, e);
-            clrbtnBandDark_Changed(this, e);
-            clrbtnBandLight_Changed(this, e);
-            clrbtnPeakText_Changed(this, e);
-            clrbtnBackground_Changed(this, e);
-            clrbtnTXBackground_Changed(this, e);
-            clrbtnGrid_Changed(this, e);
-            clrbtnTXVGrid_Changed(this, e);
-            clrbtnGridFine_Changed(this, e);
-            clrbtnHGridColor_Changed(this, e);
-            clrbtnTXHGridColor_Changed(this, e);
-            clrbtnZeroLine_Changed(this, e);
-            clrbtnTXZeroLine_Changed(this, e);
-            clrbtnFilter_Changed(this, e);
-            clrbtnGridTXFilter_Changed(this, e);
-            clrbtnText_Changed(this, e);
-            clrbtnDataLine_Changed(this, e);
-            clrbtnDataFill_Changed(this, e);
-            clrbtnBandstackOverlay_Changed(this, e);
-            udDisplayLineWidth_ValueChanged(this, e);
-            udTXLineWidth_ValueChanged(this, e);
-            clrbtnTXDataLine_Changed(this, e);
-            clrbtnDataFill_tx_Changed(this, e);
-            clrbtnMeterLeft_Changed(this, e);
-            clrbtnMeterRight_Changed(this, e);
-            chkGridControl_CheckedChanged(this, e);
-            chkGridControl_minor_CheckedChanged(this, e);
-            clrbtnBandEdge_Changed(this, e);
-            clrbtnTXBandEdge_Changed(this, e);
-            tbDisplayFFTSize_Scroll(this, e);
-            tbRX2DisplayFFTSize_Scroll(this, e);
-            comboDispPanDetector_SelectedIndexChanged(this, e);
-            comboDispWFDetector_SelectedIndexChanged(this, e);
-            comboDispPanAveraging_SelectedIndexChanged(this, e);
-            comboDispWFAveraging_SelectedIndexChanged(this, e);
-            udDisplayAVTimeWF_ValueChanged(this, e);
-            comboRX2DispPanDetector_SelectedIndexChanged(this, e);
-            comboRX2DispPanAveraging_SelectedIndexChanged(this, e);
-            comboRX2DispWFDetector_SelectedIndexChanged(this, e);
-            comboRX2DispWFAveraging_SelectedIndexChanged(this, e);
-            udRX2DisplayWFAVTime_ValueChanged(this, e);
-            chkDispRX2Normalize_CheckedChanged(this, e);
-            chkDispNormalize_CheckedChanged(this, e);
-            comboTXDispPanDetector_SelectedIndexChanged(this, e);
-            comboTXDispPanAveraging_SelectedIndexChanged(this, e);
-            udTXDisplayAVGTime_ValueChanged(this, e);
-            chkDispTXNormalize_CheckedChanged(this, e);
-            comboTXDispWFDetector_SelectedIndexChanged(this, e);
-            comboTXDispWFAveraging_SelectedIndexChanged(this, e);
-            udTXDisplayAVTime_ValueChanged(this, e);
-            comboTXDispWinType_SelectedIndexChanged(this, e);
-            comboDispWinType_SelectedIndexChanged(this, e);
-            comboRX2DispWinType_SelectedIndexChanged(this, e);
-            udDSPNBTransition_ValueChanged(this, e);
-            udDSPNBLead_ValueChanged(this, e);
-            udDSPNBLag_ValueChanged(this, e);
-            comboMeterType_SelectedIndexChanged(this, e);
-            comboAppSkin_SelectedIndexChanged(this, e);
-            chkDisablePicDisplayBackgroundImage_CheckedChanged(this, e);
+            FE("clrbtnBtnSel_Changed", () => clrbtnBtnSel_Changed(this, e));
+            FE("clrbtnVFODark_Changed", () => clrbtnVFODark_Changed(this, e));
+            FE("clrbtnVFOLight_Changed", () => clrbtnVFOLight_Changed(this, e));
+            FE("clrbtnBandDark_Changed", () => clrbtnBandDark_Changed(this, e));
+            FE("clrbtnBandLight_Changed", () => clrbtnBandLight_Changed(this, e));
+            FE("clrbtnPeakText_Changed", () => clrbtnPeakText_Changed(this, e));
+            FE("clrbtnBackground_Changed", () => clrbtnBackground_Changed(this, e));
+            FE("clrbtnTXBackground_Changed", () => clrbtnTXBackground_Changed(this, e));
+            FE("clrbtnGrid_Changed", () => clrbtnGrid_Changed(this, e));
+            FE("clrbtnTXVGrid_Changed", () => clrbtnTXVGrid_Changed(this, e));
+            FE("clrbtnGridFine_Changed", () => clrbtnGridFine_Changed(this, e));
+            FE("clrbtnHGridColor_Changed", () => clrbtnHGridColor_Changed(this, e));
+            FE("clrbtnTXHGridColor_Changed", () => clrbtnTXHGridColor_Changed(this, e));
+            FE("clrbtnZeroLine_Changed", () => clrbtnZeroLine_Changed(this, e));
+            FE("clrbtnTXZeroLine_Changed", () => clrbtnTXZeroLine_Changed(this, e));
+            FE("clrbtnFilter_Changed", () => clrbtnFilter_Changed(this, e));
+            FE("clrbtnGridTXFilter_Changed", () => clrbtnGridTXFilter_Changed(this, e));
+            FE("clrbtnText_Changed", () => clrbtnText_Changed(this, e));
+            FE("clrbtnDataLine_Changed", () => clrbtnDataLine_Changed(this, e));
+            FE("clrbtnDataFill_Changed", () => clrbtnDataFill_Changed(this, e));
+            FE("clrbtnBandstackOverlay_Changed", () => clrbtnBandstackOverlay_Changed(this, e));
+            FE("udDisplayLineWidth_ValueChanged", () => udDisplayLineWidth_ValueChanged(this, e));
+            FE("udTXLineWidth_ValueChanged", () => udTXLineWidth_ValueChanged(this, e));
+            FE("clrbtnTXDataLine_Changed", () => clrbtnTXDataLine_Changed(this, e));
+            FE("clrbtnDataFill_tx_Changed", () => clrbtnDataFill_tx_Changed(this, e));
+            FE("clrbtnMeterLeft_Changed", () => clrbtnMeterLeft_Changed(this, e));
+            FE("clrbtnMeterRight_Changed", () => clrbtnMeterRight_Changed(this, e));
+            FE("chkGridControl_CheckedChanged", () => chkGridControl_CheckedChanged(this, e));
+            FE("chkGridControl_minor_CheckedChanged", () => chkGridControl_minor_CheckedChanged(this, e));
+            FE("clrbtnBandEdge_Changed", () => clrbtnBandEdge_Changed(this, e));
+            FE("clrbtnTXBandEdge_Changed", () => clrbtnTXBandEdge_Changed(this, e));
+            FE("tbDisplayFFTSize_Scroll", () => tbDisplayFFTSize_Scroll(this, e));
+            FE("tbRX2DisplayFFTSize_Scroll", () => tbRX2DisplayFFTSize_Scroll(this, e));
+            FE("comboDispPanDetector_SelectedIndexChanged", () => comboDispPanDetector_SelectedIndexChanged(this, e));
+            FE("comboDispWFDetector_SelectedIndexChanged", () => comboDispWFDetector_SelectedIndexChanged(this, e));
+            FE("comboDispPanAveraging_SelectedIndexChanged", () => comboDispPanAveraging_SelectedIndexChanged(this, e));
+            FE("comboDispWFAveraging_SelectedIndexChanged", () => comboDispWFAveraging_SelectedIndexChanged(this, e));
+            FE("udDisplayAVTimeWF_ValueChanged", () => udDisplayAVTimeWF_ValueChanged(this, e));
+            FE("comboRX2DispPanDetector_SelectedIndexChanged", () => comboRX2DispPanDetector_SelectedIndexChanged(this, e));
+            FE("comboRX2DispPanAveraging_SelectedIndexChanged", () => comboRX2DispPanAveraging_SelectedIndexChanged(this, e));
+            FE("comboRX2DispWFDetector_SelectedIndexChanged", () => comboRX2DispWFDetector_SelectedIndexChanged(this, e));
+            FE("comboRX2DispWFAveraging_SelectedIndexChanged", () => comboRX2DispWFAveraging_SelectedIndexChanged(this, e));
+            FE("udRX2DisplayWFAVTime_ValueChanged", () => udRX2DisplayWFAVTime_ValueChanged(this, e));
+            FE("chkDispRX2Normalize_CheckedChanged", () => chkDispRX2Normalize_CheckedChanged(this, e));
+            FE("chkDispNormalize_CheckedChanged", () => chkDispNormalize_CheckedChanged(this, e));
+            FE("comboTXDispPanDetector_SelectedIndexChanged", () => comboTXDispPanDetector_SelectedIndexChanged(this, e));
+            FE("comboTXDispPanAveraging_SelectedIndexChanged", () => comboTXDispPanAveraging_SelectedIndexChanged(this, e));
+            FE("udTXDisplayAVGTime_ValueChanged", () => udTXDisplayAVGTime_ValueChanged(this, e));
+            FE("chkDispTXNormalize_CheckedChanged", () => chkDispTXNormalize_CheckedChanged(this, e));
+            FE("comboTXDispWFDetector_SelectedIndexChanged", () => comboTXDispWFDetector_SelectedIndexChanged(this, e));
+            FE("comboTXDispWFAveraging_SelectedIndexChanged", () => comboTXDispWFAveraging_SelectedIndexChanged(this, e));
+            FE("udTXDisplayAVTime_ValueChanged", () => udTXDisplayAVTime_ValueChanged(this, e));
+            FE("comboTXDispWinType_SelectedIndexChanged", () => comboTXDispWinType_SelectedIndexChanged(this, e));
+            FE("comboDispWinType_SelectedIndexChanged", () => comboDispWinType_SelectedIndexChanged(this, e));
+            FE("comboRX2DispWinType_SelectedIndexChanged", () => comboRX2DispWinType_SelectedIndexChanged(this, e));
+            FE("udDSPNBTransition_ValueChanged", () => udDSPNBTransition_ValueChanged(this, e));
+            FE("udDSPNBLead_ValueChanged", () => udDSPNBLead_ValueChanged(this, e));
+            FE("udDSPNBLag_ValueChanged", () => udDSPNBLag_ValueChanged(this, e));
+            FE("comboMeterType_SelectedIndexChanged", () => comboMeterType_SelectedIndexChanged(this, e));
+            FE("comboAppSkin_SelectedIndexChanged", () => comboAppSkin_SelectedIndexChanged(this, e));
+            FE("chkDisablePicDisplayBackgroundImage_CheckedChanged", () => chkDisablePicDisplayBackgroundImage_CheckedChanged(this, e));
 
-            clrbtnActiveSpectralPeak_Changed(this, e);
-            chkActivePeakHoldRX1_CheckedChanged(this, e);
-            udActivePeakHoldDurationRX1_ValueChanged(this, e);
-            chkActivePeakHoldRX2_CheckedChanged(this, e);
-            udActivePeakHoldDurationRX2_ValueChanged(this, e);
+            FE("clrbtnActiveSpectralPeak_Changed", () => clrbtnActiveSpectralPeak_Changed(this, e));
+            FE("chkActivePeakHoldRX1_CheckedChanged", () => chkActivePeakHoldRX1_CheckedChanged(this, e));
+            FE("udActivePeakHoldDurationRX1_ValueChanged", () => udActivePeakHoldDurationRX1_ValueChanged(this, e));
+            FE("chkActivePeakHoldRX2_CheckedChanged", () => chkActivePeakHoldRX2_CheckedChanged(this, e));
+            FE("udActivePeakHoldDurationRX2_ValueChanged", () => udActivePeakHoldDurationRX2_ValueChanged(this, e));
 
-            clrbtnNoiseFloor_Changed(this, e);
-            clrbtnNoiseFloorText_Changed(this, e);
-            chkNoiseFloorShowDBM_CheckedChanged(this, e);
-            udNoiseFloorLineWidth_ValueChanged(this, e);
+            FE("clrbtnNoiseFloor_Changed", () => clrbtnNoiseFloor_Changed(this, e));
+            FE("clrbtnNoiseFloorText_Changed", () => clrbtnNoiseFloorText_Changed(this, e));
+            FE("chkNoiseFloorShowDBM_CheckedChanged", () => chkNoiseFloorShowDBM_CheckedChanged(this, e));
+            FE("udNoiseFloorLineWidth_ValueChanged", () => udNoiseFloorLineWidth_ValueChanged(this, e));
 
             //[2.10.1.0]MW0LGE
-            clrbtnOutOfBand_Changed(this, e);
-            chkVFOSmallLSD_CheckedChanged(this, e);
-            clrbtnVFOSmallColor_Changed(this, e);
-            clrbtnInfoButtonsColor_Changed(this, e);
-            clrbtnPeakBackground_Changed(this, e);
-            clrbtnMeterBackground_Changed(this, e);
-            clrbtnBandBackground_Changed(this, e);
-            clrbtnVFOBackground_Changed(this, e);
+            FE("clrbtnOutOfBand_Changed", () => clrbtnOutOfBand_Changed(this, e));
+            FE("chkVFOSmallLSD_CheckedChanged", () => chkVFOSmallLSD_CheckedChanged(this, e));
+            FE("clrbtnVFOSmallColor_Changed", () => clrbtnVFOSmallColor_Changed(this, e));
+            FE("clrbtnInfoButtonsColor_Changed", () => clrbtnInfoButtonsColor_Changed(this, e));
+            FE("clrbtnPeakBackground_Changed", () => clrbtnPeakBackground_Changed(this, e));
+            FE("clrbtnMeterBackground_Changed", () => clrbtnMeterBackground_Changed(this, e));
+            FE("clrbtnBandBackground_Changed", () => clrbtnBandBackground_Changed(this, e));
+            FE("clrbtnVFOBackground_Changed", () => clrbtnVFOBackground_Changed(this, e));
 
-            chkHideLegacyMeters_CheckedChanged(this, e);
+            FE("chkHideLegacyMeters_CheckedChanged", () => chkHideLegacyMeters_CheckedChanged(this, e));
 
-            chkJoinBandEdges_CheckedChanged(this, e);
-            chkShowFrequencyNumbers_CheckedChanged(this, e);
+            FE("chkJoinBandEdges_CheckedChanged", () => chkJoinBandEdges_CheckedChanged(this, e));
+            FE("chkShowFrequencyNumbers_CheckedChanged", () => chkShowFrequencyNumbers_CheckedChanged(this, e));
 
-            clrbtnTXAttenuationBackground_Changed(this, e);
+            FE("clrbtnTXAttenuationBackground_Changed", () => clrbtnTXAttenuationBackground_Changed(this, e));
 
-            lstMetersInUse_SelectedIndexChanged(this, e);
-            lstMMIO_network_list_SelectedIndexChanged(this, e);
+            FE("lstMetersInUse_SelectedIndexChanged", () => lstMetersInUse_SelectedIndexChanged(this, e));
+            FE("lstMMIO_network_list_SelectedIndexChanged", () => lstMMIO_network_list_SelectedIndexChanged(this, e));
             //
 
             // RX2 tab
-            chkRX2AutoMuteTX_CheckedChanged(this, e);
-            udMoxDelay_ValueChanged(this, e);
-            udCWKeyUpDelay_ValueChanged(this, e);
+            FE("chkRX2AutoMuteTX_CheckedChanged", () => chkRX2AutoMuteTX_CheckedChanged(this, e));
+            FE("udMoxDelay_ValueChanged", () => udMoxDelay_ValueChanged(this, e));
+            FE("udCWKeyUpDelay_ValueChanged", () => udCWKeyUpDelay_ValueChanged(this, e));
 
             // PS 
             console.psform.ForcePS();
 
             // APF
-            chkDSPRX1APFEnable_CheckedChanged(this, e);
-            chkDSPRX1subAPFEnable_CheckedChanged(this, e);
-            chkDSPRX2APFEnable_CheckedChanged(this, e);
-            tbDSPAudRX1APFGain_ValueChanged(this, e);
-            tbDSPAudRX1subAPFGain_ValueChanged(this, e);
-            tbDSPAudRX2APFGain_ValueChanged(this, e);
-            tbRX1APFTune_Scroll(this, e);
-            tbRX1subAPFTune_Scroll(this, e);
-            tbRX2APFTune_Scroll(this, e);
-            tbRX1APFBW_Scroll(this, e);
-            tbRX1subAPFBW_Scroll(this, e);
-            tbRX2APFBW_Scroll(this, e);
+            FE("chkDSPRX1APFEnable_CheckedChanged", () => chkDSPRX1APFEnable_CheckedChanged(this, e));
+            FE("chkDSPRX1subAPFEnable_CheckedChanged", () => chkDSPRX1subAPFEnable_CheckedChanged(this, e));
+            FE("chkDSPRX2APFEnable_CheckedChanged", () => chkDSPRX2APFEnable_CheckedChanged(this, e));
+            FE("tbDSPAudRX1APFGain_ValueChanged", () => tbDSPAudRX1APFGain_ValueChanged(this, e));
+            FE("tbDSPAudRX1subAPFGain_ValueChanged", () => tbDSPAudRX1subAPFGain_ValueChanged(this, e));
+            FE("tbDSPAudRX2APFGain_ValueChanged", () => tbDSPAudRX2APFGain_ValueChanged(this, e));
+            FE("tbRX1APFTune_Scroll", () => tbRX1APFTune_Scroll(this, e));
+            FE("tbRX1subAPFTune_Scroll", () => tbRX1subAPFTune_Scroll(this, e));
+            FE("tbRX2APFTune_Scroll", () => tbRX2APFTune_Scroll(this, e));
+            FE("tbRX1APFBW_Scroll", () => tbRX1APFBW_Scroll(this, e));
+            FE("tbRX1subAPFBW_Scroll", () => tbRX1subAPFBW_Scroll(this, e));
+            FE("tbRX2APFBW_Scroll", () => tbRX2APFBW_Scroll(this, e));
             comboAPF_type_SelectedIndexChanged(comboAPF_type_rx1, e);
             comboAPF_type_SelectedIndexChanged(comboAPF_type_rx1sub, e);
             comboAPF_type_SelectedIndexChanged(comboAPF_type_rx2, e);
-            radDSPRX1APFControls_CheckedChanged(this, e);
-            radDSPRX1subAPFControls_CheckedChanged(this, e);
-            radDSPRX2APFControls_CheckedChanged(this, e);
+            FE("radDSPRX1APFControls_CheckedChanged", () => radDSPRX1APFControls_CheckedChanged(this, e));
+            FE("radDSPRX1subAPFControls_CheckedChanged", () => radDSPRX1subAPFControls_CheckedChanged(this, e));
+            FE("radDSPRX2APFControls_CheckedChanged", () => radDSPRX2APFControls_CheckedChanged(this, e));
 
             // dolly filter
-            chkDSPRX1DollyEnable_CheckedChanged(this, e);
-            chkDSPRX1DollySubEnable_CheckedChanged(this, e);
-            chkDSPRX2DollyEnable_CheckedChanged(this, e);
-            udDSPRX1DollyF0_ValueChanged(this, e);
-            udDSPRX1SubDollyF0_ValueChanged(this, e);
-            udDSPRX2DollyF0_ValueChanged(this, e);
-            udDSPRX1DollyF1_ValueChanged(this, e);
-            udDSPRX1SubDollyF1_ValueChanged(this, e);
-            udDSPRX2DollyF1_ValueChanged(this, e);
+            FE("chkDSPRX1DollyEnable_CheckedChanged", () => chkDSPRX1DollyEnable_CheckedChanged(this, e));
+            FE("chkDSPRX1DollySubEnable_CheckedChanged", () => chkDSPRX1DollySubEnable_CheckedChanged(this, e));
+            FE("chkDSPRX2DollyEnable_CheckedChanged", () => chkDSPRX2DollyEnable_CheckedChanged(this, e));
+            FE("udDSPRX1DollyF0_ValueChanged", () => udDSPRX1DollyF0_ValueChanged(this, e));
+            FE("udDSPRX1SubDollyF0_ValueChanged", () => udDSPRX1SubDollyF0_ValueChanged(this, e));
+            FE("udDSPRX2DollyF0_ValueChanged", () => udDSPRX2DollyF0_ValueChanged(this, e));
+            FE("udDSPRX1DollyF1_ValueChanged", () => udDSPRX1DollyF1_ValueChanged(this, e));
+            FE("udDSPRX1SubDollyF1_ValueChanged", () => udDSPRX1SubDollyF1_ValueChanged(this, e));
+            FE("udDSPRX2DollyF1_ValueChanged", () => udDSPRX2DollyF1_ValueChanged(this, e));
 
             // CAT
-            comboFocusMasterMode_SelectedIndexChanged(this, e);
-            chkRecenterOnZZFx_CheckedChanged(this, e);
+            FE("comboFocusMasterMode_SelectedIndexChanged", () => comboFocusMasterMode_SelectedIndexChanged(this, e));
+            FE("chkRecenterOnZZFx_CheckedChanged", () => chkRecenterOnZZFx_CheckedChanged(this, e));
             //MW0GLE [2.10.3.6_dev4]
-            chkKWAI_CheckedChanged(this, e);
+            FE("chkKWAI_CheckedChanged", () => chkKWAI_CheckedChanged(this, e));
 
             //MW0LGE_21d n1mm            
-            chkN1MMEnableRX1_CheckedChanged(this, e);
-            chkN1MMEnableRX2_CheckedChanged(this, e);
-            txtN1MMSendTo_TextChanged(this, e);
-            udN1MMSendRate_ValueChanged(this, e);
-            udN1MMRX1Scaling_ValueChanged(this, e);
-            udN1MMRX2Scaling_ValueChanged(this, e);
+            FE("chkN1MMEnableRX1_CheckedChanged", () => chkN1MMEnableRX1_CheckedChanged(this, e));
+            FE("chkN1MMEnableRX2_CheckedChanged", () => chkN1MMEnableRX2_CheckedChanged(this, e));
+            FE("txtN1MMSendTo_TextChanged", () => txtN1MMSendTo_TextChanged(this, e));
+            FE("udN1MMSendRate_ValueChanged", () => udN1MMSendRate_ValueChanged(this, e));
+            FE("udN1MMRX1Scaling_ValueChanged", () => udN1MMRX1Scaling_ValueChanged(this, e));
+            FE("udN1MMRX2Scaling_ValueChanged", () => udN1MMRX2Scaling_ValueChanged(this, e));
 
             //network tci ect tab
-            udMaxTCISpots_ValueChanged(this, e);
-            udTCISpotLifetime_ValueChanged(this, e);
-            chkShowTCISpots_CheckedChanged(this, e);
-            chkSpotOwnCallAppearance_CheckedChanged(this, e);
-            chkFlashNewTCISpots_CheckedChanged(this, e);
-            chkOverrideSpotFlashColour_CheckedChanged(this, e);
+            FE("udMaxTCISpots_ValueChanged", () => udMaxTCISpots_ValueChanged(this, e));
+            FE("udTCISpotLifetime_ValueChanged", () => udTCISpotLifetime_ValueChanged(this, e));
+            FE("chkShowTCISpots_CheckedChanged", () => chkShowTCISpots_CheckedChanged(this, e));
+            FE("chkSpotOwnCallAppearance_CheckedChanged", () => chkSpotOwnCallAppearance_CheckedChanged(this, e));
+            FE("chkFlashNewTCISpots_CheckedChanged", () => chkFlashNewTCISpots_CheckedChanged(this, e));
+            FE("chkOverrideSpotFlashColour_CheckedChanged", () => chkOverrideSpotFlashColour_CheckedChanged(this, e));
 
             //MIDI
-            chkIgnore14bitMidiMessages_CheckedChanged(this, e);
-            chkMidiControlIDincludesChannel_CheckedChanged(this, e);
-            chkMidiControlIDincludesStatus_CheckedChanged(this, e);
+            FE("chkIgnore14bitMidiMessages_CheckedChanged", () => chkIgnore14bitMidiMessages_CheckedChanged(this, e));
+            FE("chkMidiControlIDincludesChannel_CheckedChanged", () => chkMidiControlIDincludesChannel_CheckedChanged(this, e));
+            FE("chkMidiControlIDincludesStatus_CheckedChanged", () => chkMidiControlIDincludesStatus_CheckedChanged(this, e));
 
             // SNB
-            udDSPSNBThresh1_ValueChanged(this, e);
-            udDSPSNBThresh2_ValueChanged(this, e);
+            FE("udDSPSNBThresh1_ValueChanged", () => udDSPSNBThresh1_ValueChanged(this, e));
+            FE("udDSPSNBThresh2_ValueChanged", () => udDSPSNBThresh2_ValueChanged(this, e));
 
             // MNF
-            chkMNFAutoIncrease_CheckedChanged(this, e);
+            FE("chkMNFAutoIncrease_CheckedChanged", () => chkMNFAutoIncrease_CheckedChanged(this, e));
 
             // CFCompressor
-            chkCFCDisplayAutoScale_CheckedChanged(this, e);
-            udCFCPicDBPerLine_ValueChanged(this, e);
-            chkCFC_legacy_CheckedChanged(this, e);
-            chkCFCEnable_CheckedChanged(this, e);
-            chkCFCPeqEnable_CheckedChanged(this, e);
+            FE("chkCFCDisplayAutoScale_CheckedChanged", () => chkCFCDisplayAutoScale_CheckedChanged(this, e));
+            FE("udCFCPicDBPerLine_ValueChanged", () => udCFCPicDBPerLine_ValueChanged(this, e));
+            FE("chkCFC_legacy_CheckedChanged", () => chkCFC_legacy_CheckedChanged(this, e));
+            FE("chkCFCEnable_CheckedChanged", () => chkCFCEnable_CheckedChanged(this, e));
+            FE("chkCFCPeqEnable_CheckedChanged", () => chkCFCPeqEnable_CheckedChanged(this, e));
             setLegacyCFCProfile();
 
             // Phase Rotator
-            chkPHROTEnable_CheckedChanged(this, e);
-            udPhRotFreq_ValueChanged(this, e);
-            udPHROTStages_ValueChanged(this, e);
-            chkPHROTReverse_CheckedChanged(this, e);
+            FE("chkPHROTEnable_CheckedChanged", () => chkPHROTEnable_CheckedChanged(this, e));
+            FE("udPhRotFreq_ValueChanged", () => udPhRotFreq_ValueChanged(this, e));
+            FE("udPHROTStages_ValueChanged", () => udPHROTStages_ValueChanged(this, e));
+            FE("chkPHROTReverse_CheckedChanged", () => chkPHROTReverse_CheckedChanged(this, e));
 
             // TXEQ
             console.EQForm.SetTXProfile();
 
             //ADC assignment
-            radDDCADC_CheckedChanged(this, e);
-            radP1DDCADC_CheckedChanged(this, e);
-            chkWheelReverse_CheckedChanged(this, e);
+            FE("radDDCADC_CheckedChanged", () => radDDCADC_CheckedChanged(this, e));
+            FE("radP1DDCADC_CheckedChanged", () => radP1DDCADC_CheckedChanged(this, e));
+            FE("chkWheelReverse_CheckedChanged", () => chkWheelReverse_CheckedChanged(this, e));
 
             // IVAC
-            chkVAC1_Force_CheckedChanged(this, e);
-            chkVAC1_Force2_CheckedChanged(this, e);
-            chkVAC2onSplit_CheckedChanged(this, e);
-            chkAudioEnableVAC_CheckedChanged(this, e);
-            chkVAC2Enable_CheckedChanged(this, e);
+            FE("chkVAC1_Force_CheckedChanged", () => chkVAC1_Force_CheckedChanged(this, e));
+            FE("chkVAC1_Force2_CheckedChanged", () => chkVAC1_Force2_CheckedChanged(this, e));
+            FE("chkVAC2onSplit_CheckedChanged", () => chkVAC2onSplit_CheckedChanged(this, e));
+            FE("chkAudioEnableVAC_CheckedChanged", () => chkAudioEnableVAC_CheckedChanged(this, e));
+            FE("chkVAC2Enable_CheckedChanged", () => chkVAC2Enable_CheckedChanged(this, e));
 
             // DEXP-VOX
-            chkVOXEnable_CheckedChanged(this, e);
-            chkDEXPEnable_CheckedChanged(this, e);
-            udDEXPAttack_ValueChanged(this, e);
-            udDEXPHold_ValueChanged(this, e);
-            udDEXPRelease_ValueChanged(this, e);
-            udDEXPThreshold_ValueChanged(this, e);
-            udDEXPExpansionRatio_ValueChanged(this, e);
-            udDEXPHysteresisRatio_ValueChanged(this, e);
-            udDEXPDetTau_ValueChanged(this, e);
-            chkSCFEnable_CheckedChanged(this, e);
-            udSCFLowCut_ValueChanged(this, e);
-            udSCFHighCut_ValueChanged(this, e);
-            chkDEXPLookAheadEnable_CheckedChanged(this, e);
-            udDEXPLookAhead_ValueChanged(this, e);
-            chkAntiVoxEnable_CheckedChanged(this, e);
-            udAntiVoxGain_ValueChanged(this, e);
-            udAntiVoxTau_ValueChanged(this, e);
-            chkAntiVoxSource_CheckedChanged(this, e);
+            FE("chkVOXEnable_CheckedChanged", () => chkVOXEnable_CheckedChanged(this, e));
+            FE("chkDEXPEnable_CheckedChanged", () => chkDEXPEnable_CheckedChanged(this, e));
+            FE("udDEXPAttack_ValueChanged", () => udDEXPAttack_ValueChanged(this, e));
+            FE("udDEXPHold_ValueChanged", () => udDEXPHold_ValueChanged(this, e));
+            FE("udDEXPRelease_ValueChanged", () => udDEXPRelease_ValueChanged(this, e));
+            FE("udDEXPThreshold_ValueChanged", () => udDEXPThreshold_ValueChanged(this, e));
+            FE("udDEXPExpansionRatio_ValueChanged", () => udDEXPExpansionRatio_ValueChanged(this, e));
+            FE("udDEXPHysteresisRatio_ValueChanged", () => udDEXPHysteresisRatio_ValueChanged(this, e));
+            FE("udDEXPDetTau_ValueChanged", () => udDEXPDetTau_ValueChanged(this, e));
+            FE("chkSCFEnable_CheckedChanged", () => chkSCFEnable_CheckedChanged(this, e));
+            FE("udSCFLowCut_ValueChanged", () => udSCFLowCut_ValueChanged(this, e));
+            FE("udSCFHighCut_ValueChanged", () => udSCFHighCut_ValueChanged(this, e));
+            FE("chkDEXPLookAheadEnable_CheckedChanged", () => chkDEXPLookAheadEnable_CheckedChanged(this, e));
+            FE("udDEXPLookAhead_ValueChanged", () => udDEXPLookAhead_ValueChanged(this, e));
+            FE("chkAntiVoxEnable_CheckedChanged", () => chkAntiVoxEnable_CheckedChanged(this, e));
+            FE("udAntiVoxGain_ValueChanged", () => udAntiVoxGain_ValueChanged(this, e));
+            FE("udAntiVoxTau_ValueChanged", () => udAntiVoxTau_ValueChanged(this, e));
+            FE("chkAntiVoxSource_CheckedChanged", () => chkAntiVoxSource_CheckedChanged(this, e));
 
             // F/W Set
-            chkMercDither_CheckedChanged(this, e);
-            chkMercRandom_CheckedChanged(this, e);
+            FE("chkMercDither_CheckedChanged", () => chkMercDither_CheckedChanged(this, e));
+            FE("chkMercRandom_CheckedChanged", () => chkMercRandom_CheckedChanged(this, e));
             showLedMirror();
 
             //OC tab
-            chkAllowHotSwitching_CheckedChanged(this, e);
-            chkUsbBCD_CheckedChanged(this, e); //[2.10.3.5]MW0LGE
+            FE("chkAllowHotSwitching_CheckedChanged", () => chkAllowHotSwitching_CheckedChanged(this, e));
+            FE("chkUsbBCD_CheckedChanged", () => chkUsbBCD_CheckedChanged(this, e));
 
             //PA
-            comboPAProfile_SelectedIndexChanged(this, e); //MW0LGE_22b
+            FE("comboPAProfile_SelectedIndexChanged", () => comboPAProfile_SelectedIndexChanged(this, e));
 
-            chkForceATTwhenPSAoff_CheckedChanged(this, e); //MW0LGE [2.9.0.7]
-            chkForceATTwhenOutPowerChanges_CheckedChanged(this, e);
-            chkForceATTwhenOutPowerChanges_decreased_CheckedChanged(this, e);
+            FE("chkForceATTwhenPSAoff_CheckedChanged", () => chkForceATTwhenPSAoff_CheckedChanged(this, e));
+            FE("chkForceATTwhenOutPowerChanges_CheckedChanged", () => chkForceATTwhenOutPowerChanges_CheckedChanged(this, e));
+            FE("chkForceATTwhenOutPowerChanges_decreased_CheckedChanged", () => chkForceATTwhenOutPowerChanges_decreased_CheckedChanged(this, e));
 
-            chkAutoATTTXPsOff_CheckedChanged(this, e);
-            chkUndoAutoATTTx_CheckedChanged(this, e);
-            chkAutoATTRx1_CheckedChanged(this, e);
-            chkAutoATTRx2_CheckedChanged(this, e);
+            FE("chkAutoATTTXPsOff_CheckedChanged", () => chkAutoATTTXPsOff_CheckedChanged(this, e));
+            FE("chkUndoAutoATTTx_CheckedChanged", () => chkUndoAutoATTTx_CheckedChanged(this, e));
+            FE("chkAutoATTRx1_CheckedChanged", () => chkAutoATTRx1_CheckedChanged(this, e));
+            FE("chkAutoATTRx2_CheckedChanged", () => chkAutoATTRx2_CheckedChanged(this, e));
 
             //options1 tab
-            chkPurgeBuffers_CheckedChanged(this, e);
+            FE("chkPurgeBuffers_CheckedChanged", () => chkPurgeBuffers_CheckedChanged(this, e));
 
             //options2 tab
-            chkQuickSplit_CheckedChanged(this, e);
-            chkQuickSplitPanAudio_CheckedChanged(this, e);
-            chkToTMox_CheckedChanged(this, e);
-            chkToTPing_CheckedChanged(this, e);
-            chkAutoPowerOn_CheckedChanged(this, e);
-            nudPBsnrShiftRx1_ValueChanged(this, e);
-            nudPBsnrShiftRx2_ValueChanged(this, e);
-            chkPreventSleep_CheckedChanged(this, e);
-            chkPreventScreenSaver_CheckedChanged(this, e);
+            FE("chkQuickSplit_CheckedChanged", () => chkQuickSplit_CheckedChanged(this, e));
+            FE("chkQuickSplitPanAudio_CheckedChanged", () => chkQuickSplitPanAudio_CheckedChanged(this, e));
+            FE("chkToTMox_CheckedChanged", () => chkToTMox_CheckedChanged(this, e));
+            FE("chkToTPing_CheckedChanged", () => chkToTPing_CheckedChanged(this, e));
+            FE("chkAutoPowerOn_CheckedChanged", () => chkAutoPowerOn_CheckedChanged(this, e));
+            FE("nudPBsnrShiftRx1_ValueChanged", () => nudPBsnrShiftRx1_ValueChanged(this, e));
+            FE("nudPBsnrShiftRx2_ValueChanged", () => nudPBsnrShiftRx2_ValueChanged(this, e));
+            FE("chkPreventSleep_CheckedChanged", () => chkPreventSleep_CheckedChanged(this, e));
+            FE("chkPreventScreenSaver_CheckedChanged", () => chkPreventScreenSaver_CheckedChanged(this, e));
 
             //options3 tab
-            chkVFOsync_settings_changed(this, e);
+            FE("chkVFOsync_settings_changed", () => chkVFOsync_settings_changed(this, e));
 
             // auto start tab
             updateAutoLaunchControls();
 
             // alex/antenna
-            chkRxOutOnTx_CheckedChanged(this, e);
-            chkEXT1OutOnTx_CheckedChanged(this, e);
-            chkEXT2OutOnTx_CheckedChanged(this, e);
-            chkHFTRRelay_CheckedChanged(this, e);
-            chkBPF2Gnd_CheckedChanged(this, e);
-            chkEnableXVTRHF_CheckedChanged(this, e);
+            FE("chkRxOutOnTx_CheckedChanged", () => chkRxOutOnTx_CheckedChanged(this, e));
+            FE("chkEXT1OutOnTx_CheckedChanged", () => chkEXT1OutOnTx_CheckedChanged(this, e));
+            FE("chkEXT2OutOnTx_CheckedChanged", () => chkEXT2OutOnTx_CheckedChanged(this, e));
+            FE("chkHFTRRelay_CheckedChanged", () => chkHFTRRelay_CheckedChanged(this, e));
+            FE("chkBPF2Gnd_CheckedChanged", () => chkBPF2Gnd_CheckedChanged(this, e));
+            FE("chkEnableXVTRHF_CheckedChanged", () => chkEnableXVTRHF_CheckedChanged(this, e));
 
-            chkSWRProtection_CheckedChanged(this, e);
-            chkSWRTuneProtection_CheckedChanged(this, e);
-            chkWindBackPowerSWR_CheckedChanged(this, e);
+            FE("chkSWRProtection_CheckedChanged", () => chkSWRProtection_CheckedChanged(this, e));
+            FE("chkSWRTuneProtection_CheckedChanged", () => chkSWRTuneProtection_CheckedChanged(this, e));
+            FE("chkWindBackPowerSWR_CheckedChanged", () => chkWindBackPowerSWR_CheckedChanged(this, e));
 
             //multimeter io tab
             init_lstMMIO();
 
             //multimeter tab
-            comboContainerSelect_SelectedIndexChanged(this, e);
+            FE("comboContainerSelect_SelectedIndexChanged", () => comboContainerSelect_SelectedIndexChanged(this, e));
 
             //legacy item tab
-            chkLegacyItems_band_CheckedChanged(this, e);
-            chkLegacyItems_mode_CheckedChanged(this, e);
-            chkLegacyItems_filter_CheckedChanged(this, e);
-            chkLegacyItems_expand_spectral_CheckedChanged(this, e);
-            chkLegacyItems_vfoa_CheckedChanged(this, e);
-            chkLegacyItems_vfob_CheckedChanged(this, e);
-            chkLegacyItems_expand_spectral_top_CheckedChanged(this, e);
-            chkLegacyItems_vfosync_CheckedChanged(this, e);
-            chkLegacyItems_power_rx2_CheckedChanged(this, e);
-            chkLegacyItems_mon_tun_CheckedChanged(this, e);
-            chkLegacyItems_hide_split_rit_CheckedChanged(this, e);
-            chkLegacyItems_hide_noise_mnf_CheckedChanged(this, e);
-            chkLegacyItems_hide_mic_comp_CheckedChanged(this, e);
-            chkLegacyItems_hide_avg_peak_CheckedChanged(this, e);
+            FE("chkLegacyItems_band_CheckedChanged", () => chkLegacyItems_band_CheckedChanged(this, e));
+            FE("chkLegacyItems_mode_CheckedChanged", () => chkLegacyItems_mode_CheckedChanged(this, e));
+            FE("chkLegacyItems_filter_CheckedChanged", () => chkLegacyItems_filter_CheckedChanged(this, e));
+            FE("chkLegacyItems_expand_spectral_CheckedChanged", () => chkLegacyItems_expand_spectral_CheckedChanged(this, e));
+            FE("chkLegacyItems_vfoa_CheckedChanged", () => chkLegacyItems_vfoa_CheckedChanged(this, e));
+            FE("chkLegacyItems_vfob_CheckedChanged", () => chkLegacyItems_vfob_CheckedChanged(this, e));
+            FE("chkLegacyItems_expand_spectral_top_CheckedChanged", () => chkLegacyItems_expand_spectral_top_CheckedChanged(this, e));
+            FE("chkLegacyItems_vfosync_CheckedChanged", () => chkLegacyItems_vfosync_CheckedChanged(this, e));
+            FE("chkLegacyItems_power_rx2_CheckedChanged", () => chkLegacyItems_power_rx2_CheckedChanged(this, e));
+            FE("chkLegacyItems_mon_tun_CheckedChanged", () => chkLegacyItems_mon_tun_CheckedChanged(this, e));
+            FE("chkLegacyItems_hide_split_rit_CheckedChanged", () => chkLegacyItems_hide_split_rit_CheckedChanged(this, e));
+            FE("chkLegacyItems_hide_noise_mnf_CheckedChanged", () => chkLegacyItems_hide_noise_mnf_CheckedChanged(this, e));
+            FE("chkLegacyItems_hide_mic_comp_CheckedChanged", () => chkLegacyItems_hide_mic_comp_CheckedChanged(this, e));
+            FE("chkLegacyItems_hide_avg_peak_CheckedChanged", () => chkLegacyItems_hide_avg_peak_CheckedChanged(this, e));
             //
-            chkDiscordEnabled_CheckedChanged(this, e);
-            chkDiscordTimeStamp_CheckedChanged(this, e);
+            FE("chkDiscordEnabled_CheckedChanged", () => chkDiscordEnabled_CheckedChanged(this, e));
+            FE("chkDiscordTimeStamp_CheckedChanged", () => chkDiscordTimeStamp_CheckedChanged(this, e));
 
             // filter item config
-            txtFilter_sideband_frequencies_TextChanged(this, e);
-            txtFilter_cw_frequencies_TextChanged(this, e);
-            txtFilter_other_frequencies_TextChanged(this, e);
+            FE("txtFilter_sideband_frequencies_TextChanged", () => txtFilter_sideband_frequencies_TextChanged(this, e));
+            FE("txtFilter_cw_frequencies_TextChanged", () => txtFilter_cw_frequencies_TextChanged(this, e));
+            FE("txtFilter_other_frequencies_TextChanged", () => txtFilter_other_frequencies_TextChanged(this, e));
 
             //done last
-            chkIgnoreATTOffset_CheckedChanged(this, e); // part of the test tab
+            FE("chkIgnoreATTOffset_CheckedChanged", () => chkIgnoreATTOffset_CheckedChanged(this, e));
         }
 
         public string[] GetTXProfileStrings()
