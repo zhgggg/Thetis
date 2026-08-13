@@ -37,11 +37,8 @@ jobs:
           vs-version: '17.0'
 
       - name: Restore NuGet packages
-        shell: cmd
-        run: |
-          nuget restore "Project Files\Source\Console\Thetis.csproj"
-          nuget restore "Project Files\Source\Midi2Cat\Midi2Cat.csproj"
-          nuget restore "Project Files\Source\RawInput\RawInput.csproj"
+        shell: pwsh
+        run: nuget restore "Project Files\Source\Thetis_VS2026.sln" -PackagesDirectory "Project Files\Source\packages"
 
       - name: Build cmASIO (native)
         shell: pwsh
