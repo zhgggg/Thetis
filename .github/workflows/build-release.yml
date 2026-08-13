@@ -43,6 +43,10 @@ jobs:
           nuget restore "Project Files\Source\Midi2Cat\Midi2Cat.csproj"
           nuget restore "Project Files\Source\RawInput\RawInput.csproj"
 
+      - name: Build portaudio (native)
+        shell: pwsh
+        run: msbuild "Project Files\lib\portaudio-19.7.0\build\msvc\portaudio.vcxproj" /p:Configuration=Release /p:Platform=${{ matrix.native_platform }} /p:SolutionDir="${{ github.workspace }}\Project Files\Source\" /m /v:m /nologo
+
       - name: Build wdsp (native)
         shell: pwsh
         run: msbuild "Project Files\Source\wdsp\wdsp.vcxproj" /p:Configuration=Release /p:Platform=${{ matrix.native_platform }} /p:SolutionDir="${{ github.workspace }}\Project Files\Source\" /m /v:m /nologo
@@ -54,10 +58,6 @@ jobs:
       - name: Build cmASIO (native)
         shell: pwsh
         run: msbuild "Project Files\Source\cmASIO\cmASIO.vcxproj" /p:Configuration=Release /p:Platform=${{ matrix.native_platform }} /p:SolutionDir="${{ github.workspace }}\Project Files\Source\" /m /v:m /nologo
-
-      - name: Build portaudio (native)
-        shell: pwsh
-        run: msbuild "Project Files\lib\portaudio-19.7.0\build\msvc\portaudio.vcxproj" /p:Configuration=Release /p:Platform=${{ matrix.native_platform }} /p:SolutionDir="${{ github.workspace }}\Project Files\Source\" /m /v:m /nologo
 
       - name: Build Thetis
         shell: pwsh
