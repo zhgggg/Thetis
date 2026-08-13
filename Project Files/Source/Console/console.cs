@@ -820,9 +820,9 @@ namespace Thetis
             if (!ok)
             {
                 if (string.IsNullOrEmpty(broken_folder))
-                    MessageBox.Show($Translator.Tr("There was an issue loading the database."), Translator.Tr("Database Issue"), MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1, Common.MB_TOPMOST);
+                    MessageBox.Show(Translator.Tr($"There was an issue loading the database."), Translator.Tr("Database Issue"), MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1, Common.MB_TOPMOST);
                 else
-                    MessageBox.Show($Translator.Tr("There was an issue loading the database. The database has been moved to [{AppDataPath}DB\\broken\\{broken_folder}]."), Translator.Tr("Database Issue"), MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1, Common.MB_TOPMOST);
+                    MessageBox.Show(Translator.Tr($"There was an issue loading the database. The database has been moved to [{AppDataPath}DB\\broken\\{broken_folder}]."), Translator.Tr("Database Issue"), MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1, Common.MB_TOPMOST);
 
                 _exitConsoleInDispose = false;
                 Environment.Exit(1);
@@ -3940,7 +3940,7 @@ namespace Thetis
                         }
                         else
                         {
-                            DialogResult dr = MessageBox.Show($Translator.Tr("The version of hardware stored in the database is not known by this version of Thetis [{hw.ToString()}]. Are you using the correct version ?"),
+                            DialogResult dr = MessageBox.Show(Translator.Tr($"The version of hardware stored in the database is not known by this version of Thetis [{hw.ToString()}]. Are you using the correct version ?"),
                             Translator.Tr("Hardware version issue"),
                             MessageBoxButtons.OK,
                             MessageBoxIcon.Information, MessageBoxDefaultButton.Button1, Common.MB_TOPMOST);
@@ -24782,7 +24782,7 @@ namespace Thetis
                         {
                             using (StreamWriter writer = File.AppendText(sVALog))
                             {
-                                writer.WriteLine($Translator.Tr("{now:yyyy-MM-dd HH:mm:ss}\tadc0(v)={adc0}\tadc1(a)={adc1}\tvolts={convertToVolts(adc0).ToString(")f2Translator.Tr(")}\tamps={convertToAmps(adc1).ToString(")f2Translator.Tr(")}"));
+                                writer.WriteLine($"{now:yyyy-MM-dd HH:mm:ss}\tadc0(v)={adc0}\tadc1(a)={adc1}\tvolts={convertToVolts(adc0).ToString("f2")}\tamps={convertToAmps(adc1).ToString("f2")}");
                             }
                         }
                         catch

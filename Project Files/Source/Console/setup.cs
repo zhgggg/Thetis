@@ -1786,7 +1786,7 @@ namespace Thetis
                 string val = a["comboRadioModel"];
                 if (!comboRadioModel.Items.Contains(val))
                 {
-                    DialogResult dr = MessageBox.Show($Translator.Tr("The radio model stored in the database is not known by this version of Thetis [{val}]. \n\nAre you using the correct version ? It will be reset back to HERMES."),
+                    DialogResult dr = MessageBox.Show(Translator.Tr($"The radio model stored in the database is not known by this version of Thetis [{val}]. \n\nAre you using the correct version ? It will be reset back to HERMES."),
                     Translator.Tr("Model version issue"),
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Information, MessageBoxDefaultButton.Button1, Common.MB_TOPMOST);
@@ -9294,7 +9294,7 @@ namespace Thetis
 
             if (rows.Length != 1)
             {
-                MessageBox.Show($Translator.Tr("Database error reading TxProfile Table. The profile [{sProfileName}] does not seem to exist."),
+                MessageBox.Show(Translator.Tr($"Database error reading TxProfile Table. The profile [{sProfileName}] does not seem to exist."),
                     Translator.Tr("Database error"),
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
@@ -27616,7 +27616,7 @@ namespace Thetis
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show($Translator.Tr("Error: {ex.Message}"), Translator.Tr("Error building zip"), MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1, Common.MB_TOPMOST);
+                    MessageBox.Show(Translator.Tr($"Error: {ex.Message}"), Translator.Tr("Error building zip"), MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1, Common.MB_TOPMOST);
                 }
             }
         }
@@ -32566,12 +32566,12 @@ namespace Thetis
                 {
                     for (int i = 0; i < device.InputChannelCount - 1; i++)
                     {
-                        int idx = comboCMASIO_inpair.Items.Add($Translator.Tr("ch{(i + 1).ToString()} + {(i + 2).ToString()}"));
+                        int idx = comboCMASIO_inpair.Items.Add(Translator.Tr($"ch{(i + 1).ToString()} + {(i + 2).ToString()}"));
                         if (idx == in_ch) comboCMASIO_inpair.SelectedIndex = idx;
                     }
                     for (int i = 0; i < device.OutputChannelCount - 1; i++)
                     {
-                        int idx = comboCMASIO_outpair.Items.Add($Translator.Tr("ch{(i + 1).ToString()} + {(i + 2).ToString()}"));
+                        int idx = comboCMASIO_outpair.Items.Add(Translator.Tr($"ch{(i + 1).ToString()} + {(i + 2).ToString()}"));
                         if (idx == out_ch) comboCMASIO_outpair.SelectedIndex = idx;
                     }
                     comboCMASIO_inpair.Enabled = true;
@@ -32586,9 +32586,9 @@ namespace Thetis
             else
             {
                 int idx;
-                idx = comboCMASIO_inpair.Items.Add($Translator.Tr("ch{(in_ch + 1).ToString()} + {(in_ch + 2).ToString()}"));
+                idx = comboCMASIO_inpair.Items.Add(Translator.Tr($"ch{(in_ch + 1).ToString()} + {(in_ch + 2).ToString()}"));
                 comboCMASIO_inpair.SelectedIndex = idx;
-                idx = comboCMASIO_outpair.Items.Add($Translator.Tr("ch{(out_ch + 1).ToString()} + {(out_ch + 2).ToString()}"));
+                idx = comboCMASIO_outpair.Items.Add(Translator.Tr($"ch{(out_ch + 1).ToString()} + {(out_ch + 2).ToString()}"));
                 comboCMASIO_outpair.SelectedIndex = idx;
                 comboCMASIO_inpair.Enabled = false;
                 comboCMASIO_outpair.Enabled = false;
@@ -34072,7 +34072,7 @@ namespace Thetis
                 int scaling = Common.GetScalingForWindow(Display.Target.Handle);
                 if (scaling == -1)
                 {
-                    dr = MessageBox.Show($Translator.Tr("Unable to detect the scaling for the monitor that the console window sits on. Please ensure this is set to 100% if the results are to be compared against other systems.\n\nContinue anyway?"),
+                    dr = MessageBox.Show(Translator.Tr($"Unable to detect the scaling for the monitor that the console window sits on. Please ensure this is set to 100% if the results are to be compared against other systems.\n\nContinue anyway?"),
                         Translator.Tr("100% scaling issue"),
                         MessageBoxButtons.YesNo,
                         MessageBoxIcon.Question, MessageBoxDefaultButton.Button2, Common.MB_TOPMOST);
@@ -34082,7 +34082,7 @@ namespace Thetis
                 {
                     if (scaling != 100)
                     {
-                        dr = MessageBox.Show($Translator.Tr("The console window is on a monitor that is not at 100% scaling. The scaling will need to be reset to 100% if these results are to be compared against other systems. It is currently set to {scaling}%\n\nContinue anyway?"),
+                        dr = MessageBox.Show(Translator.Tr($"The console window is on a monitor that is not at 100% scaling. The scaling will need to be reset to 100% if these results are to be compared against other systems. It is currently set to {scaling}%\n\nContinue anyway?"),
                             Translator.Tr("100% scaling issue"),
                             MessageBoxButtons.YesNo,
                             MessageBoxIcon.Question, MessageBoxDefaultButton.Button2, Common.MB_TOPMOST);
