@@ -112,5 +112,5 @@ jobs:
           name: "Thetis ${{ env.THETIS_VERSION }} 中文版 (zh-CN)"
           draft: false
           prerelease: false
-          files: artifacts/*
+          files: artifacts/**
           generate_release_notes: true
