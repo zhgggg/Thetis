@@ -1411,7 +1411,6 @@ N1MM udp data output enabled=N1MM UDP 数据输出已启用
 N1MM+ Logger=N1MM+ 日志软件
 N1MM+ WaterfallBandmap=N1MM+ 瀑布波段图
 Name=名称
-name=名称
 Name:=名称：
 Navigation=导航
 NB=降噪

@@ -1344,7 +1344,7 @@ namespace Thetis
                                             /*
                                             MessageBox.Show(Translator.Tr("You were transmitting during a Scheduled Frequency change.\n") +
                                                Translator.Tr("You will need to manually go to the Frequency to keep your Schedule."),
-                                               Translator.Tr("Frequency: ") + dataGridView1[Translator.Tr("RXFreq"), aa].Value + Translator.Tr(" Mhz."),
+                                               Translator.Tr("Frequency: ") + dataGridView1["RXFreq", aa].Value + Translator.Tr(" Mhz."),
                                                MessageBoxButtons.OK,
                                                MessageBoxIcon.Error);
                                                */

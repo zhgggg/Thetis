@@ -2970,7 +2970,7 @@ namespace Thetis
                 if (dr.RowState != DataRowState.Deleted)
                 {
                     if (!lstTXProfileDef.Items.Contains(dr["Name"]))
-                        lstTXProfileDef.Items.Add(dr[Translator.Tr("name")]);
+                        lstTXProfileDef.Items.Add(dr["name"]);
                 }
             }
         }
