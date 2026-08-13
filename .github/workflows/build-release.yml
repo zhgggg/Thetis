@@ -14,18 +14,12 @@ env:
 
 jobs:
   build:
-    name: Build ${{ matrix.arch }}
-    strategy:
-      fail-fast: false
-      matrix:
-        include:
-          - arch: x64
-            thetis_platform: x64
-            native_platform: x64
-          - arch: x86
-            thetis_platform: x86
-            native_platform: Win32
+    name: Build x64
     runs-on: windows-2025
+    env:
+      arch: x64
+      thetis_platform: x64
+      native_platform: x64
 
     steps:
       - name: Checkout
@@ -42,27 +36,27 @@ jobs:
 
       - name: Build cmASIO (native)
         shell: pwsh
-        run: msbuild "Project Files\Source\cmASIO\cmASIO.vcxproj" /p:Configuration=Release /p:Platform=${{ matrix.native_platform }} /p:SolutionDir="${{ github.workspace }}\Project Files\Source\" /m /v:m /nologo
+        run: msbuild "Project Files\Source\cmASIO\cmASIO.vcxproj" /p:Configuration=Release /p:Platform=${{ env.native_platform }} /p:SolutionDir="${{ github.workspace }}\Project Files\Source\" /m /v:m /nologo
 
       - name: Build portaudio (native)
         shell: pwsh
-        run: msbuild "Project Files\lib\portaudio-19.7.0\build\msvc\portaudio.vcxproj" /p:Configuration=Release /p:Platform=${{ matrix.native_platform }} /p:SolutionDir="${{ github.workspace }}\Project Files\Source\" /m /v:m /nologo
+        run: msbuild "Project Files\lib\portaudio-19.7.0\build\msvc\portaudio.vcxproj" /p:Configuration=Release /p:Platform=${{ env.native_platform }} /p:SolutionDir="${{ github.workspace }}\Project Files\Source\" /m /v:m /nologo
 
       - name: Build wdsp (native)
         shell: pwsh
-        run: msbuild "Project Files\Source\wdsp\wdsp.vcxproj" /p:Configuration=Release /p:Platform=${{ matrix.native_platform }} /p:SolutionDir="${{ github.workspace }}\Project Files\Source\" /m /v:m /nologo
+        run: msbuild "Project Files\Source\wdsp\wdsp.vcxproj" /p:Configuration=Release /p:Platform=${{ env.native_platform }} /p:SolutionDir="${{ github.workspace }}\Project Files\Source\" /m /v:m /nologo
 
       - name: Build ChannelMaster (native)
         shell: pwsh
-        run: msbuild "Project Files\Source\ChannelMaster\ChannelMaster.vcxproj" /p:Configuration=Release /p:Platform=${{ matrix.native_platform }} /p:SolutionDir="${{ github.workspace }}\Project Files\Source\" /m /v:m /nologo
+        run: msbuild "Project Files\Source\ChannelMaster\ChannelMaster.vcxproj" /p:Configuration=Release /p:Platform=${{ env.native_platform }} /p:SolutionDir="${{ github.workspace }}\Project Files\Source\" /m /v:m /nologo
 
       - name: Build Thetis
         shell: pwsh
-        run: msbuild "Project Files\Source\Console\Thetis.csproj" /p:Configuration=Release /p:Platform=${{ matrix.thetis_platform }} /p:SolutionDir="${{ github.workspace }}\Project Files\Source\" /m /v:m /nologo
+        run: msbuild "Project Files\Source\Console\Thetis.csproj" /p:Configuration=Release /p:Platform=${{ env.thetis_platform }} /p:SolutionDir="${{ github.workspace }}\Project Files\Source\" /m /v:m /nologo
 
       - name: Build MSI installer
         shell: pwsh
-        run: msbuild "Project Files\Source\Thetis-Installer\Thetis-Installer.wixproj" /p:Configuration=Release /p:Platform=${{ matrix.thetis_platform }} /p:SolutionDir="${{ github.workspace }}\Project Files\Source\" /m /v:m /nologo
+        run: msbuild "Project Files\Source\Thetis-Installer\Thetis-Installer.wixproj" /p:Configuration=Release /p:Platform=${{ env.thetis_platform }} /p:SolutionDir="${{ github.workspace }}\Project Files\Source\" /m /v:m /nologo
 
       - name: Rename MSI with version and arch
         shell: pwsh
@@ -70,7 +64,7 @@ jobs:
           $msi = Get-ChildItem "Project Files\bin\Installers\Thetis.msi" -ErrorAction SilentlyContinue
           if (-not $msi) { $msi = Get-ChildItem "Project Files\bin\Installers\*.msi" | Select-Object -First 1 }
           if ($msi) {
-            $target = "Thetis_v${{ env.THETIS_VERSION }}-zhcn_${{ matrix.arch }}.msi"
+            $target = "Thetis_v${{ env.THETIS_VERSION }}-zhcn_${{ env.arch }}.msi"
             Rename-Item $msi.FullName -NewName $target
             Write-Host "MSI -> $target"
           } else {
@@ -80,17 +74,17 @@ jobs:
       - name: Package portable zip
         shell: pwsh
         run: |
-          $src = "Project Files\bin\${{ matrix.arch }}\Release"
-          $zip = "Thetis_v${{ env.THETIS_VERSION }}-zhcn_${{ matrix.arch }}.zip"
+          $src = "Project Files\bin\${{ env.arch }}\Release"
+          $zip = "Thetis_v${{ env.THETIS_VERSION }}-zhcn_${{ env.arch }}.zip"
           Compress-Archive -Path (Join-Path $src "*") -DestinationPath $zip -CompressionLevel Optimal
           Write-Host "Created $zip"
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
-          name: thetis-zhcn-${{ matrix.arch }}
+          name: thetis-zhcn-${{ env.arch }}
           path: |
-            Thetis_v${{ env.THETIS_VERSION }}-zhcn_${{ matrix.arch }}.zip
+            Thetis_v${{ env.THETIS_VERSION }}-zhcn_${{ env.arch }}.zip
             Project Files\bin\Installers\*.msi
           if-no-files-found: error
 

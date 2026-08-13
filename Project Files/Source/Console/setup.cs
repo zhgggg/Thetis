@@ -2143,7 +2143,7 @@ namespace Thetis
                         foreach (Keys k in KeyList)
                         {
                             if (!combo.Items.Contains(k.ToString()))
-                                combo.Items.Add(k.ToString().StartsWith(Translator.Tr("Oem")) ? KeyToString(k) : k.ToString());
+                                combo.Items.Add(k.ToString().StartsWith("Oem") ? KeyToString(k) : k.ToString());
                         }
                     }
                 }
@@ -10058,162 +10058,190 @@ namespace Thetis
         private void comboKBTuneUp1_SelectedIndexChanged(object sender, System.EventArgs e)
         {
             if (initializing) return;
+            if (comboKBTuneUp1.SelectedIndex < 0) return;
             console.KeyTuneUp1 = (Keys)KeyList[comboKBTuneUp1.SelectedIndex];
         }
 
         private void comboKBTuneDown1_SelectedIndexChanged(object sender, System.EventArgs e)
         {
             if (initializing) return;
+            if (comboKBTuneDown1.SelectedIndex < 0) return;
             console.KeyTuneDown1 = (Keys)KeyList[comboKBTuneDown1.SelectedIndex];
         }
 
         private void comboKBTuneUp2_SelectedIndexChanged(object sender, System.EventArgs e)
         {
             if (initializing) return;
+            if (comboKBTuneUp2.SelectedIndex < 0) return;
             console.KeyTuneUp2 = (Keys)KeyList[comboKBTuneUp2.SelectedIndex];
         }
 
         private void comboKBTuneDown2_SelectedIndexChanged(object sender, System.EventArgs e)
         {
             if (initializing) return;
+            if (comboKBTuneDown2.SelectedIndex < 0) return;
             console.KeyTuneDown2 = (Keys)KeyList[comboKBTuneDown2.SelectedIndex];
         }
 
         private void comboKBTuneUp3_SelectedIndexChanged(object sender, System.EventArgs e)
         {
             if (initializing) return;
+            if (comboKBTuneUp3.SelectedIndex < 0) return;
             console.KeyTuneUp3 = (Keys)KeyList[comboKBTuneUp3.SelectedIndex];
         }
 
         private void comboKBTuneDown3_SelectedIndexChanged(object sender, System.EventArgs e)
         {
             if (initializing) return;
+            if (comboKBTuneDown3.SelectedIndex < 0) return;
             console.KeyTuneDown3 = (Keys)KeyList[comboKBTuneDown3.SelectedIndex];
         }
 
         private void comboKBTuneUp4_SelectedIndexChanged(object sender, System.EventArgs e)
         {
             if (initializing) return;
+            if (comboKBTuneUp4.SelectedIndex < 0) return;
             console.KeyTuneUp4 = (Keys)KeyList[comboKBTuneUp4.SelectedIndex];
         }
 
         private void comboKBTuneDown4_SelectedIndexChanged(object sender, System.EventArgs e)
         {
             if (initializing) return;
+            if (comboKBTuneDown4.SelectedIndex < 0) return;
             console.KeyTuneDown4 = (Keys)KeyList[comboKBTuneDown4.SelectedIndex];
         }
 
         private void comboKBTuneUp5_SelectedIndexChanged(object sender, System.EventArgs e)
         {
             if (initializing) return;
+            if (comboKBTuneUp5.SelectedIndex < 0) return;
             console.KeyTuneUp5 = (Keys)KeyList[comboKBTuneUp5.SelectedIndex];
         }
 
         private void comboKBTuneDown5_SelectedIndexChanged(object sender, System.EventArgs e)
         {
             if (initializing) return;
+            if (comboKBTuneDown5.SelectedIndex < 0) return;
             console.KeyTuneDown5 = (Keys)KeyList[comboKBTuneDown5.SelectedIndex];
         }
 
         private void comboKBTuneUp6_SelectedIndexChanged(object sender, System.EventArgs e)
         {
             if (initializing) return;
+            if (comboKBTuneUp6.SelectedIndex < 0) return;
             console.KeyTuneUp6 = (Keys)KeyList[comboKBTuneUp6.SelectedIndex];
         }
 
         private void comboKBTuneDown6_SelectedIndexChanged(object sender, System.EventArgs e)
         {
             if (initializing) return;
+            if (comboKBTuneDown6.SelectedIndex < 0) return;
             console.KeyTuneDown6 = (Keys)KeyList[comboKBTuneDown6.SelectedIndex];
         }
 
         private void comboKBTuneUp7_SelectedIndexChanged(object sender, System.EventArgs e)
         {
+            if (comboKBTuneUp7.SelectedIndex < 0) return;
             console.KeyTuneUp7 = (Keys)KeyList[comboKBTuneUp7.SelectedIndex];
         }
 
         private void comboKBTuneDown7_SelectedIndexChanged(object sender, System.EventArgs e)
         {
+            if (comboKBTuneDown7.SelectedIndex < 0) return;
             console.KeyTuneDown7 = (Keys)KeyList[comboKBTuneDown7.SelectedIndex];
         }
 
         private void comboKBBandUp_SelectedIndexChanged(object sender, System.EventArgs e)
         {
             if (initializing) return;
+            if (comboKBBandUp.SelectedIndex < 0) return;
             console.KeyBandUp = (Keys)KeyList[comboKBBandUp.SelectedIndex];
         }
 
         private void comboKBBandDown_SelectedIndexChanged(object sender, System.EventArgs e)
         {
             if (initializing) return;
+            if (comboKBBandDown.SelectedIndex < 0) return;
             console.KeyBandDown = (Keys)KeyList[comboKBBandDown.SelectedIndex];
         }
 
         private void comboKBFilterUp_SelectedIndexChanged(object sender, System.EventArgs e)
         {
             if (initializing) return;
+            if (comboKBFilterUp.SelectedIndex < 0) return;
             console.KeyFilterUp = (Keys)KeyList[comboKBFilterUp.SelectedIndex];
         }
 
         private void comboKBFilterDown_SelectedIndexChanged(object sender, System.EventArgs e)
         {
             if (initializing) return;
+            if (comboKBFilterDown.SelectedIndex < 0) return;
             console.KeyFilterDown = (Keys)KeyList[comboKBFilterDown.SelectedIndex];
         }
 
         private void comboKBModeUp_SelectedIndexChanged(object sender, System.EventArgs e)
         {
             if (initializing) return;
+            if (comboKBModeUp.SelectedIndex < 0) return;
             console.KeyModeUp = (Keys)KeyList[comboKBModeUp.SelectedIndex];
         }
 
         private void comboKBModeDown_SelectedIndexChanged(object sender, System.EventArgs e)
         {
             if (initializing) return;
+            if (comboKBModeDown.SelectedIndex < 0) return;
             console.KeyModeDown = (Keys)KeyList[comboKBModeDown.SelectedIndex];
         }
 
         private void comboKBCWDot_SelectedIndexChanged(object sender, System.EventArgs e)
         {
             if (initializing) return;
+            if (comboKBCWDot.SelectedIndex < 0) return;
             console.KeyCWDot = (Keys)KeyList[comboKBCWDot.SelectedIndex];
         }
 
         private void comboKBCWDash_SelectedIndexChanged(object sender, System.EventArgs e)
         {
             if (initializing) return;
+            if (comboKBCWDash.SelectedIndex < 0) return;
             console.KeyCWDash = (Keys)KeyList[comboKBCWDash.SelectedIndex];
         }
 
         private void comboKBRITUp_SelectedIndexChanged(object sender, System.EventArgs e)
         {
+            if (comboKBRITUp.SelectedIndex < 0) return;
             console.KeyRITUp = (Keys)KeyList[comboKBRITUp.SelectedIndex];
         }
 
         private void comboKBRITDown_SelectedIndexChanged(object sender, System.EventArgs e)
         {
+            if (comboKBRITDown.SelectedIndex < 0) return;
             console.KeyRITDown = (Keys)KeyList[comboKBRITDown.SelectedIndex];
         }
 
         private void comboKBXITUp_SelectedIndexChanged(object sender, System.EventArgs e)
         {
+            if (comboKBXITUp.SelectedIndex < 0) return;
             console.KeyXITUp = (Keys)KeyList[comboKBXITUp.SelectedIndex];
         }
 
         private void comboKBXITDown_SelectedIndexChanged(object sender, System.EventArgs e)
         {
+            if (comboKBXITDown.SelectedIndex < 0) return;
             console.KeyXITDown = (Keys)KeyList[comboKBXITDown.SelectedIndex];
         }
 
         private void comboKBPTTTx_SelectedIndexChanged(object sender, System.EventArgs e)
         {
             if (initializing) return;
+            if (comboKBPTTTx.SelectedIndex < 0) return;
             console.KeyPTTTx = (Keys)KeyList[comboKBPTTTx.SelectedIndex];
         }
 
         private void comboKBPTTRx_SelectedIndexChanged(object sender, System.EventArgs e)
         {
             if (initializing) return;
+            if (comboKBPTTRx.SelectedIndex < 0) return;
             console.KeyPTTRx = (Keys)KeyList[comboKBPTTRx.SelectedIndex];
         }
 
