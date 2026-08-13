@@ -64,6 +64,19 @@ jobs:
         shell: pwsh
         run: msbuild "Project Files\Source\Thetis-Installer\Thetis-Installer.wixproj" /p:Configuration=Release /p:Platform=${{ matrix.thetis_platform }} /p:SolutionDir="${{ github.workspace }}\Project Files\Source\" /m /v:m /nologo
 
+      - name: Rename MSI with version and arch
+        shell: pwsh
+        run: |
+          $msi = Get-ChildItem "Project Files\bin\Installers\Thetis.msi" -ErrorAction SilentlyContinue
+          if (-not $msi) { $msi = Get-ChildItem "Project Files\bin\Installers\*.msi" | Select-Object -First 1 }
+          if ($msi) {
+            $target = "Thetis_v${{ env.THETIS_VERSION }}-zhcn_${{ matrix.arch }}.msi"
+            Rename-Item $msi.FullName (Join-Path "Project Files\bin\Installers" $target)
+            Write-Host "MSI -> $target"
+          } else {
+            Write-Error "No MSI produced"
+          }
+
       - name: Package portable zip
         shell: pwsh
         run: |
