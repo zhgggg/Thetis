@@ -2188,9 +2188,7 @@ namespace Thetis
             try { a(); }
             catch (Exception ex)
             {
-                try { System.IO.File.WriteAllText(System.Environment.GetFolderPath(System.Environment.SpecialFolder.ApplicationData) + "\\OpenHPSDR\\Thetis-x64\\DBStartupError.txt", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + "
-ForceAllEvents crashed at handler: " + name + "
-" + ex.ToString()); } catch { }
+                try { System.IO.File.WriteAllText(System.Environment.GetFolderPath(System.Environment.SpecialFolder.ApplicationData) + "\\OpenHPSDR\\Thetis-x64\\DBStartupError.txt", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + "\nForceAllEvents crashed at handler: " + name + "\n" + ex.ToString()); } catch { }
                 throw;
             }
         }
